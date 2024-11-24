@@ -1,4 +1,4 @@
-package www.ngptechworld.ngpiteapp
+package com.ngpteckworld.deliveryapp
 
 import io.flutter.embedding.android.FlutterActivity
 

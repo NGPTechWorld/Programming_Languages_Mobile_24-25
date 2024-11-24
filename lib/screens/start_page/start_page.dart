@@ -22,7 +22,7 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     super.initState();
 
-    controller.checkInternetAndFetchData(context);
+    controller.startApp();
   }
 
   @override
@@ -43,12 +43,6 @@ class _StartPageState extends State<StartPage> {
                     height: AppSizeScreen.screenHeight / 4,
                   ),
                 ),
-                controller.appState == AppState.update
-                    ? UpdateMode(controller: controller)
-                    : Container(),
-                controller.appState == AppState.repair
-                    ? MaintenanceMode(controller: controller)
-                    : Container(),
                 controller.loadingState.value == LoadingState.loading
                     ? Padding(
                         padding: const EdgeInsets.only(top: AppPadding.p40),

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="www.ngptechworld.ngpiteapp">
+    package="com.ngpteckworld.deliveryapp">
     <application
-        android:label="NGP ITE"
+        android:label="Quick Delivery"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
