@@ -3,11 +3,9 @@ import 'package:get/get.dart';
 import '../../../app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/enums/app_state_enum.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/error_nointernet.dart';
 import 'package:ngpiteapp/screens/start_page/start_page_logic.dart';
-import 'package:ngpiteapp/screens/start_page/start_page_widgets/start_page_widgets.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
