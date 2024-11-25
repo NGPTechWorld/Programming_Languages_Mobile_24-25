@@ -12,6 +12,7 @@ class StringManager {
   static const String termsAndConditions = "termsAndConditions";
   static const String privacyPolicy = "privacyPolicy";
   static const String andSign = "andSign";
+  static const String subTiltleLogin = "subTiltleLogin";
   // OTP
   static const String emailVerification = "emailVerification";
   

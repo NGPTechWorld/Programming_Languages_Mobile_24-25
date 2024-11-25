@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
-import 'package:ngpiteapp/data/enums/app_state_enum.dart';
-import 'package:ngpiteapp/data/repositories/auth_repositories.dart';
-import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+
+import 'package:ngpiteapp/screens/otp_page/otp_page.dart';
+import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
 
 class LoginPageBinding extends Bindings {
   @override
@@ -14,7 +12,9 @@ class LoginPageBinding extends Bindings {
 }
 
 class LoginPageController extends GetxController {
-   late TextEditingController textEditingController  = Get.put(TextEditingController());
-   var x = 0.obs;
-  
+  final numberPhoneController = TextEditingController();
+
+  login() {
+    Get.to(() => OtpPage(), binding: OtpPageBinding());
+  }
 }

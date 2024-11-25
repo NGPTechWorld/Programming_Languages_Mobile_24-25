@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 
-
 class DefaultButton extends StatelessWidget {
   const DefaultButton(
-      {super.key, required this.text, required this.press, this.loading});
+      {super.key,
+      required this.text,
+      required this.press,
+      this.loading,
+      required this.style});
   final String text;
+  final TextStyle style;
   final VoidCallback press;
   final bool? loading;
   @override
@@ -14,7 +18,7 @@ class DefaultButton extends StatelessWidget {
     return MaterialButton(
       onPressed: loading == true ? () {} : press,
       minWidth: double.infinity,
-      height:  getProportionateScreenHeight(56),
+      height: getProportionateScreenHeight(56),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       color: ColorManager.firstColor,
       child: loading == true
@@ -23,9 +27,7 @@ class DefaultButton extends StatelessWidget {
             )
           : Text(
               text,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: getProportionateScreenWidth(18)),
+              style: style,
             ),
     );
   }
