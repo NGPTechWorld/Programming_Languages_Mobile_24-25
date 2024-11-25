@@ -11,7 +11,8 @@ class AssetsManager {
   static const myMarksImage = "$imagesPath/my_marks.png";
   static const competingImage = "$imagesPath/competing.png";
   static const myStudyImage = "$imagesPath/my_study.png";
-
+  //TODO: replace drone image
+  static const droneImage = 'assets/drone.png';
   //SVGS
   static const upgradeSvg = '$svgsPath/upgrade.svg';
   static const notFoundSvg = '$svgsPath/not_found.svg';

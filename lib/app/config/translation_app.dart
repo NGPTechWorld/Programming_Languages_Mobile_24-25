@@ -17,6 +17,15 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "تأكيد كلمة المرور",
           StringManager.userName: "اسم المستخدم",
           StringManager.login: "تسجيل الدخول",
+          
+          // OTP / log in
+          StringManager.GetStarted : "أهلا وسهلا",
+          StringManager.LoginOrSignUp : "قم بتسجيل الدخول في حال كان لديك حساب، او قم بإنشاء حساب جديد",
+          StringManager.enterPhoneNumber : "أدخل رقم الهاتف",
+          StringManager.byClicking : "بالضغط على الزر فأنا أوافق على ",
+          StringManager.termsAndConditions : "الشروط والأحكام",
+          StringManager.andSign : " و ",
+          StringManager.privacyPolicy : "سياسة الخصوصية",
           //Login
           StringManager.dontHaveAccount: "ليس لديك حساب في التطبيق",
           StringManager.errorisEmpty: "هذا الحقل فارغ",
@@ -43,6 +52,15 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "Password Confirm",
           StringManager.userName: "Username",
           StringManager.login: "Login",
+          
+          // OTP / log in
+          StringManager.GetStarted : "Welcom Back!",
+          StringManager.LoginOrSignUp : "Login or signup to use the app ",
+          StringManager.enterPhoneNumber : "Enter phone number",
+          StringManager.byClicking : "By clicking i accept the ",
+          StringManager.termsAndConditions : "Terms & Conditions",
+          StringManager.andSign : " & ",
+          StringManager.privacyPolicy : "Privacy Policy",
           //Login
           StringManager.dontHaveAccount: "Dont have account",
           StringManager.errorisEmpty: "This field is empty",

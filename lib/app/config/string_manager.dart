@@ -3,6 +3,18 @@ class StringManager {
   //LoginPage
   static const titleLogin = "titleLogin";
   static const usernameText = "usernameText";
+
+  // Log in
+  static const String enterPhoneNumber = "EnterPhoneNumber";
+  static const String GetStarted = "GetStarted";
+  static const String LoginOrSignUp = "LoginOrSignUp";
+  static const String byClicking = "byClicking";
+  static const String termsAndConditions = "termsAndConditions";
+  static const String privacyPolicy = "privacyPolicy";
+  static const String andSign = "andSign";
+  // OTP
+  static const String emailVerification = "emailVerification";
+  
   // Sign Up
   static const String signup = "signup";
   static const String join = "join";
@@ -39,4 +51,5 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
+
 }
