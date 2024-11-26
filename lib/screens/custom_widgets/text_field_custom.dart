@@ -17,6 +17,8 @@ class TextFieldCustom extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function()? onClick;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final hintText;
   const TextFieldCustom({
     super.key,
     this.title = null,
