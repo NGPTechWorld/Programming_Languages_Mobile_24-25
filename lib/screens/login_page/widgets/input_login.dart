@@ -19,7 +19,7 @@ class InputLogin extends GetView<LoginPageController> {
             style: StyleManager.body01_Semibold()),
         TextFieldCustom(
           controller: controller.numberPhoneController,
-          title: "09xxxxxxxx",
+          hintText: "09xxxxxxxx",
           isNumberPhone: true,
           keyboardType: TextInputType.number,
           prefixIcon: Icon(Icons.phone),

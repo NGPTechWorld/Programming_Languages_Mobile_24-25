@@ -6,7 +6,7 @@ import '../../app/config/values_manager.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldCustom extends StatelessWidget {
-  final String title;
+  final title;
   final TextEditingController controller;
   final bool isValid = true;
   final bool isNumberPhone, isPassword, obscureText, readOnly;
@@ -17,10 +17,9 @@ class TextFieldCustom extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function()? onClick;
   final Widget? prefixIcon;
-  final Widget? suffixIcon;
   const TextFieldCustom({
     super.key,
-    required this.title,
+    this.title = null,
     required this.controller,
     this.isNumberPhone = false,
     this.isPassword = false,
@@ -34,6 +33,7 @@ class TextFieldCustom extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.style,
     this.fillColor = ColorManager.primary1Color,
+    this.hintText = "",
   });
 
   @override
@@ -53,6 +53,9 @@ class TextFieldCustom extends StatelessWidget {
             validator: validator,
             autovalidateMode: autoValidateMode,
             decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle:
+                  StyleManager.h4_Regular(color: ColorManager.primary4Color),
               errorStyle:
                   StyleManager.body02_Medium(color: ColorManager.redColor),
               filled: true,
