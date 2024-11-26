@@ -17,6 +17,7 @@ class TextFieldCustom extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function()? onClick;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   const TextFieldCustom({
     super.key,
     required this.title,
@@ -29,6 +30,7 @@ class TextFieldCustom extends StatelessWidget {
     this.validator,
     this.autoValidateMode = AutovalidateMode.disabled,
     this.prefixIcon,
+    this.suffixIcon,
     this.keyboardType = TextInputType.text,
     this.style,
     this.fillColor = ColorManager.primary1Color,
@@ -66,7 +68,7 @@ class TextFieldCustom extends StatelessWidget {
                         width: 20,
                       ),
                     )
-                  : null,
+                  : suffixIcon,
               labelText: title,
               labelStyle:
                   StyleManager.h4_Regular(color: ColorManager.primary5Color),

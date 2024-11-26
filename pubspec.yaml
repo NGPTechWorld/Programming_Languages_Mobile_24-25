@@ -77,7 +77,7 @@ flutter:
     - assets/images/
     - assets/svgs/
     - assets/app_icon.png
-    - assets/drone.png
+    - assets/
 
   fonts:
     - family: Tajawal

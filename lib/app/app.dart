@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:ngpiteapp/app/config/theme_manager.dart';
 import 'package:ngpiteapp/app/config/translation_app.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/address_page/address_page.dart';
+import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
 import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
 import 'package:ngpiteapp/screens/login_page/login_page.dart';
 
@@ -14,9 +17,10 @@ class App extends StatelessWidget {
     AppSizeScreen.screenWidth = MediaQuery.sizeOf(context).width;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      initialBinding: LoginPageBinding(),
-      locale: Locale("en"),
+      home: AddressPage(),
+      theme: ThemeManager.appTheme,
+      initialBinding: AddressPageBinding(),
+      locale: Locale("ar"),
       translations: TranslationApp(),
     );
   }

@@ -35,6 +35,13 @@ class TranslationApp implements Translations {
           StringManager.errorPasswordIsPatern:
               "يجب ان تحوي أحرف كبيرة وصغيرة وأرقام",
           StringManager.subTiltleLogin: "قم بتسجيل الدخول لإسختدام التطبيق",
+          // Address
+          StringManager.addressPageTitle: "عنوانك",
+          StringManager.addressPageName: "الاسم",
+          StringManager.addressPageAddress: "الموقع",
+          StringManager.addressPageStreet: "الشارع",
+          StringManager.addressPageNotes: "ملاحظات إضافية",
+          StringManager.addressPageSave: "حفظ",
           //Error
           StringManager.strNoInternetError: "لا يوجد انترنت",
           //success
@@ -70,6 +77,13 @@ class TranslationApp implements Translations {
           StringManager.errorPasswordIsMin: "At least 6 characters",
           StringManager.errorPasswordIsPatern:
               "At least one number and special character",
+          // Address
+          StringManager.addressPageTitle: "Your Location",
+          StringManager.addressPageName: "Name",
+          StringManager.addressPageAddress: "Location",
+          StringManager.addressPageStreet: "Street",
+          StringManager.addressPageNotes: "Additional Notes",
+          StringManager.addressPageSave: "Save",        
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",
