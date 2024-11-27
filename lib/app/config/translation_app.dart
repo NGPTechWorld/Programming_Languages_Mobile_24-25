@@ -49,6 +49,12 @@ class TranslationApp implements Translations {
           StringManager.addressPageStreet: "الشارع",
           StringManager.addressPageNotes: "ملاحظات إضافية",
           StringManager.addressPageSave: "حفظ",
+          //Upload Image
+          StringManager.titleUploadPicture: "اختار صورة مناسبة لك!",
+          StringManager.subTitleUploadPicture: "ارجاء اختيار صورة شخصية",
+          StringManager.uploadPicture: "رفع صورة شخصية",
+          StringManager.chooseUploadPicture: "اختيار الصورة",
+          StringManager.submitPicture: "رفع الصورة",
           //Error
           StringManager.strNoInternetError: "لا يوجد انترنت",
           //success
@@ -98,6 +104,12 @@ class TranslationApp implements Translations {
           StringManager.addressPageStreet: "Street",
           StringManager.addressPageNotes: "Additional Notes",
           StringManager.addressPageSave: "Save",
+          //Upload Image
+          StringManager.titleUploadPicture: "Choose your picture!",
+          StringManager.subTitleUploadPicture: "Please choose a personal photo",
+          StringManager.uploadPicture: "Upload Picture",
+          StringManager.chooseUploadPicture: "Choose Picture",
+          StringManager.submitPicture: "Upload",
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

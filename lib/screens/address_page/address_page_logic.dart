@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page_logic.dart';
 
 class AddressPageBinding extends Bindings {
   @override
@@ -14,5 +16,7 @@ class AddressPageController extends GetxController {
   final streetController = TextEditingController();
   final notesController = TextEditingController();
 
-  save(){}
+  save() {
+    Get.to(ProfilePictureUpload(), binding: UploadPicturePageBinding());
+  }
 }

@@ -3,7 +3,13 @@ class StringManager {
   //LoginPage
   static const titleLogin = "titleLogin";
   static const usernameText = "usernameText";
-
+  //Upload Image
+  static const titleUploadPicture = "titleUploadPicture";
+  static const subTitleUploadPicture = "subTitleUploadPicture";
+  static const chooseUploadPicture = "chooseUploadPicture";
+  static const uploadPicture = "uploadPicture";
+  static const submitPicture = "submitPicture";
+  
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";

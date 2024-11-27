@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
-import 'package:ngpiteapp/screens/address_page/widgets/input_address.dart';
-import 'package:ngpiteapp/screens/address_page/widgets/submit_address.dart';
-import 'package:ngpiteapp/screens/address_page/widgets/title_address.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/custom_widgets/app_bar_default.dart';
+import 'package:get/get.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/widgets/input_picture.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/widgets/submit_picture.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/widgets/title_picture.dart';
 
-class AddressPage extends GetView<AddressPageController> {
-  const AddressPage({super.key});
-
+class ProfilePictureUpload extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBarDefault(
-          title: StringManager.addressPageTitle.tr,
+          title: StringManager.uploadPicture.tr,
         ),
         backgroundColor: ColorManager.whiteColor,
         body: SingleChildScrollView(
@@ -27,9 +24,9 @@ class AddressPage extends GetView<AddressPageController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                TitleAddress(),
-                InputAddress(),
-                SubmitAddress(),
+                TitlePicture(),
+                InputPicture(),
+                SubmitPicture(),
               ],
             ),
           ),

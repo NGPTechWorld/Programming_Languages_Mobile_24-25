@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/app/core/errors/network_failure_model.dart';
+import 'package:ngpiteapp/core/errors/network_failure_model.dart';
 
 class ErrorHandler implements Exception {
   late NetworkFailureModel failure;

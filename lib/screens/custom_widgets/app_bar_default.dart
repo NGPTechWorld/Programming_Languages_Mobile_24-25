@@ -10,6 +10,7 @@ class AppBarDefault extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      iconTheme: IconThemeData(color: ColorManager.whiteColor),
       title: Text(title,
           style: StyleManager.h2_Bold(color: ColorManager.whiteColor)),
       backgroundColor: ColorManager.firstColor,
