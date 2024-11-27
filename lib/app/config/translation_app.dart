@@ -30,6 +30,10 @@ class TranslationApp implements Translations {
           StringManager.termsAndConditions: "الشروط والأحكام",
           StringManager.andSign: " و ",
           StringManager.privacyPolicy: "سياسة الخصوصية",
+          StringManager.phoneVerification: "ارسال الكود",
+          StringManager.titlePhoneVerification: "التحقق من رقم الهاتف",
+          StringManager.subTitlePhoneVerification:
+              "لقد قمنا بإرسال كود من 6 خانات الى الرقم:",
           //Login
           StringManager.dontHaveAccount: "ليس لديك حساب في التطبيق",
           StringManager.errorisEmpty: "هذا الحقل فارغ",
@@ -76,6 +80,10 @@ class TranslationApp implements Translations {
           StringManager.termsAndConditions: "Terms & Conditions",
           StringManager.andSign: " & ",
           StringManager.privacyPolicy: "Privacy Policy",
+          StringManager.titlePhoneVerification: "Phone Verification",
+          StringManager.phoneVerification: "Sent Code",
+          StringManager.subTitlePhoneVerification:
+              "We have sent a code of 6 digits \nto the number:",
           //Login
           StringManager.dontHaveAccount: "Dont have an account?",
           StringManager.errorisEmpty: "This field is empty",

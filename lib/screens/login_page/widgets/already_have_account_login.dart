@@ -38,7 +38,7 @@ class AlreadyHaveAccontLogin extends GetView<LoginPageController> {
           ),
         ),
         SizedBox(
-          height: AppSizeScreen.screenHeight * 0.01,
+          height: AppSizeScreen.screenHeight * 0.03,
         ),
       ],
     );

@@ -15,7 +15,9 @@ class StringManager {
   static const String andSign = "andSign";
   static const String subTiltleLogin = "subTiltleLogin";
   // OTP
-  static const String emailVerification = "emailVerification";
+  static const String phoneVerification = "phoneVerification";
+  static const String titlePhoneVerification = "titlePhoneVerification";
+  static const String subTitlePhoneVerification = "subTitlePhoneVerification";
   // Address Page
   static const String addressPageTitle = "addressPageTitle";
   static const String addressPageName = "addressPageName";
@@ -61,5 +63,4 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
-  
 }

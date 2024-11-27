@@ -19,7 +19,7 @@ class SignUpPageController extends GetxController {
   final passwordController = TextEditingController();
 
   singUp() {
-    Get.off(() => AddressPage(), binding: AddressPageBinding());
+    Get.to(() => AddressPage(), binding: AddressPageBinding());
   }
 
   goToLogin() {

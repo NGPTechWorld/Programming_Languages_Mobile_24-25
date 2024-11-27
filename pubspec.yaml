@@ -48,6 +48,7 @@ dependencies:
   dartz: ^0.10.1
   url_launcher: ^6.3.1
   change_app_package_name: ^1.4.0
+  pinput: ^5.0.0
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"

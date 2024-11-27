@@ -11,24 +11,27 @@ class TermsAndPrivacy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(StringManager.byClicking.tr,
-            style: StyleManager.body01_Regular(fontsize: AppSize.s12)),
-        InkWell(
-            child: Text(
-          StringManager.termsAndConditions.tr,
-          style: StyleManager.body01_Semibold(fontsize: AppSize.s12),
-        )),
-        Text(StringManager.andSign.tr,
-            style: StyleManager.body01_Regular(fontsize: AppSize.s12)),
-        InkWell(
-            child: Text(
-          StringManager.privacyPolicy.tr,
-          style: StyleManager.body01_Semibold(fontsize: AppSize.s12),
-        )),
-      ],
+    return FittedBox(
+      fit: BoxFit.contain,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(StringManager.byClicking.tr,
+              style: StyleManager.body01_Regular(fontsize: AppSize.s12)),
+          InkWell(
+              child: Text(
+            StringManager.termsAndConditions.tr,
+            style: StyleManager.body01_Semibold(fontsize: AppSize.s12),
+          )),
+          Text(StringManager.andSign.tr,
+              style: StyleManager.body01_Regular(fontsize: AppSize.s12)),
+          InkWell(
+              child: Text(
+            StringManager.privacyPolicy.tr,
+            style: StyleManager.body01_Semibold(fontsize: AppSize.s12),
+          )),
+        ],
+      ),
     );
   }
 }
