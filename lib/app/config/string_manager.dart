@@ -61,5 +61,5 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
-
+  
 }

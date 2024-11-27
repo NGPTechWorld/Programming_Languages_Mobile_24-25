@@ -67,7 +67,7 @@ class TranslationApp implements Translations {
           StringManager.subTiltleLogin: "Login to use the app",
           StringManager.signuptitle: "Welcom To Delivery App",
           StringManager.signupSubtitle: "Sing Up to use the app",
-          StringManager.numberPhone: "Number phone",
+          StringManager.numberPhone: "Phone Number",
           // OTP / log in
           StringManager.GetStarted: "Welcom Back!",
           StringManager.LoginOrSignUp: "Login or signup to use the app ",
@@ -89,7 +89,7 @@ class TranslationApp implements Translations {
           StringManager.addressPageAddress: "Location",
           StringManager.addressPageStreet: "Street",
           StringManager.addressPageNotes: "Additional Notes",
-          StringManager.addressPageSave: "Save",        
+          StringManager.addressPageSave: "Save",
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

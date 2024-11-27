@@ -11,13 +11,15 @@ class AssetsManager {
   static const myMarksImage = "$imagesPath/my_marks.png";
   static const competingImage = "$imagesPath/competing.png";
   static const myStudyImage = "$imagesPath/my_study.png";
-  //TODO: replace drone image
   static const droneImage = 'assets/drone.png';
   static const deliveryManImage = '$imagesPath/delivery_man.png';
-  static const mapImage = 'assets/map.png';
+  static const mapImage = '$imagesPath/map.jpg';
+  static const streetImage = '$imagesPath/street.png';
   //SVGS
   static const upgradeSvg = '$svgsPath/upgrade.svg';
   static const notFoundSvg = '$svgsPath/not_found.svg';
   static const eyeSvg = '$svgsPath/eye.svg';
-  
+  static const markerSvg = '$svgsPath/marker.svg';
+  static const notesSvg = '$svgsPath/address_notes.svg';
+  static const streetSvg = '$svgsPath/street.svg';
 }

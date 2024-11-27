@@ -37,12 +37,18 @@ class TitleSignUp extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: AppSizeScreen.screenHeight * 0.03,
+          height: AppSizeScreen.screenHeight * 0.02,
         ),
         Text(StringManager.signuptitle.tr, style: StyleManager.h2_Bold()),
         Text(StringManager.signupSubtitle.tr, style: StyleManager.h4_Medium()),
+        Divider(
+          color: ColorManager.firstColor,
+          indent: AppSizeScreen.screenWidth * 0.1,
+          endIndent: AppSizeScreen.screenWidth * 0.1,
+          thickness: 3,
+        ),
         SizedBox(
-          height: AppSizeScreen.screenHeight * 0.02,
+          height: AppSizeScreen.screenHeight * 0.01,
         ),
       ],
     );
