@@ -16,7 +16,13 @@ class StringManager {
   static const String subTiltleLogin = "subTiltleLogin";
   // OTP
   static const String emailVerification = "emailVerification";
-  
+  // Address Page
+  static const String addressPageTitle = "addressPageTitle";
+  static const String addressPageName = "addressPageName";
+  static const String addressPageAddress = "addressPageAddress";
+  static const String addressPageStreet = "addressPageStreet";
+  static const String addressPageNotes = "addressPageExtraNotes";
+  static const String addressPageSave = "addressPageSave";
   // Sign Up
   static const String signup = "signup";
   static const String signuptitle = "signuptitle";
