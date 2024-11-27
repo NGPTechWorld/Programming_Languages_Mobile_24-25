@@ -19,7 +19,7 @@ class NameInput extends StatelessWidget {
     
     SizedBox(height: AppSizeScreen.screenHeight * 0.01),
     TextFieldCustom(
-      title: StringManager.addressPageName.tr,
+      title: StringManager.addressName.tr,
       controller: controller.nameController,
     ),
     ],);

@@ -16,12 +16,20 @@ class StringManager {
   // OTP
   static const String emailVerification = "emailVerification";
   // Address Page
-  static const String addressPageTitle = "addressPageTitle";
-  static const String addressPageName = "addressPageName";
-  static const String addressPageAddress = "addressPageAddress";
-  static const String addressPageStreet = "addressPageStreet";
-  static const String addressPageNotes = "addressPageExtraNotes";
-  static const String addressPageSave = "addressPageSave";
+  static const String addressTitle = "addressTitle";
+  static const String addressName = "addressName";
+  static const String addressAddress = "addressAddress";
+  static const String addressStreet = "addressStreet";
+  static const String addressNotes = "addressExtraNotes";
+  static const String addressSave = "addressSave";
+  // Profile Page
+  static const String profileTitle = "profileTitle";
+  static const String profileMyAccount = "profileMyAccount";
+  static const String profileTrackOrder = "profileTrackOrder";
+  static const String profileLocation = "profileLocation";
+  static const String profileOrderHistory = "profileOrderHistory";
+  static const String profileLanguage = "profileLanguage";
+  static const String profileHelpAndSupport = "profileHelpAndSupport";
   // Sign Up
   static const String signup = "signup";
   static const String join = "join";

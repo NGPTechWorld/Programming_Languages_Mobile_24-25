@@ -36,12 +36,22 @@ class TranslationApp implements Translations {
               "يجب ان تحوي أحرف كبيرة وصغيرة وأرقام",
           StringManager.subTiltleLogin: "قم بتسجيل الدخول لإسختدام التطبيق",
           // Address
-          StringManager.addressPageTitle: "عنوانك",
-          StringManager.addressPageName: "الاسم",
-          StringManager.addressPageAddress: "الموقع",
-          StringManager.addressPageStreet: "الشارع",
-          StringManager.addressPageNotes: "ملاحظات إضافية",
-          StringManager.addressPageSave: "حفظ",
+          StringManager.addressTitle: "عنوانك",
+          StringManager.addressName: "الاسم",
+          StringManager.addressAddress: "الموقع",
+          StringManager.addressStreet: "الشارع",
+          StringManager.addressNotes: "ملاحظات إضافية",
+          StringManager.addressSave: "حفظ",
+          
+          // Profile Page
+          StringManager.profileTitle: "الملف الشخصي",
+          StringManager.profileMyAccount: "حسابي",
+          StringManager.profileTrackOrder: "تتبع الطلب",
+          StringManager.profileLocation: "المواقع",
+          StringManager.profileOrderHistory: "سجل الطلبات",
+          StringManager.profileLanguage: "اللغة",
+          StringManager.profileHelpAndSupport: "المساعدة والدعم",
+
           //Error
           StringManager.strNoInternetError: "لا يوجد انترنت",
           //success
@@ -77,13 +87,25 @@ class TranslationApp implements Translations {
           StringManager.errorPasswordIsMin: "At least 6 characters",
           StringManager.errorPasswordIsPatern:
               "At least one number and special character",
+          
+          
           // Address
-          StringManager.addressPageTitle: "Your Location",
-          StringManager.addressPageName: "Name",
-          StringManager.addressPageAddress: "Location",
-          StringManager.addressPageStreet: "Street",
-          StringManager.addressPageNotes: "Additional Notes",
-          StringManager.addressPageSave: "Save",        
+          StringManager.addressTitle: "Your Location",
+          StringManager.addressName: "Name",
+          StringManager.addressAddress: "Location",
+          StringManager.addressStreet: "Street",
+          StringManager.addressNotes: "Additional Notes",
+          StringManager.addressSave: "Save",
+          
+          // Profile Page
+          StringManager.profileTitle: "Profile",
+          StringManager.profileMyAccount: "My Account",
+          StringManager.profileTrackOrder: "Track Order",
+          StringManager.profileLocation: "Locations",
+          StringManager.profileOrderHistory: "Order History",
+          StringManager.profileLanguage: "Language",
+          StringManager.profileHelpAndSupport: "Help & Support",
+
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

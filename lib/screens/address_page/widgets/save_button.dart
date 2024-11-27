@@ -22,7 +22,7 @@ class SaveButton extends StatelessWidget {
       height: AppSizeScreen.screenHeight * 0.1,
     ),
     DefaultButton(
-      text: StringManager.addressPageSave.tr,
+      text: StringManager.addressSave.tr,
       press: controller.save,
       style: StyleManager.h3_Bold(color: Colors.white),
     ),

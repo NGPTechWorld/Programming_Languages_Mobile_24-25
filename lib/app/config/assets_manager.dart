@@ -13,7 +13,8 @@ class AssetsManager {
   static const myStudyImage = "$imagesPath/my_study.png";
 
   static const droneImage = 'assets/drone.png';
-  static const mapImage = 'assets/map.png';
+  static const mapImage = '$imagesPath/map.png';
+  static const profileDefaultImage = '$imagesPath/profileDefault.png';
   //SVGS
   static const upgradeSvg = '$svgsPath/upgrade.svg';
   static const notFoundSvg = '$svgsPath/not_found.svg';
@@ -21,5 +22,8 @@ class AssetsManager {
   static const markerSvg = '$svgsPath/marker.svg';
   static const streetSvg = '$svgsPath/street.svg';
   static const notesSvg = '$svgsPath/address_notes.svg';
+  static const mapIconSvg = '$svgsPath/map_icon.svg';
+  static const truckSvg = '$svgsPath/truck.svg';
+  static const bagSvg = '$svgsPath/bag.svg';
 
 }

@@ -21,7 +21,7 @@ class AddressInput extends StatelessWidget {
     
     SizedBox(height: AppSizeScreen.screenHeight * 0.01),
     TextFieldCustom(
-      title: StringManager.addressPageAddress.tr,
+      title: StringManager.addressAddress.tr,
       controller: controller.addressController,
       suffixIcon: CustomSuffixIcon(icon: AssetsManager.markerSvg),
     ),

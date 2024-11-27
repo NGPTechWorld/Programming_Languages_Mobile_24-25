@@ -21,7 +21,7 @@ class NotesInput extends StatelessWidget {
     
     SizedBox(height: AppSizeScreen.screenHeight * 0.01),
     TextFieldCustom(
-      title: StringManager.addressPageNotes.tr,
+      title: StringManager.addressNotes.tr,
       controller: controller.notesController,
       suffixIcon: CustomSuffixIcon(icon: AssetsManager.notesSvg),
     ),

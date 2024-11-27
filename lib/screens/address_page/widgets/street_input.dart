@@ -21,7 +21,7 @@ class StreetInput extends StatelessWidget {
       children: [
         SizedBox(height: AppSizeScreen.screenHeight * 0.01),
         TextFieldCustom(
-          title: StringManager.addressPageStreet.tr,
+          title: StringManager.addressStreet.tr,
           controller: controller.streetController,
           suffixIcon:
               CustomSuffixIcon(icon: AssetsManager.streetSvg),
