@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ngpiteapp/app/config/translation_app.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
-import 'package:ngpiteapp/screens/login_page/login_page.dart';
+import 'package:ngpiteapp/screens/sign_up_page/sign_up_page.dart';
+import 'package:ngpiteapp/screens/sign_up_page/sign_up_page_logic.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,8 +14,8 @@ class App extends StatelessWidget {
     AppSizeScreen.screenWidth = MediaQuery.sizeOf(context).width;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      initialBinding: LoginPageBinding(),
+      home: SignUpPage(),
+      initialBinding: SignUpPageBinging(),
       locale: Locale("en"),
       translations: TranslationApp(),
     );

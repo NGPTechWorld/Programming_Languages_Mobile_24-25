@@ -4,18 +4,20 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/custom_widgets/default_button.dart';
-import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
+import 'package:ngpiteapp/screens/sign_up_page/sign_up_page_logic.dart';
 
-class SubmitLogin extends GetView<LoginPageController> {
-  const SubmitLogin({super.key});
+class SubmitSignUp extends GetView<SignUpPageController> {
+  const SubmitSignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         DefaultButton(
-          press: () => controller.login,
-          text: StringManager.login.tr,
+          press: () {
+            controller.singUp();
+          },
+          text: StringManager.signup.tr,
           style: StyleManager.h3_Bold(color: Colors.white),
           loading: false,
         ),

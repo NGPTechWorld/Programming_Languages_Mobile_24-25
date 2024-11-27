@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/screens/login_page/widgets/already_have_account_login.dart';
-import 'package:ngpiteapp/screens/login_page/widgets/input_login.dart';
-import 'package:ngpiteapp/screens/login_page/widgets/submit_login.dart';
-import 'package:ngpiteapp/screens/login_page/widgets/title_login.dart';
-import 'package:ngpiteapp/screens/otp_page/otp_page.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
+import 'package:ngpiteapp/screens/sign_up_page/sign_up_page_logic.dart';
+import 'package:ngpiteapp/screens/sign_up_page/widgets/already_have_account_sign_up.dart';
+import 'package:ngpiteapp/screens/sign_up_page/widgets/input_sign_up.dart';
+import 'package:ngpiteapp/screens/sign_up_page/widgets/submit_sign_up.dart';
+import 'package:ngpiteapp/screens/sign_up_page/widgets/title_sign_up.dart';
 
-class LoginPage extends GetView<LoginPageController> {
-  const LoginPage({super.key});
+class SignUpPage extends GetView<SignUpPageController> {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +23,10 @@ class LoginPage extends GetView<LoginPageController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                TitleLogin(),
-                InputLogin(),
-                SubmitLogin(),
-                AlreadyHaveAccontLogin(),
-                TermsAndPrivacy(),
+                TitleSignUp(),
+                InputSignUp(),
+                SubmitSignUp(),
+                AlreadyHaveAccontSignUp(),
               ],
             ),
           ),

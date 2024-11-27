@@ -9,6 +9,7 @@ class StringManager {
   static const String GetStarted = "GetStarted";
   static const String LoginOrSignUp = "LoginOrSignUp";
   static const String byClicking = "byClicking";
+  static const String numberPhone = "numberPhone";
   static const String termsAndConditions = "termsAndConditions";
   static const String privacyPolicy = "privacyPolicy";
   static const String andSign = "andSign";
@@ -18,6 +19,8 @@ class StringManager {
   
   // Sign Up
   static const String signup = "signup";
+  static const String signuptitle = "signuptitle";
+  static const String signupSubtitle = "signupSubtitle";
   static const String join = "join";
   static const String alreadyHaveAccount = "alreadyHaveAccount";
   static const String userName = "userName";

@@ -22,10 +22,17 @@ class InputLogin extends GetView<LoginPageController> {
           hintText: "09xxxxxxxx",
           isNumberPhone: true,
           keyboardType: TextInputType.number,
-          prefixIcon: Icon(Icons.phone),
+          suffixIcon: Icon(Icons.phone),
+        ),
+        Text(StringManager.password.tr, style: StyleManager.body01_Semibold()),
+        TextFieldCustom(
+          controller: controller.passwordController,
+          isPassword: true,
+          obscureText: true,
+          suffixIcon: Icon(Icons.lock_outline_rounded),
         ),
         SizedBox(
-          height: AppSizeScreen.screenHeight * 0.1,
+          height: AppSizeScreen.screenHeight * 0.01,
         ),
       ],
     );

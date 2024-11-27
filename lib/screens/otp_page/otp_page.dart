@@ -71,7 +71,7 @@ class TermsAndPrivacy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(StringManager.byClicking.tr,
             style: StyleManager.body01_Regular(fontsize: AppSize.s12)),

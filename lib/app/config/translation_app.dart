@@ -17,7 +17,10 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "تأكيد كلمة المرور",
           StringManager.userName: "اسم المستخدم",
           StringManager.login: "تسجيل الدخول",
-
+          StringManager.signuptitle: "اهلا بكم في تطبيق التوصيل",
+          StringManager.signupSubtitle:
+              "لإستخدام التطبيق يجب عليك انشاء حساب جديد",
+          StringManager.numberPhone: "رقم الهاتف",
           // OTP / log in
           StringManager.GetStarted: "أهلا وسهلا",
           StringManager.LoginOrSignUp:
@@ -45,7 +48,7 @@ class TranslationApp implements Translations {
           //Sign Up
           StringManager.signup: "Sign Up",
           StringManager.join: "Join",
-          StringManager.alreadyHaveAccount: "Already have account",
+          StringManager.alreadyHaveAccount: "Already have an account?",
           StringManager.firstName: "First Name",
           StringManager.lastName: "Last Name",
           StringManager.huntUsername: "use username in login app",
@@ -55,6 +58,9 @@ class TranslationApp implements Translations {
           StringManager.userName: "Username",
           StringManager.login: "Login",
           StringManager.subTiltleLogin: "Login to use the app",
+          StringManager.signuptitle: "Welcom To Delivery App",
+          StringManager.signupSubtitle: "Sing Up to use the app",
+          StringManager.numberPhone: "Number phone",
           // OTP / log in
           StringManager.GetStarted: "Welcom Back!",
           StringManager.LoginOrSignUp: "Login or signup to use the app ",
@@ -64,7 +70,7 @@ class TranslationApp implements Translations {
           StringManager.andSign: " & ",
           StringManager.privacyPolicy: "Privacy Policy",
           //Login
-          StringManager.dontHaveAccount: "Dont have account",
+          StringManager.dontHaveAccount: "Dont have an account?",
           StringManager.errorisEmpty: "This field is empty",
           StringManager.errorPhonenumberIsPaten: "The phone number is invalid",
           StringManager.errorPasswordIsMin: "At least 6 characters",
