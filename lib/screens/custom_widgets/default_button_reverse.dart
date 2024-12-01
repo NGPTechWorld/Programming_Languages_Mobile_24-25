@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 
-class DefaultButton extends StatelessWidget {
-  const DefaultButton(
+class DefaultButtonInv extends StatelessWidget {
+  const DefaultButtonInv(
       {super.key,
       required this.text,
       required this.press,
@@ -25,10 +25,10 @@ class DefaultButton extends StatelessWidget {
       height: height,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),
-      color: ColorManager.firstColor,
+      color:  ColorManager.whiteColor,
       child: loading == true
           ? const CircularProgressIndicator(
-              color: ColorManager.whiteColor,
+              color: ColorManager.firstColor,
             )
           : Text(
               text,

@@ -16,14 +16,28 @@ class StringManager {
   // OTP
   static const String emailVerification = "emailVerification";
   // Address Page
-  static const String addressTitle = "addressTitle";
+  static const String addressHeader = "addressHeader";
   static const String addressName = "addressName";
   static const String addressAddress = "addressAddress";
   static const String addressStreet = "addressStreet";
   static const String addressNotes = "addressExtraNotes";
   static const String addressSave = "addressSave";
+
+  // MyAccount Page
+  static const String myAccountHeader = "myAccountHeader";
+  static const String myAccountFirstName = "myAccountFirstName";
+  static const String myAccountLastName = "myAccountLastName";
+  static const String myAccountPhone = "myAccountPhone";
+  static const String myAccountEmail = "myAccountEmail";
+  static const String myAccountUpdate = "myAccountUpdate";
+  static const String myAccountCancel = "myAccountCancel";
+  static const String myAccountFinish = "myAccountFinish";
+  static const String myAccountEdit = "myAccountEdit";
+  static const String myAccountDiscard = "myAccountDiscard";
+  static const String myAccountDialogContent = "myAccountDialogContent";
+  static const String myAccountDialogTitle = "myAccountDialogTitle";
   // Profile Page
-  static const String profileTitle = "profileTitle";
+  static const String profileHeader = "profileHeader";
   static const String profileMyAccount = "profileMyAccount";
   static const String profileTrackOrder = "profileTrackOrder";
   static const String profileLocation = "profileLocation";
@@ -66,5 +80,4 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
-
 }

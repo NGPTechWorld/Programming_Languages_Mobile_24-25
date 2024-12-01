@@ -36,15 +36,15 @@ class TranslationApp implements Translations {
               "يجب ان تحوي أحرف كبيرة وصغيرة وأرقام",
           StringManager.subTiltleLogin: "قم بتسجيل الدخول لإسختدام التطبيق",
           // Address
-          StringManager.addressTitle: "عنوانك",
+          StringManager.addressHeader: "عنوانك",
           StringManager.addressName: "الاسم",
           StringManager.addressAddress: "الموقع",
           StringManager.addressStreet: "الشارع",
           StringManager.addressNotes: "ملاحظات إضافية",
           StringManager.addressSave: "حفظ",
-          
+
           // Profile Page
-          StringManager.profileTitle: "الملف الشخصي",
+          StringManager.profileHeader: "الملف الشخصي",
           StringManager.profileMyAccount: "حسابي",
           StringManager.profileTrackOrder: "تتبع الطلب",
           StringManager.profileLocation: "المواقع",
@@ -87,25 +87,37 @@ class TranslationApp implements Translations {
           StringManager.errorPasswordIsMin: "At least 6 characters",
           StringManager.errorPasswordIsPatern:
               "At least one number and special character",
-          
-          
+
           // Address
-          StringManager.addressTitle: "Your Location",
+          StringManager.addressHeader: "Your Location",
           StringManager.addressName: "Name",
           StringManager.addressAddress: "Location",
           StringManager.addressStreet: "Street",
           StringManager.addressNotes: "Additional Notes",
           StringManager.addressSave: "Save",
-          
+
           // Profile Page
-          StringManager.profileTitle: "Profile",
+          StringManager.profileHeader: "Profile",
           StringManager.profileMyAccount: "My Account",
           StringManager.profileTrackOrder: "Track Order",
           StringManager.profileLocation: "Locations",
           StringManager.profileOrderHistory: "Order History",
           StringManager.profileLanguage: "Language",
           StringManager.profileHelpAndSupport: "Help & Support",
-
+          // MyAccount
+          // TODO : compolete this in Ar
+          StringManager.myAccountUpdate: "Update",
+          StringManager.myAccountCancel: "Cancel",
+          StringManager.myAccountHeader: "My Account",
+          StringManager.myAccountFirstName: "First Name",
+          StringManager.myAccountLastName: "Last Name",
+          StringManager.myAccountPhone: "Phone Number",
+          StringManager.myAccountEmail: "Email",
+          StringManager.myAccountFinish: "Finish",
+          StringManager.myAccountEdit: "Edit",
+          StringManager.myAccountDiscard: "Discard",
+          StringManager.myAccountDialogContent: "Do you want to save your changes before exiting?",
+          StringManager.myAccountDialogTitle: "Unsaved Changes",
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

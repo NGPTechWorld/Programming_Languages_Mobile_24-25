@@ -44,7 +44,7 @@ class AddressPage extends GetView<AddressPageController> {
 
   CustomAppBar appBar() {
     return CustomAppBar(
-        title: Text(StringManager.addressTitle.tr),
+        title: Text(StringManager.addressHeader.tr),
         centerTitle: true,
         leading: BackButton(),
       );

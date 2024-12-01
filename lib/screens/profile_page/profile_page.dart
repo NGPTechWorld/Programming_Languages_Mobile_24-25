@@ -44,7 +44,7 @@ class ProfilePage extends GetView<ProfilePageController> {
 
   AppBar appBar() {
     return AppBar(
-      title: Text(StringManager.profileTitle.tr),
+      title: Text(StringManager.profileHeader.tr),
       centerTitle: true,
     );
   }

@@ -1,5 +1,7 @@
 
 import 'package:get/get.dart';
+import 'package:ngpiteapp/screens/my_account_page/my_account_page.dart';
+import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 
 class ProfilePageBinding extends Bindings {
   @override
@@ -11,7 +13,9 @@ class ProfilePageBinding extends Bindings {
 class ProfilePageController extends GetxController {
   
   
-  myAccountOnTap() {}
+  myAccountOnTap() {
+    Get.to(() =>MyAccountPage() , binding: MyAccountBinding());
+  }
   trackOrderOnTap() {}
   loactionOnTap() {}
   orderHistoryOnTap() {}
