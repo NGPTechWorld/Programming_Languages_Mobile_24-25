@@ -21,6 +21,7 @@ class MyAccountController extends GetxController {
   late FieldController lastNameFieldControllor;
   late FieldController emailFieldControllor;
   late FieldController phoneFieldControllor;
+  late PasswordController passwordController;
   RxBool changed = false.obs;
 
   MyAccountController() {
@@ -29,6 +30,7 @@ class MyAccountController extends GetxController {
     lastNameFieldControllor = FieldController(user.lastName);
     emailFieldControllor = FieldController(user.email);
     phoneFieldControllor = FieldController(user.phone);
+    passwordController = PasswordController();
   }
 
   void resetValues() {
@@ -37,25 +39,72 @@ class MyAccountController extends GetxController {
     lastNameFieldControllor.reset();
     emailFieldControllor.reset();
     phoneFieldControllor.reset();
+    passwordController.turnOffVisible();
   }
 
-  void sendUpdatedValues() {
-    // user.firstName = firstNameFieldControllor.getText();
-    // user.phone = phoneFieldControllor.getText();
-    // firstNameFieldControllor.initalValue = user.firstName;
-    // phoneFieldControllor.initalValue = user.phone;
+  void updateValues() {
+    
+    // TODO : check if he changed the email or password;
+    user.firstName = firstNameFieldControllor.getText();
+    user.lastName = lastNameFieldControllor.getText();
+    user.phone = phoneFieldControllor.getText();
+    user.email = emailFieldControllor.getText();
+    firstNameFieldControllor.initalValue = user.firstName;
+    lastNameFieldControllor.initalValue = user.lastName;
+    phoneFieldControllor.initalValue = user.phone;
+    emailFieldControllor.initalValue = user.email;
+    
     resetValues();
   }
 
-  void isChanged() {
+  bool isChanged() {
     changed.value = firstNameFieldControllor.isChanged() ||
         lastNameFieldControllor.isChanged() ||
-        phoneFieldControllor.isChanged();
+        emailFieldControllor.isChanged() ||
+        phoneFieldControllor.isChanged() ||
+        passwordController.isChanged();
+    return changed.value;
   }
 
-  void saveChanges() {}
+  void pictureUpdate() {
+    // TODO :Go to Upload Picture Page 
 
-  void pictureUpdate() {}
+  }
+
+  void showPicture() {
+    // TODO :Go to Upload Picture Page 
+  }
+}
+
+class PasswordController {
+  FieldController oldPasswordController = FieldController("");
+  FieldController newPasswordController = FieldController("");
+  FieldController confirmPasswordController = FieldController("");
+  RxBool visible = false.obs;
+  RxBool changed = false.obs;
+  void toggleVisible() {
+    visible.value = !visible.value;
+    resetValues();
+  }
+  bool isVisible () => visible.value;
+
+  void turnOffVisible() {
+    visible.value = false;
+    resetValues();
+  }
+
+  void resetValues() {
+    oldPasswordController.clear();
+    newPasswordController.clear();
+    confirmPasswordController.clear();
+  }
+
+  bool isChanged() {
+    changed.value = oldPasswordController.isChanged() ||
+        newPasswordController.isChanged() ||
+        confirmPasswordController.isChanged();
+    return changed.value;
+  }
 }
 
 class FieldController {
@@ -97,5 +146,10 @@ class FieldController {
     isEditing.value = false;
     controller.text = initalValue;
     focusNode.unfocus();
+  }
+
+  void clear() {
+    initalValue = "";
+    reset();
   }
 }

@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/my_account_page/my_account_page.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/side_edit_button.dart';
 
 class CustomEditField extends GetView<MyAccountController> {
   const CustomEditField({
-    required this.title,
     super.key,
+    required this.title,
+    required this.keyboardType,
     required this.fieldController,
+    this.editable = true,
+    this.obsecureText = false,
   });
   final FieldController fieldController;
   final String title;
+  final TextInputType keyboardType;
+  final bool obsecureText;
+  final bool editable;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // TODO : Maybe Add style to this
         Text(title),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,9 +34,16 @@ class CustomEditField extends GetView<MyAccountController> {
                 () => TextFormField(
                   controller: fieldController.controller,
                   focusNode: fieldController.focusNode,
-                  enabled: fieldController.isEditing.value,
+                  enabled: editable
+                      ? fieldController.isEditing.value
+                      : false.obs.value,
+                  obscureText: obsecureText,    
+                  keyboardType: keyboardType,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: ColorManager.firstColor)),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: ColorManager.firstColor)),
                   ),
                   onChanged: (value) {
                     controller.isChanged();
@@ -37,12 +51,13 @@ class CustomEditField extends GetView<MyAccountController> {
                 ),
               ),
             ),
-            SideEditButton(fieldController: fieldController)
+            SideEditButton(
+              fieldController: fieldController,
+              editable: editable,
+            )
           ],
         ),
-        Divider(
-          height: AppSize.s6,
-        ),
+        SizedBox(height: AppSize.s8),
       ],
     );
   }

@@ -8,13 +8,13 @@ import 'package:ngpiteapp/screens/custom_widgets/default_button.dart';
 import 'package:ngpiteapp/screens/custom_widgets/default_button_reverse.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 
-class EditButtons extends GetView<MyAccountController> {
-  const EditButtons({super.key});
+class UpdateButtons extends GetView<MyAccountController> {
+  const UpdateButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (controller.changed.value)
+      if (controller.isChanged())
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +24,7 @@ class EditButtons extends GetView<MyAccountController> {
               borderRadius: AppSize.s10,
               text: StringManager.myAccountUpdate.tr,
               press: () {
-                controller.sendUpdatedValues(); // Send data to backend
+                controller.updateValues(); // Send data to backend
               },
               style: StyleManager.body01_Medium(color: ColorManager.whiteColor),
             ),

@@ -36,6 +36,12 @@ class StringManager {
   static const String myAccountDiscard = "myAccountDiscard";
   static const String myAccountDialogContent = "myAccountDialogContent";
   static const String myAccountDialogTitle = "myAccountDialogTitle";
+  static const String myAccountChangePassword = "myAccountChangePassword";
+  static const String myAccountChangePasswordCancel = "myAccountChangePasswordCancel";
+  static const String myAccountOldPassword = "myAccountOldPassword";
+  static const String myAccountNewPassword = "myAccountNewPassword";
+  static const String myAccountConfirmPassword = "myAccountConfirmPassword";
+  
   // Profile Page
   static const String profileHeader = "profileHeader";
   static const String profileMyAccount = "profileMyAccount";

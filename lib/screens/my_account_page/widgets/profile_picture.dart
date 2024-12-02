@@ -18,38 +18,42 @@ class ProfilePicture extends GetView<MyAccountController> {
         Center(
           child: Stack(
             children: [
-              Container(
-                  // TODO: Check this too
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppSizeScreen.screenWidth * 0.15),
-                  ),
-                  height: AppSizeScreen.screenWidth * 0.3,
-                  width: AppSizeScreen.screenWidth * 0.3,
-                  child: Image.asset(
-                    AssetsManager.profileDefaultImage,
-                    fit: BoxFit.cover,
-                  )),
+              GestureDetector(
+                onTap: controller.showPicture,
+                child: Container(
+                    // TODO: Check AntiAlias
+                    // TODO: add inkwell to show the image when pressed on it. Dialog maybe ?
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppSizeScreen.screenWidth * 0.15),
+                    ),
+                    height: AppSizeScreen.screenWidth * 0.3,
+                    width: AppSizeScreen.screenWidth * 0.3,
+                    child: Image.asset(
+                      AssetsManager.profileDefaultImage,
+                      fit: BoxFit.cover,
+                    )),
+              ),
               Positioned(
                 bottom: 0,
                 right: 0,
-                child: InkWell(
-                  onTap: controller.pictureUpdate,
-                  child: CircleAvatar(
-                    radius: AppSize.s18,
-                    backgroundColor: ColorManager.firstColor,
-                    child: Icon(Icons.camera_alt, color: Colors.white),
-                  ),
+                child: MaterialButton(
+                  onPressed: controller.pictureUpdate,
+                  minWidth: AppSize.s32,
+                  height: AppSize.s32,
+                  padding: EdgeInsets.all(0),
+                  color: ColorManager.firstColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppSize.s16)),
+                  // TODO : check camera Icon
+                  child: Icon(Icons.camera_alt, color: Colors.white),
                 ),
               )
             ],
           ),
         ),
-        // SizedBox(height: AppSize.s20),
-        // Divider(height: AppSize.s6,),
         SizedBox(height: AppSize.s8),
-
       ],
     );
   }

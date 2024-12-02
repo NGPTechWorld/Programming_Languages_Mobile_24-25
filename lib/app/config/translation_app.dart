@@ -116,8 +116,14 @@ class TranslationApp implements Translations {
           StringManager.myAccountFinish: "Finish",
           StringManager.myAccountEdit: "Edit",
           StringManager.myAccountDiscard: "Discard",
-          StringManager.myAccountDialogContent: "Do you want to save your changes before exiting?",
+          StringManager.myAccountDialogContent:
+              "Do you want to save your changes before exiting?",
           StringManager.myAccountDialogTitle: "Unsaved Changes",
+          StringManager.myAccountChangePassword: "Change password",
+          StringManager.myAccountChangePasswordCancel: "Cancel",
+          StringManager.myAccountOldPassword: "Old password",
+          StringManager.myAccountNewPassword: "New password",
+          StringManager.myAccountConfirmPassword: "Confirm new password",
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

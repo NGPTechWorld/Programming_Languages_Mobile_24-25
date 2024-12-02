@@ -9,6 +9,11 @@ class ThemeManager {
       backgroundColor: ColorManager.whiteColor,
       foregroundColor: ColorManager.blackColor,
       centerTitle: true,
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: ColorManager.firstColor,
+        selectionColor: ColorManager.firstColor.withOpacity(0.5),
+        selectionHandleColor: ColorManager.firstColor, 
       )
   );
 }

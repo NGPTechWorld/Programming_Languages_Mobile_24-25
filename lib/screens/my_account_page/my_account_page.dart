@@ -6,7 +6,7 @@ import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/dialog_buttons.dart';
-import 'package:ngpiteapp/screens/my_account_page/widgets/edit_buttons.dart';
+import 'package:ngpiteapp/screens/my_account_page/widgets/update_buttons.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/edit_fields.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/profile_picture.dart';
 
@@ -16,14 +16,14 @@ class MyAccountPage extends GetView<MyAccountController> {
     return Scaffold(
       appBar: appBar(),
       body: SingleChildScrollView(
-        child: Padding(
+        child: Container(
+          height: AppSizeScreen.screenHeight,
           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProfilePicture(),
               EditFields(),
-              EditButtons(),
+              UpdateButtons(),
             ],
           ),
         ),

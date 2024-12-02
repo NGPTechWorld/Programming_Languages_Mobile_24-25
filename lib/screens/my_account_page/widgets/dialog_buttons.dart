@@ -28,7 +28,7 @@ class DialogButtons extends GetView<MyAccountController> {
         // ),
         MaterialButton(
           onPressed: () {
-            controller.sendUpdatedValues();
+            controller.updateValues();
             Get.back(result: true);
           },
           shape: RoundedRectangleBorder(
