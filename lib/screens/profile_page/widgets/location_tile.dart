@@ -14,7 +14,7 @@ class LocationTile extends GetView<ProfilePageController> {
   @override
   Widget build(BuildContext context) {
     return CustomTile(
-      leading: SvgPicture.asset(AssetsManager.mapImage),
+      leading: SvgPicture.asset(AssetsManager.mapIconSvg),
       title: Text(StringManager.profileLocation.tr),
       onTap: controller.loactionOnTap,
     );
