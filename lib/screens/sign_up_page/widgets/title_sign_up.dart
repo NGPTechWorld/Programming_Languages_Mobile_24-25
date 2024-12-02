@@ -28,7 +28,7 @@ class TitleSignUp extends StatelessWidget {
             ),
             Center(
               child: Image.asset(
-                AssetsManager.deliveryManImage,
+                AssetsManager.droneImage,
                 fit: BoxFit.contain,
                 width: AppSizeScreen.screenWidth / 1.8,
                 height: AppSizeScreen.screenHeight / 5,

@@ -9,7 +9,7 @@ class StringManager {
   static const chooseUploadPicture = "chooseUploadPicture";
   static const uploadPicture = "uploadPicture";
   static const submitPicture = "submitPicture";
-  
+
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";
@@ -25,13 +25,12 @@ class StringManager {
   static const String titlePhoneVerification = "titlePhoneVerification";
   static const String subTitlePhoneVerification = "subTitlePhoneVerification";
   // Address Page
-  static const String addressHeader = "addressHeader";
-  static const String addressName = "addressName";
-  static const String addressAddress = "addressAddress";
-  static const String addressStreet = "addressStreet";
-  static const String addressNotes = "addressExtraNotes";
-  static const String addressSave = "addressSave";
-
+  static const String addressPageTitle = "addressPageTitle";
+  static const String addressPageName = "addressPageName";
+  static const String addressPageAddress = "addressPageAddress";
+  static const String addressPageStreet = "addressPageStreet";
+  static const String addressPageNotes = "addressPageExtraNotes";
+  static const String addressPageSave = "addressPageSave";
   // MyAccount Page
   static const String myAccountHeader = "myAccountHeader";
   static const String myAccountFirstName = "myAccountFirstName";
@@ -46,11 +45,12 @@ class StringManager {
   static const String myAccountDialogContent = "myAccountDialogContent";
   static const String myAccountDialogTitle = "myAccountDialogTitle";
   static const String myAccountChangePassword = "myAccountChangePassword";
-  static const String myAccountChangePasswordCancel = "myAccountChangePasswordCancel";
+  static const String myAccountChangePasswordCancel =
+      "myAccountChangePasswordCancel";
   static const String myAccountOldPassword = "myAccountOldPassword";
   static const String myAccountNewPassword = "myAccountNewPassword";
   static const String myAccountConfirmPassword = "myAccountConfirmPassword";
-  
+
   // Profile Page
   static const String profileHeader = "profileHeader";
   static const String profileMyAccount = "profileMyAccount";
