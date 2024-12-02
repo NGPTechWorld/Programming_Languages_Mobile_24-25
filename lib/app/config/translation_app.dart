@@ -17,7 +17,10 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "تأكيد كلمة المرور",
           StringManager.userName: "اسم المستخدم",
           StringManager.login: "تسجيل الدخول",
-
+          StringManager.signuptitle: "اهلا بكم في تطبيق التوصيل",
+          StringManager.signupSubtitle:
+              "لإستخدام التطبيق يجب عليك انشاء حساب جديد",
+          StringManager.numberPhone: "رقم الهاتف",
           // OTP / log in
           StringManager.GetStarted: "أهلا وسهلا",
           StringManager.LoginOrSignUp:
@@ -27,6 +30,10 @@ class TranslationApp implements Translations {
           StringManager.termsAndConditions: "الشروط والأحكام",
           StringManager.andSign: " و ",
           StringManager.privacyPolicy: "سياسة الخصوصية",
+          StringManager.phoneVerification: "ارسال الكود",
+          StringManager.titlePhoneVerification: "التحقق من رقم الهاتف",
+          StringManager.subTitlePhoneVerification:
+              "لقد قمنا بإرسال كود من 6 خانات الى الرقم:",
           //Login
           StringManager.dontHaveAccount: "ليس لديك حساب في التطبيق",
           StringManager.errorisEmpty: "هذا الحقل فارغ",
@@ -36,13 +43,12 @@ class TranslationApp implements Translations {
               "يجب ان تحوي أحرف كبيرة وصغيرة وأرقام",
           StringManager.subTiltleLogin: "قم بتسجيل الدخول لإسختدام التطبيق",
           // Address
-          StringManager.addressHeader: "عنوانك",
-          StringManager.addressName: "الاسم",
-          StringManager.addressAddress: "الموقع",
-          StringManager.addressStreet: "الشارع",
-          StringManager.addressNotes: "ملاحظات إضافية",
-          StringManager.addressSave: "حفظ",
-
+          StringManager.addressPageTitle: "عنوانك",
+          StringManager.addressPageName: "الاسم",
+          StringManager.addressPageAddress: "الموقع",
+          StringManager.addressPageStreet: "الشارع",
+          StringManager.addressPageNotes: "ملاحظات إضافية",
+          StringManager.addressPageSave: "حفظ",
           // Profile Page
           StringManager.profileHeader: "الملف الشخصي",
           StringManager.profileMyAccount: "حسابي",
@@ -51,7 +57,12 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "سجل الطلبات",
           StringManager.profileLanguage: "اللغة",
           StringManager.profileHelpAndSupport: "المساعدة والدعم",
-
+           //Upload Image
+          StringManager.titleUploadPicture: "اختار صورة مناسبة لك!",
+          StringManager.subTitleUploadPicture: "ارجاء اختيار صورة شخصية",
+          StringManager.uploadPicture: "رفع صورة شخصية",
+          StringManager.chooseUploadPicture: "اختيار الصورة",
+          StringManager.submitPicture: "رفع الصورة",
           //Error
           StringManager.strNoInternetError: "لا يوجد انترنت",
           //success
@@ -62,7 +73,7 @@ class TranslationApp implements Translations {
           //Sign Up
           StringManager.signup: "Sign Up",
           StringManager.join: "Join",
-          StringManager.alreadyHaveAccount: "Already have account",
+          StringManager.alreadyHaveAccount: "Already have an account?",
           StringManager.firstName: "First Name",
           StringManager.lastName: "Last Name",
           StringManager.huntUsername: "use username in login app",
@@ -72,6 +83,9 @@ class TranslationApp implements Translations {
           StringManager.userName: "Username",
           StringManager.login: "Login",
           StringManager.subTiltleLogin: "Login to use the app",
+          StringManager.signuptitle: "Welcom To Delivery App",
+          StringManager.signupSubtitle: "Sing Up to use the app",
+          StringManager.numberPhone: "Phone Number",
           // OTP / log in
           StringManager.GetStarted: "Welcom Back!",
           StringManager.LoginOrSignUp: "Login or signup to use the app ",
@@ -80,8 +94,12 @@ class TranslationApp implements Translations {
           StringManager.termsAndConditions: "Terms & Conditions",
           StringManager.andSign: " & ",
           StringManager.privacyPolicy: "Privacy Policy",
+          StringManager.titlePhoneVerification: "Phone Verification",
+          StringManager.phoneVerification: "Sent Code",
+          StringManager.subTitlePhoneVerification:
+              "We have sent a code of 6 digits \nto the number:",
           //Login
-          StringManager.dontHaveAccount: "Dont have account",
+          StringManager.dontHaveAccount: "Dont have an account?",
           StringManager.errorisEmpty: "This field is empty",
           StringManager.errorPhonenumberIsPaten: "The phone number is invalid",
           StringManager.errorPasswordIsMin: "At least 6 characters",
@@ -89,14 +107,13 @@ class TranslationApp implements Translations {
               "At least one number and special character",
 
           // Address
-          StringManager.addressHeader: "Your Location",
-          StringManager.addressName: "Name",
-          StringManager.addressAddress: "Location",
-          StringManager.addressStreet: "Street",
-          StringManager.addressNotes: "Additional Notes",
-          StringManager.addressSave: "Save",
-
-          // Profile Page
+          StringManager.addressPageTitle: "Your Location",
+          StringManager.addressPageName: "Name",
+          StringManager.addressPageAddress: "Location",
+          StringManager.addressPageStreet: "Street",
+          StringManager.addressPageNotes: "Additional Notes",
+          StringManager.addressPageSave: "Save", 
+            // Profile Page
           StringManager.profileHeader: "Profile",
           StringManager.profileMyAccount: "My Account",
           StringManager.profileTrackOrder: "Track Order",
@@ -123,7 +140,13 @@ class TranslationApp implements Translations {
           StringManager.myAccountChangePasswordCancel: "Cancel",
           StringManager.myAccountOldPassword: "Old password",
           StringManager.myAccountNewPassword: "New password",
-          StringManager.myAccountConfirmPassword: "Confirm new password",
+          StringManager.myAccountConfirmPassword: "Confirm new password",      
+          //Upload Image
+          StringManager.titleUploadPicture: "Choose your picture!",
+          StringManager.subTitleUploadPicture: "Please choose a personal photo",
+          StringManager.uploadPicture: "Upload Picture",
+          StringManager.chooseUploadPicture: "Choose Picture",
+          StringManager.submitPicture: "Upload", 
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

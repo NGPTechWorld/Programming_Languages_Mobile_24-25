@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:ngpiteapp/app/core/errors/error_handler.dart';
+import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
 import 'package:get/get.dart' as getx;
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';

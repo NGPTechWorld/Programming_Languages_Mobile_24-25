@@ -5,7 +5,7 @@ import 'package:ngpiteapp/data/repositories/auth_repositories.dart';
 import 'package:ngpiteapp/screens/start_page/start_page_logic.dart';
 import '/app/services/api/dio_consumer.dart';
 import '/app/services/connection/network_info.dart';
-import '../../services/local_storage/cache_services_with_sharedpreferences.dart';
+import '../../app/services/local_storage/cache_services_with_sharedpreferences.dart';
 
 class AppBinding implements Bindings {
   @override

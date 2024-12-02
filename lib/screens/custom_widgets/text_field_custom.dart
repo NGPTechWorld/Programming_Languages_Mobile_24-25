@@ -1,5 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../app/config/assets_manager.dart';
 import '../../app/config/color_manager.dart';
 import '../../app/config/style_manager.dart';
 import '../../app/config/values_manager.dart';
@@ -17,26 +15,25 @@ class TextFieldCustom extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function()? onClick;
   final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final suffixIcon;
   final hintText;
-  const TextFieldCustom({
-    super.key,
-    this.title = null,
-    required this.controller,
-    this.isNumberPhone = false,
-    this.isPassword = false,
-    this.onClick,
-    this.obscureText = false,
-    this.readOnly = false,
-    this.validator,
-    this.autoValidateMode = AutovalidateMode.disabled,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.keyboardType = TextInputType.text,
-    this.style,
-    this.fillColor = ColorManager.primary1Color,
-    this.hintText = "",
-  });
+  const TextFieldCustom(
+      {super.key,
+      this.title = null,
+      required this.controller,
+      this.isNumberPhone = false,
+      this.isPassword = false,
+      this.onClick,
+      this.obscureText = false,
+      this.readOnly = false,
+      this.validator,
+      this.autoValidateMode = AutovalidateMode.disabled,
+      this.prefixIcon,
+      this.keyboardType = TextInputType.text,
+      this.style,
+      this.fillColor = ColorManager.primary1Color,
+      this.hintText = "",
+      this.suffixIcon = null});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +44,7 @@ class TextFieldCustom extends StatelessWidget {
           padding:
               const EdgeInsets.only(top: AppPadding.p8, bottom: AppPadding.p16),
           child: TextFormField(
+            cursorColor: ColorManager.firstColor,
             readOnly: readOnly,
             style: style ?? StyleManager.h4_Regular(),
             controller: controller,
@@ -64,16 +62,7 @@ class TextFieldCustom extends StatelessWidget {
               fillColor: fillColor,
               contentPadding: const EdgeInsets.all(AppPadding.p16),
               prefixIcon: prefixIcon,
-              suffixIcon: isPassword
-                  ? IconButton(
-                      onPressed: onClick,
-                      icon: SvgPicture.asset(
-                        AssetsManager.eyeSvg,
-                        height: 20,
-                        width: 20,
-                      ),
-                    )
-                  : suffixIcon,
+              suffixIcon: suffixIcon,
               labelText: title,
               labelStyle:
                   StyleManager.h4_Regular(color: ColorManager.primary5Color),

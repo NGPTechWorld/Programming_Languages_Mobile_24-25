@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:ngpiteapp/app/core/errors/error_handler.dart';
+import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
 import 'package:ngpiteapp/app/services/api/dio_consumer.dart';

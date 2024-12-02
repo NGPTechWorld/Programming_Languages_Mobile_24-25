@@ -3,18 +3,27 @@ class StringManager {
   //LoginPage
   static const titleLogin = "titleLogin";
   static const usernameText = "usernameText";
-
+  //Upload Image
+  static const titleUploadPicture = "titleUploadPicture";
+  static const subTitleUploadPicture = "subTitleUploadPicture";
+  static const chooseUploadPicture = "chooseUploadPicture";
+  static const uploadPicture = "uploadPicture";
+  static const submitPicture = "submitPicture";
+  
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";
   static const String LoginOrSignUp = "LoginOrSignUp";
   static const String byClicking = "byClicking";
+  static const String numberPhone = "numberPhone";
   static const String termsAndConditions = "termsAndConditions";
   static const String privacyPolicy = "privacyPolicy";
   static const String andSign = "andSign";
   static const String subTiltleLogin = "subTiltleLogin";
   // OTP
-  static const String emailVerification = "emailVerification";
+  static const String phoneVerification = "phoneVerification";
+  static const String titlePhoneVerification = "titlePhoneVerification";
+  static const String subTitlePhoneVerification = "subTitlePhoneVerification";
   // Address Page
   static const String addressHeader = "addressHeader";
   static const String addressName = "addressName";
@@ -52,6 +61,8 @@ class StringManager {
   static const String profileHelpAndSupport = "profileHelpAndSupport";
   // Sign Up
   static const String signup = "signup";
+  static const String signuptitle = "signuptitle";
+  static const String signupSubtitle = "signupSubtitle";
   static const String join = "join";
   static const String alreadyHaveAccount = "alreadyHaveAccount";
   static const String userName = "userName";
