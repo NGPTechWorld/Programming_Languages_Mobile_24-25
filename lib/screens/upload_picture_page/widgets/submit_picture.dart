@@ -17,7 +17,9 @@ class SubmitPicture extends GetView<UploadPicturePageController> {
         SizedBox(height: AppSizeScreen.screenHeight * 0.1),
         DefaultButton(
             text: StringManager.submitPicture.tr,
-            press: () {},
+            press: () {
+              controller.upload();
+            },
             style: StyleManager.button1(color: ColorManager.whiteColor))
       ],
     );

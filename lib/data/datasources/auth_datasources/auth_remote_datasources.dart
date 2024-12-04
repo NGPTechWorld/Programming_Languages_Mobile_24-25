@@ -10,10 +10,5 @@ class AuthRemoteDataSource {
 
   AuthRemoteDataSource({required this.api});
 
-  Future<SettingsModel> getSettings() async {
-    final response = await api.request(
-        url: EndPoints.apiSettings, method: Method.get, requiredToken: F);
-    debugPrint(response.toString());
-    return SettingsModel.fromJson(response.data[0]);
-  }
+
 }

@@ -9,7 +9,8 @@ class StringManager {
   static const chooseUploadPicture = "chooseUploadPicture";
   static const uploadPicture = "uploadPicture";
   static const submitPicture = "submitPicture";
-
+  //Home
+  static const recommendedText = "recommendedText";
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";
@@ -72,6 +73,7 @@ class StringManager {
   static const String confirmPassword = "confirmPassword";
   static const String lastName = "lastName";
   static const String login = "login";
+  static const String email = "email";
   static const String dontHaveAccount = "dontHaveAccount";
   static const String startYear = "startYear";
   // error handler

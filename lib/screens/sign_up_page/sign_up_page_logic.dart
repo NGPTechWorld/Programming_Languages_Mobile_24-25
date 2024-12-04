@@ -16,7 +16,9 @@ class SignUpPageController extends GetxController {
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final numberPhoneController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   singUp() {
     Get.to(() => AddressPage(), binding: AddressPageBinding());

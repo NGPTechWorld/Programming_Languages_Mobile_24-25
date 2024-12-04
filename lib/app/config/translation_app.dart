@@ -17,6 +17,7 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "تأكيد كلمة المرور",
           StringManager.userName: "اسم المستخدم",
           StringManager.login: "تسجيل الدخول",
+          StringManager.email: "البريد الألكتروني",
           StringManager.signuptitle: "اهلا بكم في تطبيق التوصيل",
           StringManager.signupSubtitle:
               "لإستخدام التطبيق يجب عليك انشاء حساب جديد",
@@ -57,7 +58,7 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "سجل الطلبات",
           StringManager.profileLanguage: "اللغة",
           StringManager.profileHelpAndSupport: "المساعدة والدعم",
-           //Upload Image
+          //Upload Image
           StringManager.titleUploadPicture: "اختار صورة مناسبة لك!",
           StringManager.subTitleUploadPicture: "ارجاء اختيار صورة شخصية",
           StringManager.uploadPicture: "رفع صورة شخصية",
@@ -82,6 +83,7 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "Password Confirm",
           StringManager.userName: "Username",
           StringManager.login: "Login",
+          StringManager.email: "Email",
           StringManager.subTiltleLogin: "Login to use the app",
           StringManager.signuptitle: "Welcom To Delivery App",
           StringManager.signupSubtitle: "Sing Up to use the app",
@@ -112,8 +114,8 @@ class TranslationApp implements Translations {
           StringManager.addressPageAddress: "Location",
           StringManager.addressPageStreet: "Street",
           StringManager.addressPageNotes: "Additional Notes",
-          StringManager.addressPageSave: "Save", 
-            // Profile Page
+          StringManager.addressPageSave: "Save",
+          // Profile Page
           StringManager.profileHeader: "Profile",
           StringManager.profileMyAccount: "My Account",
           StringManager.profileTrackOrder: "Track Order",
@@ -140,13 +142,13 @@ class TranslationApp implements Translations {
           StringManager.myAccountChangePasswordCancel: "Cancel",
           StringManager.myAccountOldPassword: "Old password",
           StringManager.myAccountNewPassword: "New password",
-          StringManager.myAccountConfirmPassword: "Confirm new password",      
+          StringManager.myAccountConfirmPassword: "Confirm new password",
           //Upload Image
           StringManager.titleUploadPicture: "Choose your picture!",
           StringManager.subTitleUploadPicture: "Please choose a personal photo",
           StringManager.uploadPicture: "Upload Picture",
           StringManager.chooseUploadPicture: "Choose Picture",
-          StringManager.submitPicture: "Upload", 
+          StringManager.submitPicture: "Upload",
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

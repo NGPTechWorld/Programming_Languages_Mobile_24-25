@@ -42,6 +42,13 @@ class InputSignUp extends GetView<SignUpPageController> {
           suffixIcon: Icon(Icons.phone),
         ),
         TextFieldCustom(
+          controller: controller.emailController,
+          hintText: "test@example.com",
+          title: StringManager.email.tr,
+          isNumberPhone: true,
+          suffixIcon: Icon(Icons.email),
+        ),
+        TextFieldCustom(
           controller: controller.passwordController,
           isPassword: true,
           title: StringManager.password.tr,
@@ -49,7 +56,7 @@ class InputSignUp extends GetView<SignUpPageController> {
           suffixIcon: Icon(Icons.lock_outline_rounded),
         ),
         TextFieldCustom(
-          controller: controller.passwordController,
+          controller: controller.confirmPasswordController,
           isPassword: true,
           title: StringManager.confirmPassword.tr,
           obscureText: true,

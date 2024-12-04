@@ -13,6 +13,7 @@ class AssetsManager {
   static const myStudyImage = "$imagesPath/my_study.png";
   static const droneImage = '$imagesPath/drone.png';
   static const mapImage = '$imagesPath/map.jpg';
+  static const nullImage = '$imagesPath/imageIcon.png';
   static const profileDefaultImage = '$imagesPath/profileDefault.png';
   //SVGS
   static const upgradeSvg = '$svgsPath/upgrade.svg';
