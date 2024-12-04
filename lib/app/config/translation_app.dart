@@ -45,7 +45,7 @@ class TranslationApp implements Translations {
           // Address
           StringManager.addressPageTitle: "عنوانك",
           StringManager.addressPageName: "الاسم",
-          StringManager.addressPageAddress: "الموقع",
+          StringManager.addressPageAddress: "العنوان",
           StringManager.addressPageStreet: "الشارع",
           StringManager.addressPageNotes: "ملاحظات إضافية",
           StringManager.addressPageSave: "حفظ",
@@ -53,11 +53,40 @@ class TranslationApp implements Translations {
           StringManager.profileHeader: "الملف الشخصي",
           StringManager.profileMyAccount: "حسابي",
           StringManager.profileTrackOrder: "تتبع الطلب",
-          StringManager.profileLocation: "المواقع",
+          StringManager.profileAddress: "العناوين",
           StringManager.profileOrderHistory: "سجل الطلبات",
           StringManager.profileLanguage: "اللغة",
           StringManager.profileHelpAndSupport: "المساعدة والدعم",
-           //Upload Image
+          // MyAccount
+          StringManager.myAccountUpdate: "حفظ",
+          StringManager.myAccountCancel: "إلغاء",
+          StringManager.myAccountHeader: "حسابي",
+          StringManager.myAccountFirstName: "الاسم",
+          StringManager.myAccountLastName: "اللقب",
+          StringManager.myAccountPhone: "رقم الهاتف",
+          StringManager.myAccountEmail: "البريد الإلكتروني",
+          StringManager.myAccountFinish: "تم",
+          StringManager.myAccountEdit: "تعديل",
+          StringManager.myAccountDiscard: "تجاهل",
+          StringManager.myAccountDialogContent:
+              "هل ترغب بحفظ التغيرات قبل الخروج؟",
+          StringManager.myAccountDialogTitle: "لم يتم حفظ التغيرات",
+          StringManager.myAccountChangePassword: "تغيير كلمة المرور",
+          StringManager.myAccountChangePasswordCancel: "إلغاء",
+          StringManager.myAccountOldPassword: "كلمة المرور القديمة",
+          StringManager.myAccountNewPassword: "كلمة المرور الجديدة",
+          StringManager.myAccountConfirmPassword: "تأكيد كلمة المرور",
+          // Language Dialog
+          StringManager.languageDialogTitle: "اللغة",
+                    // Location Page
+          StringManager.showAddressesHeader: "العناوين",
+          StringManager.showAddressesAddLocationButton: "اضافة عنوان جديد",
+          StringManager.showAddressesDeleteDialogTitle: "تنبيه",
+          StringManager.showAddressesDeleteDialogText: "هل تريد حذف هذا العنوان",
+          StringManager.showAddressesDeleteDialogCancel: "لا",
+          StringManager.showAddressesDeleteDialogDelete: "نعم",
+
+          //Upload Image
           StringManager.titleUploadPicture: "اختار صورة مناسبة لك!",
           StringManager.subTitleUploadPicture: "ارجاء اختيار صورة شخصية",
           StringManager.uploadPicture: "رفع صورة شخصية",
@@ -107,23 +136,23 @@ class TranslationApp implements Translations {
               "At least one number and special character",
 
           // Address
-          StringManager.addressPageTitle: "Your Location",
+          StringManager.addressPageTitle: "Your Address",
           StringManager.addressPageName: "Name",
-          StringManager.addressPageAddress: "Location",
+          StringManager.addressPageAddress: "Address",
           StringManager.addressPageStreet: "Street",
           StringManager.addressPageNotes: "Additional Notes",
-          StringManager.addressPageSave: "Save", 
-            // Profile Page
+          StringManager.addressPageSave: "Save",
+          // Profile Page
           StringManager.profileHeader: "Profile",
           StringManager.profileMyAccount: "My Account",
           StringManager.profileTrackOrder: "Track Order",
-          StringManager.profileLocation: "Locations",
+          StringManager.profileAddress: "Addresses",
           StringManager.profileOrderHistory: "Order History",
           StringManager.profileLanguage: "Language",
           StringManager.profileHelpAndSupport: "Help & Support",
+
           // MyAccount
-          // TODO : compolete this in Ar
-          StringManager.myAccountUpdate: "Update",
+          StringManager.myAccountUpdate: "Save",
           StringManager.myAccountCancel: "Cancel",
           StringManager.myAccountHeader: "My Account",
           StringManager.myAccountFirstName: "First Name",
@@ -140,13 +169,22 @@ class TranslationApp implements Translations {
           StringManager.myAccountChangePasswordCancel: "Cancel",
           StringManager.myAccountOldPassword: "Old password",
           StringManager.myAccountNewPassword: "New password",
-          StringManager.myAccountConfirmPassword: "Confirm new password",      
+          StringManager.myAccountConfirmPassword: "Confirm new password",
+          // Language Dialog
+          StringManager.languageDialogTitle: "Language",
+          // Location Page
+          StringManager.showAddressesHeader: "My Addresses",
+          StringManager.showAddressesAddLocationButton: "Add new address",
+          StringManager.showAddressesDeleteDialogTitle: "Delete Address?",
+          StringManager.showAddressesDeleteDialogText: "Do you want to delete this address?",
+          StringManager.showAddressesDeleteDialogCancel: "No",
+          StringManager.showAddressesDeleteDialogDelete: "Yes",
           //Upload Image
           StringManager.titleUploadPicture: "Choose your picture!",
           StringManager.subTitleUploadPicture: "Please choose a personal photo",
           StringManager.uploadPicture: "Upload Picture",
           StringManager.chooseUploadPicture: "Choose Picture",
-          StringManager.submitPicture: "Upload", 
+          StringManager.submitPicture: "Upload",
           //Error
           StringManager.strNoInternetError:
               "No Connection, please check your internet connection and try again",

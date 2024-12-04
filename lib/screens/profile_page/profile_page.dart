@@ -7,7 +7,7 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/profile_page/profile_page_logic.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/help_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/language_tile.dart';
-import 'package:ngpiteapp/screens/profile_page/widgets/location_tile.dart';
+import 'package:ngpiteapp/screens/profile_page/widgets/address_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/my_account_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/order_history_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/picutre_and_name.dart';
@@ -31,7 +31,7 @@ class ProfilePage extends GetView<ProfilePageController> {
                 MyAccountTile(),
                 TrackOrderTile(),
                 OrderHistoryTile(),
-                LocationTile(),
+                AddressesTile(),
                 LanguageTile(),
                 HelpTile(),
               ],

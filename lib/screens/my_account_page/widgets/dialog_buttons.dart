@@ -6,66 +6,39 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 
 class DialogButtons extends GetView<MyAccountController> {
-  const DialogButtons({
+  const DialogButtons( {
     super.key,
+    required this.cancelText, required this.okText, required this.onOk, required this.onCancel,
   });
+  final String cancelText , okText;
+  final VoidCallback? onOk , onCancel; 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // DefaultButton(
-        //   minWidth: AppSize.s100,
-        //   height: AppSize.s38,
-        //   borderRadius: AppSize.s10,
-        //   text: StringManager.myAccountUpdate.tr,
-        //   press: () {
-        //     controller.sendUpdatedValues(); // Send data to backend
-        //     Get.back(result: true);
-        //   },
-        //   style: StyleManager.body01_Medium(
-        //       color: ColorManager.whiteColor),
-        // ),
         MaterialButton(
-          onPressed: () {
-            controller.updateValues();
-            Get.back(result: true);
-          },
+          onPressed: onCancel,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSize.s20)),
-          color: ColorManager.firstColor,
+            borderRadius: BorderRadius.circular(AppSize.s20),
+          ),
           child: Text(
-            StringManager.myAccountUpdate.tr,
-            style: TextStyle(color: ColorManager.whiteColor),
+            cancelText,
+            style: TextStyle(color: ColorManager.firstColor),
           ),
         ),
         SizedBox(width: AppSize.s10),
         MaterialButton(
-          onPressed: () {
-            controller.resetValues();
-            Get.back(result: true);
-          },
+          onPressed:onOk,
+          elevation: 0.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-            // side: BorderSide(color: ColorManager.firstColor, width: 2),
-          ),
+              borderRadius: BorderRadius.circular(AppSize.s20)),
+          color: ColorManager.firstColor,
           child: Text(
-            StringManager.myAccountDiscard.tr,
-            style: TextStyle(color: ColorManager.firstColor),
+            okText,
+            style: TextStyle(color: ColorManager.whiteColor),
           ),
         ),
-        // DefaultButtonInv(
-        //   minWidth: AppSize.s100,
-        //   height: AppSize.s38,
-        //   borderRadius: AppSize.s10,
-        //   press: () {
-        //     controller.resetValues(); // Reset all fields
-        //     Get.back(result: true);
-        //   },
-        //   text: StringManager.myAccountDiscard.tr,
-        //   style: StyleManager.body01_Medium(
-        //       color: ColorManager.firstColor),
-        // ),
       ],
     );
   }

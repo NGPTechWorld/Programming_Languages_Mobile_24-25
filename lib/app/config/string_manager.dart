@@ -50,12 +50,23 @@ class StringManager {
   static const String myAccountOldPassword = "myAccountOldPassword";
   static const String myAccountNewPassword = "myAccountNewPassword";
   static const String myAccountConfirmPassword = "myAccountConfirmPassword";
+  // Location Page
+  static const String showAddressesHeader = "showAddressesHeader";
+  static const String showAddressesAddLocationButton = "showAddressesAddLocationButton";
+  static const String showAddressesDeleteDialogTitle = "showAddressesDeleteDialogTitle";
+  static const String showAddressesDeleteDialogText = "showAddressesDeleteDialogText";
+  static const String showAddressesDeleteDialogCancel = "showAddressesDeleteDialogCancel";
+  static const String showAddressesDeleteDialogDelete = "showAddressesDeleteDialogDelete";
 
+  // Language Dialog
+  static const String languageDialogTitle =  "languageDialogTitle" ;
+  static const String languageDialogEnglish =  "English" ;
+  static const String languageDialogArabic = "العربية" ;
   // Profile Page
   static const String profileHeader = "profileHeader";
   static const String profileMyAccount = "profileMyAccount";
   static const String profileTrackOrder = "profileTrackOrder";
-  static const String profileLocation = "profileLocation";
+  static const String profileAddress = "profileAddress";
   static const String profileOrderHistory = "profileOrderHistory";
   static const String profileLanguage = "profileLanguage";
   static const String profileHelpAndSupport = "profileHelpAndSupport";

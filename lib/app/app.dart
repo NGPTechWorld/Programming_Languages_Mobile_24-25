@@ -9,6 +9,8 @@ import 'package:ngpiteapp/screens/login_page/login_page.dart';
 import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
 import 'package:ngpiteapp/screens/profile_page/profile_page.dart';
 import 'package:ngpiteapp/screens/profile_page/profile_page_logic.dart';
+import 'package:ngpiteapp/screens/show_addresses_page/show_addresses_page.dart';
+import 'package:ngpiteapp/screens/show_addresses_page/show_addresses_page_logic.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -19,10 +21,10 @@ class App extends StatelessWidget {
     AppSizeScreen.screenWidth = MediaQuery.sizeOf(context).width;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: ProfilePage(),
       theme: ThemeManager.appTheme,
-      initialBinding: LoginPageBinding(),
-      locale: Locale("en"),
+      initialBinding: ProfilePageBinding(),
+      locale: Locale("ar"),
       translations: TranslationApp(),
     );
   }

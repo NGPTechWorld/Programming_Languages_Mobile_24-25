@@ -15,34 +15,45 @@ class UpdateButtons extends GetView<MyAccountController> {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.isChanged())
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        return Column(
           children: [
-            DefaultButton(
-              minWidth: AppSize.s100,
-              height: AppSize.s38,
-              borderRadius: AppSize.s10,
-              text: StringManager.myAccountUpdate.tr,
-              press: () {
-                controller.updateValues(); // Send data to backend
-              },
-              style: StyleManager.body01_Medium(color: ColorManager.whiteColor),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MaterialButton(
+                  onPressed: () {
+                    controller.resetValues(); // Reset all fields
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppSize.s20),
+                  ),
+                  elevation: 0,
+                  child: Text(
+                    StringManager.myAccountCancel.tr,
+                    style: TextStyle(color: ColorManager.firstColor),
+                  ),
+                ),
+                SizedBox(width: AppSize.s10),
+                MaterialButton(
+                  onPressed: () {
+                    controller.updateValues(); // Send data to backend
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppSize.s20)),
+                  color: ColorManager.firstColor,
+                  elevation: 0.0,
+                  child: Text(
+                    StringManager.myAccountUpdate.tr,
+                    style: TextStyle(color: ColorManager.whiteColor),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(width: AppSize.s10),
-            DefaultButtonInv(
-              minWidth: AppSize.s100,
-              height: AppSize.s38,
-              borderRadius: AppSize.s10,
-              press: () {
-                controller.resetValues(); // Reset all fields
-              },
-              text: StringManager.myAccountCancel.tr,
-              style: StyleManager.body01_Medium(color: ColorManager.firstColor),
-            ),
+            SizedBox(height: AppSize.s60)
           ],
         );
       else
-        return SizedBox();
+        return SizedBox(height: AppSize.s60);
     });
   }
 }
