@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page.dart';
+import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page_logic.dart';
 
 class MyAccountBinding extends Bindings {
   @override
@@ -43,7 +45,6 @@ class MyAccountController extends GetxController {
   }
 
   void updateValues() {
-    
     // TODO : check if he changed the email or password;
     user.firstName = firstNameFieldControllor.getText();
     user.lastName = lastNameFieldControllor.getText();
@@ -53,7 +54,7 @@ class MyAccountController extends GetxController {
     lastNameFieldControllor.initalValue = user.lastName;
     phoneFieldControllor.initalValue = user.phone;
     emailFieldControllor.initalValue = user.email;
-    
+
     resetValues();
   }
 
@@ -67,12 +68,11 @@ class MyAccountController extends GetxController {
   }
 
   void pictureUpdate() {
-    // TODO :Go to Upload Picture Page 
-
+    Get.to(ProfilePictureUpload(), binding: UploadPicturePageBinding());
   }
 
   void showPicture() {
-    // TODO :Go to Upload Picture Page 
+    // TODO :Go to Upload Picture Page
   }
 }
 
@@ -86,7 +86,8 @@ class PasswordController {
     visible.value = !visible.value;
     resetValues();
   }
-  bool isVisible () => visible.value;
+
+  bool isVisible() => visible.value;
 
   void turnOffVisible() {
     visible.value = false;

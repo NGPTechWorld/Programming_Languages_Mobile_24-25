@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
@@ -24,7 +25,7 @@ abstract class UsersRepositories {
       {required String verify_code, required int id});
   Future<AppResponse> verifyNewPassword(
       {required String verify_code, required int id});
-  Future<AppResponse> uploadImage({required String image});
+  Future<AppResponse> uploadImage({required FormData image});
 
   Future<AppResponse> setPassword(
       {required int id,
@@ -188,9 +189,22 @@ class ImpUsersRepositories implements UsersRepositories {
   }
 
   @override
-  Future<AppResponse> uploadImage({required String image}) {
-    // TODO: implement uploadImage
-    throw UnimplementedError();
+  Future<AppResponse> uploadImage({required FormData image}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.uploadImage,
+          method: Method.post,
+          requiredToken: true,
+          uploadImage: true,
+          params: image);
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override

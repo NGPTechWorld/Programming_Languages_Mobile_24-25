@@ -18,7 +18,7 @@ class SubmitPicture extends GetView<UploadPicturePageController> {
         DefaultButton(
             text: StringManager.submitPicture.tr,
             press: () {
-              controller.upload();
+              controller.uploadPicture(context);
             },
             style: StyleManager.button1(color: ColorManager.whiteColor))
       ],
