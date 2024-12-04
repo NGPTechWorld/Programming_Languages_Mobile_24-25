@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.137.234:8000/api";
+  static const String baserUrl = "http://192.168.137.69:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -14,7 +14,11 @@ class EndPoints {
   static const String currentUser = "/users/currentUser";
   static const String getImage = "/users/getImage";
   static const String deleteImage = "/users/deleteImage";
+  // Locations
   static const String addLocation = "/locations/addLocation";
+  static const String getLocations = "/locations/getLocations";
+  static const String deleteLocation =
+      "/locations/deleteLocation/"; //{location_id}
   static const String test = "";
 }
 
@@ -33,4 +37,7 @@ class ApiKey {
   static String userName = "user_name";
   static String validationFailed = "Validation failed";
   static String verify_code = "verify_code";
+  static String location = "location";
+  static String street = "street";
+  static String notes = "notes";
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/default_button.dart';
 
@@ -16,10 +17,13 @@ class SubmitAddress extends GetView<AddressPageController> {
         SizedBox(
           height: AppSizeScreen.screenHeight * 0.1,
         ),
-        DefaultButton(
-          text: StringManager.addressPageSave.tr,
-          press: controller.save,
-          style: StyleManager.h3_Bold(color: Colors.white),
+        Obx(
+          () => DefaultButton(
+            text: StringManager.addressPageSave.tr,
+            press: () => controller.addLocation(context),
+            style: StyleManager.h3_Bold(color: Colors.white),
+            loading: controller.loadingState.value == LoadingState.loading,
+          ),
         ),
         SizedBox(height: AppSizeScreen.screenHeight * 0.01),
       ],

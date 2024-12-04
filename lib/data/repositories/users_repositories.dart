@@ -1,17 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
 import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
-import 'package:ngpiteapp/data/cache/const.dart';
 import 'package:ngpiteapp/data/entities/login_entitie.dart';
-import 'package:ngpiteapp/data/entities/user_entitie.dart';
 
-abstract class AuthRepositories {
+abstract class UsersRepositories {
   Future<AppResponse> register(
       {required String firstName,
       required String lastName,
@@ -46,9 +43,9 @@ abstract class AuthRepositories {
   Future<AppResponse> deleteImage();
 }
 
-class ImpAuthRepositories implements AuthRepositories {
+class ImpUsersRepositories implements UsersRepositories {
   final ApiServices api;
-  ImpAuthRepositories({required this.api});
+  ImpUsersRepositories({required this.api});
 
   @override
   Future<AppResponse> register(
@@ -123,6 +120,25 @@ class ImpAuthRepositories implements AuthRepositories {
   }
 
   @override
+  Future<AppResponse> verifyNumber(
+      {required String verify_code, required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.verifyNumberUrl,
+          method: Method.post,
+          requiredToken: false,
+          params: {ApiKey.verify_code: verify_code, ApiKey.id: id});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
+  }
+
+  @override
   Future<AppResponse> currentUser() {
     // TODO: implement currentUser
     throw UnimplementedError();
@@ -182,25 +198,6 @@ class ImpAuthRepositories implements AuthRepositories {
       {required String verify_code, required int id}) {
     // TODO: implement verifyNewPassword
     throw UnimplementedError();
-  }
-
-  @override
-  Future<AppResponse> verifyNumber(
-      {required String verify_code, required int id}) async {
-    AppResponse response = AppResponse(success: false);
-    try {
-      response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.verifyNumberUrl,
-          method: Method.post,
-          requiredToken: false,
-          params: {ApiKey.verify_code: verify_code, ApiKey.id: id});
-      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
-      response.data = data[ApiKey.message];
-      response.success = true;
-    } on ErrorHandler catch (e) {
-      response.networkFailure = e.failure;
-    }
-    return response;
   }
 
   @override
