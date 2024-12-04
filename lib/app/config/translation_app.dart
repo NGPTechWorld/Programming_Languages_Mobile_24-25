@@ -69,6 +69,7 @@ class TranslationApp implements Translations {
           //success
           StringManager.loginSuccess: "تم تسجيل الدخول بنجاح",
           StringManager.SingupSuccess: "تم انشاء الحساب بنجاح",
+          StringManager.loading: "جاري التحميل ......",
         },
         "en": {
           //Sign Up
@@ -155,6 +156,7 @@ class TranslationApp implements Translations {
           //success
           StringManager.loginSuccess: "login is successful",
           StringManager.SingupSuccess: "Singup is successful",
+          StringManager.loading: "Loading ...",
         },
       };
 }

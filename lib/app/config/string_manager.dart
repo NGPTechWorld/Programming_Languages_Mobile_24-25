@@ -11,6 +11,7 @@ class StringManager {
   static const submitPicture = "submitPicture";
   //Home
   static const recommendedText = "recommendedText";
+  static const loading = "loading";
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";

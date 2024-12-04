@@ -21,7 +21,7 @@ class ProfilePage extends GetView<ProfilePageController> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.primary1Color,
-        appBar: appBar(),
+        appBar: appBar(context),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(AppSizeScreen.screenWidth * 0.05),
@@ -42,10 +42,20 @@ class ProfilePage extends GetView<ProfilePageController> {
     );
   }
 
-  AppBar appBar() {
+  AppBar appBar(BuildContext context) {
     return AppBar(
       title: Text(StringManager.profileHeader.tr),
       centerTitle: true,
+      actions: [
+        IconButton(
+          onPressed: () {
+            controller.logout(context);
+          },
+          icon: const Icon(Icons.logout_outlined),
+          color: ColorManager.blackColor,
+          iconSize: 32,
+        )
+      ],
     );
   }
 }
