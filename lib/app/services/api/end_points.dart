@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
-
 class EndPoints {
-  static const String baserUrl = "http://192.168.137.197:8000/api";
+  static const String baserUrl = "http://192.168.137.234:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -16,6 +14,7 @@ class EndPoints {
   static const String currentUser = "/users/currentUser";
   static const String getImage = "/users/getImage";
   static const String deleteImage = "/users/deleteImage";
+  static const String addLocation = "/locations/addLocation";
   static const String test = "";
 }
 
@@ -33,4 +32,5 @@ class ApiKey {
   static String errors = "errors";
   static String userName = "user_name";
   static String validationFailed = "Validation failed";
+  static String verify_code = "verify_code";
 }

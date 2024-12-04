@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
@@ -9,9 +8,6 @@ import 'package:ngpiteapp/data/repositories/auth_repositories.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
-
-import 'package:ngpiteapp/screens/otp_page/otp_page.dart';
-import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
 import 'package:ngpiteapp/screens/sign_up_page/sign_up_page.dart';
 import 'package:ngpiteapp/screens/sign_up_page/sign_up_page_logic.dart';
 
@@ -44,11 +40,13 @@ class LoginPageController extends GetxController {
       }
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
-      loadingState.value = LoadingState.hasError;
+      if (response.networkFailure!.message == "user has not been verified")
+        //Get.off(() => OtpPage(), binding: OtpPageBinding());
+        loadingState.value = LoadingState.hasError;
     }
   }
 
   goToSignUp() {
-    Get.to(() => SignUpPage(), binding: SignUpPageBinging());
+    Get.off(() => SignUpPage(), binding: SignUpPageBinging());
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
@@ -121,69 +122,90 @@ class ImpAuthRepositories implements AuthRepositories {
     return response;
   }
 
-  
   @override
   Future<AppResponse> currentUser() {
     // TODO: implement currentUser
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> deleteImage() {
     // TODO: implement deleteImage
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> editUser({required String first_name, required String last_name}) {
+  Future<AppResponse> editUser(
+      {required String first_name, required String last_name}) {
     // TODO: implement editUser
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> getImage() {
     // TODO: implement getImage
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> refreshToken() {
     // TODO: implement refreshToken
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> resetPassword({required String old_password, required String new_password, required String new_password_confirmation}) {
+  Future<AppResponse> resetPassword(
+      {required String old_password,
+      required String new_password,
+      required String new_password_confirmation}) {
     // TODO: implement resetPassword
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> setPassword({required int id, required String password, required String password_confirmation}) {
+  Future<AppResponse> setPassword(
+      {required int id,
+      required String password,
+      required String password_confirmation}) {
     // TODO: implement setPassword
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> uploadImage({required String image}) {
     // TODO: implement uploadImage
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> verifyNewPassword({required String verify_code, required int id}) {
+  Future<AppResponse> verifyNewPassword(
+      {required String verify_code, required int id}) {
     // TODO: implement verifyNewPassword
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> verifyNumber({required String verify_code, required int id}) {
-    // TODO: implement verifyNumber
-    throw UnimplementedError();
+  Future<AppResponse> verifyNumber(
+      {required String verify_code, required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.verifyNumberUrl,
+          method: Method.post,
+          requiredToken: false,
+          params: {ApiKey.verify_code: verify_code, ApiKey.id: id});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
-  
+
   @override
-  Future<AppResponse> forgatePassword({required String number, required String email}) {
+  Future<AppResponse> forgatePassword(
+      {required String number, required String email}) {
     // TODO: implement forgatePassword
     throw UnimplementedError();
   }

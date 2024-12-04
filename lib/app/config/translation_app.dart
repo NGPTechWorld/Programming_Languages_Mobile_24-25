@@ -99,7 +99,7 @@ class TranslationApp implements Translations {
           StringManager.titlePhoneVerification: "Phone Verification",
           StringManager.phoneVerification: "Sent Code",
           StringManager.subTitlePhoneVerification:
-              "We have sent a code of 6 digits \nto the number:",
+              "We have sent a code of 6 digits \nto the email:",
           //Login
           StringManager.dontHaveAccount: "Dont have an account?",
           StringManager.errorisEmpty: "This field is empty",
