@@ -48,19 +48,35 @@ class InputSignUp extends GetView<SignUpPageController> {
           isNumberPhone: true,
           suffixIcon: Icon(Icons.email),
         ),
-        TextFieldCustom(
-          controller: controller.passwordController,
-          isPassword: true,
-          title: StringManager.password.tr,
-          obscureText: true,
-          suffixIcon: Icon(Icons.lock_outline_rounded),
+        Obx(
+          () => TextFieldCustom(
+            controller: controller.passwordController,
+            isPassword: true,
+            title: StringManager.password.tr,
+            suffixIcon: InkWell(
+              child: Icon(Icons.lock_outline_rounded),
+              onTap: () {
+                controller.isVisablePass.value =
+                    !controller.isVisablePass.value;
+              },
+            ),
+            obscureText: controller.isVisablePass.value,
+          ),
         ),
-        TextFieldCustom(
-          controller: controller.confirmPasswordController,
-          isPassword: true,
-          title: StringManager.confirmPassword.tr,
-          obscureText: true,
-          suffixIcon: Icon(Icons.lock_outline_rounded),
+        Obx(
+          () => TextFieldCustom(
+            controller: controller.confirmPasswordController,
+            isPassword: true,
+            title: StringManager.confirmPassword.tr,
+            suffixIcon: InkWell(
+              child: Icon(Icons.lock_outline_rounded),
+              onTap: () {
+                controller.isVisablePassConf.value =
+                    !controller.isVisablePassConf.value;
+              },
+            ),
+            obscureText: controller.isVisablePassConf.value,
+          ),
         ),
         SizedBox(
           height: AppSizeScreen.screenHeight * 0.01,

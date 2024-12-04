@@ -42,6 +42,7 @@ abstract class UsersRepositories {
   Future<AppResponse> currentUser();
   Future<AppResponse> getImage();
   Future<AppResponse> deleteImage();
+  Future<AppResponse> generateVerificationCode({required String mumber});
 }
 
 class ImpUsersRepositories implements UsersRepositories {
@@ -219,5 +220,23 @@ class ImpUsersRepositories implements UsersRepositories {
       {required String number, required String email}) {
     // TODO: implement forgatePassword
     throw UnimplementedError();
+  }
+
+  @override
+  Future<AppResponse> generateVerificationCode({required String mumber}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+        url: EndPoints.baserUrl + EndPoints.generateVerificationCode,
+        method: Method.post,
+        requiredToken: false,
+      );
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 }

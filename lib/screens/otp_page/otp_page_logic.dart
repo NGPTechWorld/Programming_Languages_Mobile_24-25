@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/screens/address_page/address_page.dart';
 import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
+import 'package:ngpiteapp/screens/custom_widgets/show_loading_dialog.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
 
@@ -35,10 +35,12 @@ class OtpPageController extends GetxController {
     final response = await AuthRepositories.verifyNumber(
         verify_code: textEditingController.text, id: idVerf);
     if (response.success) {
-      SnackBarCustom.show(context, StringManager.loginSuccess.tr);
+      SnackBarCustom.show(context, response.data);
       loadingState.value = LoadingState.doneWithData;
+      showLoadingDialog(context);
       await loginController.loginWithSignUp(context);
-      Get.off(() => AddressPage(), binding: AddressPageBinding());
+
+      Get.offAll(() => AddressPage(), binding: AddressPageBinding());
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;

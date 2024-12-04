@@ -25,11 +25,20 @@ class InputLogin extends GetView<LoginPageController> {
           suffixIcon: Icon(Icons.phone),
         ),
         Text(StringManager.password.tr, style: StyleManager.body01_Semibold()),
-        TextFieldCustom(
-          controller: controller.passwordController,
-          isPassword: true,
-          obscureText: true,
-          suffixIcon: Icon(Icons.lock_outline_rounded),
+        Obx(
+          () => TextFieldCustom(
+            controller: controller.passwordController,
+            isPassword: true,
+            title: StringManager.password.tr,
+            suffixIcon: InkWell(
+              child: Icon(Icons.lock_outline_rounded),
+              onTap: () {
+                controller.isVisablePass.value =
+                    !controller.isVisablePass.value;
+              },
+            ),
+            obscureText: controller.isVisablePass.value,
+          ),
         ),
         SizedBox(
           height: AppSizeScreen.screenHeight * 0.01,

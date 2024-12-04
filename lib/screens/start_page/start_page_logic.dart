@@ -14,12 +14,12 @@ class StartPageBinging extends Bindings {
 class StartPageController extends GetxController {
   final isConnectedPage = true.obs;
   final AuthRepositories = Get.find<ImpUsersRepositories>();
-  CacheServicesSharedPreferences cache =
-      Get.find<CacheServicesSharedPreferences>();
+  final cache = Get.find<CacheServicesSharedPreferences>();
   var loadingState = LoadingState.idle.obs;
   var appState = AppState.run.obs;
 
   startApp() {
     loadingState.value = LoadingState.loading;
+    
   }
 }

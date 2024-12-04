@@ -14,11 +14,13 @@ class EndPoints {
   static const String currentUser = "/users/currentUser";
   static const String getImage = "/users/getImage";
   static const String deleteImage = "/users/deleteImage";
+  static const String generateVerificationCode = "/users/generateVerificationCode";
   // Locations
   static const String addLocation = "/locations/addLocation";
   static const String getLocations = "/locations/getLocations";
   static const String deleteLocation =
       "/locations/deleteLocation/"; //{location_id}
+  
   static const String test = "";
 }
 

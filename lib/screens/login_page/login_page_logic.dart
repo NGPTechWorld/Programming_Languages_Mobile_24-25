@@ -28,6 +28,7 @@ class LoginPageController extends GetxController {
   final netCheck = Get.find<NetworkInfoImpl>();
   final signupController = Get.find<SignUpPageController>();
   var loadingState = LoadingState.idle.obs;
+  final isVisablePass = true.obs;
 
   login(BuildContext context) async {
     loadingState.value = LoadingState.loading;

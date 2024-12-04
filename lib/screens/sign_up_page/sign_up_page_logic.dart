@@ -29,7 +29,8 @@ class SignUpPageController extends GetxController {
   final AuthRepositories = Get.find<ImpUsersRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
   final netCheck = Get.find<NetworkInfoImpl>();
-
+  final isVisablePass = true.obs;
+  final isVisablePassConf = true.obs;
   var loadingState = LoadingState.idle.obs;
 
   singUp(BuildContext context) async {
@@ -43,7 +44,7 @@ class SignUpPageController extends GetxController {
           password: passwordController.text,
           passwordConfirm: confirmPasswordController.text);
       if (response.success) {
-        SnackBarCustom.show(context, StringManager.loginSuccess.tr);
+        SnackBarCustom.show(context, response.data[ApiKey.message]);
         loadingState.value = LoadingState.doneWithData;
         int idVerf = response.data[ApiKey.id];
         Get.off(() => OtpPage(), binding: OtpPageBinding(idVerf: idVerf));

@@ -3,7 +3,6 @@ import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
@@ -43,7 +42,7 @@ class UploadPicturePageController extends GetxController {
     loadingState.value = LoadingState.loading;
     final response = await AuthRepositories.uploadImage(image: formData);
     if (response.success) {
-      SnackBarCustom.show(context, StringManager.loginSuccess.tr);
+      SnackBarCustom.show(context, response.data);
       loadingState.value = LoadingState.doneWithData;
       Get.off(CurvedNavigationBarCustom(),
           binding: CurvedNavigationBarBinding());
