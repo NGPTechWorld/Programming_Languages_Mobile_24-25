@@ -147,7 +147,7 @@ class TranslationApp implements Translations {
           StringManager.profileMyAccount: "My Account",
           StringManager.profileTrackOrder: "Track Order",
           StringManager.profileAddress: "Addresses",
-          StringManager.profileOrderHistory: "Order History",
+          StringManager.profileOrderHistory: "Orders History",
           StringManager.profileLanguage: "Language",
           StringManager.profileHelpAndSupport: "Help & Support",
 
@@ -172,6 +172,19 @@ class TranslationApp implements Translations {
           StringManager.myAccountConfirmPassword: "Confirm new password",
           // Language Dialog
           StringManager.languageDialogTitle: "Language",
+
+          // Orders History Page
+          StringManager.ordersHistoryHeader :"Orders History"  ,
+          StringManager.ordersHistorySucceedButton :"Succeeded"  ,
+          StringManager.ordersHistoryFailedButton : "Failed" ,    
+          StringManager.ordersHistoryOrder : "Order" ,
+
+          // Track orderes Page
+          StringManager.tarckOrdersHeader : "Track Orders",
+          StringManager.tarckOrdersOrder : "Order",
+          StringManager.trackOrdersMenuEditText : "Edit",
+          StringManager.trackOrdersMenuCancelText : "Cancel",
+          
           // Location Page
           StringManager.showAddressesHeader: "My Addresses",
           StringManager.showAddressesAddLocationButton: "Add new address",

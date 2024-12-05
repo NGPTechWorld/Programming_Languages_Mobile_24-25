@@ -70,6 +70,27 @@ class StringManager {
   static const String profileOrderHistory = "profileOrderHistory";
   static const String profileLanguage = "profileLanguage";
   static const String profileHelpAndSupport = "profileHelpAndSupport";
+
+  // Orders History Page
+  // TODO : add translate en , ar
+  static const String ordersHistoryHeader = "ordersHistoryHeader";
+  static const String ordersHistorySucceedButton = "ordersHistorySucceedButton";
+  static const String ordersHistoryFailedButton = "ordersHistoryFailedButton";
+  static const String ordersHistoryOrder = "ordersHistoryOrder";
+  static const String ordersHistoryStatusSuccess = "Success"; // TEMP  , TODO : chnage it
+  static const String ordersHistoryStatusFalied = "Failed"; // TEMP  , TODO : chnage it
+  static const String ordersHistoryStatusCanceld = "ordersHistoryStatusCanceld";
+  
+  // TODO : add translate en , ar
+  // Track Orders Page
+  static const String tarckOrdersHeader = "tarckOrdersHeader";
+  static const String tarckOrdersOrder = "tarckOrdersOrder";
+  static const String trackOrdersMenuEditValue = "trackOrdersMenuEditValue";
+  static const String trackOrdersMenuEditText = "trackOrdersMenuEditText";
+  static const String trackOrdersMenuCancelValue = "trackOrdersMenuCancelValue";
+  static const String trackOrdersMenuCancelText = "trackOrdersMenuCancelText";
+
+ 
   // Sign Up
   static const String signup = "signup";
   static const String signuptitle = "signuptitle";

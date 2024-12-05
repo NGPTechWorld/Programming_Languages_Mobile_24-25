@@ -24,7 +24,7 @@ class App extends StatelessWidget {
       home: ProfilePage(),
       theme: ThemeManager.appTheme,
       initialBinding: ProfilePageBinding(),
-      locale: Locale("ar"),
+      locale: Locale("en"),
       translations: TranslationApp(),
     );
   }

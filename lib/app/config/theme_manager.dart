@@ -14,6 +14,7 @@ class ThemeManager {
         cursorColor: ColorManager.firstColor,
         selectionColor: ColorManager.firstColor.withOpacity(0.5),
         selectionHandleColor: ColorManager.firstColor, 
-      )
+      ),
+      scaffoldBackgroundColor: ColorManager.whiteColor,
   );
 }

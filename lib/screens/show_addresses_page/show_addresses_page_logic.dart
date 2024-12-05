@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:ngpiteapp/screens/address_page/address_page.dart';
+import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
 
 class ShowAddressesBinding extends Bindings {
   @override
@@ -24,7 +26,8 @@ class ShowAddressesController extends GetxController {
   ].obs;
 
   void addAddress() {
-    // TODO : go to add a new Address page , and update addresses
+    // TODO: update addresses
+    Get.to(() => AddressPage(), binding: AddressPageBinding());
   }
 
   void deleteAddress(int index) {
