@@ -78,11 +78,12 @@ class TranslationApp implements Translations {
           StringManager.myAccountConfirmPassword: "تأكيد كلمة المرور",
           // Language Dialog
           StringManager.languageDialogTitle: "اللغة",
-                    // Location Page
+          // Location Page
           StringManager.showAddressesHeader: "العناوين",
           StringManager.showAddressesAddLocationButton: "اضافة عنوان جديد",
           StringManager.showAddressesDeleteDialogTitle: "تنبيه",
-          StringManager.showAddressesDeleteDialogText: "هل تريد حذف هذا العنوان",
+          StringManager.showAddressesDeleteDialogText:
+              "هل تريد حذف هذا العنوان",
           StringManager.showAddressesDeleteDialogCancel: "لا",
           StringManager.showAddressesDeleteDialogDelete: "نعم",
 
@@ -174,22 +175,23 @@ class TranslationApp implements Translations {
           StringManager.languageDialogTitle: "Language",
 
           // Orders History Page
-          StringManager.ordersHistoryHeader :"Orders History"  ,
-          StringManager.ordersHistorySucceedButton :"Succeeded"  ,
-          StringManager.ordersHistoryFailedButton : "Failed" ,    
-          StringManager.ordersHistoryOrder : "Order" ,
+          StringManager.ordersHistoryHeader: "Orders History",
+          StringManager.ordersHistorySucceedButton: "Succeeded",
+          StringManager.ordersHistoryFailedButton: "Failed",
+          StringManager.ordersHistoryOrder: "Order",
 
           // Track orderes Page
-          StringManager.tarckOrdersHeader : "Track Orders",
-          StringManager.tarckOrdersOrder : "Order",
-          StringManager.trackOrdersMenuEditText : "Edit",
-          StringManager.trackOrdersMenuCancelText : "Cancel",
-          
+          StringManager.tarckOrdersHeader: "Track Orders",
+          StringManager.tarckOrdersOrder: "Order",
+          StringManager.trackOrdersMenuEditText: "Edit",
+          StringManager.trackOrdersMenuCancelText: "Cancel",
+
           // Location Page
           StringManager.showAddressesHeader: "My Addresses",
           StringManager.showAddressesAddLocationButton: "Add new address",
           StringManager.showAddressesDeleteDialogTitle: "Delete Address?",
-          StringManager.showAddressesDeleteDialogText: "Do you want to delete this address?",
+          StringManager.showAddressesDeleteDialogText:
+              "Do you want to delete this address?",
           StringManager.showAddressesDeleteDialogCancel: "No",
           StringManager.showAddressesDeleteDialogDelete: "Yes",
           //Upload Image
@@ -204,6 +206,18 @@ class TranslationApp implements Translations {
           //success
           StringManager.loginSuccess: "login is successful",
           StringManager.SingupSuccess: "Singup is successful",
+
+          // Common in Order pages
+          StringManager.orderDetailsHeader: "Order Details",
+          StringManager.orderDetailsId: "ID",
+          StringManager.orderDetailsProductName: "Product",
+          StringManager.orderDetailsUnitCount: "Count",
+          StringManager.orderDetailsUnitPrice: "Price",
+          StringManager.orderDetailsTotalPrice: "Total",
+          StringManager.orderDetailsStatus: "Status",
+          StringManager.orderDetailsDate: "Date",
+          StringManager.orderDetailsAddress: "Address",
+          StringManager.orderDetailsSyrianPounds: "SP",
         },
       };
 }

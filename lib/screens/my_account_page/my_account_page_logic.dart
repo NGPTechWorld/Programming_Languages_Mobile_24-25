@@ -72,7 +72,7 @@ class MyAccountController extends GetxController {
   }
 
   void showPicture() {
-    // TODO :Go to Upload Picture Page 
+    // TODO :Go to Show Picture Page 
   }
 }
 

@@ -9,7 +9,6 @@ class StringManager {
   static const chooseUploadPicture = "chooseUploadPicture";
   static const uploadPicture = "uploadPicture";
   static const submitPicture = "submitPicture";
-
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";
@@ -52,16 +51,21 @@ class StringManager {
   static const String myAccountConfirmPassword = "myAccountConfirmPassword";
   // Location Page
   static const String showAddressesHeader = "showAddressesHeader";
-  static const String showAddressesAddLocationButton = "showAddressesAddLocationButton";
-  static const String showAddressesDeleteDialogTitle = "showAddressesDeleteDialogTitle";
-  static const String showAddressesDeleteDialogText = "showAddressesDeleteDialogText";
-  static const String showAddressesDeleteDialogCancel = "showAddressesDeleteDialogCancel";
-  static const String showAddressesDeleteDialogDelete = "showAddressesDeleteDialogDelete";
+  static const String showAddressesAddLocationButton =
+      "showAddressesAddLocationButton";
+  static const String showAddressesDeleteDialogTitle =
+      "showAddressesDeleteDialogTitle";
+  static const String showAddressesDeleteDialogText =
+      "showAddressesDeleteDialogText";
+  static const String showAddressesDeleteDialogCancel =
+      "showAddressesDeleteDialogCancel";
+  static const String showAddressesDeleteDialogDelete =
+      "showAddressesDeleteDialogDelete";
 
   // Language Dialog
-  static const String languageDialogTitle =  "languageDialogTitle" ;
-  static const String languageDialogEnglish =  "English" ;
-  static const String languageDialogArabic = "العربية" ;
+  static const String languageDialogTitle = "languageDialogTitle";
+  static const String languageDialogEnglish = "English";
+  static const String languageDialogArabic = "العربية";
   // Profile Page
   static const String profileHeader = "profileHeader";
   static const String profileMyAccount = "profileMyAccount";
@@ -77,10 +81,12 @@ class StringManager {
   static const String ordersHistorySucceedButton = "ordersHistorySucceedButton";
   static const String ordersHistoryFailedButton = "ordersHistoryFailedButton";
   static const String ordersHistoryOrder = "ordersHistoryOrder";
-  static const String ordersHistoryStatusSuccess = "Success"; // TEMP  , TODO : chnage it
-  static const String ordersHistoryStatusFalied = "Failed"; // TEMP  , TODO : chnage it
+  static const String ordersHistoryStatusSuccess =
+      "Success"; // TEMP  , TODO : chnage it
+  static const String ordersHistoryStatusFalied =
+      "Failed"; // TEMP  , TODO : chnage it
   static const String ordersHistoryStatusCanceld = "ordersHistoryStatusCanceld";
-  
+
   // TODO : add translate en , ar
   // Track Orders Page
   static const String tarckOrdersHeader = "tarckOrdersHeader";
@@ -90,7 +96,6 @@ class StringManager {
   static const String trackOrdersMenuCancelValue = "trackOrdersMenuCancelValue";
   static const String trackOrdersMenuCancelText = "trackOrdersMenuCancelText";
 
- 
   // Sign Up
   static const String signup = "signup";
   static const String signuptitle = "signuptitle";
@@ -129,4 +134,20 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
+
+
+  
+  // TODO : either seperate them or leave as it
+  // Common in Orders pages
+  // Order Details Page
+  static const String orderDetailsHeader = "orderDetailsHeader";
+  static const String orderDetailsId = "orderDetailsId";
+  static const String orderDetailsProductName = "orderDetailsProductName";
+  static const String orderDetailsUnitCount = "orderDetailsUnitCount";
+  static const String orderDetailsUnitPrice = "orderDetailsUnitPrice";
+  static const String orderDetailsTotalPrice = "orderDetailsTotalPrice";
+  static const String orderDetailsStatus = "orderDetailsStatus";
+  static const String orderDetailsDate = "orderDetailsDate";
+  static const String orderDetailsAddress = "orderDetailsAddress";
+  static const String orderDetailsSyrianPounds = "orderDetailsSyrianPounds";
 }

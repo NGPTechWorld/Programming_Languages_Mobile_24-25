@@ -1,6 +1,8 @@
-
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
+import 'package:ngpiteapp/app/services/local_storage/cache_service_getstorage.dart';
+import 'package:ngpiteapp/screens/order_details_page/order_details_page.dart';
+import 'package:ngpiteapp/screens/order_details_page/order_details_page_logic.dart';
 
 class TrackOrdersBinding extends Bindings {
   @override
@@ -16,64 +18,79 @@ class FakeProduct {
   FakeProduct({required this.name, required this.price});
 }
 
-class FakeOrder {
-  final String date;
+class Order {
   final String status;
-  final String price;
-  final List<FakeProduct> products;
-  final String id;
+  final int id;
+  final String date;
+  final String address;
+  final double totalPrice;
+  final List<Market> markets;
 
-  FakeOrder(
-      {required this.date,
-      required this.status,
-      required this.price,
-      required this.products,
-      required this.id});
+  Order(
+      {required this.status,
+      required this.id,
+      required this.date,
+      required this.address,
+      required this.totalPrice,
+      required this.markets});
+}
+
+class Market {
+  final String name;
+  final List<Product> products;
+
+  Market({required this.name, required this.products});
+}
+
+class Product {
+  final String name;
+  final int count;
+  final int unitPrice;
+  final int totalPrice;
+
+  Product(
+      {required this.name,
+      required this.count,
+      required this.unitPrice,
+      required this.totalPrice});
 }
 
 class TrackOrdersPageController extends GetxController {
   var isCurrentSelected = true.obs;
-
-  // Fake orders
-  final succeededOrders = [
-    FakeOrder(
-        price: '\$12.00',
-        date: '5/12/2024',
-        id: '#1',
-        status: 'Pending',
-        products: []),
-    FakeOrder(
-        price: '\$11.50',
-        date: '4/12/2024',
-        id: '#2',
+  RxList<Order> orders = [
+    Order(
         status: 'Success',
-        products: [])
+        id: 1,
+        date: '20022002',
+        address: 'address',
+        totalPrice: 1000,
+        markets: [
+          Market(name: 'First', products: [
+            Product(name: 'namedsa;fl;asjd;fljasl;dfj;lasdkjf;ljsadlfjl;askj', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+          ]),
+          Market(name: 'Second', products: [
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+            Product(name: 'name', count: 2, unitPrice: 25, totalPrice: 50),
+          ]),
+        ])
   ].obs;
 
-  final pastOrders = [
-    FakeOrder(
-        price: '\$15.90',
-        date: '3/12/2024',
-        id: '#3',
-        status: 'Pending',
-        products: []),
-    FakeOrder(
-        price: '\$10.00',
-        date: '2/12/2024',
-        id: '#4',
-        status: 'On The Way',
-        products: []),
-  ].obs;
-
-  List<FakeOrder> get orders {
-    List<FakeOrder> orders = [];
-    orders.addAll(succeededOrders);
-    orders.addAll(pastOrders);
+  List getOrders() {
     return orders;
   }
 
-  void onTap() {
+  void onTap(int index) {
     // TODO :Show Order Details
+    Get.to(() => OrderDetailsPage(id: orders[index].id) , binding: OrderDetailsBinding());
   }
 
   handleMenuSelection(String value, int index) {
@@ -87,15 +104,7 @@ class TrackOrdersPageController extends GetxController {
     }
   }
 
-  void cancelOrder(int index) {
-    print("###################################################");
-    print("Canceled");
-    print("###################################################");
-  }
+  void cancelOrder(int index) {}
 
-  void editOrder(int index) {
-    print("###################################################");
-    print("Edited");
-    print("###################################################");
-  }
+  void editOrder(int index) {}
 }

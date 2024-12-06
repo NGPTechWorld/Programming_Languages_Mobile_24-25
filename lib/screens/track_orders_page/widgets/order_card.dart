@@ -9,7 +9,7 @@ import 'package:ngpiteapp/screens/track_orders_page/widgets/status_label.dart';
 
 // TODO String Manager values for order and other things
 class OrderCard extends GetView<TrackOrdersPageController> {
-  const OrderCard({
+   OrderCard({
     super.key,
     required this.index,
   });
@@ -17,7 +17,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final FakeOrder order = controller.orders[index];
+    final Order order = controller.orders[index];
     return Card(
       margin: const EdgeInsets.symmetric(vertical: AppMargin.m8),
       child: ListTile(
@@ -32,7 +32,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(order.price, style: StyleManager.body02_Semibold()),
+            Text('${order.totalPrice} ' + StringManager.orderDetailsSyrianPounds.tr, style: StyleManager.body02_Semibold()),
             Text(order.date),
           ],
         ),
@@ -58,7 +58,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
             ),
           ],
         ),
-        onTap: controller.onTap,
+        onTap: () => controller.onTap(index),
       ),
     );
   }
