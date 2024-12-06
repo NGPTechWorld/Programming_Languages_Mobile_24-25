@@ -61,6 +61,7 @@ class StringManager {
   static const String profileOrderHistory = "profileOrderHistory";
   static const String profileLanguage = "profileLanguage";
   static const String profileHelpAndSupport = "profileHelpAndSupport";
+  static const String logout = "logout";
   // Sign Up
   static const String signup = "signup";
   static const String signuptitle = "signuptitle";

@@ -58,6 +58,7 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "سجل الطلبات",
           StringManager.profileLanguage: "اللغة",
           StringManager.profileHelpAndSupport: "المساعدة والدعم",
+          StringManager.logout: "تسجيل الخروج",
           //Upload Image
           StringManager.titleUploadPicture: "اختار صورة مناسبة لك!",
           StringManager.subTitleUploadPicture: "ارجاء اختيار صورة شخصية",
@@ -124,6 +125,7 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "Order History",
           StringManager.profileLanguage: "Language",
           StringManager.profileHelpAndSupport: "Help & Support",
+          StringManager.logout: "Logout",
           // MyAccount
           // TODO : compolete this in Ar
           StringManager.myAccountUpdate: "Update",

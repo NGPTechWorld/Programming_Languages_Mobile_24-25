@@ -15,7 +15,7 @@ import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
 class SignUpPageBinging extends Bindings {
   @override
   void dependencies() {
-    Get.put(SignUpPageController());
+    
   }
 }
 

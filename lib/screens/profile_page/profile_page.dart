@@ -5,7 +5,7 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/profile_page/profile_page_logic.dart';
-import 'package:ngpiteapp/screens/profile_page/widgets/help_tile.dart';
+import 'package:ngpiteapp/screens/profile_page/widgets/logout_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/language_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/location_tile.dart';
 import 'package:ngpiteapp/screens/profile_page/widgets/my_account_tile.dart';
@@ -33,7 +33,7 @@ class ProfilePage extends GetView<ProfilePageController> {
                 OrderHistoryTile(),
                 LocationTile(),
                 LanguageTile(),
-                HelpTile(),
+                LogoutTile(),
               ],
             ),
           ),
@@ -46,16 +46,16 @@ class ProfilePage extends GetView<ProfilePageController> {
     return AppBar(
       title: Text(StringManager.profileHeader.tr),
       centerTitle: true,
-      actions: [
-        IconButton(
-          onPressed: () {
-            controller.logout(context);
-          },
-          icon: const Icon(Icons.logout_outlined),
-          color: ColorManager.blackColor,
-          iconSize: 32,
-        )
-      ],
+      // actions: [
+      //   IconButton(
+      //     onPressed: () {
+      //       controller.logout(context);
+      //     },
+      //     icon: const Icon(Icons.logout_outlined),
+      //     color: ColorManager.blackColor,
+      //     iconSize: 32,
+      //   )
+      // ],
     );
   }
 }
