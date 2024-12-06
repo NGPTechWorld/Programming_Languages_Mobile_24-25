@@ -101,4 +101,7 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
+  // Home
+  static const String homeTitle = "homeTitle";
+  static const String storeText = "storeText";
 }

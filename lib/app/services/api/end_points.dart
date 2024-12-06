@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.137.69:8000/api";
+  static const String baserUrl = "http://192.168.1.107:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -14,13 +14,14 @@ class EndPoints {
   static const String currentUser = "/users/currentUser";
   static const String getImage = "/users/getImage";
   static const String deleteImage = "/users/deleteImage";
-  static const String generateVerificationCode = "/users/generateVerificationCode";
+  static const String generateVerificationCode =
+      "/users/generateVerificationCode";
   // Locations
   static const String addLocation = "/locations/addLocation";
   static const String getLocations = "/locations/getLocations";
   static const String deleteLocation =
       "/locations/deleteLocation/"; //{location_id}
-  
+
   static const String test = "";
 }
 

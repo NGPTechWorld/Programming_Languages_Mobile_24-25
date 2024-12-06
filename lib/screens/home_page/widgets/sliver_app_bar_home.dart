@@ -1,29 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/search_bar.dart';
 
-class SliverAppBarHome extends StatefulWidget {
+class SliverAppBarHome extends StatelessWidget {
   const SliverAppBarHome({super.key});
-
-  @override
-  _SliverAppBarHomeState createState() => _SliverAppBarHomeState();
-}
-
-class _SliverAppBarHomeState extends State<SliverAppBarHome> {
-  ValueNotifier<int> cartItemCount = ValueNotifier<int>(0);
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      pinned: false,
+      pinned: true,
       floating: false,
-      expandedHeight: AppSizeScreen.screenHeight / 4,
+      expandedHeight: AppSizeScreen.screenHeight / 4.5,
       backgroundColor: ColorManager.firstColor,
       stretch: true,
       title: Padding(
@@ -33,7 +23,7 @@ class _SliverAppBarHomeState extends State<SliverAppBarHome> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Home",
+              StringManager.homeTitle,
               style:
                   StyleManager.h2_Semibold(color: ColorManager.primary1Color),
             ),
@@ -44,9 +34,12 @@ class _SliverAppBarHomeState extends State<SliverAppBarHome> {
           ],
         ),
       ),
-      flexibleSpace: const SingleChildScrollView(
+      flexibleSpace: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 100, left: 20, right: 20),
+          padding: EdgeInsets.only(
+              top: AppSizeScreen.screenHeight * 0.1,
+              left: AppPadding.p20,
+              right: AppPadding.p20),
           child: Column(
             children: [SearchTextBar()],
           ),

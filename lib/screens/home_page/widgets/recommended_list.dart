@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/home_page/widgets/some_item.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_screen.dart';
 
 class RecommendedList extends StatelessWidget {
@@ -19,7 +21,7 @@ class RecommendedList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Recommended",
+              StringManager.recommendedText,
               style: StyleManager.body01_Regular(fontsize: AppSize.s30),
             ),
             SizedBox(
@@ -142,27 +144,8 @@ class ItemRecommended extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 0,
-                      right: -15,
-                      child: SizedBox(
-                        height: AppSize.s24,
-                        child: Center(
-                          child: InkWell(
-                            onTap: () {},
-                            child: CircleAvatar(
-                              radius: AppSize.s30,
-                              backgroundColor: ColorManager.firstColor,
-                              child: Icon(
-                                Icons.add,
-                                color: ColorManager.whiteColor,
-                                size: AppSize.s16,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
+                    PositionedDirectional(
+                        top: 0, end: -15, child: CircleAddItem())
                   ],
                 ),
               )
