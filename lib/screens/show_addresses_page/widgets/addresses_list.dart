@@ -13,11 +13,12 @@ class AddressesList extends GetView<ShowAddressesController> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(
           AppPadding.p16, AppPadding.p10, AppPadding.p16, 0),
-      child: Obx(() => ListView.builder(
-            itemCount: controller.addresses.length,
-            itemBuilder: (context, index) {
-              return AddressCard(index: index);
-            },
+      child: Obx(() => SingleChildScrollView(
+            child: Column(
+                children: List.generate(
+              controller.addresses.length,
+              (index) => AddressCard(index: index),
+            )),
           )),
     );
   }

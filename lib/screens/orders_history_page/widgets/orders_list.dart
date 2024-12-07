@@ -10,24 +10,10 @@ class OrdersList extends GetView<OrdersHistoryPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Obx(() => GestureDetector(
-            child: ListView.builder(
-              itemCount: controller.orders.length,
-              itemBuilder: (context, index) {
-                return OrderCard(index: index);
-              },
-            ),
-            onHorizontalDragEnd: (details) {
-              if (details.primaryVelocity != null) {
-                if (details.primaryVelocity! < 0) {
-                  controller.isCurrentSelected.value = false;
-                } else if (details.primaryVelocity! > 0) {
-                  controller.isCurrentSelected.value = true;
-                }
-              }
-            },
-          )),
-    );
+    return Obx(() => Column(
+        children: List.generate(
+      controller.orders.length,
+      (index) => OrderCard(index: index),
+    )));
   }
 }

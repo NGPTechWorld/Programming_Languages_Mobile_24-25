@@ -16,7 +16,7 @@ class OrderCard extends GetView<OrdersHistoryPageController> {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final FakeOrder order = controller.orders[index];
+    final Order order = controller.orders[index];
     return Card(
       margin: const EdgeInsets.symmetric(vertical: AppMargin.m8),
       child: ListTile(
@@ -24,11 +24,11 @@ class OrderCard extends GetView<OrdersHistoryPageController> {
           borderRadius: BorderRadius.circular(AppSize.s14),
         ),
         leading: const Icon(Icons.image, size: 50, color: Colors.grey),
-        title: Text(StringManager.ordersHistoryOrder.tr + " ${index + 1}"),
+        title: Text(StringManager.ordersHistoryOrder.tr + " ${order.id + 1}"),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(order.price, style: StyleManager.body02_Semibold()),
+            Text('${order.price}', style: StyleManager.body02_Semibold()),
             Text(order.date),
           ],
         ),

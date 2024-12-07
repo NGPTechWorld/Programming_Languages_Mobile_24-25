@@ -57,6 +57,7 @@ class MarketCard extends GetView<OrderDetailsPageController> {
             ),
           );
         }).toList(),
+        if(marketIndex!=controller.order.markets.length-1)
         const Divider(),
       ],
     );

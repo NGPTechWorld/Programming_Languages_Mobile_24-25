@@ -15,16 +15,21 @@ class OrderDetailsPage extends GetView<OrderDetailsPageController> {
   @override
   Widget build(BuildContext context) {
     controller.requestOrderData(id);
-    return Scaffold(
-      appBar: appBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(AppPadding.p16),
-        child: Column(
-          children: [
-            OrderInfo(),
-            MarketsList(),
-            TotalPrice(),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: appBar(),
+        body: Padding(
+          padding: const EdgeInsets.only(left : AppPadding.p16 , right: AppPadding.p16 , top: AppPadding.p10 ,bottom:  AppPadding.p6),
+          child: SingleChildScrollView(
+            child: Column(
+              
+              children: [
+                OrderInfo(),
+                MarketsList(),
+                TotalPrice(),
+              ],
+            ),
+          ),
         ),
       ),
     );

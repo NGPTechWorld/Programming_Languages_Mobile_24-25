@@ -7,22 +7,25 @@ import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/orders_history_page/orders_history_page_logic.dart';
 import 'package:ngpiteapp/screens/orders_history_page/widgets/header_buttons.dart';
-import 'package:ngpiteapp/screens/orders_history_page/widgets/order_card.dart';
 import 'package:ngpiteapp/screens/orders_history_page/widgets/orders_list.dart';
 
-class OrdersHistoryPage extends StatelessWidget {
+class OrdersHistoryPage extends GetView<OrdersHistoryPageController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppPadding.p14, vertical: AppPadding.p10),
-        child: Column(
-          children: [
-            HeaderButtons(),
-            OrdersList(),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: appBar(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppPadding.p14, vertical: AppPadding.p10),
+            child: Column(
+              children: [
+                HeaderButtons(),
+                OrdersList(),
+              ],
+            ),
+          ),
         ),
       ),
     );

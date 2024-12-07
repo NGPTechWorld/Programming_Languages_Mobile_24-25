@@ -10,15 +10,13 @@ import 'package:ngpiteapp/screens/track_orders_page/widgets/orders_list.dart';
 class TrackOrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppPadding.p14, vertical: AppPadding.p10),
-        child: Column(
-          children: [
-            OrdersList(),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: appBar(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppPadding.p14, vertical: AppPadding.p10),
+          child: OrdersList(),
         ),
       ),
     );

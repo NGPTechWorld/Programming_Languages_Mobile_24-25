@@ -12,7 +12,7 @@ class ShowAddressesBinding extends Bindings {
 class ShowAddressesController extends GetxController {
   var addresses = <TempAddress>[
     TempAddress(
-        name: "name", location: "location", street: "street", notes: "notes"),
+        name: "namas;ldfjl;asdjf;lkasjdfl;sakdje", location: "locatioasdl;fj;lasdjfl;kasdjfljasd;lkjf;lasdjf;lsakjn", street: "streed;lskdaj;lkfja;lsdjflkajs;ldf;asdf;lkajsd;flksadfj;t", notes: "notesسيبسيبستمكتكمسيتبمكنستيمكبنتسمكينتبمنكسيتمبتنسيمنكبتسمكيبتمكسيتبمكسيتبمتس"),
     TempAddress(
         name: "name", location: "location", street: "street", notes: "notes"),
     TempAddress(

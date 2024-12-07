@@ -41,7 +41,7 @@ class AddressCard extends GetView<ShowAddressesController> {
               address.name,
               style: StyleManager.h3_Medium(),
             ),
-            tileColor: ColorManager.whiteColor,
+            tileColor: ColorManager.primary1Color,
             splashColor: ColorManager.transparentColor,
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

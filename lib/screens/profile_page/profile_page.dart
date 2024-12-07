@@ -46,6 +46,7 @@ class ProfilePage extends GetView<ProfilePageController> {
     return AppBar(
       title: Text(StringManager.profileHeader.tr),
       centerTitle: true,
+      leading: Text(""),
       // actions: [
       //   IconButton(
       //     onPressed: () {

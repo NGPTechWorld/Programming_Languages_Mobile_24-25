@@ -10,13 +10,12 @@ class OrdersList extends GetView<TrackOrdersPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Obx(() => ListView.builder(
-        itemCount: controller.orders.length,
-        itemBuilder: (context, index) {
-          return OrderCard(index: index);
-        },
-      )),
-    );
+    return Obx(() =>SingleChildScrollView(
+              child: Column(
+                  children: List.generate(
+                controller.orders.length,
+                (index) => OrderCard(index: index),
+              )),
+        ));
   }
 }

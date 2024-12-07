@@ -13,22 +13,24 @@ import 'package:ngpiteapp/screens/my_account_page/widgets/profile_picture.dart';
 class MyAccountPage extends GetView<MyAccountController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, result) {
-          _handleBackNavigation();
-        },
-        child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
-            child: Column(
-              children: [
-                ProfilePicture(),
-                EditFields(),
-                UpdateButtons(),
-              ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: appBar(),
+        body: PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) {
+            _handleBackNavigation();
+          },
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
+              child: Column(
+                children: [
+                  ProfilePicture(),
+                  EditFields(),
+                  UpdateButtons(),
+                ],
+              ),
             ),
           ),
         ),

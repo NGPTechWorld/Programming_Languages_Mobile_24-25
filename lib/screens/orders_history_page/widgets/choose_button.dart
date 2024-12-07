@@ -14,7 +14,7 @@ class ChooseButton extends GetView<OrdersHistoryPageController> {
   Widget build(BuildContext context) {
     return Obx(() => Expanded(
           child: ElevatedButton(
-            onPressed: () => controller.isCurrentSelected.value = onSelectValue,
+            onPressed: () => controller.isSucceededSelected.value = onSelectValue,
             style: choosStyle(),
             child: Text(text),
           ),
@@ -41,8 +41,8 @@ class ChooseButton extends GetView<OrdersHistoryPageController> {
     );
 
     return (onSelectValue)
-        ? (controller.isCurrentSelected.value ? selectedStyle : unselectedStyle)
-        : (!controller.isCurrentSelected.value
+        ? (controller.isSucceededSelected.value ? selectedStyle : unselectedStyle)
+        : (!controller.isSucceededSelected.value
             ? selectedStyle
             : unselectedStyle);
   }
