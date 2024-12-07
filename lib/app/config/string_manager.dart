@@ -31,6 +31,7 @@ class StringManager {
   static const String addressPageStreet = "addressPageStreet";
   static const String addressPageNotes = "addressPageExtraNotes";
   static const String addressPageSave = "addressPageSave";
+  static const String profileLocation = "profileLocation";
   // MyAccount Page
   static const String myAccountHeader = "myAccountHeader";
   static const String myAccountFirstName = "myAccountFirstName";

@@ -59,7 +59,7 @@ class TranslationApp implements Translations {
           StringManager.profileLanguage: "اللغة",
           StringManager.profileHelpAndSupport: "المساعدة والدعم",
           StringManager.logout: "تسجيل الخروج",
-           // MyAccount
+          // MyAccount
           StringManager.myAccountUpdate: "حفظ",
           StringManager.myAccountCancel: "إلغاء",
           StringManager.myAccountHeader: "حسابي",
@@ -94,7 +94,6 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryFailedButton: "ملغاة",
           StringManager.ordersHistoryOrder: "الطلب",
 
-          
           // Track orderes Page
           StringManager.tarckOrdersHeader: "متابعة الطلب",
           StringManager.tarckOrdersOrder: "الطلب",
@@ -178,7 +177,7 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "Orders History",
           StringManager.profileLanguage: "Language",
           StringManager.profileHelpAndSupport: "Help & Support",
-           StringManager.logout: "Logout",
+          StringManager.logout: "Logout",
           // MyAccount
           StringManager.myAccountUpdate: "Save",
           StringManager.myAccountCancel: "Cancel",
@@ -197,8 +196,8 @@ class TranslationApp implements Translations {
           StringManager.myAccountChangePasswordCancel: "Cancel",
           StringManager.myAccountOldPassword: "Old password",
           StringManager.myAccountNewPassword: "New password",
-          StringManager.myAccountConfirmPassword: "Confirm new password",   
-           // Language Dialog
+          StringManager.myAccountConfirmPassword: "Confirm new password",
+          // Language Dialog
           StringManager.languageDialogTitle: "Language",
 
           // Location Page
@@ -221,7 +220,7 @@ class TranslationApp implements Translations {
           StringManager.tarckOrdersOrder: "Order",
           StringManager.trackOrdersMenuEditText: "Edit",
           StringManager.trackOrdersMenuCancelText: "Cancel",
-   
+
           //Upload Image
           StringManager.titleUploadPicture: "Choose your picture!",
           StringManager.subTitleUploadPicture: "Please choose a personal photo",
@@ -235,7 +234,7 @@ class TranslationApp implements Translations {
           StringManager.loginSuccess: "login is successful",
           StringManager.SingupSuccess: "Singup is successful",
           StringManager.loading: "Loading ...",
-          / Common in Order pages
+          // Common in Order pages
           StringManager.orderDetailsHeader: "Order Details",
           StringManager.orderDetailsId: "ID",
           StringManager.orderDetailsProductName: "Product",

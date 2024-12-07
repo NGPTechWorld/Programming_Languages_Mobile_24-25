@@ -16,7 +16,7 @@ class AddressesTile extends GetView<ProfilePageController> {
     return CustomTile(
       leading: SvgPicture.asset(AssetsManager.mapImage),
       title: Text(StringManager.profileLocation.tr),
-      onTap: controller.loactionOnTap,
+      onTap: controller.languageOnTap,
     );
   }
 }

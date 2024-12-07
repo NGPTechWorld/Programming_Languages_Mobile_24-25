@@ -1,12 +1,22 @@
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
+import 'package:ngpiteapp/screens/custom_widgets/helper_widget.dart';
 import 'package:ngpiteapp/screens/custom_widgets/show_loading_dialog.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
+import 'package:ngpiteapp/screens/orders_history_page/orders_history_page.dart';
+import 'package:ngpiteapp/screens/orders_history_page/orders_history_page_logic.dart';
+import 'package:ngpiteapp/screens/show_addresses_page/show_addresses_page.dart';
+import 'package:ngpiteapp/screens/show_addresses_page/show_addresses_page_logic.dart';
+import 'package:ngpiteapp/screens/start_page/start_page.dart';
+import 'package:ngpiteapp/screens/start_page/start_page_logic.dart';
+import 'package:ngpiteapp/screens/track_orders_page/track_orders_page.dart';
+import 'package:ngpiteapp/screens/track_orders_page/track_orders_page_logic.dart';
 
 class ProfilePageBinding extends Bindings {
   @override
@@ -23,10 +33,6 @@ class ProfilePageController extends GetxController {
   myAccountOnTap() {
     Get.to(() => MyAccountPage(), binding: MyAccountBinding());
   }
-  myAccountOnTap() {
-    Get.to(() => MyAccountPage(), binding: MyAccountBinding());
-  }
-
   trackOrderOnTap() {
     Get.to(() => TrackOrdersPage(), binding: TrackOrdersBinding());
 
