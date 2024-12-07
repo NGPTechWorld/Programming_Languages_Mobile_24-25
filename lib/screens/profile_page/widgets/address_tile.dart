@@ -14,9 +14,9 @@ class AddressesTile extends GetView<ProfilePageController> {
   @override
   Widget build(BuildContext context) {
     return CustomTile(
-      leading: SvgPicture.asset(AssetsManager.mapIconSvg),
-      title: Text(StringManager.profileAddress.tr),
-      onTap: controller.addressesOnTap,
+      leading: SvgPicture.asset(AssetsManager.mapImage),
+      title: Text(StringManager.profileLocation.tr),
+      onTap: controller.loactionOnTap,
     );
   }
 }

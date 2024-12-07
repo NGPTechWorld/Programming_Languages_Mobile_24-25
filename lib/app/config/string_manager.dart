@@ -9,6 +9,7 @@ class StringManager {
   static const chooseUploadPicture = "chooseUploadPicture";
   static const uploadPicture = "uploadPicture";
   static const submitPicture = "submitPicture";
+
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
   static const String GetStarted = "GetStarted";
@@ -74,8 +75,24 @@ class StringManager {
   static const String profileOrderHistory = "profileOrderHistory";
   static const String profileLanguage = "profileLanguage";
   static const String profileHelpAndSupport = "profileHelpAndSupport";
-
-  // Orders History Page
+  // Sign Up
+  static const String signup = "signup";
+  static const String signuptitle = "signuptitle";
+  static const String signupSubtitle = "signupSubtitle";
+  static const String join = "join";
+  static const String alreadyHaveAccount = "alreadyHaveAccount";
+  static const String userName = "userName";
+  static const String firstName = "firstName";
+  static const String password = "password";
+  static const String huntUsername = "huntUsername";
+  static const String confirmPassword = "confirmPassword";
+  static const String lastName = "lastName";
+  static const String login = "login";
+  static const String email = "email";
+  static const String dontHaveAccount = "dontHaveAccount";
+  static const String startYear = "startYear";
+    static const String logout = "logout";
+      // Orders History Page
   static const String ordersHistoryHeader = "ordersHistoryHeader";
   static const String ordersHistorySucceedButton = "ordersHistorySucceedButton";
   static const String ordersHistoryFailedButton = "ordersHistoryFailedButton";
@@ -95,21 +112,6 @@ class StringManager {
   static const String trackOrdersMenuCancelValue = "trackOrdersMenuCancelValue";
   static const String trackOrdersMenuCancelText = "trackOrdersMenuCancelText";
 
-  // Sign Up
-  static const String signup = "signup";
-  static const String signuptitle = "signuptitle";
-  static const String signupSubtitle = "signupSubtitle";
-  static const String join = "join";
-  static const String alreadyHaveAccount = "alreadyHaveAccount";
-  static const String userName = "userName";
-  static const String firstName = "firstName";
-  static const String password = "password";
-  static const String huntUsername = "huntUsername";
-  static const String confirmPassword = "confirmPassword";
-  static const String lastName = "lastName";
-  static const String login = "login";
-  static const String dontHaveAccount = "dontHaveAccount";
-  static const String startYear = "startYear";
   // error handler
   static const String strBadRequestError = "BadRequest Error";
   static const String strNoContent = "No Content";
@@ -133,9 +135,13 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
-
-
   
+  // Home
+  static const String homeTitle = "homeTitle";
+  static const String storeText = "storeText";
+  
+  static const recommendedText = "recommendedText";
+  static const loading = "loading";
   // TODO : either seperate them or leave as it
   // Common in Orders pages
   // Order Details Page

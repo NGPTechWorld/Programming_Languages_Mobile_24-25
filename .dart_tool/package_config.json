@@ -542,7 +542,11 @@
       "languageVersion": "3.4"
     }
   ],
+<<<<<<< HEAD
   "generated": "2024-12-02T11:12:56.923693Z",
+=======
+  "generated": "2024-12-02T12:56:25.091056Z",
+>>>>>>> f03423c36eb0964b26a98fc6d585f805a3e9a3f7
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///D:/android/flutter",

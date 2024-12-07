@@ -19,7 +19,7 @@ class _PininputCustomState extends State<PininputCustom> {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: Pinput(
-          // controller: controller,
+          controller: widget.controller,
           length: 6,
           defaultPinTheme: PinTheme(
             textStyle: StyleManager.body01_Medium(),

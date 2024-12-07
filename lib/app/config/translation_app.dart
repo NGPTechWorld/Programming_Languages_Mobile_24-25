@@ -17,6 +17,7 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "تأكيد كلمة المرور",
           StringManager.userName: "اسم المستخدم",
           StringManager.login: "تسجيل الدخول",
+          StringManager.email: "البريد الألكتروني",
           StringManager.signuptitle: "اهلا بكم في تطبيق التوصيل",
           StringManager.signupSubtitle:
               "لإستخدام التطبيق يجب عليك انشاء حساب جديد",
@@ -57,7 +58,8 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "سجل الطلبات",
           StringManager.profileLanguage: "اللغة",
           StringManager.profileHelpAndSupport: "المساعدة والدعم",
-          // MyAccount
+          StringManager.logout: "تسجيل الخروج",
+           // MyAccount
           StringManager.myAccountUpdate: "حفظ",
           StringManager.myAccountCancel: "إلغاء",
           StringManager.myAccountHeader: "حسابي",
@@ -110,7 +112,7 @@ class TranslationApp implements Translations {
           //success
           StringManager.loginSuccess: "تم تسجيل الدخول بنجاح",
           StringManager.SingupSuccess: "تم انشاء الحساب بنجاح",
-    
+          StringManager.loading: "جاري التحميل ......",
           // Common in Order pages
           StringManager.orderDetailsHeader: "تفاصيل الطلب",
           StringManager.orderDetailsId: "المعرف",
@@ -122,7 +124,6 @@ class TranslationApp implements Translations {
           StringManager.orderDetailsDate: "التاريخ",
           StringManager.orderDetailsAddress: "العنوان",
           StringManager.orderDetailsSyrianPounds: "ل.س",
-    
         },
         "en": {
           //Sign Up
@@ -137,6 +138,7 @@ class TranslationApp implements Translations {
           StringManager.confirmPassword: "Password Confirm",
           StringManager.userName: "Username",
           StringManager.login: "Login",
+          StringManager.email: "Email",
           StringManager.subTiltleLogin: "Login to use the app",
           StringManager.signuptitle: "Welcom To Delivery App",
           StringManager.signupSubtitle: "Sing Up to use the app",
@@ -152,7 +154,7 @@ class TranslationApp implements Translations {
           StringManager.titlePhoneVerification: "Phone Verification",
           StringManager.phoneVerification: "Sent Code",
           StringManager.subTitlePhoneVerification:
-              "We have sent a code of 6 digits \nto the number:",
+              "We have sent a code of 6 digits \nto the email:",
           //Login
           StringManager.dontHaveAccount: "Dont have an account?",
           StringManager.errorisEmpty: "This field is empty",
@@ -176,7 +178,7 @@ class TranslationApp implements Translations {
           StringManager.profileOrderHistory: "Orders History",
           StringManager.profileLanguage: "Language",
           StringManager.profileHelpAndSupport: "Help & Support",
-
+           StringManager.logout: "Logout",
           // MyAccount
           StringManager.myAccountUpdate: "Save",
           StringManager.myAccountCancel: "Cancel",
@@ -195,8 +197,8 @@ class TranslationApp implements Translations {
           StringManager.myAccountChangePasswordCancel: "Cancel",
           StringManager.myAccountOldPassword: "Old password",
           StringManager.myAccountNewPassword: "New password",
-          StringManager.myAccountConfirmPassword: "Confirm new password",
-          // Language Dialog
+          StringManager.myAccountConfirmPassword: "Confirm new password",   
+           // Language Dialog
           StringManager.languageDialogTitle: "Language",
 
           // Location Page
@@ -219,7 +221,7 @@ class TranslationApp implements Translations {
           StringManager.tarckOrdersOrder: "Order",
           StringManager.trackOrdersMenuEditText: "Edit",
           StringManager.trackOrdersMenuCancelText: "Cancel",
-
+   
           //Upload Image
           StringManager.titleUploadPicture: "Choose your picture!",
           StringManager.subTitleUploadPicture: "Please choose a personal photo",
@@ -232,8 +234,8 @@ class TranslationApp implements Translations {
           //success
           StringManager.loginSuccess: "login is successful",
           StringManager.SingupSuccess: "Singup is successful",
-
-          // Common in Order pages
+          StringManager.loading: "Loading ...",
+          / Common in Order pages
           StringManager.orderDetailsHeader: "Order Details",
           StringManager.orderDetailsId: "ID",
           StringManager.orderDetailsProductName: "Product",
