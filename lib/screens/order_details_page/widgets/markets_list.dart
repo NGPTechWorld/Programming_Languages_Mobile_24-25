@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/screens/order_details_page/order_details_page.dart';
 import 'package:ngpiteapp/screens/order_details_page/order_details_page_logic.dart';
+import 'package:ngpiteapp/screens/order_details_page/widgets/market_card.dart';
 import 'package:ngpiteapp/screens/track_orders_page/track_orders_page_logic.dart';
 
 class MarketsList extends GetView<OrderDetailsPageController> {
@@ -16,8 +16,7 @@ class MarketsList extends GetView<OrderDetailsPageController> {
       child: ListView.builder(
         itemCount: order.markets.length,
         itemBuilder: (context, marketIndex) {
-          final market = order.markets[marketIndex];
-          return MarketCard(market: market);
+          return MarketCard(marketIndex: marketIndex);
         },
       ),
     );

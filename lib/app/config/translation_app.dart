@@ -86,6 +86,18 @@ class TranslationApp implements Translations {
               "هل تريد حذف هذا العنوان",
           StringManager.showAddressesDeleteDialogCancel: "لا",
           StringManager.showAddressesDeleteDialogDelete: "نعم",
+          // Orders History Page
+          StringManager.ordersHistoryHeader: "سجل الطلبات",
+          StringManager.ordersHistorySucceedButton: "مكتملة",
+          StringManager.ordersHistoryFailedButton: "ملغاة",
+          StringManager.ordersHistoryOrder: "الطلب",
+
+          
+          // Track orderes Page
+          StringManager.tarckOrdersHeader: "متابعة الطلب",
+          StringManager.tarckOrdersOrder: "الطلب",
+          StringManager.trackOrdersMenuEditText: "تعديل",
+          StringManager.trackOrdersMenuCancelText: "الغاء الطلب",
 
           //Upload Image
           StringManager.titleUploadPicture: "اختار صورة مناسبة لك!",
@@ -98,6 +110,19 @@ class TranslationApp implements Translations {
           //success
           StringManager.loginSuccess: "تم تسجيل الدخول بنجاح",
           StringManager.SingupSuccess: "تم انشاء الحساب بنجاح",
+    
+          // Common in Order pages
+          StringManager.orderDetailsHeader: "تفاصيل الطلب",
+          StringManager.orderDetailsId: "المعرف",
+          StringManager.orderDetailsProductName: "المنتج",
+          StringManager.orderDetailsUnitCount: "العدد",
+          StringManager.orderDetailsUnitPrice: "السعر",
+          StringManager.orderDetailsTotalPrice: "الإجمالي",
+          StringManager.orderDetailsStatus: "الحالة",
+          StringManager.orderDetailsDate: "التاريخ",
+          StringManager.orderDetailsAddress: "العنوان",
+          StringManager.orderDetailsSyrianPounds: "ل.س",
+    
         },
         "en": {
           //Sign Up
@@ -174,6 +199,15 @@ class TranslationApp implements Translations {
           // Language Dialog
           StringManager.languageDialogTitle: "Language",
 
+          // Location Page
+          StringManager.showAddressesHeader: "My Addresses",
+          StringManager.showAddressesAddLocationButton: "Add new address",
+          StringManager.showAddressesDeleteDialogTitle: "Delete Address?",
+          StringManager.showAddressesDeleteDialogText:
+              "Do you want to delete this address?",
+          StringManager.showAddressesDeleteDialogCancel: "No",
+          StringManager.showAddressesDeleteDialogDelete: "Yes",
+
           // Orders History Page
           StringManager.ordersHistoryHeader: "Orders History",
           StringManager.ordersHistorySucceedButton: "Succeeded",
@@ -186,14 +220,6 @@ class TranslationApp implements Translations {
           StringManager.trackOrdersMenuEditText: "Edit",
           StringManager.trackOrdersMenuCancelText: "Cancel",
 
-          // Location Page
-          StringManager.showAddressesHeader: "My Addresses",
-          StringManager.showAddressesAddLocationButton: "Add new address",
-          StringManager.showAddressesDeleteDialogTitle: "Delete Address?",
-          StringManager.showAddressesDeleteDialogText:
-              "Do you want to delete this address?",
-          StringManager.showAddressesDeleteDialogCancel: "No",
-          StringManager.showAddressesDeleteDialogDelete: "Yes",
           //Upload Image
           StringManager.titleUploadPicture: "Choose your picture!",
           StringManager.subTitleUploadPicture: "Please choose a personal photo",

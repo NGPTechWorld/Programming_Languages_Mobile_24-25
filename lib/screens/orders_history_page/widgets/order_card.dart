@@ -33,7 +33,7 @@ class OrderCard extends GetView<OrdersHistoryPageController> {
           ],
         ),
         trailing: StatusLabel(status: order.status),
-        onTap: controller.onTap,
+        onTap: () => controller.onTap(order.id),
       ),
     );
   }

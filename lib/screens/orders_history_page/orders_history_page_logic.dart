@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/screens/order_details_page/order_details_page.dart';
+import 'package:ngpiteapp/screens/order_details_page/order_details_page_logic.dart';
 
 class OrdersHistoryBinding extends Bindings {
   @override
@@ -20,7 +22,7 @@ class FakeOrder {
   final String status;
   final String price;
   final List<FakeProduct> products;
-  final String id;
+  final int id;
 
   FakeOrder(
       {required this.date,
@@ -38,13 +40,13 @@ class OrdersHistoryPageController extends GetxController {
     FakeOrder(
         price: '\$12.00',
         date: '5/12/2024',
-        id: '#1',
+        id: 1,
         status: 'Success',
         products: []),
     FakeOrder(
         price: '\$11.50',
         date: '4/12/2024',
-        id: '#2',
+        id: 2,
         status: 'Success',
         products: [])
   ].obs;
@@ -53,13 +55,13 @@ class OrdersHistoryPageController extends GetxController {
     FakeOrder(
         price: '\$15.90',
         date: '3/12/2024',
-        id: '#3',
+        id: 3,
         status: 'Failed',
         products: []),
     FakeOrder(
         price: '\$10.00',
         date: '2/12/2024',
-        id: '#4',
+        id: 4,
         status: 'Failed',
         products: []),
   ].obs;
@@ -67,7 +69,7 @@ class OrdersHistoryPageController extends GetxController {
   List<FakeOrder> get orders =>
       isCurrentSelected.value ? succeededOrders : pastOrders;
 
-  void onTap() {
-    // TODO :Show Order Details
+  void onTap(int id) {
+    Get.to(OrderDetailsPage(id: id)  , binding:  OrderDetailsBinding());
   }
 }

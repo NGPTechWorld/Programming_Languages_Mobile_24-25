@@ -19,14 +19,6 @@ class InfoRow extends StatelessWidget {
               leading + ":",
               style: StyleManager.body01_Semibold(),
             )),
-        // Container(
-        //   width: AppSize.s20,
-        //   child: Text(
-        //     ":",
-        //     style: StyleManager.body01_Medium(),
-        //     textAlign: TextAlign.justify,
-        //   ),
-        // ),
         Flexible(
             child: Text(
           content,
