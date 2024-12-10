@@ -12,6 +12,7 @@ import 'package:ngpiteapp/screens/orders_history_page/widgets/orders_list.dart';
 class OrdersHistoryPage extends GetView<OrdersHistoryPageController> {
   @override
   Widget build(BuildContext context) {
+    controller.getOrders(context);
     return SafeArea(
       child: Scaffold(
         appBar: appBar(),

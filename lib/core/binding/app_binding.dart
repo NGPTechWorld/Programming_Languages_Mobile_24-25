@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_service_getstorage.dart';
 import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
+import 'package:ngpiteapp/data/repositories/orders_repositories.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
 import 'package:ngpiteapp/screens/sign_up_page/sign_up_page_logic.dart';
@@ -21,6 +22,7 @@ class AppBinding implements Bindings {
     Get.put(ImpLocationsRepositories(api: Get.find<DioConsumer>()));
     Get.put(SignUpPageController(), permanent: true);
     Get.put(LoginPageController(), permanent: true);
+    Get.put(ImpOrdersRepositories(api: Get.find<DioConsumer>()));
   }
 
   Future<void> initializes() async {

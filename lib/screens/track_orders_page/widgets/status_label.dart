@@ -37,9 +37,9 @@ class StatusLabel extends StatelessWidget {
   // TODO : Handle status in String Manager.
   Color getColor() {
     switch (status) {
-      case StringManager.ordersHistoryStatusFalied:
+      case StringManager.ordersHistoryStatusRejected:
         return ColorManager.redColor;
-      case StringManager.ordersHistoryStatusSuccess:
+      case StringManager.ordersHistoryStatusCompleted:
         return ColorManager.secoundColor;
     }
     return ColorManager.firstColor;

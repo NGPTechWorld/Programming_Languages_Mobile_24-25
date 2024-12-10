@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.10:8000/api";
+  static const String baserUrl = "http://192.168.1.2:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -21,6 +21,24 @@ class EndPoints {
   static const String getLocations = "/locations/getLocations";
   static const String deleteLocation =
       "/locations/deleteLocation/"; //{location_id}
+  // Orders
+  static const String createOrder = "/orders/createOrder";
+  static const String editOrder = "/orders/editOrder/"; // {order}
+  static const String cancelOrder = "/orders/cancelOrder/"; // {order}
+  static const String deleteProduct =
+      "/orders/deleteProduct/"; // {order}/{product}
+  static const String getOrders = "/orders/getOrders";
+  static const String getOrdersByStatus =
+      "/orders/getOrdersByStatus/"; //{status}
+  // 1 for succeeded ones
+  static const String getOrder = "/orders/getOrder/"; //{order}
+
+  // Markets
+  static const String getMarkets = "/markets/getMarkets";
+  static const String getMarketsByName =
+      "/markets/getMarketsByName/"; //{market_name}
+  static const String getProductsForMarket =
+      "/markets/getProductsForMarket/"; //{market}
 
   static const String test = "";
 }
@@ -43,4 +61,10 @@ class ApiKey {
   static String location = "location";
   static String street = "street";
   static String notes = "notes";
+  //---------------------------------------
+  static String date = "date";
+  static String total_cost = "total_cost";
+  static String status_id = "status_id";
+  static String orders = "orders";
+  //---------------------------------------
 }

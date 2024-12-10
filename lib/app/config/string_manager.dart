@@ -31,7 +31,6 @@ class StringManager {
   static const String addressPageStreet = "addressPageStreet";
   static const String addressPageNotes = "addressPageExtraNotes";
   static const String addressPageSave = "addressPageSave";
-  static const String profileLocation = "profileLocation";
   // MyAccount Page
   static const String myAccountHeader = "myAccountHeader";
   static const String myAccountFirstName = "myAccountFirstName";
@@ -92,24 +91,22 @@ class StringManager {
   static const String email = "email";
   static const String dontHaveAccount = "dontHaveAccount";
   static const String startYear = "startYear";
-    static const String logout = "logout";
-      // Orders History Page
+  static const String logout = "logout";
+  // Orders History Page
   static const String ordersHistoryHeader = "ordersHistoryHeader";
   static const String ordersHistorySucceedButton = "ordersHistorySucceedButton";
   static const String ordersHistoryFailedButton = "ordersHistoryFailedButton";
   static const String ordersHistoryOrder = "ordersHistoryOrder";
-  static const String ordersHistoryStatusSuccess =
-      "Success"; // TEMP
-        // TODO : chnage it
-  static const String ordersHistoryStatusFalied =
-      "Failed"; // TEMP  , TODO : chnage it
-  static const String ordersHistoryStatusCanceld = "ordersHistoryStatusCanceld";
+  static const String ordersHistoryStatusCompleted = "ordersHistoryStatusCompleted";
+  static const String ordersHistoryStatusRejected ="ordersHistoryStatusRejected";
+  static const String ordersHistoryStatusCancelled = "ordersHistoryStatusCancelled";
 
   // Track Orders Page
   static const String tarckOrdersHeader = "tarckOrdersHeader";
   static const String tarckOrdersOrder = "tarckOrdersOrder";
   static const String trackOrdersMenuEditText = "trackOrdersMenuEditText";
-  static const String trackOrdersMenuEditValue = "trackOrdersMenuEditValue"; // no neen to translate it i guess.
+  static const String trackOrdersMenuEditValue =
+      "trackOrdersMenuEditValue"; // no need to translate it i guess.
   static const String trackOrdersMenuCancelValue = "trackOrdersMenuCancelValue";
   static const String trackOrdersMenuCancelText = "trackOrdersMenuCancelText";
 
@@ -136,11 +133,11 @@ class StringManager {
   //success
   static const String loginSuccess = "loginSuccess";
   static const String SingupSuccess = "SingupSuccess";
-  
+
   // Home
   static const String homeTitle = "homeTitle";
   static const String storeText = "storeText";
-  
+
   static const recommendedText = "recommendedText";
   static const loading = "loading";
   // TODO : either seperate them or leave as it

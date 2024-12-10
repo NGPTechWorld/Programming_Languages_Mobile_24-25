@@ -123,6 +123,9 @@ class TranslationApp implements Translations {
           StringManager.orderDetailsDate: "التاريخ",
           StringManager.orderDetailsAddress: "العنوان",
           StringManager.orderDetailsSyrianPounds: "ل.س",
+          StringManager.ordersHistoryStatusCancelled : "ملغى" , 
+          StringManager.ordersHistoryStatusRejected : "مرفوض" , 
+          StringManager.ordersHistoryStatusCompleted : "منجز" , 
         },
         "en": {
           //Sign Up
@@ -245,6 +248,9 @@ class TranslationApp implements Translations {
           StringManager.orderDetailsDate: "Date",
           StringManager.orderDetailsAddress: "Address",
           StringManager.orderDetailsSyrianPounds: "SP",
+          StringManager.ordersHistoryStatusCancelled : "Cancelled" , 
+          StringManager.ordersHistoryStatusRejected : "Rejected" , 
+          StringManager.ordersHistoryStatusCompleted : "Completed" , 
         },
       };
 }
