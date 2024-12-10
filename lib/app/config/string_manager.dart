@@ -100,6 +100,8 @@ class StringManager {
   static const String ordersHistoryStatusCompleted = "ordersHistoryStatusCompleted";
   static const String ordersHistoryStatusRejected ="ordersHistoryStatusRejected";
   static const String ordersHistoryStatusCancelled = "ordersHistoryStatusCancelled";
+  static const String ordersHistoryStatusPending = "ordersHistoryStatusPending";
+  static const String ordersHistoryStatusDelivering = "ordersHistoryStatusDelivering";
 
   // Track Orders Page
   static const String tarckOrdersHeader = "tarckOrdersHeader";

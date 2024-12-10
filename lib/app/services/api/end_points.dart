@@ -63,8 +63,14 @@ class ApiKey {
   static String notes = "notes";
   //---------------------------------------
   static String date = "date";
+  static String orders = "orders";
+  static String price = "price";
+  static String total = "total";
+  static String count = "count";
+  static String markets = "markets";
+  static String products = "products";
+  static String location_id = "location_id";
   static String total_cost = "total_cost";
   static String status_id = "status_id";
-  static String orders = "orders";
   //---------------------------------------
 }

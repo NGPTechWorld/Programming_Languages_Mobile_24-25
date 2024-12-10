@@ -5,7 +5,7 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/orders_history_page/orders_history_page_logic.dart';
 import 'package:ngpiteapp/screens/orders_history_page/widgets/order_card.dart';
-import 'package:ngpiteapp/screens/orders_history_page/widgets/page_circular_indicator.dart';
+import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';
 
 class OrdersList extends GetView<OrdersHistoryPageController> {
   const OrdersList({

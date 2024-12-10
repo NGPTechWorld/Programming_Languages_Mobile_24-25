@@ -17,19 +17,6 @@ class OrdersHistoryBinding extends Bindings {
   }
 }
 
-class Order {
-  final String date;
-  final String status;
-  final int price;
-  final int id;
-
-  Order(
-      {required this.date,
-      required this.status,
-      required this.price,
-      required this.id});
-}
-
 class OrdersHistoryPageController extends GetxController {
   final OrdersRepositories = Get.find<ImpOrdersRepositories>();
   final netCheck = Get.find<NetworkInfoImpl>();
@@ -53,6 +40,8 @@ class OrdersHistoryPageController extends GetxController {
       if (responseCompleted.success &&
           responseCanceled.success &&
           responseRejected.success) {
+
+            // TODO : Check whether to reverse them or not 
         completedOrders.addAll(responseCompleted.data);
         incompletedOrders.addAll(responseRejected.data);
         incompletedOrders.addAll(responseCanceled.data);

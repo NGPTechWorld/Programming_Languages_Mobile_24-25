@@ -8,6 +8,43 @@ class OrderDetailsBinding extends Bindings {
   }
 }
 
+class Order {
+  final String status;
+  final int id;
+  final String date;
+  final String address;
+  final double totalPrice;
+  final List<Market> markets;
+
+  Order(
+      {required this.status,
+      required this.id,
+      required this.date,
+      required this.address,
+      required this.totalPrice,
+      required this.markets});
+}
+
+class Market {
+  final String name;
+  final List<Product> products;
+
+  Market({required this.name, required this.products});
+}
+
+class Product {
+  final String name;
+  final int count;
+  final int unitPrice;
+  final int totalPrice;
+
+  Product(
+      {required this.name,
+      required this.count,
+      required this.unitPrice,
+      required this.totalPrice});
+}
+
 class OrderDetailsPageController extends GetxController {
   late Order order;
 

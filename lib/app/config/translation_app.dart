@@ -126,6 +126,8 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryStatusCancelled : "ملغى" , 
           StringManager.ordersHistoryStatusRejected : "مرفوض" , 
           StringManager.ordersHistoryStatusCompleted : "منجز" , 
+          StringManager.ordersHistoryStatusPending : "معلق" , 
+          StringManager.ordersHistoryStatusDelivering : "قيد التوصيل" ,
         },
         "en": {
           //Sign Up
@@ -250,7 +252,9 @@ class TranslationApp implements Translations {
           StringManager.orderDetailsSyrianPounds: "SP",
           StringManager.ordersHistoryStatusCancelled : "Cancelled" , 
           StringManager.ordersHistoryStatusRejected : "Rejected" , 
-          StringManager.ordersHistoryStatusCompleted : "Completed" , 
+          StringManager.ordersHistoryStatusCompleted : "Completed" ,  
+          StringManager.ordersHistoryStatusPending : "Pending" , 
+          StringManager.ordersHistoryStatusDelivering : "Delivering" , 
         },
       };
 }

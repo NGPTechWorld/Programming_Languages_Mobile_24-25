@@ -10,11 +10,14 @@ class PageCircularIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: AppSizeScreen.screenHeight / 3),
-        CircularProgressIndicator(
-          color: ColorManager.firstColor,
+        Center(
+          child: CircularProgressIndicator(
+            color: ColorManager.firstColor,
+          ),
         ),
         SizedBox(height: AppSizeScreen.screenHeight / 3),
       ],

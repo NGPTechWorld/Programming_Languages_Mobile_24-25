@@ -18,7 +18,7 @@ class StatusLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color color = getColor();
     return Container(
-      width: AppSizeScreen.screenWidth * 0.25,
+      width: AppSize.s100,
       padding: EdgeInsets.only(
           left: AppPadding.p10,
           right: AppPadding.p10,
