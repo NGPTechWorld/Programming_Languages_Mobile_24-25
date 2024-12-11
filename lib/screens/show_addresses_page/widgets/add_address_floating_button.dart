@@ -17,7 +17,7 @@ class AddAddressFloatingButton extends GetView<ShowAddressesController> {
       padding: EdgeInsets.symmetric(horizontal: AppPadding.p16),
       child: DefaultButton(
           text: StringManager.showAddressesAddLocationButton.tr,
-          press: controller.addAddress,
+          press:() => controller.addAddress(context),
           style: StyleManager.body01_Medium(
               color: ColorManager.whiteColor, fontsize: AppSize.s18)),
     );

@@ -4,7 +4,6 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/screens/order_details_page/order_details_page_logic.dart';
 import 'package:ngpiteapp/screens/order_details_page/widgets/flex_label.dart';
-import 'package:ngpiteapp/screens/track_orders_page/track_orders_page_logic.dart';
 
 class MarketCard extends GetView<OrderDetailsPageController> {
   const MarketCard({super.key, required this.marketIndex});

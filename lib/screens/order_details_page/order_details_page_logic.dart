@@ -24,8 +24,8 @@ class OrderDetailsPageController extends GetxController {
   void requestOrderData(int id, int stautsId, BuildContext context) async {
     this.orderId = id;
     this.statusId = stautsId;
+    loadingState.value = LoadingState.loading;
     if (await netCheck.isConnected) {
-      loadingState.value = LoadingState.loading;
       final response = await OrdersRepositories.getOrder(id: id);
      
       if (response.success) {

@@ -39,7 +39,7 @@ class ImpOrdersRepositories implements OrdersRepositories {
   }
 
   List<OrderCardEntite> parseOrders(String jsonString) {
-    final Map<String, dynamic> decodedJson = json.decode(jsonString);
+    final Map<String, dynamic> decodedJson = jsonDecode(jsonString);
 
     final List<dynamic> ordersJson = decodedJson[ApiKey.orders];
 

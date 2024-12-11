@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/color_manager.dart';
-import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/orders_history_page/orders_history_page_logic.dart';
 import 'package:ngpiteapp/screens/orders_history_page/widgets/order_card.dart';

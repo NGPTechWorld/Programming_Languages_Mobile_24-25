@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/data/enums/order_status_enum.dart';
 import 'package:ngpiteapp/data/repositories/orders_repositories.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/order_details_page/order_details_page.dart';
@@ -22,13 +23,30 @@ class TrackOrdersPageController extends GetxController {
   var loadingState = LoadingState.idle.obs;
 
   getOrders(BuildContext context) async {
+    loadingState.value = LoadingState.loading;
     if (await netCheck.isConnected) {
-      loadingState.value = LoadingState.loading;
-      final response = await OrdersRepositories.getOrders();
-      if (response.success) {
+      final responsePending = await OrdersRepositories.getOrdersByStatus(
+          status: statusID[OrderStatusEnum.pending]!);
+      final responseDelivering = await OrdersRepositories.getOrdersByStatus(
+          status: statusID[OrderStatusEnum.delivering]!);
+
+      if (responsePending.success && responseDelivering.success) {
         loadingState.value = LoadingState.doneWithData;
-        orders.addAll(response.data.reversed);
+        orders.addAll(responsePending.data.reversed);
+        orders.addAll(responseDelivering.data.reversed);
       } else {
+        String msg = "Error! \n";
+        if (responsePending.networkFailure != null)
+          msg +=
+              "\nPending Orders : " + responsePending.networkFailure!.message;
+        if (responseDelivering.networkFailure != null)
+          msg += "\nDelivering Orders : " +
+              responseDelivering.networkFailure!.message;
+
+        SnackBarCustom.show(context, msg);
+        loadingState.value = LoadingState.hasError;
+        SnackBarCustom.show(context, msg);
+        loadingState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
@@ -36,8 +54,12 @@ class TrackOrdersPageController extends GetxController {
     }
   }
 
-  void onTap(int id , int statusid) {
-    Get.to(() => OrderDetailsPage(orderId:id , statusId: statusid,),
+  void onTap(int id, int statusid) {
+    Get.to(
+        () => OrderDetailsPage(
+              orderId: id,
+              statusId: statusid,
+            ),
         binding: OrderDetailsBinding());
   }
 

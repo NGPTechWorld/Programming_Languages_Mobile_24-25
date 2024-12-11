@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
+import 'package:ngpiteapp/screens/show_addresses_page/show_addresses_page_logic.dart';
 import 'package:ngpiteapp/screens/show_addresses_page/widgets/add_address_floating_button.dart';
 import 'package:ngpiteapp/screens/show_addresses_page/widgets/addresses_list.dart';
 
-class ShowAddressesPage extends StatelessWidget {
+class ShowAddressesPage extends GetView<ShowAddressesController> {
   @override
   Widget build(BuildContext context) {
+    controller.getAddresses(context);
     return SafeArea(
       child: Scaffold(
         appBar: appBar(),

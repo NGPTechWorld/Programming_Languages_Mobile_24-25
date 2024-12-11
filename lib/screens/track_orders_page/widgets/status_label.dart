@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/color_manager.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/enums/order_status_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/status_helper.dart';
 
 class StatusLabel extends StatelessWidget {

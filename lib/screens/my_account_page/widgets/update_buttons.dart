@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/custom_widgets/default_button.dart';
-import 'package:ngpiteapp/screens/custom_widgets/default_button_reverse.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 
 class UpdateButtons extends GetView<MyAccountController> {

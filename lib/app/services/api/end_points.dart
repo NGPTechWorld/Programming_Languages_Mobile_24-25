@@ -72,5 +72,6 @@ class ApiKey {
   static String location_name = "location_name";
   static String total_cost = "total_cost";
   static String status_id = "status_id";
+  static String locations = "locations";
   //---------------------------------------
 }

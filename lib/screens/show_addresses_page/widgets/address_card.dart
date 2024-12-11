@@ -18,7 +18,7 @@ class AddressCard extends GetView<ShowAddressesController> {
 
   @override
   Widget build(BuildContext context) {
-    final TempAddress address = controller.addresses[index];
+    final address = controller.addresses[index];
     return Column(
       children: [
         Card(
@@ -47,7 +47,7 @@ class AddressCard extends GetView<ShowAddressesController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  address.location,
+                  address.address,
                   style: StyleManager.body01_Medium(),
                 ),
                 Text(
@@ -63,17 +63,20 @@ class AddressCard extends GetView<ShowAddressesController> {
             leading: SvgPicture.asset(AssetsManager.markerSvg),
             trailing: IconButton(
               icon: const Icon(Icons.delete, color: ColorManager.firstColor),
-              onPressed: () => _showDeleteDialog(index),
+              onPressed: () => _showDeleteDialog(index, context),
             ),
-            onLongPress: () => _showDeleteDialog(index),
+            onLongPress: () => _showDeleteDialog(index, context),
           ),
         ),
-        if(index==controller.addresses.length-1) SizedBox(height: AppSize.s70,)
+        if (index == controller.addresses.length - 1)
+          SizedBox(
+            height: AppSize.s70,
+          )
       ],
     );
   }
 
-  void _showDeleteDialog(int index) async {
+  void _showDeleteDialog(int index, BuildContext context) async {
     await Get.defaultDialog(
       title: StringManager.showAddressesDeleteDialogTitle.tr,
       middleText: StringManager.showAddressesDeleteDialogText.tr,
@@ -91,7 +94,7 @@ class AddressCard extends GetView<ShowAddressesController> {
       ),
       confirm: MaterialButton(
         onPressed: () {
-          controller.deleteAddress(index);
+          controller.deleteAddress(index, context);
           Get.back();
         },
         elevation: 0.0,

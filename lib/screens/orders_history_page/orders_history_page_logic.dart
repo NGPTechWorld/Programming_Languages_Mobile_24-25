@@ -27,8 +27,8 @@ class OrdersHistoryPageController extends GetxController {
   final completedOrders = [].obs;
   final incompletedOrders = [].obs;
   getOrders(BuildContext context) async {
-    if (await netCheck.isConnected) {
       loadingState.value = LoadingState.loading;
+    if (await netCheck.isConnected) {
       final responseCompleted = await OrdersRepositories.getOrdersByStatus(
           status: statusID[OrderStatusEnum.completed]!);
 
