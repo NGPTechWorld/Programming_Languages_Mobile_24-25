@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/screens/order_details_page/order_details_page.dart';
+import 'package:ngpiteapp/screens/custom_widgets/status_helper.dart';
 import 'package:ngpiteapp/screens/order_details_page/order_details_page_logic.dart';
 import 'package:ngpiteapp/screens/order_details_page/widgets/info_row.dart';
-import 'package:ngpiteapp/screens/track_orders_page/track_orders_page_logic.dart';
 
 class OrderInfo extends GetView<OrderDetailsPageController> {
   const OrderInfo({
@@ -13,19 +12,19 @@ class OrderInfo extends GetView<OrderDetailsPageController> {
 
   @override
   Widget build(BuildContext context) {
-    final Order order = controller.order;
+    final order = controller.order.value;
     return Column(
       children: [
         InfoRow(
-            leading: StringManager.orderDetailsId.tr, content: '${order.id}'),
+            leading: StringManager.orderDetailsId.tr, content: ' ${controller.orderId}'),
         InfoRow(
             leading: StringManager.orderDetailsStatus.tr,
-            content: order.status),
+            content: StatusHelper.getStatusText(controller.statusId)),
         InfoRow(
-            leading: StringManager.orderDetailsDate.tr, content: order.date),
+            leading: StringManager.orderDetailsDate.tr, content: order?.date ?? 'N/A'),
         InfoRow(
             leading: StringManager.orderDetailsAddress.tr,
-            content: order.address),
+            content: order?.address  ?? 'N/A'),
         Divider(
           thickness: 2,
         ),

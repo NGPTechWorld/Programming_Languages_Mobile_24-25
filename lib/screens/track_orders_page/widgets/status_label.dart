@@ -5,6 +5,7 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/order_status_enum.dart';
+import 'package:ngpiteapp/screens/custom_widgets/status_helper.dart';
 
 class StatusLabel extends StatelessWidget {
   const StatusLabel({
@@ -16,7 +17,7 @@ class StatusLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color color = getColor();
+    final Color color = StatusHelper.getStatusColor(statusId);
     return Container(
       width: AppSize.s100,
       padding: EdgeInsets.only(
@@ -29,35 +30,10 @@ class StatusLabel extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSize.s12),
       ),
       child: Text(
-        getStatusText(),
+        StatusHelper.getStatusText(statusId),
         textAlign: TextAlign.center,
         style: StyleManager.body02_Regular(color: color),
       ),
     );
-  }
-
-  Color getColor() {
-    if (statusID[OrderStatusEnum.completed] == statusId)
-      return ColorManager.secoundColor;
-    else if (statusID[OrderStatusEnum.rejected] == statusId ||
-        statusID[OrderStatusEnum.cancelled] == statusId)
-      return ColorManager.redColor;
-    else
-      return ColorManager.middileColor;
-  }
-
-  String getStatusText() {
-    if (statusID[OrderStatusEnum.completed] == statusId)
-      return StringManager.ordersHistoryStatusCompleted.tr;
-    else if (statusID[OrderStatusEnum.cancelled] == statusId)
-      return StringManager.ordersHistoryStatusCancelled.tr;
-    else if (statusID[OrderStatusEnum.rejected] == statusId)
-      return StringManager.ordersHistoryStatusRejected.tr;
-    else if (statusID[OrderStatusEnum.pending] == statusId)
-      return StringManager.ordersHistoryStatusPending.tr;
-    else if (statusID[OrderStatusEnum.delivering] == statusId)
-      return StringManager.ordersHistoryStatusDelivering.tr;
-
-    return "Unkown status";
   }
 }

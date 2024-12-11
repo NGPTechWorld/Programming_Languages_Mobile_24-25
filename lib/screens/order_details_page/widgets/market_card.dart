@@ -11,11 +11,11 @@ class MarketCard extends GetView<OrderDetailsPageController> {
   final marketIndex;
   @override
   Widget build(BuildContext context) {
-    final market = controller.order.markets[marketIndex];
+    final market = controller.order.value?.markets[marketIndex];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(market.name, style: StyleManager.body01_Semibold()),
+        Text(market?.name ?? 'N/A', style: StyleManager.body01_Semibold()),
         Row(
           // mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,6 +38,7 @@ class MarketCard extends GetView<OrderDetailsPageController> {
             ),
           ],
         ),
+        if(market!=null)
         ...market.products.map((product) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -51,13 +52,14 @@ class MarketCard extends GetView<OrderDetailsPageController> {
                   isFirst: true,
                 ),
                 FlexLabel(text: "${product.count}"),
-                FlexLabel(text: " ${product.unitPrice}"),
-                FlexLabel(text: "${product.totalPrice}"),
+                FlexLabel(text: "${product.price}"),
+                FlexLabel(text: "${product.total}"),
               ],
             ),
           );
         }).toList(),
-        if(marketIndex!=controller.order.markets.length-1)
+        if(market!=null)
+        if(marketIndex!=controller.order.value!.markets.length-1)
         const Divider(),
       ],
     );

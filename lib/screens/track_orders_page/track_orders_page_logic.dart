@@ -25,7 +25,6 @@ class TrackOrdersPageController extends GetxController {
     if (await netCheck.isConnected) {
       loadingState.value = LoadingState.loading;
       final response = await OrdersRepositories.getOrders();
-      print(response.data);
       if (response.success) {
         loadingState.value = LoadingState.doneWithData;
         orders.addAll(response.data.reversed);
@@ -37,8 +36,8 @@ class TrackOrdersPageController extends GetxController {
     }
   }
 
-  void onTap(int id) {
-    Get.to(() => OrderDetailsPage(id:id),
+  void onTap(int id , int statusid) {
+    Get.to(() => OrderDetailsPage(orderId:id , statusId: statusid,),
         binding: OrderDetailsBinding());
   }
 

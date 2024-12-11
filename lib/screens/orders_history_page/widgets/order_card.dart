@@ -29,12 +29,15 @@ class OrderCard extends GetView<OrdersHistoryPageController> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('${order.totalPrice}' + StringManager.orderDetailsSyrianPounds.tr, style: StyleManager.body02_Semibold()),
+            Text(
+                '${order.totalPrice}' +
+                    StringManager.orderDetailsSyrianPounds.tr,
+                style: StyleManager.body02_Semibold()),
             Text(order.date),
           ],
         ),
         trailing: StatusLabel(statusId: order.statusId),
-        onTap: () => controller.onTap(order.id),
+        onTap: () => controller.onTap(order.id, order.statusId),
       ),
     );
   }

@@ -70,7 +70,7 @@ class OrdersHistoryPageController extends GetxController {
   List get orders =>
       isCompletedSelected.value ? completedOrders : incompletedOrders;
 
-  void onTap(int id) {
-    Get.to(() => OrderDetailsPage(id: id), binding: OrderDetailsBinding());
+  void onTap(int id , int stautsId) {
+    Get.to(() => OrderDetailsPage(orderId: id , statusId: stautsId,), binding: OrderDetailsBinding());
   }
 }

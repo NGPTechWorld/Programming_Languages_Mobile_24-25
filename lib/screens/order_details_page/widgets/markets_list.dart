@@ -11,11 +11,13 @@ class MarketsList extends GetView<OrderDetailsPageController> {
 
   @override
   Widget build(BuildContext context) {
-    final Order order = controller.order;
-    return Column(
-        children: List.generate(
-      order.markets.length,
-      (marketIndex) => MarketCard(marketIndex: marketIndex),
-    ));
+    final order = controller.order.value;
+    if (order != null)
+      return Column(
+          children: List.generate(
+        order.markets.length,
+        (marketIndex) => MarketCard(marketIndex: marketIndex),
+      ));
+    return Container();
   }
 }

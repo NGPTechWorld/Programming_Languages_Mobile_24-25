@@ -63,7 +63,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
             ),
           ],
         ),
-        onTap: () => controller.onTap(order.id),
+        onTap: () => controller.onTap(order.id , order.statusId),
       ),
     );
   }

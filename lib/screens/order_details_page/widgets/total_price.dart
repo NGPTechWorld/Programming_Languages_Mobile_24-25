@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/screens/order_details_page/order_details_page_logic.dart';
-import 'package:ngpiteapp/screens/track_orders_page/track_orders_page_logic.dart';
 
 class TotalPrice extends GetView<OrderDetailsPageController> {
   const TotalPrice({
@@ -12,7 +11,7 @@ class TotalPrice extends GetView<OrderDetailsPageController> {
 
   @override
   Widget build(BuildContext context) {
-    final Order order = controller.order;
+    final order = controller.order.value;
     return Column(
       children: [
         const Divider(
@@ -26,7 +25,7 @@ class TotalPrice extends GetView<OrderDetailsPageController> {
               style: StyleManager.body01_Semibold(),
             ),
             Text(
-              "${order.totalPrice} " +
+              "${order?.price ?? 'N/A'} " +
                   StringManager.orderDetailsSyrianPounds.tr,
               style: StyleManager.body01_Semibold(),
             ),
