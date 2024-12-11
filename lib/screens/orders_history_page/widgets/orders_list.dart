@@ -15,7 +15,7 @@ class OrdersList extends GetView<OrdersHistoryPageController> {
     return Obx(() {
       switch (controller.loadingState.value) {
         case LoadingState.loading:
-         return PageCircularIndicator();
+         return PageCircularIndicator(hasHeader: true,);
         case LoadingState.doneWithData:
           return Column(
               children: List.generate(

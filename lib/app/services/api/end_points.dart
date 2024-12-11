@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.10:8000/api";
+  static const String baserUrl = "http://192.168.1.2:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -74,5 +74,9 @@ class ApiKey {
   static String total_cost = "total_cost";
   static String status_id = "status_id";
   static String locations = "locations";
+  static String old_password = "old_password";
+  static String new_password = "new_password";
+  static String new_password_confirmation = "new_password_confirmation";
+
   //---------------------------------------
 }

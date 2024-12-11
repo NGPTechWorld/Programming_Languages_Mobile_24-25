@@ -190,7 +190,6 @@ class ImpUsersRepositories implements UsersRepositories {
     } on ErrorHandler catch (e) {
       response.networkFailure = e.failure;
     }
-    print(response.data);
     return response;
   }
 
@@ -210,9 +209,25 @@ class ImpUsersRepositories implements UsersRepositories {
   Future<AppResponse> resetPassword(
       {required String old_password,
       required String new_password,
-      required String new_password_confirmation}) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
+      required String new_password_confirmation}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.resetPassword,
+          method: Method.put,
+          requiredToken: true,
+          params: {
+            ApiKey.old_password: old_password,
+            ApiKey.new_password: new_password,
+            ApiKey.new_password_confirmation: new_password_confirmation,
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override

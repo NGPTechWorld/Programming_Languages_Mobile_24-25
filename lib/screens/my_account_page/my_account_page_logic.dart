@@ -27,6 +27,7 @@ class MyAccountController extends GetxController {
   final userRepo = Get.find<ImpUsersRepositories>();
   final netCheck = Get.find<NetworkInfoImpl>();
   var loadingState = LoadingState.idle.obs;
+  var editingState = LoadingState.idle.obs;
 
   void getUser(BuildContext context) async {
     loadingState.value = LoadingState.loading;
@@ -42,6 +43,7 @@ class MyAccountController extends GetxController {
         phoneFieldControllor.setInitValue(user.value!.phone);
       } else {
         user.value = null;
+        loadingState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
@@ -57,19 +59,33 @@ class MyAccountController extends GetxController {
     passwordController.turnOffVisible();
   }
 
-  void updateValues(BuildContext context) async {
-    loadingState.value = LoadingState.loading;
+  Future<bool> updateValues(BuildContext context) async {
+    editingState.value = LoadingState.loading;
     if (await netCheck.isConnected) {
+      if (passwordController.isChanged()) {
+        final response = await userRepo.resetPassword(
+            old_password: passwordController.oldPasswordController.getText(),
+            new_password: passwordController.newPasswordController.getText(),
+            new_password_confirmation:
+                passwordController.confirmPasswordController.getText());
+        if (response.success) {
+          SnackBarCustom.show(context, StringManager.myAccountUserUpdated.tr);
+          // editingState.value = LoadingState.doneWithData;
+        } else {
+          SnackBarCustom.show(context, response.networkFailure!.message);
+          editingState.value = LoadingState.hasError;
+          return false;
+        }
+      }
       final response = await userRepo.editUser(
         first_name: firstNameFieldControllor.getText(),
         last_name: lastNameFieldControllor.getText(),
         email: emailFieldControllor.getText(),
       );
       if (response.success) {
-
         SnackBarCustom.show(context, StringManager.myAccountUserUpdated.tr);
-        
-        loadingState.value = LoadingState.doneWithData;
+
+        editingState.value = LoadingState.doneWithData;
         user.value!.firstName = response.data.firstName;
         user.value!.lastName = response.data.lastName;
         user.value!.email = response.data.email;
@@ -78,14 +94,14 @@ class MyAccountController extends GetxController {
         emailFieldControllor.initalValue = user.value!.email;
       } else {
         SnackBarCustom.show(context, response.networkFailure!.message);
-        loadingState.value = LoadingState.hasError;
+        editingState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
-      loadingState.value = LoadingState.hasError;
+      editingState.value = LoadingState.hasError;
     }
-
     resetValues();
+    return true;
   }
 
   bool isChanged() {

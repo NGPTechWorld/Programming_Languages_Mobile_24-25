@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 
 class UpdateButtons extends GetView<MyAccountController> {
@@ -33,16 +34,27 @@ class UpdateButtons extends GetView<MyAccountController> {
                 SizedBox(width: AppSize.s10),
                 MaterialButton(
                   onPressed: () {
-                    controller.updateValues(context ); // Send data to backend
+                    controller.updateValues(context); // Send data to backend
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppSize.s20)),
                   color: ColorManager.firstColor,
                   elevation: 0.0,
-                  child: Text(
-                    StringManager.myAccountUpdate.tr,
-                    style: TextStyle(color: ColorManager.whiteColor),
-                  ),
+                  child:
+                      controller.editingState.value == LoadingState.loading
+                          ? SizedBox(
+                            width: AppSize.s20,
+                            height: AppSize.s20,
+                            child: CircularProgressIndicator(
+                                // TODO : Check this Odd width
+                                strokeWidth: AppSize.s3,
+                                color: ColorManager.whiteColor,
+                              ),
+                          )
+                          : Text(
+                              StringManager.myAccountUpdate.tr,
+                              style: TextStyle(color: ColorManager.whiteColor),
+                            ),
                 ),
               ],
             ),
