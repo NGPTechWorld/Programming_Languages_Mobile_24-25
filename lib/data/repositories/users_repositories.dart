@@ -7,7 +7,9 @@ import 'package:ngpiteapp/app/services/api/api_response_model.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
 import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
+import 'package:ngpiteapp/data/entities/edit_user_entitie.dart';
 import 'package:ngpiteapp/data/entities/login_entitie.dart';
+import 'package:ngpiteapp/data/entities/get_user_entitie.dart';
 
 abstract class UsersRepositories {
   Future<AppResponse> register(
@@ -37,7 +39,9 @@ abstract class UsersRepositories {
       required String new_password_confirmation});
 
   Future<AppResponse> editUser(
-      {required String first_name, required String last_name});
+      {required String first_name,
+      required String last_name,
+      required String email});
   Future<AppResponse> refreshToken();
   Future<AppResponse> currentUser();
   Future<AppResponse> getImage();
@@ -141,9 +145,21 @@ class ImpUsersRepositories implements UsersRepositories {
   }
 
   @override
-  Future<AppResponse> currentUser() {
-    // TODO: implement currentUser
-    throw UnimplementedError();
+  Future<AppResponse> currentUser() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.currentUser,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = GetUserEntitie.fromMap(data[ApiKey.user]);
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -154,9 +170,28 @@ class ImpUsersRepositories implements UsersRepositories {
 
   @override
   Future<AppResponse> editUser(
-      {required String first_name, required String last_name}) {
-    // TODO: implement editUser
-    throw UnimplementedError();
+      {required String first_name,
+      required String last_name,
+      required String email}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.editUser,
+          method: Method.put,
+          requiredToken: true,
+          params: {
+            ApiKey.first_name: first_name,
+            ApiKey.last_name: last_name,
+            ApiKey.email: email
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = EditUserEntitie.fromMap(data[ApiKey.user]);
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    print(response.data);
+    return response;
   }
 
   @override

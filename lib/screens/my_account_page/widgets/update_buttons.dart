@@ -33,7 +33,7 @@ class UpdateButtons extends GetView<MyAccountController> {
                 SizedBox(width: AppSize.s10),
                 MaterialButton(
                   onPressed: () {
-                    controller.updateValues(); // Send data to backend
+                    controller.updateValues(context ); // Send data to backend
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppSize.s20)),

@@ -62,6 +62,7 @@ class ApiKey {
   static String street = "street";
   static String notes = "notes";
   //---------------------------------------
+  static String user = "user";
   static String date = "date";
   static String orders = "orders";
   static String price = "price";

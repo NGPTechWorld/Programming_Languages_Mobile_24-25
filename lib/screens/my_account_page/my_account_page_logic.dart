@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
+import 'package:ngpiteapp/app/services/connection/network_info.dart';
+import 'package:ngpiteapp/data/entities/get_user_entitie.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/data/repositories/users_repositories.dart';
+import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page.dart';
 import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page_logic.dart';
 
@@ -10,29 +16,37 @@ class MyAccountBinding extends Bindings {
   }
 }
 
-class TempUser {
-  String firstName = "Ahmad";
-  String lastName = "Hamad";
-  String email = "o@gmail.com";
-  String phone = "0932287131";
-}
-
 class MyAccountController extends GetxController {
-  late TempUser user;
-  late FieldController firstNameFieldControllor;
-  late FieldController lastNameFieldControllor;
-  late FieldController emailFieldControllor;
-  late FieldController phoneFieldControllor;
-  late PasswordController passwordController;
+  final user = Rxn<GetUserEntitie>();
+  final FieldController firstNameFieldControllor = FieldController();
+  final FieldController lastNameFieldControllor = FieldController();
+  final FieldController emailFieldControllor = FieldController();
+  final FieldController phoneFieldControllor = FieldController();
+  final PasswordController passwordController = PasswordController();
   RxBool changed = false.obs;
+  final userRepo = Get.find<ImpUsersRepositories>();
+  final netCheck = Get.find<NetworkInfoImpl>();
+  var loadingState = LoadingState.idle.obs;
 
-  MyAccountController() {
-    user = TempUser();
-    firstNameFieldControllor = FieldController(user.firstName);
-    lastNameFieldControllor = FieldController(user.lastName);
-    emailFieldControllor = FieldController(user.email);
-    phoneFieldControllor = FieldController(user.phone);
-    passwordController = PasswordController();
+  void getUser(BuildContext context) async {
+    loadingState.value = LoadingState.loading;
+    if (await netCheck.isConnected) {
+      final response = await userRepo.currentUser();
+
+      if (response.success) {
+        loadingState.value = LoadingState.doneWithData;
+        user.value = response.data;
+        firstNameFieldControllor.setInitValue(user.value!.firstName);
+        lastNameFieldControllor.setInitValue(user.value!.lastName);
+        emailFieldControllor.setInitValue(user.value!.email);
+        phoneFieldControllor.setInitValue(user.value!.phone);
+      } else {
+        user.value = null;
+      }
+    } else {
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      loadingState.value = LoadingState.hasError;
+    }
   }
 
   void resetValues() {
@@ -40,20 +54,36 @@ class MyAccountController extends GetxController {
     firstNameFieldControllor.reset();
     lastNameFieldControllor.reset();
     emailFieldControllor.reset();
-    phoneFieldControllor.reset();
     passwordController.turnOffVisible();
   }
 
-  void updateValues() {
-    // TODO : check if he changed the email or password;
-    user.firstName = firstNameFieldControllor.getText();
-    user.lastName = lastNameFieldControllor.getText();
-    user.phone = phoneFieldControllor.getText();
-    user.email = emailFieldControllor.getText();
-    firstNameFieldControllor.initalValue = user.firstName;
-    lastNameFieldControllor.initalValue = user.lastName;
-    phoneFieldControllor.initalValue = user.phone;
-    emailFieldControllor.initalValue = user.email;
+  void updateValues(BuildContext context) async {
+    loadingState.value = LoadingState.loading;
+    if (await netCheck.isConnected) {
+      final response = await userRepo.editUser(
+        first_name: firstNameFieldControllor.getText(),
+        last_name: lastNameFieldControllor.getText(),
+        email: emailFieldControllor.getText(),
+      );
+      if (response.success) {
+
+        SnackBarCustom.show(context, StringManager.myAccountUserUpdated.tr);
+        
+        loadingState.value = LoadingState.doneWithData;
+        user.value!.firstName = response.data.firstName;
+        user.value!.lastName = response.data.lastName;
+        user.value!.email = response.data.email;
+        firstNameFieldControllor.initalValue = user.value!.firstName;
+        lastNameFieldControllor.initalValue = user.value!.lastName;
+        emailFieldControllor.initalValue = user.value!.email;
+      } else {
+        SnackBarCustom.show(context, response.networkFailure!.message);
+        loadingState.value = LoadingState.hasError;
+      }
+    } else {
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      loadingState.value = LoadingState.hasError;
+    }
 
     resetValues();
   }
@@ -72,14 +102,14 @@ class MyAccountController extends GetxController {
   }
 
   void showPicture() {
-    // TODO :Go to Upload Picture Page 
+    // TODO :Show the Picture
   }
 }
 
 class PasswordController {
-  FieldController oldPasswordController = FieldController("");
-  FieldController newPasswordController = FieldController("");
-  FieldController confirmPasswordController = FieldController("");
+  FieldController oldPasswordController = FieldController();
+  FieldController newPasswordController = FieldController();
+  FieldController confirmPasswordController = FieldController();
   RxBool visible = false.obs;
   RxBool changed = false.obs;
   void toggleVisible() {
@@ -112,9 +142,10 @@ class FieldController {
   TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
   var isEditing = false.obs;
-  String initalValue;
+  String initalValue = "";
 
-  FieldController(this.initalValue) {
+  void setInitValue(String value) {
+    initalValue = value;
     controller.text = initalValue;
   }
 

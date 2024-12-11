@@ -50,6 +50,7 @@ class StringManager {
   static const String myAccountOldPassword = "myAccountOldPassword";
   static const String myAccountNewPassword = "myAccountNewPassword";
   static const String myAccountConfirmPassword = "myAccountConfirmPassword";
+  static const String myAccountUserUpdated = "myAccountUserUpdated";
   // Location Page
   static const String showAddressesHeader = "showAddressesHeader";
   static const String showAddressesAddLocationButton =

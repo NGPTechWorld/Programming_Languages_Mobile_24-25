@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/services/connection/network_info.dart';
-import 'package:ngpiteapp/data/entities/location_entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
 import 'package:ngpiteapp/screens/address_page/address_page.dart';

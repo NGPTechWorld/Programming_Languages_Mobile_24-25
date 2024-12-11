@@ -5,7 +5,7 @@ class UserEntitie {
   String name;
   String firstName;
   String lastName;
-
+  
 
   UserEntitie({
     required this.name,

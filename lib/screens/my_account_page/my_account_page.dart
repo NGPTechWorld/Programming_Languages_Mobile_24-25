@@ -13,13 +13,14 @@ import 'package:ngpiteapp/screens/my_account_page/widgets/profile_picture.dart';
 class MyAccountPage extends GetView<MyAccountController> {
   @override
   Widget build(BuildContext context) {
+    controller.getUser(context);
     return SafeArea(
       child: Scaffold(
-        appBar: appBar(),
+        appBar: appBar(context),
         body: PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            _handleBackNavigation();
+            _handleBackNavigation(context);
           },
           child: SingleChildScrollView(
             child: Container(
@@ -38,7 +39,7 @@ class MyAccountPage extends GetView<MyAccountController> {
     );
   }
 
-  AppBar appBar() {
+  AppBar appBar(BuildContext context) {
     return AppBar(
       title: Text(
         StringManager.myAccountHeader.tr,
@@ -48,14 +49,14 @@ class MyAccountPage extends GetView<MyAccountController> {
       leading: BackButton(
         color: ColorManager.whiteColor,
         onPressed: () {
-          _handleBackNavigation();
+          _handleBackNavigation(context);
         },
       ),
       centerTitle: true,
     );
   }
 
-  _handleBackNavigation() async {
+  _handleBackNavigation(context) async {
     if (controller.changed.value) {
       final result = await Get.dialog<bool>(
         AlertDialog(
@@ -70,7 +71,7 @@ class MyAccountPage extends GetView<MyAccountController> {
                 Get.back(result: true);
               },
               onOk: () {
-                controller.updateValues();
+                controller.updateValues(context);
                 Get.back(result: true);
               },
             ),
