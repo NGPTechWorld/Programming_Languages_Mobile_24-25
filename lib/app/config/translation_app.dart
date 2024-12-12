@@ -78,7 +78,8 @@ class TranslationApp implements Translations {
           StringManager.myAccountOldPassword: "كلمة المرور القديمة",
           StringManager.myAccountNewPassword: "كلمة المرور الجديدة",
           StringManager.myAccountConfirmPassword: "تأكيد كلمة المرور",
-          StringManager.myAccountUserUpdated: "تم التحديث",
+          StringManager.myAccountUserUpdated: "تم تحديث بيانات المستخدم",
+          StringManager.myAccountPasswordUpdated: "تم التحديث كلمة المرور",
           // Language Dialog
           StringManager.languageDialogTitle: "اللغة",
           // Location Page
@@ -203,7 +204,8 @@ class TranslationApp implements Translations {
           StringManager.myAccountOldPassword: "Old password",
           StringManager.myAccountNewPassword: "New password",
           StringManager.myAccountConfirmPassword: "Confirm new password",
-          StringManager.myAccountUserUpdated: "Updated",
+          StringManager.myAccountUserUpdated: "User updated",
+          StringManager.myAccountPasswordUpdated: "Password updated",
           // Language Dialog
           StringManager.languageDialogTitle: "Language",
 

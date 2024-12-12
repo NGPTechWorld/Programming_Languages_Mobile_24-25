@@ -61,6 +61,7 @@ class MyAccountController extends GetxController {
 
   Future<bool> updateValues(BuildContext context) async {
     editingState.value = LoadingState.loading;
+    String successMessage = "" , failedMessage = "";
     if (await netCheck.isConnected) {
       if (passwordController.isChanged()) {
         final response = await userRepo.resetPassword(
@@ -69,12 +70,10 @@ class MyAccountController extends GetxController {
             new_password_confirmation:
                 passwordController.confirmPasswordController.getText());
         if (response.success) {
-          SnackBarCustom.show(context, StringManager.myAccountUserUpdated.tr);
-          // editingState.value = LoadingState.doneWithData;
+          successMessage += " "+  StringManager.myAccountPasswordUpdated.tr;
         } else {
-          SnackBarCustom.show(context, response.networkFailure!.message);
+          failedMessage += ' ' + response.networkFailure!.message;
           editingState.value = LoadingState.hasError;
-          return false;
         }
       }
       final response = await userRepo.editUser(
@@ -83,8 +82,7 @@ class MyAccountController extends GetxController {
         email: emailFieldControllor.getText(),
       );
       if (response.success) {
-        SnackBarCustom.show(context, StringManager.myAccountUserUpdated.tr);
-
+        successMessage = StringManager.myAccountUserUpdated.tr + successMessage;
         editingState.value = LoadingState.doneWithData;
         user.value!.firstName = response.data.firstName;
         user.value!.lastName = response.data.lastName;
@@ -93,13 +91,15 @@ class MyAccountController extends GetxController {
         lastNameFieldControllor.initalValue = user.value!.lastName;
         emailFieldControllor.initalValue = user.value!.email;
       } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
+        failedMessage +=  response.networkFailure!.message + failedMessage;
         editingState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
       editingState.value = LoadingState.hasError;
     }
+    SnackBarCustom.show(context, successMessage +"\n"+ failedMessage);
+
     resetValues();
     return true;
   }
