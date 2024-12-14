@@ -23,10 +23,11 @@ class MyAccountController extends GetxController {
   final FieldController emailFieldControllor = FieldController();
   final FieldController phoneFieldControllor = FieldController();
   final PasswordController passwordController = PasswordController();
-  RxString imagePath = "".obs;
   RxBool changed = false.obs;
+  RxString imagePath = "".obs;
   final userRepo = Get.find<ImpUsersRepositories>();
   final netCheck = Get.find<NetworkInfoImpl>();
+  var loadingImageState = LoadingState.idle.obs;
   var loadingState = LoadingState.idle.obs;
   var editingState = LoadingState.idle.obs;
 
@@ -122,21 +123,21 @@ class MyAccountController extends GetxController {
     // TODO :Show the Picture
   }
   Future<bool> getPicture(BuildContext context) async {
-    loadingState.value = LoadingState.loading;
+    loadingImageState.value = LoadingState.loading;
     if (await netCheck.isConnected) {
       final response = await userRepo.getImage();
 
       if (response.success) {
-        loadingState.value = LoadingState.doneWithData;
+        loadingImageState.value = LoadingState.doneWithData;
         imagePath.value = response.data ?? "";
         print(response.data);
       } else {
         user.value = null;
-        loadingState.value = LoadingState.hasError;
+        loadingImageState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
-      loadingState.value = LoadingState.hasError;
+      loadingImageState.value = LoadingState.hasError;
     }
     return true;
   }

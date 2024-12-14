@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
+import 'package:ngpiteapp/screens/my_account_page/widgets/image_loading_place_holder.dart';
+
 
 class ProfilePicture extends GetView<MyAccountController> {
   const ProfilePicture({
@@ -23,7 +25,6 @@ class ProfilePicture extends GetView<MyAccountController> {
                   onTap: controller.showPicture,
                   child: Container(
                       // TODO: Check AntiAlias
-                      // TODO: add inkwell to show the image when pressed on it. Dialog maybe ?
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
@@ -31,15 +32,18 @@ class ProfilePicture extends GetView<MyAccountController> {
                       ),
                       height: AppSizeScreen.screenWidth * 0.3,
                       width: AppSizeScreen.screenWidth * 0.3,
-                      child: controller.imagePath.value == ""
-                          ? Image.asset(
-                              AssetsManager.profileDefaultImage,
-                              fit: BoxFit.cover,
-                            )
-                          : Image.network(
-                              controller.imagePath!.value,
-                              fit: BoxFit.cover,
-                            )),
+                      child:
+                          controller.loadingImageState == LoadingState.loading
+                              ? ImageLoadingPlaceHolder()
+                              : Image.network(
+                                  controller.imagePath.value,
+                                  fit: BoxFit.cover,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return ImageLoadingPlaceHolder();
+                                  },
+                                )),
                 ),
                 Positioned(
                   bottom: 0,

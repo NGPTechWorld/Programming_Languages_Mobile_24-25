@@ -20,5 +20,7 @@ class ColorManager {
   static const Color transparentColor = Colors.transparent;
   static const Color textColor = Color(0xff2D4456);
   static const Color greenColor = Color(0xff43aa8b);
+  static Color greyColor100 = Colors.grey.shade100;
+  static Color greyColor300 = Colors.grey.shade300;
   static const Color redColor = Color(0xffc32f27);
 }

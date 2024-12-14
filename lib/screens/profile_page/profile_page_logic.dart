@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
+import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
@@ -26,17 +27,25 @@ class ProfilePageBinding extends Bindings {
 }
 
 class ProfilePageController extends GetxController {
-  
-   var loadingState = LoadingState.idle.obs;
+  var loadingState = LoadingState.idle.obs;
+  var loadingImageState = LoadingState.idle.obs;
+  RxString imagePath = "".obs;
+  RxString name = " ".obs;
+
+
+  final netCheck = Get.find<NetworkInfoImpl>();
   final AuthRepositories = Get.find<ImpUsersRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
+
+  
   myAccountOnTap() {
     Get.to(() => MyAccountPage(), binding: MyAccountBinding());
   }
+
   trackOrderOnTap() {
     Get.to(() => TrackOrdersPage(), binding: TrackOrdersBinding());
-
   }
+
   addressesOnTap() {
     Get.to(() => ShowAddressesPage(), binding: ShowAddressesBinding());
   }
@@ -48,9 +57,37 @@ class ProfilePageController extends GetxController {
   languageOnTap() {
     HelperWidget.languageDialgo();
   }
+   
+   getName(BuildContext context) async {
+    if (await netCheck.isConnected) {
+      final response = await AuthRepositories.userName();
+      if (response.success) {
+        name.value = response.data;
+      } 
+    } else {
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+    }
+    return true;
+  }
+   getPicture(BuildContext context) async {
+    loadingImageState.value = LoadingState.loading;
+    if (await netCheck.isConnected) {
+      final response = await AuthRepositories.getImage();
 
-  String getName() {return "TempName";}
-  
+      if (response.success) {
+        loadingImageState.value = LoadingState.doneWithData;
+        imagePath.value = response.data ?? "";
+        print(response.data);
+      } else {
+        loadingImageState.value = LoadingState.hasError;
+      }
+    } else {
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      loadingImageState.value = LoadingState.hasError;
+    }
+    return true;
+  }
+
   logout(BuildContext context) async {
     loadingState.value = LoadingState.loading;
     showLoadingDialog(context);
@@ -65,4 +102,6 @@ class ProfilePageController extends GetxController {
     }
     Get.offAll(StartPage(), binding: StartPageBinging());
   }
+
+  void showImage() {}
 }

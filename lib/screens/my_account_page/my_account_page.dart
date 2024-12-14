@@ -5,17 +5,20 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
+import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/dialog_buttons.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/update_buttons.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/edit_fields.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/profile_picture.dart';
+
 class MyAccountPage extends GetView<MyAccountController> {
   @override
   Widget build(BuildContext context) {
-    controller.getPicture(context);
     controller.getUser(context);
+    controller.getPicture(context);
     return SafeArea(
       child: Scaffold(
         appBar: appBar(context),
@@ -25,20 +28,22 @@ class MyAccountPage extends GetView<MyAccountController> {
             _handleBackNavigation(context);
           },
           child: SingleChildScrollView(
-            child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
-                child: Obx(
-                  () => controller.loadingState.value == LoadingState.loading
-                      ? PageCircularIndicator()
-                      : Column(
-                          children: [
-                            ProfilePicture(),
-                            EditFields(),
-                            UpdateButtons(),
-                          ],
-                        ),
-                )),
-          ),
+              child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
+            child: Column(
+              children: [
+                ProfilePicture(),
+                Obx(() => controller.loadingState.value == LoadingState.loading
+                    ? PageCircularIndicator()
+                    : Column(
+                        children: [
+                          EditFields(),
+                          UpdateButtons(),
+                        ],
+                      )),
+              ],
+            ),
+          )),
         ),
       ),
     );
@@ -84,10 +89,11 @@ class MyAccountPage extends GetView<MyAccountController> {
         ),
       );
       if (result == true) {
-        Get.back();
+        Get.offAll(()=>CurvedNavigationBarCustom(startIndex: 3),
+            binding: CurvedNavigationBarBinding());
       }
       return;
     }
-    Get.back();
+    Get.offAll(()=>CurvedNavigationBarCustom(startIndex: 3), binding: CurvedNavigationBarBinding());
   }
 }

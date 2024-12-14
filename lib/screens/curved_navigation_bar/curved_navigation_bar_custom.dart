@@ -6,11 +6,12 @@ import '/app/config/color_manager.dart';
 import 'package:get/get.dart';
 
 class CurvedNavigationBarCustom extends GetView<CurvedNavigationBarController> {
-  const CurvedNavigationBarCustom({super.key});
-
+  const CurvedNavigationBarCustom({super.key, this.startIndex = 0});
+  final startIndex;
   @override
   Widget build(BuildContext context) {
     Get.put(ProfilePageController());
+    controller.indexPage.value = startIndex;
     return SafeArea(
       child: Scaffold(
         body: Obx(
