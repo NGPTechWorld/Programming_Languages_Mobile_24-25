@@ -23,6 +23,7 @@ class MyAccountController extends GetxController {
   final FieldController emailFieldControllor = FieldController();
   final FieldController phoneFieldControllor = FieldController();
   final PasswordController passwordController = PasswordController();
+  RxString imagePath = "".obs;
   RxBool changed = false.obs;
   final userRepo = Get.find<ImpUsersRepositories>();
   final netCheck = Get.find<NetworkInfoImpl>();
@@ -61,7 +62,7 @@ class MyAccountController extends GetxController {
 
   Future<bool> updateValues(BuildContext context) async {
     editingState.value = LoadingState.loading;
-    String successMessage = "" , failedMessage = "";
+    String successMessage = "", failedMessage = "";
     if (await netCheck.isConnected) {
       if (passwordController.isChanged()) {
         final response = await userRepo.resetPassword(
@@ -70,7 +71,7 @@ class MyAccountController extends GetxController {
             new_password_confirmation:
                 passwordController.confirmPasswordController.getText());
         if (response.success) {
-          successMessage += " "+  StringManager.myAccountPasswordUpdated.tr;
+          successMessage += " " + StringManager.myAccountPasswordUpdated.tr;
         } else {
           failedMessage += ' ' + response.networkFailure!.message;
           editingState.value = LoadingState.hasError;
@@ -91,14 +92,14 @@ class MyAccountController extends GetxController {
         lastNameFieldControllor.initalValue = user.value!.lastName;
         emailFieldControllor.initalValue = user.value!.email;
       } else {
-        failedMessage +=  response.networkFailure!.message + failedMessage;
+        failedMessage += response.networkFailure!.message + failedMessage;
         editingState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
       editingState.value = LoadingState.hasError;
     }
-    SnackBarCustom.show(context, successMessage +"\n"+ failedMessage);
+    SnackBarCustom.show(context, successMessage + "\n" + failedMessage);
 
     resetValues();
     return true;
@@ -119,6 +120,25 @@ class MyAccountController extends GetxController {
 
   void showPicture() {
     // TODO :Show the Picture
+  }
+  Future<bool> getPicture(BuildContext context) async {
+    loadingState.value = LoadingState.loading;
+    if (await netCheck.isConnected) {
+      final response = await userRepo.getImage();
+
+      if (response.success) {
+        loadingState.value = LoadingState.doneWithData;
+        imagePath.value = response.data ?? "";
+        print(response.data);
+      } else {
+        user.value = null;
+        loadingState.value = LoadingState.hasError;
+      }
+    } else {
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      loadingState.value = LoadingState.hasError;
+    }
+    return true;
   }
 }
 

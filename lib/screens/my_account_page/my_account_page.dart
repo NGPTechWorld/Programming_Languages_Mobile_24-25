@@ -11,10 +11,10 @@ import 'package:ngpiteapp/screens/my_account_page/widgets/dialog_buttons.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/update_buttons.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/edit_fields.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/profile_picture.dart';
-
 class MyAccountPage extends GetView<MyAccountController> {
   @override
   Widget build(BuildContext context) {
+    controller.getPicture(context);
     controller.getUser(context);
     return SafeArea(
       child: Scaffold(

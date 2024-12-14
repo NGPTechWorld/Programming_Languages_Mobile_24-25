@@ -194,9 +194,21 @@ class ImpUsersRepositories implements UsersRepositories {
   }
 
   @override
-  Future<AppResponse> getImage() {
-    // TODO: implement getImage
-    throw UnimplementedError();
+  Future<AppResponse> getImage() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getImage,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.image_path];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
