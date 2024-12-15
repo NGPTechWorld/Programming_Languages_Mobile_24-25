@@ -81,7 +81,7 @@ class MyAccountPage extends GetView<MyAccountController> {
                 Get.back(result: true);
               },
               onOk: () async {
-                final temp = await controller.updateValues(context);
+                await controller.updateValues(context);
                 Get.back(result: true);
               },
             ),

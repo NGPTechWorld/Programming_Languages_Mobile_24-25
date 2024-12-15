@@ -40,21 +40,19 @@ class UpdateButtons extends GetView<MyAccountController> {
                       borderRadius: BorderRadius.circular(AppSize.s20)),
                   color: ColorManager.firstColor,
                   elevation: 0.0,
-                  child:
-                      controller.editingState.value == LoadingState.loading
-                          ? SizedBox(
-                            width: AppSize.s20,
-                            height: AppSize.s20,
-                            child: CircularProgressIndicator(
-                                // TODO : Check this Odd width
-                                strokeWidth: AppSize.s3,
-                                color: ColorManager.whiteColor,
-                              ),
-                          )
-                          : Text(
-                              StringManager.myAccountUpdate.tr,
-                              style: TextStyle(color: ColorManager.whiteColor),
-                            ),
+                  child: controller.editingState.value == LoadingState.loading
+                      ? SizedBox(
+                          width: AppSize.s20,
+                          height: AppSize.s20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: AppSize.s3,
+                            color: ColorManager.whiteColor,
+                          ),
+                        )
+                      : Text(
+                          StringManager.myAccountUpdate.tr,
+                          style: TextStyle(color: ColorManager.whiteColor),
+                        ),
                 ),
               ],
             ),

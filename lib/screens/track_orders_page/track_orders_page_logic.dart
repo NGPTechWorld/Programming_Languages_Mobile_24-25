@@ -45,8 +45,6 @@ class TrackOrdersPageController extends GetxController {
 
         SnackBarCustom.show(context, msg);
         loadingState.value = LoadingState.hasError;
-        SnackBarCustom.show(context, msg);
-        loadingState.value = LoadingState.hasError;
       }
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
@@ -63,18 +61,38 @@ class TrackOrdersPageController extends GetxController {
         binding: OrderDetailsBinding());
   }
 
-  handleMenuSelection(String value, int index) {
+  handleMenuSelection(String value, int index, BuildContext context) async {
     switch (value) {
       case StringManager.trackOrdersMenuEditValue:
-        editOrder(index);
+      await editOrder(index);
         break;
       case StringManager.trackOrdersMenuCancelValue:
-        cancelOrder(index);
+       await cancelOrder(index, context);
         break;
     }
   }
 
-  void cancelOrder(int index) {}
+   cancelOrder(int index, BuildContext context) async {
+    // loadingState.value = LoadingState.loading;
+    if (await netCheck.isConnected) {
+      final response =
+          await OrdersRepositories.cancelOrder(id: orders[index].id);
+      if (response.success) {
+        loadingState.value = LoadingState.doneWithData;
+        orders.removeAt(index);
+        SnackBarCustom.show(context, response.data);
+      } else {
+        SnackBarCustom.show(context, response.networkFailure!.message);
+        loadingState.value = LoadingState.hasError;
+      }
+    } else {
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      loadingState.value = LoadingState.hasError;
+    }
+  }
 
-  void editOrder(int index) {}
+   editOrder(int index) async {
+    // go to edit order page with orders[index].id;
+    print(orders[index].id);
+  }
 }

@@ -144,7 +144,7 @@ class StringManager {
 
   static const recommendedText = "recommendedText";
   static const loading = "loading";
-  // TODO : either seperate them or leave as it
+ 
   // Common in Orders pages
   // Order Details Page
   static const String orderDetailsHeader = "orderDetailsHeader";

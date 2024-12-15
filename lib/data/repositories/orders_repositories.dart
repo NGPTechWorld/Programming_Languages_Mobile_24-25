@@ -12,6 +12,8 @@ abstract class OrdersRepositories {
   Future<AppResponse> getOrdersByStatus({required int status}); // could be enum
   Future<AppResponse> getOrder({required int id}); // could be enum
   Future<AppResponse> getOrders();
+  Future<AppResponse> cancelOrder({required int id});
+  Future<AppResponse> editOrder({required int id});
 }
 
 class ImpOrdersRepositories implements OrdersRepositories {
@@ -81,5 +83,28 @@ class ImpOrdersRepositories implements OrdersRepositories {
       response.networkFailure = e.failure;
     }
     return response;
+  }
+
+  @override
+  Future<AppResponse> cancelOrder({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.cancelOrder + id.toString(),
+          method: Method.put,
+          requiredToken: true);
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
+  }
+
+  @override
+  Future<AppResponse> editOrder({required int id}) {
+    // TODO: implement editOrder
+    throw UnimplementedError();
   }
 }
