@@ -47,6 +47,7 @@ class StringManager {
   static const String myAccountChangePassword = "myAccountChangePassword";
   static const String myAccountChangePasswordCancel =
       "myAccountChangePasswordCancel";
+  static const String myAccountForgotPassword = "myAccountforgotPassword";
   static const String myAccountOldPassword = "myAccountOldPassword";
   static const String myAccountNewPassword = "myAccountNewPassword";
   static const String myAccountConfirmPassword = "myAccountConfirmPassword";
@@ -157,4 +158,11 @@ class StringManager {
   static const String orderDetailsDate = "orderDetailsDate";
   static const String orderDetailsAddress = "orderDetailsAddress";
   static const String orderDetailsSyrianPounds = "orderDetailsSyrianPounds";
+
+  // Forgot passowrd
+  static const String forgotPassowrdHeader = "forgotPassowrdHeader";
+  static const String forgotPassowrdEmailVerificationTitle = "forgotPassowrdEmailVerificationTitle";
+  static const String forgotPassowrdEmailVerificationsubTitle = "forgotPassowrdEmailVerificationsubTitle";
+  static const String forgotPassowrdVerify = "forgotPassowrdVerify";
+  
 }

@@ -89,11 +89,12 @@ class MyAccountPage extends GetView<MyAccountController> {
         ),
       );
       if (result == true) {
-        Get.offAll(()=>CurvedNavigationBarCustom(startIndex: 3),
+        Get.offAll(() => CurvedNavigationBarCustom(startIndex: 3),
             binding: CurvedNavigationBarBinding());
       }
       return;
     }
-    Get.offAll(()=>CurvedNavigationBarCustom(startIndex: 3), binding: CurvedNavigationBarBinding());
+    Get.offAll(() => CurvedNavigationBarCustom(startIndex: 3),
+        binding: CurvedNavigationBarBinding());
   }
 }

@@ -1,13 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
+
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:pinput/pinput.dart';
 
 class PininputCustom extends StatefulWidget {
   final TextEditingController controller;
-  const PininputCustom({super.key, required this.controller});
-
+  const PininputCustom(
+      {super.key, required this.controller});
   @override
   State<PininputCustom> createState() => _PininputCustomState();
 }
@@ -26,7 +28,7 @@ class _PininputCustomState extends State<PininputCustom> {
             height: AppSizeScreen.screenHeight * 0.06,
             width: AppSizeScreen.screenWidth * 0.1,
             decoration: BoxDecoration(
-              color: ColorManager.primary1Color,
+              color: ColorManager.whiteColor,
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: ColorManager.blackColor),
             ),

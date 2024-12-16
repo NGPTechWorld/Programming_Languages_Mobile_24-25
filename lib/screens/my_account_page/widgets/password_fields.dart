@@ -4,6 +4,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
+import 'package:ngpiteapp/screens/my_account_page/controllers/password_controller.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/custom_edit_field.dart';
 
 class PasswordFields extends GetView<MyAccountController> {
