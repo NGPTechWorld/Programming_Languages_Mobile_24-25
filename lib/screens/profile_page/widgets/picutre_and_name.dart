@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/image_loading_place_holder.dart';
@@ -15,7 +16,7 @@ class PicutreAndName extends GetView<ProfilePageController> {
     controller.getPicture(context);
     controller.getName(context);
     return Obx(
-      ()=> Column(
+      () => Column(
         children: [
           GestureDetector(
             onTap: controller.showImage,
@@ -27,8 +28,8 @@ class PicutreAndName extends GetView<ProfilePageController> {
                       BorderRadius.circular(AppSizeScreen.screenWidth * 0.15),
                 ),
                 height: AppSizeScreen.screenWidth * 0.3,
-                width:  AppSizeScreen.screenWidth * 0.3,
-                child:  controller.loadingImageState == LoadingState.loading
+                width: AppSizeScreen.screenWidth * 0.3,
+                child: controller.loadingImageState == LoadingState.loading
                     ? ImageLoadingPlaceHolder()
                     : Image.network(
                         controller.imagePath.value,
@@ -41,7 +42,10 @@ class PicutreAndName extends GetView<ProfilePageController> {
           ),
           Container(
             margin: EdgeInsets.only(top: AppSize.s8),
-            child: Text(controller.name.value),
+            child: Text(
+              controller.name.value,
+              style: StyleManager.h3_Bold(),
+            ),
           ),
           SizedBox(
             height: AppSizeScreen.screenHeight * 0.05,

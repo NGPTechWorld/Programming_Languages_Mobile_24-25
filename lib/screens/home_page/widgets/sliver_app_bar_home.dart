@@ -4,6 +4,7 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/search_bar.dart';
+import 'package:get/get.dart';
 
 class SliverAppBarHome extends StatelessWidget {
   const SliverAppBarHome({super.key});
@@ -23,7 +24,7 @@ class SliverAppBarHome extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              StringManager.homeTitle,
+              StringManager.homeTitle.tr,
               style:
                   StyleManager.h2_Semibold(color: ColorManager.primary1Color),
             ),

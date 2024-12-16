@@ -6,7 +6,7 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/some_item.dart';
-import 'package:ngpiteapp/screens/product_details_screen/product_details_screen.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
 
 class RecommendedList extends StatelessWidget {
   RecommendedList({super.key});
@@ -51,7 +51,7 @@ class ItemRecommended extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppPadding.p10),
       child: InkWell(
         onTap: () {
-          Get.to(ProductDetailsScreen());
+          Get.to(ProductDetailsPage(5));
         },
         child: Container(
           width: AppSizeScreen.screenWidth / 2.9,

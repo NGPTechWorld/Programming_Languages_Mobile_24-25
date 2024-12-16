@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.12:8000/api";
+  static const String baserUrl = "http://192.168.1.111:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -19,6 +19,7 @@ class EndPoints {
   // Locations
   static const String addLocation = "/locations/addLocation";
   static const String getLocations = "/locations/getLocations";
+  static const String getLocation = "/locations/getLocation/"; //{location}
   static const String deleteLocation =
       "/locations/deleteLocation/"; //{location_id}
   // Orders
@@ -39,6 +40,28 @@ class EndPoints {
       "/markets/getMarketsByName/"; //{market_name}
   static const String getProductsForMarket =
       "/markets/getProductsForMarket/"; //{market}
+
+  // Products
+  static const String toggleFavorite = "/products/toggleFavorite/"; //{product}/
+  static const String getFavoriteProducts = "/products/getFavoriteProducts";
+  static const String getProducts = "/products/getProducts";
+  static const String getProductsByCategory =
+      "/products/getProductsByCategory/"; //{category}
+  static const String getProduct = "/products/getProduct/"; //{product}
+  static const String getProductsByName =
+      "/products/getProductsByName/"; //{product_name}
+  static const String getImageProduct = "/products/getImage/"; //{product}
+  // Category
+  static const String getAllCategories = "/categories/getAll";
+  static const String getCategory = "/categories/get/{category}";
+  // Carts
+  static const String addProductInCart = "/carts/addProduct/"; //{product}
+  static const String plusProductOneCart = "/carts/plusProductOne/"; //{product}
+  static const String minusProductOneCart =
+      "/carts/minusProductOne/"; //{product}
+  static const String deleteProductCart = "/carts/deleteProduct/"; //{product}
+  static const String clearCart = "/carts/clearCart";
+  static const String getCart = "/carts/getCart";
 
   static const String test = "";
 }

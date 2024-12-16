@@ -140,8 +140,9 @@ class StringManager {
 
   // Home
   static const String homeTitle = "homeTitle";
+  static const String allProducts = "allProducts";
   static const String storeText = "storeText";
-
+  static const String searchProductsText = "searchProductsText";
   static const recommendedText = "recommendedText";
   static const loading = "loading";
  

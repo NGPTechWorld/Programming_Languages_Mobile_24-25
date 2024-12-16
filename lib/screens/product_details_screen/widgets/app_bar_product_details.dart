@@ -4,23 +4,16 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 
-class SilverAppBarProductDetailsStyle3 extends StatefulWidget {
-  const SilverAppBarProductDetailsStyle3({Key? key}) : super(key: key);
+class AppBarProductDetails extends StatelessWidget {
+  const AppBarProductDetails({super.key});
 
-  @override
-  State<SilverAppBarProductDetailsStyle3> createState() =>
-      _SilverAppBarProductDetailsStyle3State();
-}
-
-class _SilverAppBarProductDetailsStyle3State
-    extends State<SilverAppBarProductDetailsStyle3> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
       floating: false,
       expandedHeight: AppSizeScreen.screenHeight / 4,
-      backgroundColor: ColorManager.whiteColor,
+      backgroundColor: ColorManager.firstColor,
       stretch: true,
       leading: InkWell(
         onTap: () {
@@ -34,7 +27,7 @@ class _SilverAppBarProductDetailsStyle3State
               backgroundColor: ColorManager.primary1Color,
               child: Icon(
                 Icons.arrow_back_ios_new,
-                color: ColorManager.blackColor,
+                color: ColorManager.whiteColor,
                 size: AppSize.s10,
               ),
             ),
@@ -64,17 +57,16 @@ class _SilverAppBarProductDetailsStyle3State
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "category",
-                  style: StyleManager.h1_Regular(
-                      color: ColorManager.blackColor, fontsize: AppSize.s50),
+                  "Product Name",
+                  style: StyleManager.h1_Bold(color: ColorManager.blackColor),
                 ),
               ),
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "Product Name",
-                  style: StyleManager.h1_Bold(
-                      color: ColorManager.blackColor, fontsize: AppSize.s50),
+                  "category",
+                  style:
+                      StyleManager.h1_Regular(color: ColorManager.blackColor),
                 ),
               ),
             ],

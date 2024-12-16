@@ -4,12 +4,18 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:get/get.dart';
+import 'package:ngpiteapp/data/entities/markets_card.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
+import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
-class StoreView extends StatelessWidget {
+class StoreView extends GetView<HomePageController> {
   const StoreView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    controller.getMarkets(context);
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p10),
@@ -18,50 +24,77 @@ class StoreView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringManager.storeText,
+              StringManager.storeText.tr,
               style: StyleManager.body01_Regular(fontsize: AppSize.s30),
             ),
-            SizedBox(
-                height: AppSizeScreen.screenHeight / 6,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(AppPadding.p4),
-                        child: Container(
-                          height: AppSizeWidget.cardSize,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(AppSize.s16),
-                            color: ColorManager.secoundColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(AssetsManager.nullImage),
-                              Container(
-                                constraints: BoxConstraints(
-                                    maxWidth: AppSizeScreen.screenWidth * 0.5),
-                                padding: const EdgeInsets.all(AppPadding.p10),
-                                child: RichText(
-                                    text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                        text: "Store Name",
-                                        style: StyleManager.h2_Medium(
-                                            color: ColorManager.primary1Color)),
-                                  ],
-                                )),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                )),
+            Obx(
+              () => SizedBox(
+                  height: AppSizeScreen.screenHeight / 6,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.loadingStateMarkets ==
+                            LoadingState.doneWithData
+                        ? controller.products.length
+                        : 2,
+                    itemBuilder: (context, index) {
+                      return controller.loadingStateMarkets ==
+                              LoadingState.doneWithData
+                          ? MarkeCardItem(
+                              market: controller.markets[index],
+                            )
+                          : ShimmerPlaceholder(
+                              height: AppSizeWidget.cardSize,
+                              width: AppSizeScreen.screenWidth * 0.7,
+                            );
+                    },
+                  )),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class MarkeCardItem extends StatelessWidget {
+  final MarketsCard market;
+  const MarkeCardItem({
+    super.key,
+    required this.market,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(AppPadding.p4),
+        child: Container(
+          height: AppSizeWidget.cardSize,
+          width: AppSizeScreen.screenWidth * 0.7,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppSize.s16),
+            color: ColorManager.secoundColor,
+          ),
+          child: Row(
+            children: [
+              Image.asset(AssetsManager.nullImage),
+              Container(
+                constraints:
+                    BoxConstraints(maxWidth: AppSizeScreen.screenWidth * 0.5),
+                padding: const EdgeInsets.all(AppPadding.p10),
+                child: RichText(
+                    text: TextSpan(
+                  children: [
+                    TextSpan(
+                        text: market.name,
+                        style: StyleManager.h2_Medium(
+                            color: ColorManager.primary1Color)),
+                  ],
+                )),
+              ),
+            ],
+          ),
         ),
       ),
     );

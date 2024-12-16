@@ -4,7 +4,7 @@ import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/product_details_screen/product_details_screen.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
 
 class CategorysProducts extends StatelessWidget {
   const CategorysProducts({super.key});
@@ -29,7 +29,7 @@ class CategorysProducts extends StatelessWidget {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    Get.to(ProductDetailsScreen());
+                    Get.to(ProductDetailsPage(1));
                   },
                   child: CategoryProductCard(),
                 );
@@ -65,8 +65,7 @@ class CategoryProductCard extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: AppPadding.p30,
-                  horizontal: AppPadding.p20),
+                  vertical: AppPadding.p30, horizontal: AppPadding.p20),
               child: Image.asset(
                 AssetsManager.nullImage,
                 width: AppSizeScreen.screenHeight / 8,
@@ -96,8 +95,7 @@ class CategoryProductCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(

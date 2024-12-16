@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:get/get.dart';
 
 class SearchTextBar extends StatelessWidget {
   const SearchTextBar({super.key});
@@ -20,7 +22,7 @@ class SearchTextBar extends StatelessWidget {
             color: ColorManager.whiteColor,
           ),
         ),
-        hintText: " Search Products",
+        hintText: StringManager.searchProductsText.tr,
         hintStyle:
             StyleManager.body02_Medium(color: ColorManager.primary1Color),
         filled: true,
