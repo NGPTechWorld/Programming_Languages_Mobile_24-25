@@ -3,48 +3,35 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
-class AppBarProductDetails extends StatelessWidget {
+class AppBarProductDetails extends GetView<ProductDetailsPageController> {
   const AppBarProductDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      pinned: true,
+      pinned: false,
       floating: false,
-      expandedHeight: AppSizeScreen.screenHeight / 4,
-      backgroundColor: ColorManager.firstColor,
+      expandedHeight: AppSizeScreen.screenHeight / 5,
+      backgroundColor: ColorManager.whiteColor,
       stretch: true,
       leading: InkWell(
         onTap: () {
           Get.back();
         },
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
           child: Center(
             child: CircleAvatar(
               radius: AppSize.s30,
-              backgroundColor: ColorManager.primary1Color,
+              backgroundColor: ColorManager.whiteColor,
               child: Icon(
                 Icons.arrow_back_ios_new,
-                color: ColorManager.whiteColor,
-                size: AppSize.s10,
+                color: ColorManager.blackColor,
+                size: AppSize.s16,
               ),
             ),
           ),
-        ),
-      ),
-      title: Padding(
-        padding: const EdgeInsets.only(top: AppPadding.p10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "",
-              style:
-                  StyleManager.h2_Semibold(color: ColorManager.primary1Color),
-            ),
-          ],
         ),
       ),
       flexibleSpace: SingleChildScrollView(
@@ -57,7 +44,7 @@ class AppBarProductDetails extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "Product Name",
+                  controller.product!.name,
                   style: StyleManager.h1_Bold(color: ColorManager.blackColor),
                 ),
               ),
@@ -66,7 +53,7 @@ class AppBarProductDetails extends StatelessWidget {
                 child: Text(
                   "category",
                   style:
-                      StyleManager.h1_Regular(color: ColorManager.blackColor),
+                      StyleManager.h3_Regular(color: ColorManager.blackColor),
                 ),
               ),
             ],

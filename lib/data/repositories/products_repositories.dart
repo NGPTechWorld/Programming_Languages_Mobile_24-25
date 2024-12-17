@@ -100,8 +100,20 @@ class ImpProductsRepositories implements ProductsRepositories {
   }
 
   @override
-  Future<AppResponse> toggleFavorite({required String id}) {
-    // TODO: implement toggleFavorite
-    throw UnimplementedError();
+  Future<AppResponse> toggleFavorite({required String id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.toggleFavorite + id + "/",
+          method: Method.post,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 }

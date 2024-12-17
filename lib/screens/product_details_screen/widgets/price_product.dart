@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
-class PriceProduct extends StatelessWidget {
+class PriceProduct extends GetView<ProductDetailsPageController> {
   const PriceProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: AppPadding.p16),
+      padding: const EdgeInsets.symmetric(vertical: AppPadding.p16),
       child: Row(
         children: [
           RichText(
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: "Price",
+                    text: controller.product!.price.toString(),
                     style: StyleManager.h1_Bold(
-                      fontsize: AppSize.s16,
-                      color: ColorManager.firstColor,
+                      color: ColorManager.firstDarkColor,
                     )),
                 TextSpan(
-                    text: "/ quantity",
+                    text: " " + StringManager.orderDetailsSyrianPounds.tr,
                     style: StyleManager.body01_Regular(
-                      color: ColorManager.firstColor,
+                      color: ColorManager.firstDarkColor,
                     )),
               ],
             ),

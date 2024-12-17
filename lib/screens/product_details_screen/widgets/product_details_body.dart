@@ -27,19 +27,17 @@ class ProductDetailsBody extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  ImagAndFavorite(
-                    
-                  ),
+                  ImagAndFavorite(),
                   PriceProduct(),
                   TextPanelDetails(),
                   const SizedBox(height: AppSize.s20),
-                  ButtonProduct(),
                 ],
               ),
             ),
           ),
         ),
       ),
+      bottomNavigationBar: ButtonProduct(),
     );
   }
 }

@@ -34,7 +34,7 @@ class StoreView extends GetView<HomePageController> {
                     scrollDirection: Axis.horizontal,
                     itemCount: controller.loadingStateMarkets ==
                             LoadingState.doneWithData
-                        ? controller.products.length
+                        ? controller.markets.length
                         : 2,
                     itemBuilder: (context, index) {
                       return controller.loadingStateMarkets ==
@@ -71,7 +71,7 @@ class MarkeCardItem extends StatelessWidget {
         padding: const EdgeInsets.all(AppPadding.p4),
         child: Container(
           height: AppSizeWidget.cardSize,
-          width: AppSizeScreen.screenWidth * 0.7,
+          //width: AppSizeScreen.screenWidth * 0.7,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s16),
             color: ColorManager.secoundColor,
@@ -83,15 +83,12 @@ class MarkeCardItem extends StatelessWidget {
                 constraints:
                     BoxConstraints(maxWidth: AppSizeScreen.screenWidth * 0.5),
                 padding: const EdgeInsets.all(AppPadding.p10),
-                child: RichText(
-                    text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: market.name,
-                        style: StyleManager.h2_Medium(
-                            color: ColorManager.primary1Color)),
-                  ],
-                )),
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(market.name,
+                      style: StyleManager.h3_Medium(
+                          color: ColorManager.primary1Color)),
+                ),
               ),
             ],
           ),

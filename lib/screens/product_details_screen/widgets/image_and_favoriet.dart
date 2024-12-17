@@ -35,10 +35,18 @@ class ImagAndFavorite extends GetView<ProductDetailsPageController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(Icons.favorite),
-              Padding(
-                padding: const EdgeInsets.only(top: AppPadding.p20),
-                child: Icon(Icons.more_horiz),
+              InkWell(
+                onTap: () {
+                  controller.toggleFavorite(context);
+                },
+                child: Obx(
+                  () => Icon(
+                    Icons.favorite,
+                    color: controller.isFavorite.value
+                        ? ColorManager.firstColor
+                        : ColorManager.primary3Color,
+                  ),
+                ),
               ),
             ],
           ),

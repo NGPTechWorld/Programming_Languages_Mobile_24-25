@@ -21,6 +21,7 @@ class ProductDetailsPageController extends GetxController {
   ProductModel? product;
   var loadingState = LoadingState.idle.obs;
   int currentPage = 1;
+  final isFavorite = false.obs;
 
   getProduct(BuildContext context, int id) async {
     loadingState.value = LoadingState.loading;
@@ -28,12 +29,27 @@ class ProductDetailsPageController extends GetxController {
     if (response.success) {
       if (response.data[ApiKey.message] == "successfully get product") {
         product = ProductModel.fromMap(response.data["product"]);
+        isFavorite.value = response.data["isFavorite"];
         loadingState.value = LoadingState.doneWithData;
         print(response.data);
       } else {}
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;
+    }
+  }
+
+  toggleFavorite(BuildContext context) async {
+    final response =
+        await productRepo.toggleFavorite(id: product!.id.toString());
+    if (response.success) {
+      SnackBarCustom.show(context, response.data);
+      if (isFavorite.value)
+        isFavorite.value = false;
+      else
+        isFavorite.value = true;
+    } else {
+      SnackBarCustom.show(context, response.networkFailure!.message);
     }
   }
 }
