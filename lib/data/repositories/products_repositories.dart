@@ -10,16 +10,14 @@ import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 abstract class ProductsRepositories {
   Future<AppResponse> toggleFavorite({required String id});
   Future<AppResponse> getFavoriteProducts(
-      {required String prePage, required String page});
+      {required String perPage, required String page});
   Future<AppResponse> getProducts(
-      {required String prePage, required String page});
+      {required String perPage, required String page});
   Future<AppResponse> getProductsByCategory(
-      {required String prePage,
-      required String page,
-      required String categoryID});
+      {required int perPage, required int page, required int categoryID});
   Future<AppResponse> getProduct({required String id});
   Future<AppResponse> getProductsByName(
-      {required String prePage,
+      {required String perPage,
       required String page,
       required String productName});
   Future<AppResponse> getImageProduct({required String id});
@@ -31,7 +29,7 @@ class ImpProductsRepositories implements ProductsRepositories {
 
   @override
   Future<AppResponse> getFavoriteProducts(
-      {required String prePage, required String page}) {
+      {required String perPage, required String page}) {
     // TODO: implement getFavoriteProducts
     throw UnimplementedError();
   }
@@ -47,7 +45,7 @@ class ImpProductsRepositories implements ProductsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.getProduct + id,
+          url: EndPoints.getProduct + id,
           method: Method.get,
           requiredToken: true,
           params: {});
@@ -62,13 +60,11 @@ class ImpProductsRepositories implements ProductsRepositories {
 
   @override
   Future<AppResponse> getProducts(
-      {required String prePage, required String page}) async {
+      {required String perPage, required String page}) async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl +
-              EndPoints.getProducts +
-              "?perPage=${prePage}&page=${page}",
+          url: EndPoints.getProducts + "?perPage=${perPage}&page=${page}",
           method: Method.get,
           requiredToken: true,
           params: {});
@@ -83,16 +79,36 @@ class ImpProductsRepositories implements ProductsRepositories {
 
   @override
   Future<AppResponse> getProductsByCategory(
-      {required String prePage,
-      required String page,
-      required String categoryID}) {
-    // TODO: implement getProductsByCategory
-    throw UnimplementedError();
+      {required int perPage,
+      required int page,
+      required int categoryID}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.getProductsByCategory + categoryID.toString(),
+          method: Method.get,
+          requiredToken: true,
+          params: {
+            ApiKey.perPage: perPage,
+            ApiKey.page: page,
+          });
+      final decodedJson =
+          jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final data = decodedJson[ApiKey.products][ApiKey.currentPageItems]
+          as List<dynamic>;
+
+      response.data =
+          data.map((json) => ProductsCardEntite.fromMap(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
   Future<AppResponse> getProductsByName(
-      {required String prePage,
+      {required String perPage,
       required String page,
       required String productName}) {
     // TODO: implement getProductsByName
@@ -104,7 +120,7 @@ class ImpProductsRepositories implements ProductsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.toggleFavorite + id + "/",
+          url: EndPoints.toggleFavorite + id + "/",
           method: Method.post,
           requiredToken: true,
           params: {});

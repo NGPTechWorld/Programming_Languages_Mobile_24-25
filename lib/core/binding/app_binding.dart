@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_service_getstorage.dart';
 import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
@@ -18,7 +19,7 @@ class AppBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(CacheServiceGetStorage());
-    Get.put(DioConsumer());
+    Get.put(DioConsumer(dio: Dio()));
     Get.put(ImpUsersRepositories(api: Get.find<DioConsumer>()));
     Get.put(StartPageBinging()).dependencies();
     Get.put(NetworkInfoImpl());

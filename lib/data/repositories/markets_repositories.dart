@@ -21,7 +21,7 @@ class ImpMarketsRepositories implements MarketsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl +
+          url: 
               EndPoints.getMarkets +
               "?perPage=${prePage}&page=${page}",
           method: Method.get,

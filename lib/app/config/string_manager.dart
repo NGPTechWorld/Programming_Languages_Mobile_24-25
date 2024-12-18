@@ -158,4 +158,9 @@ class StringManager {
   static const String orderDetailsDate = "orderDetailsDate";
   static const String orderDetailsAddress = "orderDetailsAddress";
   static const String orderDetailsSyrianPounds = "orderDetailsSyrianPounds";
+  
+  // Categories page
+  static const String categoryPageShop = "categoryPageShop";
+  static const String categoryPageByCategory = "categoryPageByCategory";
+  
 }

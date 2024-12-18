@@ -1,15 +1,28 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:ngpiteapp/app/services/api/api_interceptor.dart';
+import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
 import 'package:get/get.dart' as getx;
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 
 class DioConsumer implements ApiServices {
-  final Dio dio = Dio();
+  final Dio dio;
   CacheServicesSharedPreferences cacheService =
       getx.Get.find<CacheServicesSharedPreferences>();
-  DioConsumer();
+  DioConsumer({required this.dio}) {
+    dio.options.baseUrl= EndPoints.baserUrl;
+    dio.interceptors.add(ApiInterceptor());
+    dio.interceptors.add(LogInterceptor(
+      request: true,
+      requestBody: true,
+      requestHeader: true,
+      responseBody: true,
+      responseHeader: true,
+      error: true,
+    ));
+  }
 
   dynamic request({
     required String url,

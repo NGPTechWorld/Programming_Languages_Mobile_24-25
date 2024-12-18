@@ -3,37 +3,9 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/category_screen/category_screen_logic.dart';
+import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
 
-// ignore: must_be_immutable
-class CategorysTabBar extends GetView<CategoryScreenController> {
-  CategorysTabBar({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: EdgeInsets.only(top: AppPadding.p10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: AppSizeWidget.tabSize,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return CategoryCard(index: index);
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryCard extends GetView<CategoryScreenController> {
+class CategoryCard extends GetView<CategoryPageController> {
   const CategoryCard({
     super.key,
     required this.index,
@@ -42,6 +14,8 @@ class CategoryCard extends GetView<CategoryScreenController> {
   final int index;
   @override
   Widget build(BuildContext context) {
+    
+    final categoryName = controller.categories[index].name_en;
     return Obx(
       () => Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
@@ -64,7 +38,7 @@ class CategoryCard extends GetView<CategoryScreenController> {
             ),
             child: Center(
               child: Text(
-                "name",
+                categoryName,
                 style: StyleManager.body02_Semibold(
                     color: index == controller.indexCategorySelected.value
                         ? ColorManager.whiteColor

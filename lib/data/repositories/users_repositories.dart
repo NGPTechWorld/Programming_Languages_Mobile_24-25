@@ -64,7 +64,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.registerUrl,
+          url:  EndPoints.registerUrl,
           method: Method.post,
           requiredToken: false,
           params: {
@@ -90,7 +90,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.loginUrl,
+          url:  EndPoints.loginUrl,
           method: Method.post,
           requiredToken: false,
           params: {
@@ -112,7 +112,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.logoutUrl,
+          url:  EndPoints.logoutUrl,
           method: Method.post,
           requiredToken: true,
           params: {});
@@ -131,7 +131,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.verifyNumberUrl,
+          url:  EndPoints.verifyNumberUrl,
           method: Method.post,
           requiredToken: false,
           params: {ApiKey.verify_code: verify_code, ApiKey.id: id});
@@ -149,7 +149,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.currentUser,
+          url:  EndPoints.currentUser,
           method: Method.get,
           requiredToken: true,
           params: {});
@@ -166,7 +166,7 @@ Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.currentUser,
+          url:  EndPoints.currentUser,
           method: Method.get,
           requiredToken: true,
           params: {});
@@ -193,7 +193,7 @@ Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.editUser,
+          url:  EndPoints.editUser,
           method: Method.put,
           requiredToken: true,
           params: {
@@ -215,7 +215,7 @@ Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.getImage,
+          url:  EndPoints.getImage,
           method: Method.get,
           requiredToken: true,
           params: {});
@@ -242,7 +242,7 @@ Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.resetPassword,
+          url:  EndPoints.resetPassword,
           method: Method.put,
           requiredToken: true,
           params: {
@@ -273,7 +273,7 @@ Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.uploadImage,
+          url:  EndPoints.uploadImage,
           method: Method.post,
           requiredToken: true,
           uploadImage: true,
@@ -306,7 +306,7 @@ Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-        url: EndPoints.baserUrl + EndPoints.generateVerificationCode,
+        url:  EndPoints.generateVerificationCode,
         method: Method.post,
         requiredToken: false,
       );

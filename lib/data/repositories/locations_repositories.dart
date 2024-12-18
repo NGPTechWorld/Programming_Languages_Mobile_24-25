@@ -30,7 +30,7 @@ class ImpLocationsRepositories implements LocationsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.addLocation,
+          url:  EndPoints.addLocation,
           method: Method.post,
           requiredToken: true,
           params: {
@@ -53,7 +53,7 @@ class ImpLocationsRepositories implements LocationsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl +
+          url: 
               EndPoints.deleteLocation +
               idLocation.toString(),
           method: Method.delete,
@@ -73,7 +73,7 @@ class ImpLocationsRepositories implements LocationsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.getLocations,
+          url:  EndPoints.getLocations,
           method: Method.get,
           requiredToken: true,
           params: {});

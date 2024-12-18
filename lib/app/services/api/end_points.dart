@@ -69,6 +69,7 @@ class EndPoints {
 class ApiKey {
   static String id = "id";
   static String name = "name";
+  static String name_en = "name_en";
   static String email = "email";
   static String first_name = "first_name";
   static String last_name = "last_name";
@@ -102,5 +103,14 @@ class ApiKey {
   static String new_password_confirmation = "new_password_confirmation";
   static String image_path = "image_path";
 
+  static String categories = "categories";
+  static String image = "image";
+  static String market_name = "market_name";
+  static String category_id = "category_id";
+  static String market_id = "market_id";
+  static String currentPageItems = "currentPageItems";
+  static String perPage = "perPage";
+  static String page = "page";
+  
   //---------------------------------------
 }

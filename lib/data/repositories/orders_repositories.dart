@@ -26,9 +26,7 @@ class ImpOrdersRepositories implements OrdersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl +
-              EndPoints.getOrdersByStatus +
-              status.toString(),
+          url: EndPoints.getOrdersByStatus + status.toString(),
           method: Method.get,
           requiredToken: true);
 
@@ -56,9 +54,7 @@ class ImpOrdersRepositories implements OrdersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.getOrders,
-          method: Method.get,
-          requiredToken: true);
+          url: EndPoints.getOrders, method: Method.get, requiredToken: true);
 
       response.data = parseOrders(response.data.toString());
       response.success = true;
@@ -73,7 +69,7 @@ class ImpOrdersRepositories implements OrdersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.getOrder + id.toString(),
+          url: EndPoints.getOrder + id.toString(),
           method: Method.get,
           requiredToken: true);
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
@@ -90,7 +86,7 @@ class ImpOrdersRepositories implements OrdersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.cancelOrder + id.toString(),
+          url: EndPoints.cancelOrder + id.toString(),
           method: Method.put,
           requiredToken: true);
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;

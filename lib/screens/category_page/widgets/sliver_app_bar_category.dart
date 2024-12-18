@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 
@@ -19,20 +21,20 @@ class SliverAppBarCategory extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(
             top: AppSizeScreen.screenHeight * 0.05,
-            left: 20,
-            right: 20,
+            left: AppPadding.p20,
+            right: AppPadding.p20,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Shop",
+                StringManager.categoryPageShop.tr,
                 style: StyleManager.h1_Regular(
                     color: ColorManager.primary1Color, fontsize: AppSize.s50),
               ),
               Text(
-                "By Category",
+                StringManager.categoryPageByCategory.tr,
                 style: StyleManager.h1_Bold(
                     color: ColorManager.primary1Color, fontsize: AppSize.s50),
               ),
