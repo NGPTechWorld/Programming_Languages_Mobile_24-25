@@ -11,8 +11,7 @@ class CurvedNavigationBarCustom extends GetView<CurvedNavigationBarController> {
   final startIndex;
   @override
   Widget build(BuildContext context) {
-    Get.put(ProfilePageController());
-    Get.put(HomePageController());
+
     controller.indexPage.value = startIndex;
     return SafeArea(
       child: Scaffold(

@@ -33,7 +33,7 @@ class LocationEntite {
       name: map[ApiKey.name] as String,
       address: map[ApiKey.location] as String,
       street: map[ApiKey.street] as String,
-      notes: map[ApiKey.notes] as String,
+      notes: (map[ApiKey.notes] as String?) ?? "",
     );
   }
 

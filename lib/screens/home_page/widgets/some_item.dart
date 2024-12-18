@@ -129,9 +129,7 @@ class ProductItem extends GetView<HomePageController> {
                             ),
                           ),
                           TextSpan(
-                            text: "\n" +
-                                controller
-                                    .getCategoryforProducts(product.categoryId),
+                            text: "\n" + product.categoryId,
                             style: StyleManager.body02_Medium(
                               color: ColorManager.primary6Color,
                             ),

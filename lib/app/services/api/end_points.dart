@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.2:8000/api";
+  static const String baserUrl = "http://192.168.1.9:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -68,6 +68,7 @@ class EndPoints {
 
 class ApiKey {
   static String id = "id";
+  static String category = "category";
   static String name = "name";
   static String name_en = "name_en";
   static String email = "email";
@@ -106,11 +107,11 @@ class ApiKey {
   static String categories = "categories";
   static String image = "image";
   static String market_name = "market_name";
-  static String category_id = "category_id";
+  static String category_name = "category_name";
   static String market_id = "market_id";
   static String currentPageItems = "currentPageItems";
   static String perPage = "perPage";
   static String page = "page";
-  
+
   //---------------------------------------
 }

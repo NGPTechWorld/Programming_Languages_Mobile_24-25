@@ -3,10 +3,11 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/search_bar.dart';
 import 'package:get/get.dart';
 
-class SliverAppBarHome extends StatelessWidget {
+class SliverAppBarHome extends GetView<HomePageController> {
   const SliverAppBarHome({super.key});
 
   @override
@@ -28,9 +29,14 @@ class SliverAppBarHome extends StatelessWidget {
               style:
                   StyleManager.h2_Semibold(color: ColorManager.primary1Color),
             ),
-            Icon(
-              Icons.shopping_cart_outlined,
-              color: ColorManager.whiteColor,
+            InkWell(
+              onTap: () {
+                controller.goToCart();
+              },
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                color: ColorManager.whiteColor,
+              ),
             )
           ],
         ),

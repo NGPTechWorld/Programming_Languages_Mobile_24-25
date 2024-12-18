@@ -5,24 +5,24 @@ import 'package:ngpiteapp/app/services/api/end_points.dart';
 
 class CategoryEntities {
   final int id;
-  // TODO : Replace all name_en to name
-  final String name_en;
+
+  final String name;
   CategoryEntities({
     required this.id,
-    required this.name_en,
+    required this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       ApiKey.id: id,
-      ApiKey.name_en: name_en,
+      ApiKey.name: name,
     };
   }
 
   factory CategoryEntities.fromMap(Map<String, dynamic> map) {
     return CategoryEntities(
       id: map[ApiKey.id] as int,
-      name_en: map[ApiKey.name_en] as String,
+      name: map[ApiKey.name] as String,
     );
   }
 

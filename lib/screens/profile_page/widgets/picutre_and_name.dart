@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
@@ -7,7 +8,7 @@ import 'package:ngpiteapp/screens/my_account_page/widgets/image_loading_place_ho
 import 'package:ngpiteapp/screens/profile_page/profile_page_logic.dart';
 
 class PicutreAndName extends GetView<ProfilePageController> {
-  const PicutreAndName({
+  PicutreAndName({
     super.key,
   });
 
@@ -37,6 +38,12 @@ class PicutreAndName extends GetView<ProfilePageController> {
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
                           return ImageLoadingPlaceHolder();
+                        },
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset(
+                            AssetsManager.profileDefaultImage,
+                            fit: BoxFit.cover,
+                          );
                         },
                       )),
           ),

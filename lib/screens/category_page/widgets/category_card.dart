@@ -14,8 +14,7 @@ class CategoryCard extends GetView<CategoryPageController> {
   final int index;
   @override
   Widget build(BuildContext context) {
-    
-    final categoryName = controller.categories[index].name_en;
+    final categoryName = controller.categories[index].name;
     return Obx(
       () => Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),

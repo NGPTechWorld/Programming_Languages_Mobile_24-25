@@ -4,11 +4,14 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
+import 'package:ngpiteapp/data/entities/login_entitie.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
+import 'package:ngpiteapp/screens/otp_page/otp_page.dart';
+import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
 import 'package:ngpiteapp/screens/sign_up_page/sign_up_page.dart';
 import 'package:ngpiteapp/screens/sign_up_page/sign_up_page_logic.dart';
 
@@ -16,7 +19,7 @@ class LoginPageBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => SignUpPageController());
-    Get.put(LoginPageController());
+    Get.put(LoginPageController(), permanent: true);
   }
 }
 
@@ -37,13 +40,20 @@ class LoginPageController extends GetxController {
           number: numberPhoneController.text,
           password: passwordController.text);
       if (response.success) {
-        final saveState =
-            await cache.saveData(kUserTokenKey, response.data.bearerToken);
-        if (saveState) {
-          SnackBarCustom.show(context, StringManager.loginSuccess.tr);
+        final data = response.data as LoginEntitie;
+        if (data.message == "user not verified , verification code sent") {
+          SnackBarCustom.show(context, data.message);
           loadingState.value = LoadingState.doneWithData;
-          Get.offAll(() => CurvedNavigationBarCustom(),
-              binding: CurvedNavigationBarBinding());
+          Get.off(() => OtpPage(), binding: OtpPageBinding(idVerf: data.id!));
+        } else {
+          final saveState =
+              await cache.saveData(kUserTokenKey, response.data.bearerToken);
+          if (saveState) {
+            SnackBarCustom.show(context, StringManager.loginSuccess.tr);
+            loadingState.value = LoadingState.doneWithData;
+            Get.offAll(() => CurvedNavigationBarCustom(),
+                binding: CurvedNavigationBarBinding());
+          }
         }
       } else {
         SnackBarCustom.show(context, response.networkFailure!.message);

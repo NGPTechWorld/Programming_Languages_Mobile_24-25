@@ -7,6 +7,8 @@ import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
 class HomePageBindings extends Bindings {
@@ -67,5 +69,9 @@ class HomePageController extends GetxController {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingStateMarkets.value = LoadingState.hasError;
     }
+  }
+
+  goToCart() {
+    Get.to(CartPage());
   }
 }

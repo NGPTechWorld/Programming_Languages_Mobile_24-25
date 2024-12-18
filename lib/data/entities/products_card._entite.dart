@@ -7,9 +7,9 @@ class ProductsCardEntite {
   final String image;
   final String marketName;
   final int id;
-  final int categoryId;
+  final String categoryId;
   final int price;
-  final int marketId;
+
   ProductsCardEntite({
     required this.name,
     required this.image,
@@ -17,7 +17,6 @@ class ProductsCardEntite {
     required this.id,
     required this.categoryId,
     required this.price,
-    required this.marketId,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,9 +25,8 @@ class ProductsCardEntite {
       ApiKey.image: image,
       ApiKey.market_name: marketName,
       ApiKey.id: id,
-      ApiKey.category_id: categoryId,
+      ApiKey.category: categoryId,
       ApiKey.price: price,
-      ApiKey.market_id: marketId,
     };
   }
 
@@ -38,12 +36,10 @@ class ProductsCardEntite {
       image: (map[ApiKey.image] as String?) ?? "",
       marketName: map[ApiKey.market_name] as String,
       id: map[ApiKey.id] as int,
-      categoryId: map[ApiKey.category_id] as int,
+      categoryId: map[ApiKey.category] as String,
       price: map[ApiKey.price] as int,
-      marketId: map[ApiKey.market_id] as int,
     );
   }
 
   String toJson() => json.encode(toMap());
-
 }

@@ -12,7 +12,7 @@ class DioConsumer implements ApiServices {
   CacheServicesSharedPreferences cacheService =
       getx.Get.find<CacheServicesSharedPreferences>();
   DioConsumer({required this.dio}) {
-    dio.options.baseUrl= EndPoints.baserUrl;
+    dio.options.baseUrl = EndPoints.baserUrl;
     dio.interceptors.add(ApiInterceptor());
     dio.interceptors.add(LogInterceptor(
       request: true,
@@ -40,6 +40,7 @@ class DioConsumer implements ApiServices {
     headers.addAll({
       'Content-Type': 'application/json',
       "Accept": "application/json",
+      "Accept-Language": getx.Get.locale.toString(),
     });
 
     if (requiredToken) {

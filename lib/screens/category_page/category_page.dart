@@ -11,7 +11,7 @@ class CategoryPage extends GetView<CategoryPageController> {
 
   @override
   Widget build(BuildContext context) {
-
+  
     controller.getCategories(context);
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,

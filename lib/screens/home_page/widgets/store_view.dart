@@ -74,7 +74,7 @@ class MarkeCardItem extends StatelessWidget {
           //width: AppSizeScreen.screenWidth * 0.7,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s16),
-            color: ColorManager.secoundColor,
+            color: ColorManager.primary2Color,
           ),
           child: Row(
             children: [
@@ -87,7 +87,7 @@ class MarkeCardItem extends StatelessWidget {
                   fit: BoxFit.contain,
                   child: Text(market.name,
                       style: StyleManager.h3_Medium(
-                          color: ColorManager.primary1Color)),
+                          color: ColorManager.primary6Color)),
                 ),
               ),
             ],
