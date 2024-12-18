@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class ImagAndFavorite extends GetView<ProductDetailsPageController> {
@@ -22,6 +23,20 @@ class ImagAndFavorite extends GetView<ProductDetailsPageController> {
               controller.product!.image,
               width: AppSizeScreen.screenWidth / 2,
               height: AppSizeScreen.screenHeight / 5,
+              errorBuilder: (context, error, stackTrace) {
+                return ShimmerPlaceholder(
+                    height: AppSizeScreen.screenHeight / 5,
+                    width: AppSizeScreen.screenWidth / 2);
+              },
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return ShimmerPlaceholder(
+                    height: AppSizeScreen.screenHeight / 5,
+                    width: AppSizeScreen.screenWidth / 2);
+              },
               fit: BoxFit.contain,
             ),
           ),

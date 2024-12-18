@@ -20,7 +20,7 @@ class ButtonProduct extends StatelessWidget {
             height: 50,
             color: ColorManager.whiteColor,
             press: () {},
-            style: StyleManager.button1(color: ColorManager.firstColor),
+            style: StyleManager.button1(color: ColorManager.secoundColor),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppPadding.p10),
@@ -30,7 +30,7 @@ class ButtonProduct extends StatelessWidget {
               height: 50,
               color: ColorManager.firstColor,
               press: () {},
-              style: StyleManager.button1(color: ColorManager.whiteColor),
+              style: StyleManager.button1(color: ColorManager.secoundColor),
             ),
           ),
         ],

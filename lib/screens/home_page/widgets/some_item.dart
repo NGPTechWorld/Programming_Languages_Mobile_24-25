@@ -95,24 +95,15 @@ class ProductItem extends GetView<HomePageController> {
                         product.image,
                         height: 150,
                         width: 150,
+                        errorBuilder: (context, error, stackTrace) {
+                          return ShimmerPlaceholder(height: 150, width: 150);
+                        },
                         loadingBuilder: (BuildContext context, Widget child,
                             ImageChunkEvent? loadingProgress) {
                           if (loadingProgress == null) {
                             return child;
                           }
-                          return Shimmer.fromColors(
-                            baseColor: Colors.grey[300]!,
-                            highlightColor: Colors.grey[100]!,
-                            child: Container(
-                              height: 150,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(AppSize.s18),
-                                color: Colors.grey[300],
-                              ),
-                            ),
-                          );
+                          return ShimmerPlaceholder(height: 150, width: 150);
                         },
                       ),
                     ),

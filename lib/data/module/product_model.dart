@@ -64,7 +64,7 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       name: map['name'] as String,
-      image: map['image'] as String,
+      image: (map['image'] as String?) ?? "",
       description: map['description'] as String,
       id: map['id'] as int,
       market_id: map['market_id'] as int,
@@ -77,7 +77,8 @@ class ProductModel {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductModel.fromJson(String source) => ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductModel.fromJson(String source) =>
+      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -87,30 +88,28 @@ class ProductModel {
   @override
   bool operator ==(covariant ProductModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.name == name &&
-      other.image == image &&
-      other.description == description &&
-      other.id == id &&
-      other.market_id == market_id &&
-      other.category_id == category_id &&
-      other.quantity == quantity &&
-      other.price == price &&
-      other.number_of_purchases == number_of_purchases;
+
+    return other.name == name &&
+        other.image == image &&
+        other.description == description &&
+        other.id == id &&
+        other.market_id == market_id &&
+        other.category_id == category_id &&
+        other.quantity == quantity &&
+        other.price == price &&
+        other.number_of_purchases == number_of_purchases;
   }
 
   @override
   int get hashCode {
     return name.hashCode ^
-      image.hashCode ^
-      description.hashCode ^
-      id.hashCode ^
-      market_id.hashCode ^
-      category_id.hashCode ^
-      quantity.hashCode ^
-      price.hashCode ^
-      number_of_purchases.hashCode;
+        image.hashCode ^
+        description.hashCode ^
+        id.hashCode ^
+        market_id.hashCode ^
+        category_id.hashCode ^
+        quantity.hashCode ^
+        price.hashCode ^
+        number_of_purchases.hashCode;
   }
 }
-
