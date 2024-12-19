@@ -41,9 +41,10 @@ class CategoryPageController extends GetxController {
       final response = await productRepo.getProductsByCategory(
         page: page,
         perPage: 10,
-        categoryID: 1,
+        categoryID: categories[index].id,
       );
       if (response.success) {
+        currentProducts.clear();
         currentProducts.addAll(response.data);
         page++;
       } else {

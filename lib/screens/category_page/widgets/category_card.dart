@@ -21,6 +21,7 @@ class CategoryCard extends GetView<CategoryPageController> {
         child: InkWell(
           onTap: () {
             controller.indexCategorySelected.value = index;
+            controller.getProductsForCategory(index, context);
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
