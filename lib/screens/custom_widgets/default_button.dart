@@ -9,7 +9,10 @@ class DefaultButton extends StatelessWidget {
       required this.press,
       this.loading,
       required this.style,
-      this.minWidth = double.infinity, this.height = AppSize.s56, this.borderRadius = AppSize.s20});
+      this.minWidth = double.infinity,
+      this.height = AppSize.s56,
+      this.borderRadius = AppSize.s20,
+      this.color = ColorManager.firstColor});
   final double minWidth;
   final double borderRadius;
   final double height;
@@ -17,6 +20,7 @@ class DefaultButton extends StatelessWidget {
   final TextStyle style;
   final VoidCallback press;
   final bool? loading;
+  final color;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -25,7 +29,7 @@ class DefaultButton extends StatelessWidget {
       height: height,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),
-      color: ColorManager.firstColor,
+      color: color,
       child: loading == true
           ? const CircularProgressIndicator(
               color: ColorManager.whiteColor,

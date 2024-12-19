@@ -141,8 +141,9 @@ class StringManager {
 
   // Home
   static const String homeTitle = "homeTitle";
+  static const String allProducts = "allProducts";
   static const String storeText = "storeText";
-
+  static const String searchProductsText = "searchProductsText";
   static const recommendedText = "recommendedText";
   static const loading = "loading";
  
@@ -158,7 +159,10 @@ class StringManager {
   static const String orderDetailsDate = "orderDetailsDate";
   static const String orderDetailsAddress = "orderDetailsAddress";
   static const String orderDetailsSyrianPounds = "orderDetailsSyrianPounds";
-
+    // Categories page
+  static const String categoryPageShop = "categoryPageShop";
+  static const String categoryPageByCategory = "categoryPageByCategory";
+  
   // Forgot passowrd
   static const String forgotPassowrdHeader = "forgotPassowrdHeader";
   static const String forgotPassowrdEmailVerificationTitle = "forgotPassowrdEmailVerificationTitle";

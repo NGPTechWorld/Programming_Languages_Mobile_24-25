@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/product_details_screen/product_details_screen.dart';
+import 'package:ngpiteapp/data/entities/products_card._entite.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
+import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
+import 'package:shimmer/shimmer.dart';
 
-class SomeItem extends StatelessWidget {
+class SomeItem extends GetView<HomePageController> {
   SomeItem({super.key});
+
   @override
   Widget build(BuildContext context) {
+    controller.getProducts(context);
     return SliverToBoxAdapter(
         child: Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
@@ -18,22 +25,35 @@ class SomeItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "All Products",
+            StringManager.allProducts.tr,
             style: StyleManager.body01_Regular(fontsize: AppSize.s30),
           ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.75,
-              mainAxisSpacing: AppPadding.p10,
-              crossAxisSpacing: AppPadding.p10,
+          Obx(
+            () => GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.75,
+                mainAxisSpacing: AppPadding.p10,
+                crossAxisSpacing: AppPadding.p10,
+              ),
+              itemCount:
+                  controller.loadingStateProducts == LoadingState.doneWithData
+                      ? controller.products.length
+                      : 10,
+              itemBuilder: (context, index) {
+                return controller.loadingStateProducts ==
+                        LoadingState.doneWithData
+                    ? ProductItem(
+                        product: controller.products[index],
+                      )
+                    : ShimmerPlaceholder(
+                        height: 100,
+                        width: double.infinity,
+                      );
+              },
             ),
-            itemCount: 12,
-            itemBuilder: (context, index) {
-              return ProductItem();
-            },
           ),
           SizedBox(
             height: AppSizeScreen.screenHeight / 7,
@@ -44,10 +64,9 @@ class SomeItem extends StatelessWidget {
   }
 }
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({
-    super.key,
-  });
+class ProductItem extends GetView<HomePageController> {
+  ProductsCardEntite product;
+  ProductItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +74,7 @@ class ProductItem extends StatelessWidget {
       padding: const EdgeInsets.all(AppPadding.p10),
       child: InkWell(
         onTap: () {
-          Get.to(ProductDetailsScreen());
+          Get.to(ProductDetailsPage(product.id));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -68,14 +87,24 @@ class ProductItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(AppPadding.p8),
-                    child: Center(
-                      child: Image.asset(
-                        AssetsManager.droneImage,
-                        width: AppSize.s100,
-                        height: AppSize.s100,
-                        fit: BoxFit.contain,
+                  Center(
+                    child: Container(
+                      height: 120,
+                      width: 120,
+                      child: Image.network(
+                        product.image,
+                        height: 150,
+                        width: 150,
+                        errorBuilder: (context, error, stackTrace) {
+                          return ShimmerPlaceholder(height: 150, width: 150);
+                        },
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          }
+                          return ShimmerPlaceholder(height: 150, width: 150);
+                        },
                       ),
                     ),
                   ),
@@ -88,26 +117,32 @@ class ProductItem extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "Product Name\n",
+                            text: product.name + "\n",
                             style: StyleManager.body01_Semibold(
                               color: ColorManager.blackColor,
                             ),
                           ),
                           TextSpan(
-                            text: "store name",
+                            text: product.marketName,
                             style: StyleManager.body02_Medium(
                               color: ColorManager.primary6Color,
                             ),
                           ),
                           TextSpan(
-                            text: "\ncategory",
+                            text: "\n" + product.categoryId,
                             style: StyleManager.body02_Medium(
                               color: ColorManager.primary6Color,
                             ),
                           ),
                           TextSpan(
-                            text: "\nprice",
+                            text: "\n" + product.price.toString() + " ",
                             style: StyleManager.body01_Semibold(
+                              color: ColorManager.primary5Color,
+                            ),
+                          ),
+                          TextSpan(
+                            text: StringManager.orderDetailsSyrianPounds.tr,
+                            style: StyleManager.button2(
                               color: ColorManager.primary5Color,
                             ),
                           ),

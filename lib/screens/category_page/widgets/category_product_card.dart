@@ -2,56 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/product_details_screen/product_details_screen.dart';
+import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
 
-class CategorysProducts extends StatelessWidget {
-  const CategorysProducts({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: EdgeInsets.all(AppPadding.p10),
-        child: Column(
-          children: [
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: AppSize.s4,
-                crossAxisSpacing: AppSize.s4,
-                childAspectRatio: 2,
-              ),
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Get.to(ProductDetailsScreen());
-                  },
-                  child: CategoryProductCard(),
-                );
-              },
-            ),
-            SizedBox(
-              height: AppSizeScreen.screenHeight * 0.1,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryProductCard extends StatelessWidget {
+class CategoryProductCard extends GetView<CategoryPageController> {
   const CategoryProductCard({
     super.key,
+    required this.index,
   });
-
+  final int index;
   @override
   Widget build(BuildContext context) {
+    final product = controller.currentProducts[index];
     return Card(
       color: ColorManager.primary1Color,
       elevation: 0,
@@ -65,8 +29,7 @@ class CategoryProductCard extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: AppPadding.p30,
-                  horizontal: AppPadding.p20),
+                  vertical: AppPadding.p30, horizontal: AppPadding.p20),
               child: Image.asset(
                 AssetsManager.nullImage,
                 width: AppSizeScreen.screenHeight / 8,
@@ -83,21 +46,20 @@ class CategoryProductCard extends StatelessWidget {
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      "Product name",
+                      product.name,
                       style: StyleManager.h4_Bold(),
                     ),
                   ),
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      "store name",
+                      product.marketName,
                       style: StyleManager.body02_Medium(
                           color: ColorManager.primary5Color),
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
@@ -111,11 +73,7 @@ class CategoryProductCard extends StatelessWidget {
                   RichText(
                       text: TextSpan(children: [
                     TextSpan(
-                        text: "quantity",
-                        style: StyleManager.body01_Medium(
-                            color: ColorManager.firstDarkColor)),
-                    TextSpan(
-                        text: "\nprice",
+                        text: product.price.toString() +' ${StringManager.orderDetailsSyrianPounds.tr}' ,
                         style: StyleManager.body01_Semibold(
                             color: ColorManager.firstDarkColor)),
                   ])),

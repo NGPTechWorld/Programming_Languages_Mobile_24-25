@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
-class TextPanelDetails extends StatelessWidget {
+class TextPanelDetails extends GetView<ProductDetailsPageController> {
   const TextPanelDetails({super.key});
 
   @override
@@ -12,44 +14,39 @@ class TextPanelDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Details",
-          style: StyleManager.body01_Regular(color: ColorManager.primary7Color),
+          "Descreption:",
+          style: StyleManager.h3_Bold(color: ColorManager.primary5Color),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppPadding.p10),
           child: Text(
-            "Details",
-            style:
-                StyleManager.body01_Regular(color: ColorManager.primary6Color),
+            controller.product!.description,
+            style: StyleManager.h4_Regular(color: ColorManager.primary5Color),
           ),
         ),
         ExpansionTile(
           tilePadding: EdgeInsets.symmetric(horizontal: 0),
           title: Text(
-            "Store",
-            style:
-                StyleManager.body01_Regular(color: ColorManager.primary7Color),
+            "Market",
+            style: StyleManager.h3_Bold(color: ColorManager.primary5Color),
           ),
           children: [
             Text(
               "Store",
-              style: StyleManager.body01_Regular(
-                  color: ColorManager.primary5Color),
+              style: StyleManager.h4_Regular(color: ColorManager.primary5Color),
             ),
           ],
         ),
         ExpansionTile(
           tilePadding: EdgeInsets.symmetric(horizontal: 0),
           title: Text(
-            "Caterory",
-            style:
-                StyleManager.body01_Regular(color: ColorManager.primary7Color),
+            "Quantity",
+            style: StyleManager.h3_Bold(color: ColorManager.primary5Color),
           ),
           children: [
             Text(
-              "Caterory",
-              style: StyleManager.body01_Regular(
-                  color: ColorManager.primary5Color),
+              controller.product!.quantity.toString(),
+              style: StyleManager.h4_Regular(color: ColorManager.primary5Color),
             ),
           ],
         ),

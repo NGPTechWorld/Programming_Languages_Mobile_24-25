@@ -19,6 +19,7 @@ class EndPoints {
   // Locations
   static const String addLocation = "/locations/addLocation";
   static const String getLocations = "/locations/getLocations";
+  static const String getLocation = "/locations/getLocation/"; //{location}
   static const String deleteLocation =
       "/locations/deleteLocation/"; //{location_id}
   // Orders
@@ -40,12 +41,36 @@ class EndPoints {
   static const String getProductsForMarket =
       "/markets/getProductsForMarket/"; //{market}
 
+  // Products
+  static const String toggleFavorite = "/products/toggleFavorite/"; //{product}/
+  static const String getFavoriteProducts = "/products/getFavoriteProducts";
+  static const String getProducts = "/products/getProducts";
+  static const String getProductsByCategory =
+      "/products/getProductsByCategory/"; //{category}
+  static const String getProduct = "/products/getProduct/"; //{product}
+  static const String getProductsByName =
+      "/products/getProductsByName/"; //{product_name}
+  static const String getImageProduct = "/products/getImage/"; //{product}
+  // Category
+  static const String getAllCategories = "/categories/getAll";
+  static const String getCategory = "/categories/get/{category}";
+  // Carts
+  static const String addProductInCart = "/carts/addProduct/"; //{product}
+  static const String plusProductOneCart = "/carts/plusProductOne/"; //{product}
+  static const String minusProductOneCart =
+      "/carts/minusProductOne/"; //{product}
+  static const String deleteProductCart = "/carts/deleteProduct/"; //{product}
+  static const String clearCart = "/carts/clearCart";
+  static const String getCart = "/carts/getCart";
+
   static const String test = "";
 }
 
 class ApiKey {
   static String id = "id";
+  static String category = "category";
   static String name = "name";
+  static String name_en = "name_en";
   static String email = "email";
   static String first_name = "first_name";
   static String last_name = "last_name";
@@ -78,6 +103,15 @@ class ApiKey {
   static String new_password = "new_password";
   static String new_password_confirmation = "new_password_confirmation";
   static String image_path = "image_path";
+
+  static String categories = "categories";
+  static String image = "image";
+  static String market_name = "market_name";
+  static String category_name = "category_name";
+  static String market_id = "market_id";
+  static String currentPageItems = "currentPageItems";
+  static String perPage = "perPage";
+  static String page = "page";
 
   //---------------------------------------
 }

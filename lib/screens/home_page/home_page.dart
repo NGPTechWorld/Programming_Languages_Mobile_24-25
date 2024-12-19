@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
-import 'package:ngpiteapp/screens/home_page/widgets/recommended_list.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/sliver_app_bar_home.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/some_item.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/store_view.dart';
@@ -17,7 +16,7 @@ class HomePage extends StatelessWidget {
           slivers: [
             SliverAppBarHome(),
             StoreView(),
-            RecommendedList(),
+            //RecommendedList(),
             SomeItem(),
           ],
         ),

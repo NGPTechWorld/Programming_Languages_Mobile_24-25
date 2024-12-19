@@ -78,7 +78,7 @@ class MyAccountPage extends GetView<MyAccountController> {
               okText: StringManager.myAccountUpdate.tr,
               onCancel: () {
                 controller.resetValues();
-                Get.back(result: true);
+                Get.back();
               },
               onOk: () async {
                 await controller.updateValues(context);
@@ -94,6 +94,7 @@ class MyAccountPage extends GetView<MyAccountController> {
       }
       return;
     }
+    // TODO : Handle this , alot of apis are called when doing this.
     Get.offAll(() => CurvedNavigationBarCustom(startIndex: 3),
         binding: CurvedNavigationBarBinding());
   }

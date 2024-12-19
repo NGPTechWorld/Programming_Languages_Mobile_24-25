@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/image_loading_place_holder.dart';
-
 
 class ProfilePicture extends GetView<MyAccountController> {
   const ProfilePicture({
@@ -42,6 +42,12 @@ class ProfilePicture extends GetView<MyAccountController> {
                                       (context, child, loadingProgress) {
                                     if (loadingProgress == null) return child;
                                     return ImageLoadingPlaceHolder();
+                                  },
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset(
+                                      AssetsManager.profileDefaultImage,
+                                      fit: BoxFit.cover,
+                                    );
                                   },
                                 )),
                 ),

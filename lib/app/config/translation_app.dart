@@ -131,7 +131,12 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryStatusCompleted: "منجز",
           StringManager.ordersHistoryStatusPending: "معلق",
           StringManager.ordersHistoryStatusDelivering: "قيد التوصيل",
-        
+          //Home page
+          StringManager.homeTitle: "الصفحة الرئيسية",
+          StringManager.storeText: "المتاجر",
+          StringManager.recommendedText: "",
+          StringManager.allProducts: "كل المنتجات",
+          StringManager.searchProductsText: "ابحث عن المنتجات",
             // Forgot Password page
           StringManager.forgotPassowrdEmailVerificationTitle: "نسيت كلمة المرور ؟ ",
           StringManager.forgotPassowrdEmailVerificationsubTitle:
@@ -263,6 +268,17 @@ class TranslationApp implements Translations {
           StringManager.orderDetailsDate: "Date",
           StringManager.orderDetailsAddress: "Address",
           StringManager.orderDetailsSyrianPounds: "SP",
+          StringManager.ordersHistoryStatusCancelled: "Cancelled",
+          StringManager.ordersHistoryStatusRejected: "Rejected",
+          StringManager.ordersHistoryStatusCompleted: "Completed",
+          StringManager.ordersHistoryStatusPending: "Pending",
+          StringManager.ordersHistoryStatusDelivering: "Delivering",
+          //Home page
+          StringManager.homeTitle: "Home Page",
+          StringManager.storeText: "Markets",
+          StringManager.recommendedText: "",
+          StringManager.allProducts: "All Products",
+          StringManager.searchProductsText: "Search Products",
           StringManager.ordersHistoryStatusCancelled: "Cancelled",
           StringManager.ordersHistoryStatusRejected: "Rejected",
           StringManager.ordersHistoryStatusCompleted: "Completed",
