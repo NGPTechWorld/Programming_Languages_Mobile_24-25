@@ -7,13 +7,13 @@ import 'package:ngpiteapp/screens/custom_widgets/bottun_custom.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
 
-class BottomCartPage extends StatelessWidget {
-  const BottomCartPage({super.key});
+class BottomSaPage extends StatelessWidget {
+  const BottomSaPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorManager.transparentColor,
+      color: ColorManager.whiteColor,
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
