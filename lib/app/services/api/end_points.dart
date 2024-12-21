@@ -1,9 +1,5 @@
 class EndPoints {
-<<<<<<< HEAD
   static const String baserUrl = "http://192.168.1.8:8000/api";
-=======
-  static const String baserUrl = "http://192.168.1.2:8000/api";
->>>>>>> 408a5b8bfa34d86590d6b44dc0e82ca81de61808
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
