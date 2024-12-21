@@ -15,7 +15,7 @@ class CategoryProductCard extends GetView<CategoryPageController> {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final product = controller.currentProducts[index];
+    final product = controller.productsPagingController.itemList![index];
     return Card(
       color: ColorManager.primary1Color,
       elevation: 0,

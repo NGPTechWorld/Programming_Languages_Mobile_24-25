@@ -90,7 +90,7 @@ class ImpProductsRepositories implements ProductsRepositories {
           url: EndPoints.getProductsByCategory + categoryID.toString(),
           method: Method.get,
           requiredToken: true,
-          params: {
+          queryParameters: {
             ApiKey.perPage: perPage,
             ApiKey.page: page,
           });

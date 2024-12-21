@@ -17,26 +17,21 @@ class CategoryPageBinding extends Bindings {
 class CategoryPageController extends GetxController {
   final indexCategorySelected = 0.obs;
   final categories = [].obs;
-  final loadedCategories = [].obs;
-  final currentProducts = [].obs;
   final categoriesRepo = Get.find<ImpCategoryRepositories>();
   final productRepo = Get.find<ImpProductsRepositories>();
   final netCheck = Get.find<NetworkInfoImpl>();
-  int toAdd = 0;
-  int categoryPage = 1;
-  int productPage = 1;
+
   final int perPage = 3;
   var isLoadingCategories = false.obs;
-  var isLoadingProducts = false.obs;
   final productsPagingController = PagingController<int, dynamic>(
     firstPageKey: 1,
   );
 
   inital(BuildContext context) async {
-    getCategories(context);
     productsPagingController.addPageRequestListener((pageKey) {
       fetchPage(pageKey);
     });
+    getCategories(context);
   }
 
   Future<void> fetchPage(int pageKey) async {
@@ -61,7 +56,6 @@ class CategoryPageController extends GetxController {
 
   @override
   void onClose() {
-    productsPagingController.dispose();
     super.onClose();
   }
 
@@ -72,32 +66,11 @@ class CategoryPageController extends GetxController {
       if (response.success) {
         categories.clear();
         categories.addAll(response.data);
-        await getProductsForCategory(0, context);
+        await fetchPage(0);
       } else {
         SnackBarCustom.show(context, response.networkFailure!.message);
       }
       isLoadingCategories.value = false;
-    } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
-    }
-  }
-
-  getProductsForCategory(int index, BuildContext context) async {
-    if (await netCheck.isConnected) {
-      isLoadingProducts.value = true;
-      final response = await productRepo.getProductsByCategory(
-        page: productPage,
-        perPage: perPage,
-        categoryID: categories[index].id,
-      );
-      if (response.success) {
-        currentProducts.clear();
-        currentProducts.addAll(response.data);
-        productPage++;
-      } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
-      }
-      isLoadingProducts.value = false;
     } else {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
     }
