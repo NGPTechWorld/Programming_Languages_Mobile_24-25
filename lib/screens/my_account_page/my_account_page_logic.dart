@@ -6,6 +6,10 @@ import 'package:ngpiteapp/data/entities/get_user_entitie.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
+import 'package:ngpiteapp/screens/forgot_password_page/forgot_password_page.dart';
+import 'package:ngpiteapp/screens/forgot_password_page/forgot_password_page_logic.dart';
+import 'package:ngpiteapp/screens/my_account_page/controllers/field_controller.dart';
+import 'package:ngpiteapp/screens/my_account_page/controllers/password_controller.dart';
 import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page.dart';
 import 'package:ngpiteapp/screens/upload_picture_page/upload_picture_page_logic.dart';
 
@@ -30,6 +34,7 @@ class MyAccountController extends GetxController {
   var loadingImageState = LoadingState.idle.obs;
   var loadingState = LoadingState.idle.obs;
   var editingState = LoadingState.idle.obs;
+  var isVisablePass = false.obs;
 
   void getUser(BuildContext context) async {
     loadingState.value = LoadingState.loading;
@@ -61,7 +66,7 @@ class MyAccountController extends GetxController {
     passwordController.turnOffVisible();
   }
 
-  Future<bool> updateValues(BuildContext context) async {
+  updateValues(BuildContext context) async {
     editingState.value = LoadingState.loading;
     String successMessage = "", failedMessage = "";
     if (await netCheck.isConnected) {
@@ -100,10 +105,13 @@ class MyAccountController extends GetxController {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
       editingState.value = LoadingState.hasError;
     }
-    SnackBarCustom.show(context, successMessage + "\n" + failedMessage);
+    String msg = "";
+    if (successMessage != "") msg += successMessage;
+    if (failedMessage != "")
+      msg += (successMessage != "" ? "\n" : "") + failedMessage;
+    SnackBarCustom.show(context, msg);
 
     resetValues();
-    return true;
   }
 
   bool isChanged() {
@@ -122,7 +130,7 @@ class MyAccountController extends GetxController {
   void showPicture() {
     // TODO :Show the Picture
   }
-  Future<bool> getPicture(BuildContext context) async {
+  getPicture(BuildContext context) async {
     loadingImageState.value = LoadingState.loading;
     if (await netCheck.isConnected) {
       final response = await userRepo.getImage();
@@ -130,7 +138,6 @@ class MyAccountController extends GetxController {
       if (response.success) {
         loadingImageState.value = LoadingState.doneWithData;
         imagePath.value = response.data ?? "";
-        print(response.data);
       } else {
         user.value = null;
         loadingImageState.value = LoadingState.hasError;
@@ -139,86 +146,12 @@ class MyAccountController extends GetxController {
       SnackBarCustom.show(context, StringManager.nointernet.tr);
       loadingImageState.value = LoadingState.hasError;
     }
-    return true;
-  }
-}
-
-class PasswordController {
-  FieldController oldPasswordController = FieldController();
-  FieldController newPasswordController = FieldController();
-  FieldController confirmPasswordController = FieldController();
-  RxBool visible = false.obs;
-  RxBool changed = false.obs;
-  void toggleVisible() {
-    visible.value = !visible.value;
-    resetValues();
   }
 
-  bool isVisible() => visible.value;
-
-  void turnOffVisible() {
-    visible.value = false;
-    resetValues();
-  }
-
-  void resetValues() {
-    oldPasswordController.clear();
-    newPasswordController.clear();
-    confirmPasswordController.clear();
-  }
-
-  bool isChanged() {
-    changed.value = oldPasswordController.isChanged() ||
-        newPasswordController.isChanged() ||
-        confirmPasswordController.isChanged();
-    return changed.value;
-  }
-}
-
-class FieldController {
-  TextEditingController controller = TextEditingController();
-  FocusNode focusNode = FocusNode();
-  var isEditing = false.obs;
-  String initalValue = "";
-
-  void setInitValue(String value) {
-    initalValue = value;
-    controller.text = initalValue;
-  }
-
-  void toggleEdit() {
-    isEditing.value = !isEditing.value;
-    if (isEditing.value) {
-      // focusNode.requestFocus();
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        focusNode.requestFocus();
-        _showKeyboardIfNotVisible();
-      });
-    } else {
-      focusNode.unfocus();
-    }
-  }
-
-  void _showKeyboardIfNotVisible() {
-    if (!focusNode.hasPrimaryFocus) {
-      FocusScope.of(focusNode.context!).requestFocus(focusNode);
-    }
-  }
-
-  getText() => controller.value.text;
-
-  bool isChanged() {
-    return initalValue != controller.text;
-  }
-
-  void reset() {
-    isEditing.value = false;
-    controller.text = initalValue;
-    focusNode.unfocus();
-  }
-
-  void clear() {
-    initalValue = "";
-    reset();
+  void forgotPassword() {
+    Get.to(() => ForgotPasswordPage(),
+        binding: ForgotPasswordPageBinding(
+            email: emailFieldControllor.initalValue,
+            number: phoneFieldControllor.initalValue));
   }
 }

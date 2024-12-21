@@ -8,6 +8,7 @@ import 'package:ngpiteapp/app/services/api/api_services.dart';
 import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/data/entities/edit_user_entitie.dart';
+import 'package:ngpiteapp/data/entities/forget_password_entitie.dart';
 import 'package:ngpiteapp/data/entities/login_entitie.dart';
 import 'package:ngpiteapp/data/entities/get_user_entitie.dart';
 
@@ -21,8 +22,7 @@ abstract class UsersRepositories {
       required String passwordConfirm});
   Future<AppResponse> login({required String number, required String password});
   Future<AppResponse> logout();
-  Future<AppResponse> forgatePassword(
-      {required String number, required String email});
+  Future<AppResponse> forgatePassword({required String number});
   Future<AppResponse> verifyNumber(
       {required String verify_code, required int id});
   Future<AppResponse> verifyNewPassword(
@@ -162,7 +162,7 @@ class ImpUsersRepositories implements UsersRepositories {
     return response;
   }
 
-Future<AppResponse> userName() async {
+  Future<AppResponse> userName() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
@@ -179,6 +179,7 @@ Future<AppResponse> userName() async {
     }
     return response;
   }
+
   @override
   Future<AppResponse> deleteImage() {
     // TODO: implement deleteImage
@@ -263,9 +264,25 @@ Future<AppResponse> userName() async {
   Future<AppResponse> setPassword(
       {required int id,
       required String password,
-      required String password_confirmation}) {
-    // TODO: implement setPassword
-    throw UnimplementedError();
+      required String password_confirmation}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.setPassword,
+          method: Method.put,
+          requiredToken: true,
+          params: {
+            ApiKey.id: id,
+            ApiKey.password: password,
+            ApiKey.password_confirmation: password_confirmation,
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -289,16 +306,43 @@ Future<AppResponse> userName() async {
 
   @override
   Future<AppResponse> verifyNewPassword(
-      {required String verify_code, required int id}) {
-    // TODO: implement verifyNewPassword
-    throw UnimplementedError();
+      {required String verify_code, required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.verifyNewPassword,
+          method: Method.post,
+          requiredToken: true,
+          params: {
+            ApiKey.verify_code: verify_code,
+            ApiKey.id: id,
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
-  Future<AppResponse> forgatePassword(
-      {required String number, required String email}) {
-    // TODO: implement forgatePassword
-    throw UnimplementedError();
+  Future<AppResponse> forgatePassword({required String number}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.forgetPasswordUrl,
+          method: Method.post,
+          requiredToken: true,
+          params: {ApiKey.number: number});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = ForgetPasswordEntitie.fromMap(data);
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    print(response);
+    return response;
   }
 
   @override

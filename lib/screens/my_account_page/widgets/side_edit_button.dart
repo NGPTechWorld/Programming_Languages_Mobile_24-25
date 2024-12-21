@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
+import 'package:ngpiteapp/screens/my_account_page/controllers/field_controller.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 
 class SideEditButton extends StatelessWidget {

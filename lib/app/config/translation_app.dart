@@ -34,7 +34,7 @@ class TranslationApp implements Translations {
           StringManager.phoneVerification: "ارسال الكود",
           StringManager.titlePhoneVerification: "التحقق من رقم الهاتف",
           StringManager.subTitlePhoneVerification:
-              "لقد قمنا بإرسال كود من 6 خانات الى الرقم:",
+              "لقد قمنا بإرسال كود من 6 خانات الى البريد الالكتروني التالي:",
           //Login
           StringManager.dontHaveAccount: "ليس لديك حساب في التطبيق",
           StringManager.errorisEmpty: "هذا الحقل فارغ",
@@ -80,6 +80,7 @@ class TranslationApp implements Translations {
           StringManager.myAccountConfirmPassword: "تأكيد كلمة المرور",
           StringManager.myAccountUserUpdated: "تم تحديث بيانات المستخدم",
           StringManager.myAccountPasswordUpdated: "تم التحديث كلمة المرور",
+          StringManager.myAccountForgotPassword: "نسيت كلمة المرور ؟",
           // Language Dialog
           StringManager.languageDialogTitle: "اللغة",
           // Location Page
@@ -136,6 +137,12 @@ class TranslationApp implements Translations {
           StringManager.recommendedText: "",
           StringManager.allProducts: "كل المنتجات",
           StringManager.searchProductsText: "ابحث عن المنتجات",
+            // Forgot Password page
+          StringManager.forgotPassowrdEmailVerificationTitle: "نسيت كلمة المرور ؟ ",
+          StringManager.forgotPassowrdEmailVerificationsubTitle:
+              "لقد قمنا بإرسال كود من 6 خانات الى البريد الإلكتروني التالي:",
+          StringManager.forgotPassowrdVerify: "تحقق",
+        
         },
         "en": {
           //Sign Up
@@ -212,6 +219,7 @@ class TranslationApp implements Translations {
           StringManager.myAccountConfirmPassword: "Confirm new password",
           StringManager.myAccountUserUpdated: "User updated",
           StringManager.myAccountPasswordUpdated: "Password updated",
+          StringManager.myAccountForgotPassword: "Forgot password ?",
           // Language Dialog
           StringManager.languageDialogTitle: "Language",
 
@@ -271,6 +279,18 @@ class TranslationApp implements Translations {
           StringManager.recommendedText: "",
           StringManager.allProducts: "All Products",
           StringManager.searchProductsText: "Search Products",
+          StringManager.ordersHistoryStatusCancelled: "Cancelled",
+          StringManager.ordersHistoryStatusRejected: "Rejected",
+          StringManager.ordersHistoryStatusCompleted: "Completed",
+          StringManager.ordersHistoryStatusPending: "Pending",
+          StringManager.ordersHistoryStatusDelivering: "Delivering",
+
+          // TODO: translate in AR
+          // Forgot Password page
+          StringManager.forgotPassowrdEmailVerificationTitle: "Forgot Password",
+          StringManager.forgotPassowrdEmailVerificationsubTitle:
+              "We have sent a code of 6 digits \nto the email:",
+          StringManager.forgotPassowrdVerify: "Verify",
         },
       };
 }

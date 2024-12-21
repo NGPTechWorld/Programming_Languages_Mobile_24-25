@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
+import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/custom_edit_field.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/password_fields.dart';
-
 
 class EditFields extends GetView<MyAccountController> {
   const EditFields({
@@ -31,13 +32,19 @@ class EditFields extends GetView<MyAccountController> {
           keyboardType: TextInputType.emailAddress,
         ),
         CustomEditField(
-          title: StringManager.myAccountPhone.tr,
-          fieldController: controller.phoneFieldControllor,
-          keyboardType: TextInputType.phone,
-          editable :false
-        ),
-        PasswordFields(
-            passwordController: controller.passwordController)
+            title: StringManager.myAccountPhone.tr,
+            fieldController: controller.phoneFieldControllor,
+            keyboardType: TextInputType.phone,
+            editable: false),
+        PasswordFields(passwordController: controller.passwordController),
+        TextButton(
+            onPressed: controller.forgotPassword,
+            child: Text(
+              StringManager.myAccountForgotPassword.tr,
+              style:
+                  StyleManager.body01_Regular(color: ColorManager.firstColor),
+              textAlign: TextAlign.start,
+            )),
       ],
     );
   }
