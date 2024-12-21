@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
@@ -83,6 +84,7 @@ class ImpProductsRepositories implements ProductsRepositories {
       required int page,
       required int categoryID}) async {
     AppResponse response = AppResponse(success: false);
+    await Future.delayed(const Duration(seconds: 2));
     try {
       response.data = await api.request(
           url: EndPoints.getProductsByCategory + categoryID.toString(),

@@ -11,12 +11,11 @@ class CategoryPage extends GetView<CategoryPageController> {
 
   @override
   Widget build(BuildContext context) {
-  
-    controller.getCategories(context);
+    controller.inital(context);
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
-      body: CustomScrollView(
-        slivers: [
+      body: Column(
+        children: [
           SliverAppBarCategory(),
           CategorysTabBar(),
           CategorysProducts(),
