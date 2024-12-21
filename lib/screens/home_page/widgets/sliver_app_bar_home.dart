@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
@@ -33,8 +35,9 @@ class SliverAppBarHome extends GetView<HomePageController> {
               onTap: () {
                 controller.goToCart();
               },
-              child: Icon(
-                Icons.shopping_cart_outlined,
+              child: SvgPicture.asset(
+                AssetsManager.shoppingCardSvg,
+                // ignore: deprecated_member_use
                 color: ColorManager.whiteColor,
               ),
             )

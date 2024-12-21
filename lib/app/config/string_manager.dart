@@ -9,6 +9,7 @@ class StringManager {
   static const chooseUploadPicture = "chooseUploadPicture";
   static const uploadPicture = "uploadPicture";
   static const submitPicture = "submitPicture";
+  static const skip = "skip";
 
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
@@ -100,11 +101,15 @@ class StringManager {
   static const String ordersHistorySucceedButton = "ordersHistorySucceedButton";
   static const String ordersHistoryFailedButton = "ordersHistoryFailedButton";
   static const String ordersHistoryOrder = "ordersHistoryOrder";
-  static const String ordersHistoryStatusCompleted = "ordersHistoryStatusCompleted";
-  static const String ordersHistoryStatusRejected ="ordersHistoryStatusRejected";
-  static const String ordersHistoryStatusCancelled = "ordersHistoryStatusCancelled";
+  static const String ordersHistoryStatusCompleted =
+      "ordersHistoryStatusCompleted";
+  static const String ordersHistoryStatusRejected =
+      "ordersHistoryStatusRejected";
+  static const String ordersHistoryStatusCancelled =
+      "ordersHistoryStatusCancelled";
   static const String ordersHistoryStatusPending = "ordersHistoryStatusPending";
-  static const String ordersHistoryStatusDelivering = "ordersHistoryStatusDelivering";
+  static const String ordersHistoryStatusDelivering =
+      "ordersHistoryStatusDelivering";
 
   // Track Orders Page
   static const String tarckOrdersHeader = "tarckOrdersHeader";
@@ -146,7 +151,7 @@ class StringManager {
   static const String searchProductsText = "searchProductsText";
   static const recommendedText = "recommendedText";
   static const loading = "loading";
- 
+
   // Common in Orders pages
   // Order Details Page
   static const String orderDetailsHeader = "orderDetailsHeader";
@@ -159,14 +164,15 @@ class StringManager {
   static const String orderDetailsDate = "orderDetailsDate";
   static const String orderDetailsAddress = "orderDetailsAddress";
   static const String orderDetailsSyrianPounds = "orderDetailsSyrianPounds";
-    // Categories page
+  // Categories page
   static const String categoryPageShop = "categoryPageShop";
   static const String categoryPageByCategory = "categoryPageByCategory";
-  
+
   // Forgot passowrd
   static const String forgotPassowrdHeader = "forgotPassowrdHeader";
-  static const String forgotPassowrdEmailVerificationTitle = "forgotPassowrdEmailVerificationTitle";
-  static const String forgotPassowrdEmailVerificationsubTitle = "forgotPassowrdEmailVerificationsubTitle";
+  static const String forgotPassowrdEmailVerificationTitle =
+      "forgotPassowrdEmailVerificationTitle";
+  static const String forgotPassowrdEmailVerificationsubTitle =
+      "forgotPassowrdEmailVerificationsubTitle";
   static const String forgotPassowrdVerify = "forgotPassowrdVerify";
-  
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/bottom_navication_bar_model.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
@@ -11,7 +13,6 @@ class CurvedNavigationBarCustom extends GetView<CurvedNavigationBarController> {
   final startIndex;
   @override
   Widget build(BuildContext context) {
-
     controller.indexPage.value = startIndex;
     return SafeArea(
       child: Scaffold(
@@ -36,21 +37,25 @@ class CurvedNavigationBarCustom extends GetView<CurvedNavigationBarController> {
                         controller.indexPage.value = value;
                       },
                       index: controller.indexPage.value,
-                      items: const [
-                        Icon(
-                          Icons.home,
+                      items: [
+                        SvgPicture.asset(
+                          AssetsManager.homeSvg,
+                          // ignore: deprecated_member_use
                           color: ColorManager.whiteColor,
                         ),
-                        Icon(
-                          Icons.category,
+                        SvgPicture.asset(
+                          AssetsManager.categorySvg,
+                          // ignore: deprecated_member_use
                           color: ColorManager.whiteColor,
                         ),
-                        Icon(
-                          Icons.favorite,
+                        SvgPicture.asset(
+                          AssetsManager.heartSvg,
+                          // ignore: deprecated_member_use
                           color: ColorManager.whiteColor,
                         ),
-                        Icon(
-                          Icons.person,
+                        SvgPicture.asset(
+                          AssetsManager.profileSvg,
+                          // ignore: deprecated_member_use
                           color: ColorManager.whiteColor,
                         ),
                       ],

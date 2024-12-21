@@ -52,6 +52,10 @@ class UploadPicturePageController extends GetxController {
     }
   }
 
+  skipImage() {
+    Get.off(CurvedNavigationBarCustom(), binding: CurvedNavigationBarBinding());
+  }
+
   choosePicture() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {

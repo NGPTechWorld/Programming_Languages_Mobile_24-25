@@ -31,7 +31,7 @@ class AddressPageController extends GetxController {
     if (response.success) {
       SnackBarCustom.show(context, response.data);
       loadingState.value = LoadingState.doneWithData;
-      Get.to(ProfilePictureUpload(), binding: UploadPicturePageBinding());
+      Get.off(ProfilePictureUpload(), binding: UploadPicturePageBinding());
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;

@@ -27,6 +27,7 @@ class BottouCustom extends StatelessWidget {
           height: AppSizeScreen.screenHeight * 0.07,
           width: width == null ? AppSizeScreen.screenWidth / 2 : width,
           decoration: BoxDecoration(
+            // border: Border.all(),
             borderRadius:
                 BorderRadius.circular(borderRadius == null ? 40 : borderRadius),
             color: background,
