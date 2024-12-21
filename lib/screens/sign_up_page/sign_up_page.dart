@@ -23,6 +23,10 @@ class SignUpPage extends GetView<SignUpPageController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                InkWell(
+                  onTap: controller.languageOnTap,
+                  child: Icon(Icons.language),
+                ),
                 TitleSignUp(),
                 InputSignUp(),
                 SubmitSignUp(),

@@ -14,7 +14,7 @@ class TitleSignUp extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: AppSizeScreen.screenHeight * 0.03,
+          height: AppSizeScreen.screenHeight * 0.01,
         ),
         Stack(
           alignment: Alignment.center,

@@ -9,6 +9,7 @@ import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
+import 'package:ngpiteapp/screens/custom_widgets/helper_widget.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/otp_page/otp_page.dart';
 import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
@@ -96,5 +97,9 @@ class LoginPageController extends GetxController {
 
   goToSignUp() {
     Get.off(() => SignUpPage(), binding: SignUpPageBinging());
+  }
+
+  languageOnTap() {
+    HelperWidget.languageDialgo();
   }
 }

@@ -56,7 +56,6 @@ class ProfilePageController extends GetxController {
 
   languageOnTap() {
     HelperWidget.languageDialgo();
-    
   }
    
    getName(BuildContext context) async {

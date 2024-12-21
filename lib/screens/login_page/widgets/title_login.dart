@@ -13,7 +13,7 @@ class TitleLogin extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: AppSizeScreen.screenHeight * 0.05,
+          height: AppSizeScreen.screenHeight * 0.005,
         ),
         Center(
           child: Image.asset(

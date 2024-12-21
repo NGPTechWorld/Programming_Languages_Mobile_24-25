@@ -6,6 +6,7 @@ import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
+import 'package:ngpiteapp/screens/custom_widgets/helper_widget.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/login_page/login_page.dart';
 import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
@@ -14,9 +15,7 @@ import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
 
 class SignUpPageBinging extends Bindings {
   @override
-  void dependencies() {
-    
-  }
+  void dependencies() {}
 }
 
 class SignUpPageController extends GetxController {
@@ -60,5 +59,9 @@ class SignUpPageController extends GetxController {
 
   goToLogin() {
     Get.off(() => LoginPage(), binding: LoginPageBinding());
+  }
+
+  languageOnTap() {
+    HelperWidget.languageDialgo();
   }
 }

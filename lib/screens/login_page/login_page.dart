@@ -24,6 +24,10 @@ class LoginPage extends GetView<LoginPageController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                InkWell(
+                  onTap: controller.languageOnTap,
+                  child: Icon(Icons.language),
+                ),
                 TitleLogin(),
                 InputLogin(),
                 SubmitLogin(),
