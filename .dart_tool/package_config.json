@@ -158,6 +158,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "flutter_staggered_grid_view",
+      "rootUri": "file:///C:/Users/Mohamad%20Ali%20Alnuaimi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_svg",
       "rootUri": "file:///C:/Users/Mohamad%20Ali%20Alnuaimi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_svg-2.0.9",
       "packageUri": "lib/",
@@ -252,6 +258,12 @@
       "rootUri": "file:///C:/Users/Mohamad%20Ali%20Alnuaimi/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_windows-0.2.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "infinite_scroll_pagination",
+      "rootUri": "file:///C:/Users/Mohamad%20Ali%20Alnuaimi/AppData/Local/Pub/Cache/hosted/pub.dev/infinite_scroll_pagination-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "intl",
@@ -416,6 +428,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "sliver_tools",
+      "rootUri": "file:///C:/Users/Mohamad%20Ali%20Alnuaimi/AppData/Local/Pub/Cache/hosted/pub.dev/sliver_tools-0.2.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///C:/Users/Mohamad%20Ali%20Alnuaimi/AppData/Local/Pub/Cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
@@ -548,7 +566,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-12-20T13:15:18.780971Z",
+  "generated": "2024-12-21T12:20:30.619873Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///C:/SDKs/flutter",

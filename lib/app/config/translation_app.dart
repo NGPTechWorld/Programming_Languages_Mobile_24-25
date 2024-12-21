@@ -137,12 +137,14 @@ class TranslationApp implements Translations {
           StringManager.recommendedText: "",
           StringManager.allProducts: "كل المنتجات",
           StringManager.searchProductsText: "ابحث عن المنتجات",
-            // Forgot Password page
-          StringManager.forgotPassowrdEmailVerificationTitle: "نسيت كلمة المرور ؟ ",
+          // Forgot Password page
+          StringManager.forgotPassowrdEmailVerificationTitle:
+              "نسيت كلمة المرور ؟ ",
           StringManager.forgotPassowrdEmailVerificationsubTitle:
               "لقد قمنا بإرسال كود من 6 خانات الى البريد الإلكتروني التالي:",
           StringManager.forgotPassowrdVerify: "تحقق",
-        
+          StringManager.categoryPageShop: "تسوق",
+          StringManager.categoryPageByCategory: "حسب الأنواع",
         },
         "en": {
           //Sign Up
@@ -291,6 +293,9 @@ class TranslationApp implements Translations {
           StringManager.forgotPassowrdEmailVerificationsubTitle:
               "We have sent a code of 6 digits \nto the email:",
           StringManager.forgotPassowrdVerify: "Verify",
+          //Category page
+          StringManager.categoryPageShop: "shop",
+          StringManager.categoryPageByCategory: "By Category",
         },
       };
 }
