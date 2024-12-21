@@ -10,32 +10,35 @@ class SliverAppBarCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      toolbarHeight: AppSizeScreen.screenHeight / 4,
-      backgroundColor: ColorManager.firstColor,
-      title: ProductCategoryCard(),
-      flexibleSpace: SingleChildScrollView(
+    return SliverToBoxAdapter(
+      child: Container(
+        color: ColorManager.firstColor,
+        height: AppSizeScreen.screenHeight * 0.15,
         child: Padding(
-          padding: EdgeInsets.only(
-            top: AppSizeScreen.screenHeight * 0.05,
-            left: AppPadding.p20,
-            right: AppPadding.p20,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                StringManager.categoryPageShop.tr,
-                style: StyleManager.h1_Regular(
-                    color: ColorManager.primary1Color, fontsize: AppSize.s50),
+          padding: EdgeInsets.symmetric(
+              horizontal: AppPadding.p14, vertical: AppPadding.p10),
+          child: Align(
+            alignment: AlignmentDirectional.topStart,
+            child: FittedBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    StringManager.categoryPageShop.tr,
+                    style: StyleManager.h1_Regular(
+                        color: ColorManager.primary1Color,
+                        fontsize: AppSize.s50),
+                  ),
+                  Text(
+                    StringManager.categoryPageByCategory.tr,
+                    style: StyleManager.h1_Bold(
+                        color: ColorManager.primary1Color,
+                        fontsize: AppSize.s50),
+                  ),
+                ],
               ),
-              Text(
-                StringManager.categoryPageByCategory.tr,
-                style: StyleManager.h1_Bold(
-                    color: ColorManager.primary1Color, fontsize: AppSize.s50),
-              ),
-            ],
+            ),
           ),
         ),
       ),

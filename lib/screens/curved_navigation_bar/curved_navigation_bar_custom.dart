@@ -3,8 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/bottom_navication_bar_model.dart';
-import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
-import 'package:ngpiteapp/screens/profile_page/profile_page_logic.dart';
 import '/app/config/color_manager.dart';
 import 'package:get/get.dart';
 

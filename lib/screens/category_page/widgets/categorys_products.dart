@@ -11,30 +11,34 @@ class CategorysProducts extends GetView<CategoryPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SliverToBoxAdapter(
       // Ensures PagedListView has proper constraints.
-      child: RefreshIndicator(
-        onRefresh: () => Future.sync(
-          () => controller.productsPagingController.refresh(),
-        ),
-        child: PagedListView(
-          pagingController: controller.productsPagingController,
-          builderDelegate: PagedChildBuilderDelegate<dynamic>(
-            itemBuilder: (context, product, index) => Container(
-              height: 200,
-              child: CategoryProductCard(
-                index: index,
+      child: SizedBox(
+        height: AppSizeScreen.screenHeight * 0.72,
+        child: RefreshIndicator(
+          onRefresh: () => Future.sync(
+            () => controller.productsPagingController.refresh(),
+          ),
+          child: PagedListView(
+            //prototypeItem: AboutDialog(),
+            pagingController: controller.productsPagingController,
+            builderDelegate: PagedChildBuilderDelegate<dynamic>(
+              itemBuilder: (context, product, index) => Container(
+                height: 200,
+                child: CategoryProductCard(
+                  index: index,
+                ),
               ),
-            ),
-            firstPageErrorIndicatorBuilder: (context) => Container(
-              height: 100,
-              alignment: Alignment.center,
-              child: const Text("ERROR"),
-            ),
-            noItemsFoundIndicatorBuilder: (context) => Container(
-              height: 100,
-              alignment: Alignment.center,
-              child: const Text("NO ITEMS"),
+              firstPageErrorIndicatorBuilder: (context) => Container(
+                height: 100,
+                alignment: Alignment.center,
+                child: const Text("ERROR"),
+              ),
+              noItemsFoundIndicatorBuilder: (context) => Container(
+                height: 100,
+                alignment: Alignment.center,
+                child: const Text("NO ITEMS"),
+              ),
             ),
           ),
         ),

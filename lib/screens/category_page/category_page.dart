@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
 import 'package:ngpiteapp/screens/category_page/widgets/categorys_products.dart';
 import 'package:ngpiteapp/screens/category_page/widgets/categorys_tab_bar.dart';
@@ -14,11 +15,16 @@ class CategoryPage extends GetView<CategoryPageController> {
     controller.inital(context);
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
-      body: Column(
-        children: [
+      body: CustomScrollView(
+        slivers: [
           SliverAppBarCategory(),
           CategorysTabBar(),
           CategorysProducts(),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: AppSizeScreen.screenHeight * 0.08,
+            ),
+          )
         ],
       ),
     );
