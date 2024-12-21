@@ -10,12 +10,9 @@ class SliverAppBarCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      pinned: false,
-      floating: false,
-      expandedHeight: AppSizeScreen.screenHeight / 4,
+    return AppBar(
+      toolbarHeight: AppSizeScreen.screenHeight / 4,
       backgroundColor: ColorManager.firstColor,
-      stretch: true,
       title: ProductCategoryCard(),
       flexibleSpace: SingleChildScrollView(
         child: Padding(
