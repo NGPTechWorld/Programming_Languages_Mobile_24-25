@@ -30,7 +30,7 @@ class MyAccountController extends GetxController {
   RxBool changed = false.obs;
   RxString imagePath = "".obs;
   final userRepo = Get.find<ImpUsersRepositories>();
-  final netCheck = Get.find<NetworkInfoImpl>();
+  // final netCheck = Get.find<NetworkInfoImpl>();
   var loadingImageState = LoadingState.idle.obs;
   var loadingState = LoadingState.idle.obs;
   var editingState = LoadingState.idle.obs;
@@ -38,22 +38,17 @@ class MyAccountController extends GetxController {
 
   void getUser(BuildContext context) async {
     loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response = await userRepo.currentUser();
+    final response = await userRepo.currentUser();
 
-      if (response.success) {
-        loadingState.value = LoadingState.doneWithData;
-        user.value = response.data;
-        firstNameFieldControllor.setInitValue(user.value!.firstName);
-        lastNameFieldControllor.setInitValue(user.value!.lastName);
-        emailFieldControllor.setInitValue(user.value!.email);
-        phoneFieldControllor.setInitValue(user.value!.phone);
-      } else {
-        user.value = null;
-        loadingState.value = LoadingState.hasError;
-      }
+    if (response.success) {
+      loadingState.value = LoadingState.doneWithData;
+      user.value = response.data;
+      firstNameFieldControllor.setInitValue(user.value!.firstName);
+      lastNameFieldControllor.setInitValue(user.value!.lastName);
+      emailFieldControllor.setInitValue(user.value!.email);
+      phoneFieldControllor.setInitValue(user.value!.phone);
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      user.value = null;
       loadingState.value = LoadingState.hasError;
     }
   }
@@ -69,40 +64,35 @@ class MyAccountController extends GetxController {
   updateValues(BuildContext context) async {
     editingState.value = LoadingState.loading;
     String successMessage = "", failedMessage = "";
-    if (await netCheck.isConnected) {
-      if (passwordController.isChanged()) {
-        final response = await userRepo.resetPassword(
-            old_password: passwordController.oldPasswordController.getText(),
-            new_password: passwordController.newPasswordController.getText(),
-            new_password_confirmation:
-                passwordController.confirmPasswordController.getText());
-        if (response.success) {
-          successMessage += " " + StringManager.myAccountPasswordUpdated.tr;
-        } else {
-          failedMessage += ' ' + response.networkFailure!.message;
-          editingState.value = LoadingState.hasError;
-        }
-      }
-      final response = await userRepo.editUser(
-        first_name: firstNameFieldControllor.getText(),
-        last_name: lastNameFieldControllor.getText(),
-        email: emailFieldControllor.getText(),
-      );
+    if (passwordController.isChanged()) {
+      final response = await userRepo.resetPassword(
+          old_password: passwordController.oldPasswordController.getText(),
+          new_password: passwordController.newPasswordController.getText(),
+          new_password_confirmation:
+              passwordController.confirmPasswordController.getText());
       if (response.success) {
-        successMessage = StringManager.myAccountUserUpdated.tr + successMessage;
-        editingState.value = LoadingState.doneWithData;
-        user.value!.firstName = response.data.firstName;
-        user.value!.lastName = response.data.lastName;
-        user.value!.email = response.data.email;
-        firstNameFieldControllor.initalValue = user.value!.firstName;
-        lastNameFieldControllor.initalValue = user.value!.lastName;
-        emailFieldControllor.initalValue = user.value!.email;
+        successMessage += " " + StringManager.myAccountPasswordUpdated.tr;
       } else {
-        failedMessage += response.networkFailure!.message + failedMessage;
+        failedMessage += ' ' + response.networkFailure!.message;
         editingState.value = LoadingState.hasError;
       }
+    }
+    final response = await userRepo.editUser(
+      first_name: firstNameFieldControllor.getText(),
+      last_name: lastNameFieldControllor.getText(),
+      email: emailFieldControllor.getText(),
+    );
+    if (response.success) {
+      successMessage = StringManager.myAccountUserUpdated.tr + successMessage;
+      editingState.value = LoadingState.doneWithData;
+      user.value!.firstName = response.data.firstName;
+      user.value!.lastName = response.data.lastName;
+      user.value!.email = response.data.email;
+      firstNameFieldControllor.initalValue = user.value!.firstName;
+      lastNameFieldControllor.initalValue = user.value!.lastName;
+      emailFieldControllor.initalValue = user.value!.email;
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      failedMessage += response.networkFailure!.message + failedMessage;
       editingState.value = LoadingState.hasError;
     }
     String msg = "";
@@ -132,18 +122,13 @@ class MyAccountController extends GetxController {
   }
   getPicture(BuildContext context) async {
     loadingImageState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response = await userRepo.getImage();
+    final response = await userRepo.getImage();
 
-      if (response.success) {
-        loadingImageState.value = LoadingState.doneWithData;
-        imagePath.value = response.data ?? "";
-      } else {
-        user.value = null;
-        loadingImageState.value = LoadingState.hasError;
-      }
+    if (response.success) {
+      loadingImageState.value = LoadingState.doneWithData;
+      imagePath.value = response.data ?? "";
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      user.value = null;
       loadingImageState.value = LoadingState.hasError;
     }
   }

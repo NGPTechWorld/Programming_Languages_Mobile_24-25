@@ -23,18 +23,13 @@ class ShowAddressesController extends GetxController {
   RxList addresses = [].obs;
   void getAddresses(BuildContext context) async {
     loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response = await locationsRepo.getLocations();
-      if (response.success) {
-        addresses.clear();
-        addresses.addAll(response.data);
-        loadingState.value = LoadingState.doneWithData;
-      } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
-        loadingState.value = LoadingState.hasError;
-      }
+    final response = await locationsRepo.getLocations();
+    if (response.success) {
+      addresses.clear();
+      addresses.addAll(response.data);
+      loadingState.value = LoadingState.doneWithData;
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;
     }
   }
@@ -46,18 +41,13 @@ class ShowAddressesController extends GetxController {
 
   void deleteAddress(int index, BuildContext context) async {
     loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response =
-          await locationsRepo.deleteLocation(idLocation: addresses[index].id);
-      if (response.success) {
-        addresses.removeAt(index);
-        loadingState.value = LoadingState.doneWithData;
-      } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
-        loadingState.value = LoadingState.hasError;
-      }
+    final response =
+        await locationsRepo.deleteLocation(idLocation: addresses[index].id);
+    if (response.success) {
+      addresses.removeAt(index);
+      loadingState.value = LoadingState.doneWithData;
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;
     }
   }

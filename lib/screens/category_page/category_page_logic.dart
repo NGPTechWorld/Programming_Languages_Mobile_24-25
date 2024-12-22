@@ -19,22 +19,35 @@ class CategoryPageController extends GetxController {
   final categories = [].obs;
   final categoriesRepo = Get.find<ImpCategoryRepositories>();
   final productRepo = Get.find<ImpProductsRepositories>();
-  final netCheck = Get.find<NetworkInfoImpl>();
 
+  bool categoryChanged = false;
   final int perPage = 3;
   var isLoadingCategories = false.obs;
+  var isLoadingFirst = true.obs;
   final productsPagingController = PagingController<int, dynamic>(
     firstPageKey: 1,
+    invisibleItemsThreshold: 1,
   );
 
+  var h200 = 200.0.obs;
+
+  var isLoadingProducts = false;
+
   inital(BuildContext context) async {
+    productsPagingController.itemList = null;
     productsPagingController.addPageRequestListener((pageKey) {
       fetchPage(pageKey);
     });
-    getCategories(context);
+    await getCategories(context);
+    isLoadingFirst.value = false;
   }
 
   Future<void> fetchPage(int pageKey) async {
+    if (categoryChanged && pageKey > 1) {
+      categoryChanged = false;
+      return;
+    }
+    isLoadingProducts = true;
     try {
       final newPage = await productRepo.getProductsByCategory(
         page: pageKey,
@@ -52,27 +65,24 @@ class CategoryPageController extends GetxController {
     } catch (error) {
       productsPagingController.error = error;
     }
+    isLoadingProducts = false;
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void refresh() {
+    productsPagingController.itemList = null;
+    productsPagingController.refresh();
+    categoryChanged = true;
   }
 
   getCategories(BuildContext context) async {
-    if (await netCheck.isConnected) {
-      isLoadingCategories.value = true;
-      final response = await categoriesRepo.getAllCategories();
-      if (response.success) {
-        categories.clear();
-        categories.addAll(response.data);
-        await fetchPage(0);
-      } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
-      }
-      isLoadingCategories.value = false;
+    isLoadingCategories.value = true;
+    final response = await categoriesRepo.getAllCategories();
+    if (response.success) {
+      categories.clear();
+      categories.addAll(response.data);
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      SnackBarCustom.show(context, response.networkFailure!.message);
     }
+    isLoadingCategories.value = false;
   }
 }

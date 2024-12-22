@@ -27,42 +27,42 @@ class OrdersHistoryPageController extends GetxController {
   final completedOrders = [].obs;
   final incompletedOrders = [].obs;
   getOrders(BuildContext context) async {
-      loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final responseCompleted = await OrdersRepositories.getOrdersByStatus(
-          status: statusID[OrderStatusEnum.completed]!);
+    loadingState.value = LoadingState.loading;
+    final responseCompleted = await OrdersRepositories.getOrdersByStatus(
+        status: statusID[OrderStatusEnum.completed]!);
 
-      final responseRejected = await OrdersRepositories.getOrdersByStatus(
-          status: statusID[OrderStatusEnum.rejected]!);
+    final responseRejected = await OrdersRepositories.getOrdersByStatus(
+        status: statusID[OrderStatusEnum.rejected]!);
 
-      final responseCanceled = await OrdersRepositories.getOrdersByStatus(
-          status: statusID[OrderStatusEnum.cancelled]!);
-      if (responseCompleted.success &&
-          responseCanceled.success &&
-          responseRejected.success) {
-
-            // TODO : Check whether to reverse them or not 
-        completedOrders.addAll(responseCompleted.data);
-        incompletedOrders.addAll(responseRejected.data);
-        incompletedOrders.addAll(responseCanceled.data);
-        loadingState.value = LoadingState.doneWithData;
-      } else {
-        _handleErrorMessage(responseCanceled, responseRejected, responseCompleted, context);
-      }
+    final responseCanceled = await OrdersRepositories.getOrdersByStatus(
+        status: statusID[OrderStatusEnum.cancelled]!);
+    if (responseCompleted.success &&
+        responseCanceled.success &&
+        responseRejected.success) {
+      // TODO : Check whether to reverse them or not
+      completedOrders.addAll(responseCompleted.data);
+      incompletedOrders.addAll(responseRejected.data);
+      incompletedOrders.addAll(responseCanceled.data);
+      loadingState.value = LoadingState.doneWithData;
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
-      loadingState.value = LoadingState.hasError;
+      _handleErrorMessage(
+          responseCanceled, responseRejected, responseCompleted, context);
     }
   }
 
-  void _handleErrorMessage(AppResponse<dynamic> responseCanceled, AppResponse<dynamic> responseRejected, AppResponse<dynamic> responseCompleted, BuildContext context) {
+  void _handleErrorMessage(
+      AppResponse<dynamic> responseCanceled,
+      AppResponse<dynamic> responseRejected,
+      AppResponse<dynamic> responseCompleted,
+      BuildContext context) {
     String msg = "Error! \n";
     if (responseCanceled.networkFailure != null)
-      msg +="\nCanceled Orders : " + responseCanceled.networkFailure!.message;
+      msg += "\nCanceled Orders : " + responseCanceled.networkFailure!.message;
     if (responseRejected.networkFailure != null)
-      msg +="\nRejected Orders : " + responseRejected.networkFailure!.message;
+      msg += "\nRejected Orders : " + responseRejected.networkFailure!.message;
     if (responseCompleted.networkFailure != null)
-      msg += "\nCompleted Orders : " +responseCompleted.networkFailure!.message;
+      msg +=
+          "\nCompleted Orders : " + responseCompleted.networkFailure!.message;
     SnackBarCustom.show(context, msg);
     loadingState.value = LoadingState.hasError;
   }
@@ -70,7 +70,12 @@ class OrdersHistoryPageController extends GetxController {
   List get orders =>
       isCompletedSelected.value ? completedOrders : incompletedOrders;
 
-  void onTap(int id , int stautsId) {
-    Get.to(() => OrderDetailsPage(orderId: id , statusId: stautsId,), binding: OrderDetailsBinding());
+  void onTap(int id, int stautsId) {
+    Get.to(
+        () => OrderDetailsPage(
+              orderId: id,
+              statusId: stautsId,
+            ),
+        binding: OrderDetailsBinding());
   }
 }

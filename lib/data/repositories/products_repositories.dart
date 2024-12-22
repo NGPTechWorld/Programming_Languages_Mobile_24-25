@@ -84,7 +84,7 @@ class ImpProductsRepositories implements ProductsRepositories {
       required int page,
       required int categoryID}) async {
     AppResponse response = AppResponse(success: false);
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 6));
     try {
       response.data = await api.request(
           url: EndPoints.getProductsByCategory + categoryID.toString(),

@@ -17,7 +17,6 @@ class OrderDetailsBinding extends Bindings {
 class OrderDetailsPageController extends GetxController {
   final order = Rxn<OrderDetailsEntite>();
   final OrdersRepositories = Get.find<ImpOrdersRepositories>();
-  final netCheck = Get.find<NetworkInfoImpl>();
   var loadingState = LoadingState.idle.obs;
   int orderId = 1;
   int statusId = 1;
@@ -25,18 +24,13 @@ class OrderDetailsPageController extends GetxController {
     this.orderId = id;
     this.statusId = stautsId;
     loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response = await OrdersRepositories.getOrder(id: id);
-     
-      if (response.success) {
-        loadingState.value = LoadingState.doneWithData;
-        order.value = response.data;
-      } else {
-        order.value = null;
-      }
+    final response = await OrdersRepositories.getOrder(id: id);
+
+    if (response.success) {
+      loadingState.value = LoadingState.doneWithData;
+      order.value = response.data;
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
-      loadingState.value = LoadingState.hasError;
+      order.value = null;
     }
   }
 }

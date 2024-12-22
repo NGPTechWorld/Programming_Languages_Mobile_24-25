@@ -24,30 +24,24 @@ class TrackOrdersPageController extends GetxController {
 
   getOrders(BuildContext context) async {
     loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final responsePending = await OrdersRepositories.getOrdersByStatus(
-          status: statusID[OrderStatusEnum.pending]!);
-      final responseDelivering = await OrdersRepositories.getOrdersByStatus(
-          status: statusID[OrderStatusEnum.delivering]!);
+    final responsePending = await OrdersRepositories.getOrdersByStatus(
+        status: statusID[OrderStatusEnum.pending]!);
+    final responseDelivering = await OrdersRepositories.getOrdersByStatus(
+        status: statusID[OrderStatusEnum.delivering]!);
 
-      if (responsePending.success && responseDelivering.success) {
-        loadingState.value = LoadingState.doneWithData;
-        orders.addAll(responsePending.data.reversed);
-        orders.addAll(responseDelivering.data.reversed);
-      } else {
-        String msg = "Error! \n";
-        if (responsePending.networkFailure != null)
-          msg +=
-              "\nPending Orders : " + responsePending.networkFailure!.message;
-        if (responseDelivering.networkFailure != null)
-          msg += "\nDelivering Orders : " +
-              responseDelivering.networkFailure!.message;
-
-        SnackBarCustom.show(context, msg);
-        loadingState.value = LoadingState.hasError;
-      }
+    if (responsePending.success && responseDelivering.success) {
+      loadingState.value = LoadingState.doneWithData;
+      orders.addAll(responsePending.data.reversed);
+      orders.addAll(responseDelivering.data.reversed);
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      String msg = "Error! \n";
+      if (responsePending.networkFailure != null)
+        msg += "\nPending Orders : " + responsePending.networkFailure!.message;
+      if (responseDelivering.networkFailure != null)
+        msg += "\nDelivering Orders : " +
+            responseDelivering.networkFailure!.message;
+
+      SnackBarCustom.show(context, msg);
       loadingState.value = LoadingState.hasError;
     }
   }
@@ -64,34 +58,28 @@ class TrackOrdersPageController extends GetxController {
   handleMenuSelection(String value, int index, BuildContext context) async {
     switch (value) {
       case StringManager.trackOrdersMenuEditValue:
-      await editOrder(index);
+        await editOrder(index);
         break;
       case StringManager.trackOrdersMenuCancelValue:
-       await cancelOrder(index, context);
+        await cancelOrder(index, context);
         break;
     }
   }
 
-   cancelOrder(int index, BuildContext context) async {
+  cancelOrder(int index, BuildContext context) async {
     // loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response =
-          await OrdersRepositories.cancelOrder(id: orders[index].id);
-      if (response.success) {
-        loadingState.value = LoadingState.doneWithData;
-        orders.removeAt(index);
-        SnackBarCustom.show(context, response.data);
-      } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
-        loadingState.value = LoadingState.hasError;
-      }
+    final response = await OrdersRepositories.cancelOrder(id: orders[index].id);
+    if (response.success) {
+      loadingState.value = LoadingState.doneWithData;
+      orders.removeAt(index);
+      SnackBarCustom.show(context, response.data);
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;
     }
   }
 
-   editOrder(int index) async {
+  editOrder(int index) async {
     // go to edit order page with orders[index].id;
     print(orders[index].id);
   }

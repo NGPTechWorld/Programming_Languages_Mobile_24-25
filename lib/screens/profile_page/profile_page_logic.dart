@@ -32,12 +32,10 @@ class ProfilePageController extends GetxController {
   RxString imagePath = "".obs;
   RxString name = " ".obs;
 
-
   final netCheck = Get.find<NetworkInfoImpl>();
   final AuthRepositories = Get.find<ImpUsersRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
 
-  
   myAccountOnTap() {
     Get.to(() => MyAccountPage(), binding: MyAccountBinding());
   }
@@ -57,35 +55,25 @@ class ProfilePageController extends GetxController {
   languageOnTap() {
     HelperWidget.languageDialgo();
   }
-   
-   getName(BuildContext context) async {
-    if (await netCheck.isConnected) {
-      final response = await AuthRepositories.userName();
-      if (response.success) {
-        name.value = response.data;
-      } 
-    } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
-    }
-    return true;
-  }
-   getPicture(BuildContext context) async {
-    loadingImageState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response = await AuthRepositories.getImage();
 
-      if (response.success) {
-        loadingImageState.value = LoadingState.doneWithData;
-        imagePath.value = response.data ?? "";
-        print(response.data);
-      } else {
-        loadingImageState.value = LoadingState.hasError;
-      }
+  getName(BuildContext context) async {
+    final response = await AuthRepositories.userName();
+    if (response.success) {
+      name.value = response.data;
+    }
+  }
+
+  getPicture(BuildContext context) async {
+    loadingImageState.value = LoadingState.loading;
+    final response = await AuthRepositories.getImage();
+
+    if (response.success) {
+      loadingImageState.value = LoadingState.doneWithData;
+      imagePath.value = response.data ?? "";
+      print(response.data);
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
       loadingImageState.value = LoadingState.hasError;
     }
-    return true;
   }
 
   logout(BuildContext context) async {

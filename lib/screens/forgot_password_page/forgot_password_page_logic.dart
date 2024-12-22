@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 
 import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
@@ -39,14 +40,19 @@ class ForgotPasswordController extends GetxController {
   });
   sendCode(BuildContext context) async {
     sendingState.value = LoadingState.loading;
-    final response = await userRepo.forgatePassword(number: number);
-    if (response.success) {
-      SnackBarCustom.show(context, response.data.message);
-      sendingState.value = LoadingState.doneWithData;
-      id = response.data.id;
+    if (await netCheck.isConnected) {
+      final response = await userRepo.forgatePassword(number: number);
+      if (response.success) {
+        SnackBarCustom.show(context, response.data.message);
+        sendingState.value = LoadingState.doneWithData;
+        id = response.data.id;
+      } else {
+        SnackBarCustom.show(context, response.networkFailure!.message);
+        sendingState.value = LoadingState.hasError;
+      }
     } else {
-      SnackBarCustom.show(context, response.networkFailure!.message);
-      sendingState.value = LoadingState.hasError;
+      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      loadingState.value = LoadingState.hasError;
     }
   }
 
