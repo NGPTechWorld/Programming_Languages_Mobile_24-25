@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
-import 'package:ngpiteapp/data/entities/category_entities.dart';
-import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/module/product_model.dart';
-import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 

@@ -1,11 +1,8 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/data/entities/order_details_entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/orders_repositories.dart';
-import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
 class OrderDetailsBinding extends Bindings {
   @override

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/app/services/connection/network_info.dart';
+import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
+import 'package:ngpiteapp/screens/category_page/widgets/category_product_card.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
 class CategoryPageBinding extends Bindings {
@@ -24,7 +24,7 @@ class CategoryPageController extends GetxController {
   final int perPage = 3;
   var isLoadingCategories = false.obs;
   var isLoadingFirst = true.obs;
-  final productsPagingController = PagingController<int, dynamic>(
+  final productsPagingController = PagingController<int, ProductsCardEntite>(
     firstPageKey: 1,
     invisibleItemsThreshold: 1,
   );

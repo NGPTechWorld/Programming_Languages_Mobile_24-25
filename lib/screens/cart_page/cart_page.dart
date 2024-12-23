@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/cart_page/widgets/bottom_cart_page.dart';
 import 'package:ngpiteapp/screens/cart_page/widgets/items_cart.dart';
-import 'package:ngpiteapp/screens/custom_widgets/app_bar_default.dart';
-import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});

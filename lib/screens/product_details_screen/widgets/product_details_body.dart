@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/module/product_model.dart';
 import 'package:ngpiteapp/screens/product_details_screen/widgets/button_product.dart';
 import 'package:ngpiteapp/screens/product_details_screen/widgets/image_and_favoriet.dart';
 import 'package:ngpiteapp/screens/product_details_screen/widgets/price_product.dart';

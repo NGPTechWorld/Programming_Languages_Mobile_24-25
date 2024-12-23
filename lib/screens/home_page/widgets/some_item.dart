@@ -9,7 +9,6 @@ import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SomeItem extends GetView<HomePageController> {
   SomeItem({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
 import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';

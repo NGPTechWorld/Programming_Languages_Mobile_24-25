@@ -22,20 +22,31 @@ class ProfilePage extends GetView<ProfilePageController> {
       child: Scaffold(
         backgroundColor: ColorManager.primary1Color,
         appBar: appBar(context),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(AppSizeScreen.screenWidth * 0.05),
-            child: Column(
-              children: [
-                PicutreAndName(),
-                MyAccountTile(),
-                TrackOrderTile(),
-                OrderHistoryTile(),
-                AddressesTile(),
-                LanguageTile(),
-                LogoutTile(),
-              ],
-            ),
+        body: RefreshIndicator(
+          onRefresh: () => Future.sync(
+            () {
+              controller.getName(context);
+              controller.getPicture(context);
+            },
+          ),
+          color: ColorManager.firstColor,
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: EdgeInsets.all(AppSizeScreen.screenWidth * 0.05),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate([
+                    PicutreAndName(),
+                    MyAccountTile(),
+                    TrackOrderTile(),
+                    OrderHistoryTile(),
+                    AddressesTile(),
+                    LanguageTile(),
+                    LogoutTile(),
+                  ]),
+                ),
+              ),
+            ],
           ),
         ),
       ),

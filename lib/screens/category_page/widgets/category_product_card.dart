@@ -16,9 +16,11 @@ class CategoryProductCard extends GetView<CategoryPageController> {
   @override
   Widget build(BuildContext context) {
     final product = controller.productsPagingController.itemList![index];
+    print(product.image);
     return Card(
       color: ColorManager.primary1Color,
       elevation: 0,
+      
       child: Row(
         children: [
           Container(
@@ -30,11 +32,17 @@ class CategoryProductCard extends GetView<CategoryPageController> {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                   vertical: AppPadding.p30, horizontal: AppPadding.p20),
-              child: Image.asset(
-                AssetsManager.nullImage,
-                width: AppSizeScreen.screenHeight / 8,
-                fit: BoxFit.contain,
-              ),
+              child: product.image == null || product.image.contains('example')
+                  ? Image.asset(
+                      AssetsManager.nullImage,
+                      width: AppSizeScreen.screenHeight / 8,
+                      fit: BoxFit.contain,
+                    )
+                  : Image.network(
+                      product.image,
+                      width: AppSizeScreen.screenHeight / 8,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
           Expanded(
@@ -73,7 +81,8 @@ class CategoryProductCard extends GetView<CategoryPageController> {
                   RichText(
                       text: TextSpan(children: [
                     TextSpan(
-                        text: product.price.toString() +' ${StringManager.orderDetailsSyrianPounds.tr}' ,
+                        text: product.price.toString() +
+                            ' ${StringManager.orderDetailsSyrianPounds.tr}',
                         style: StyleManager.body01_Semibold(
                             color: ColorManager.firstDarkColor)),
                   ])),

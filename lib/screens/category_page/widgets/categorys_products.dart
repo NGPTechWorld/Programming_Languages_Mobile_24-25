@@ -5,7 +5,6 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
 import 'package:ngpiteapp/screens/category_page/widgets/category_product_card.dart';
-import 'package:ngpiteapp/screens/category_page/widgets/sliver_app_bar_category.dart';
 import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/error_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';

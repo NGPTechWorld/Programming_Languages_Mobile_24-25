@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
@@ -25,7 +22,7 @@ class CategoryCard extends GetView<CategoryPageController> {
           onTap: () {
             if (controller.isLoadingProducts) return;
             controller.indexCategorySelected.value = index;
-            controller.refresh();
+            controller.productsPagingController.refresh();
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
