@@ -31,7 +31,7 @@ class HomePageController extends GetxController {
   getProducts(BuildContext context) async {
     loadingStateProducts.value = LoadingState.loading;
     final response = await productRepo.getProducts(
-        page: currentPage.toString(), perPage: "10");
+        page: currentPage, perPage: 10);
     if (response.success) {
       currentPage++;
       if (response.data[ApiKey.message] == "successfully get products") {

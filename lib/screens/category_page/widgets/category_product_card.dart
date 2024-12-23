@@ -6,6 +6,7 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
+import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 
 class CategoryProductCard extends GetView<CategoryPageController> {
   const CategoryProductCard({
@@ -17,80 +18,82 @@ class CategoryProductCard extends GetView<CategoryPageController> {
   Widget build(BuildContext context) {
     final product = controller.productsPagingController.itemList![index];
     print(product.image);
-    return Card(
-      color: ColorManager.primary1Color,
-      elevation: 0,
-      
-      child: Row(
-        children: [
-          Container(
-            height: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppSize.s12),
-              color: ColorManager.firstLightColor.withAlpha(100),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppPadding.p30, horizontal: AppPadding.p20),
-              child: product.image == null || product.image.contains('example')
-                  ? Image.asset(
-                      AssetsManager.nullImage,
-                      width: AppSizeScreen.screenHeight / 8,
-                      fit: BoxFit.contain,
-                    )
-                  : Image.network(
-                      product.image,
-                      width: AppSizeScreen.screenHeight / 8,
-                      fit: BoxFit.cover,
-                    ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(AppPadding.p20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      product.name,
-                      style: StyleManager.h4_Bold(),
-                    ),
+    return InkWell(
+      splashColor: ColorManager.transparentColor,
+      onTap: () => controller.goToProductDetails(product.id),
+      child: Card(
+        color: ColorManager.primary1Color,
+        elevation: 0,
+        child: Row(
+          children: [
+            Container(
+              height: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppSize.s12),
+                color: ColorManager.firstLightColor.withAlpha(100),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: AppPadding.p30, horizontal: AppPadding.p20),
+                child: Image.network(
+                  product.image,
+                  errorBuilder: (context, error, stackTrace) => Image.asset(
+                    AssetsManager.nullImage,
+                    width: AppSizeScreen.screenHeight / 8,
+                    fit: BoxFit.contain,
                   ),
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      product.marketName,
-                      style: StyleManager.body02_Medium(
-                          color: ColorManager.primary5Color),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: FittedBox(
+                  width: AppSizeScreen.screenHeight / 8,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(AppPadding.p20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        "details",
+                        product.name,
+                        style: StyleManager.h4_Bold(),
+                      ),
+                    ),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        product.marketName,
                         style: StyleManager.body02_Medium(
                             color: ColorManager.primary5Color),
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  RichText(
-                      text: TextSpan(children: [
-                    TextSpan(
-                        text: product.price.toString() +
-                            ' ${StringManager.orderDetailsSyrianPounds.tr}',
-                        style: StyleManager.body01_Semibold(
-                            color: ColorManager.firstDarkColor)),
-                  ])),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "details",
+                          style: StyleManager.body02_Medium(
+                              color: ColorManager.primary5Color),
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                          text: product.price.toString() +
+                              ' ${StringManager.orderDetailsSyrianPounds.tr}',
+                          style: StyleManager.body01_Semibold(
+                              color: ColorManager.firstDarkColor)),
+                    ])),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

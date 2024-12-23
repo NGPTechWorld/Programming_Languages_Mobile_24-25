@@ -17,38 +17,33 @@ class CategoryCard extends GetView<CategoryPageController> {
     final categoryName = controller.categories[index].name;
     return Obx(
       () => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
-        child: InkWell(
-          onTap: () {
-            if (controller.isLoadingProducts) return;
-            controller.indexCategorySelected.value = index;
-            controller.productsPagingController.refresh();
-          },
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: index == controller.indexCategorySelected.value
-                    ? ColorManager.whiteColor
-                    : ColorManager.primary4Color,
-              ),
-              borderRadius: BorderRadius.circular(AppSize.s20),
-              color: index == controller.indexCategorySelected.value
-                  ? ColorManager.secoundDarkColor
-                  : ColorManager.whiteColor,
+          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
+          child: MaterialButton(
+            onPressed: () {
+              if (controller.isLoadingProducts) return;
+              controller.indexCategorySelected.value = index;
+              controller.productsPagingController.refresh();
+            },
+            color: index == controller.indexCategorySelected.value
+                ? ColorManager.secoundDarkColor
+                : ColorManager.whiteColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSize.s20),
+                side: BorderSide(
+                  color: index == controller.indexCategorySelected.value
+                      ? ColorManager.whiteColor
+                      : ColorManager.primary4Color,
+                  width: AppSize.s2,
+                )),
+            elevation: 0,
+            child: Text(
+              categoryName,
+              style: StyleManager.body02_Semibold(
+                  color: index == controller.indexCategorySelected.value
+                      ? ColorManager.whiteColor
+                      : ColorManager.primary5Color),
             ),
-            child: Center(
-              child: Text(
-                categoryName,
-                style: StyleManager.body02_Semibold(
-                    color: index == controller.indexCategorySelected.value
-                        ? ColorManager.whiteColor
-                        : ColorManager.primary5Color),
-              ),
-            ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

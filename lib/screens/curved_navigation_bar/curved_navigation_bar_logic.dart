@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
-import 'package:ngpiteapp/screens/favorite_screen/favorite_screen.dart';
+import 'package:ngpiteapp/screens/favorite_page/favorite_page.dart';
+import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
 import 'package:ngpiteapp/screens/home_page/home_page.dart';
 import 'package:ngpiteapp/screens/category_page/category_page.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
@@ -15,6 +16,7 @@ class CurvedNavigationBarBinding extends Bindings {
       ProfilePageController(),
     );
     Get.put(HomePageController());
+    Get.put(FavoritePageController());
     Get.put(CategoryPageController());
     Get.put(CurvedNavigationBarController());
   }
@@ -25,7 +27,7 @@ class CurvedNavigationBarController extends GetxController {
   List<Widget> pages = [
     HomePage(),
     CategoryPage(),
-    const FavoriteScreen(),
+    const FavoritePage(),
     ProfilePage(),
   ];
 }
