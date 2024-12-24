@@ -8,6 +8,7 @@ import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
 class HomePageBindings extends Bindings {
@@ -30,8 +31,8 @@ class HomePageController extends GetxController {
 
   getProducts(BuildContext context) async {
     loadingStateProducts.value = LoadingState.loading;
-    final response = await productRepo.getProducts(
-        page: currentPage, perPage: 10);
+    final response =
+        await productRepo.getProducts(page: currentPage, perPage: 10);
     if (response.success) {
       currentPage++;
       if (response.data[ApiKey.message] == "successfully get products") {
@@ -71,6 +72,6 @@ class HomePageController extends GetxController {
   }
 
   goToCart() {
-    Get.to(CartPage());
+    Get.to(CartPage(), binding: CartPageBindings());
   }
 }

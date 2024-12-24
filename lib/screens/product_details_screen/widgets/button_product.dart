@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/custom_widgets/default_button.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
-class ButtonProduct extends StatelessWidget {
+class ButtonProduct extends GetView<ProductDetailsPageController> {
   const ButtonProduct({super.key});
 
   @override
@@ -19,7 +21,7 @@ class ButtonProduct extends StatelessWidget {
             minWidth: 100,
             height: 50,
             color: ColorManager.whiteColor,
-            press: () {},
+            press: () => controller.addToCart(context),
             style: StyleManager.button1(color: ColorManager.secoundColor),
           ),
           Padding(

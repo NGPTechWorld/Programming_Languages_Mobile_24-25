@@ -115,7 +115,7 @@ class ImpUsersRepositories implements UsersRepositories {
           url:  EndPoints.logoutUrl,
           method: Method.post,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;
@@ -152,7 +152,7 @@ class ImpUsersRepositories implements UsersRepositories {
           url:  EndPoints.currentUser,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = GetUserEntitie.fromMap(data[ApiKey.user]);
       response.success = true;
@@ -169,7 +169,7 @@ class ImpUsersRepositories implements UsersRepositories {
           url:  EndPoints.currentUser,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = GetUserEntitie.fromMap(data[ApiKey.user]);
       response.data = response.data.firstName + " " + response.data.lastName;
@@ -219,7 +219,7 @@ class ImpUsersRepositories implements UsersRepositories {
           url:  EndPoints.getImage,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.image_path];
       response.success = true;

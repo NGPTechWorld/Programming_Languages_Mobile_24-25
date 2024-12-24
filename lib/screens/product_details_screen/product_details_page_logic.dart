@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/module/product_model.dart';
+import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
@@ -15,6 +16,7 @@ class ProductDetailsPageindings extends Bindings {
 
 class ProductDetailsPageController extends GetxController {
   final productRepo = Get.find<ImpProductsRepositories>();
+  final cartRepo = Get.find<ImpCartsRepositories>();
   ProductModel? product;
   var loadingState = LoadingState.idle.obs;
   int currentPage = 1;
@@ -41,10 +43,16 @@ class ProductDetailsPageController extends GetxController {
         await productRepo.toggleFavorite(id: product!.id.toString());
     if (response.success) {
       SnackBarCustom.show(context, response.data);
-      if (isFavorite.value)
-        isFavorite.value = false;
-      else
-        isFavorite.value = true;
+      isFavorite.value = !isFavorite.value;
+    } else {
+      SnackBarCustom.show(context, response.networkFailure!.message);
+    }
+  }
+
+  addToCart(BuildContext context) async {
+    final response = await cartRepo.addProduct(id: product!.id);
+    if (response.success) {
+      SnackBarCustom.show(context, response.data);
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
     }

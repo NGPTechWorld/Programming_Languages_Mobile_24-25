@@ -24,7 +24,7 @@ class ImpCategoryRepositories implements CategoryRepositories {
           url:  EndPoints.getAllCategories,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       final jsonData = data[ApiKey.categories] as List<dynamic>;
       response.data =
@@ -44,7 +44,7 @@ class ImpCategoryRepositories implements CategoryRepositories {
           url:  EndPoints.getCategory,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = CategoryEntities.fromMap(data);
       response.success = true;

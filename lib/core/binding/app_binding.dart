@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_service_getstorage.dart';
+import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
@@ -30,6 +31,7 @@ class AppBinding implements Bindings {
     Get.put(ImpProductsRepositories(api: Get.find<DioConsumer>()));
     Get.put(ImpCategoryRepositories(api: Get.find<DioConsumer>()));
     Get.put(ImpMarketsRepositories(api: Get.find<DioConsumer>()));
+    Get.put(ImpCartsRepositories(api: Get.find<DioConsumer>()));
   }
 
   Future<void> initializes() async {

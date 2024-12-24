@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
+import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class ImagAndFavorite extends GetView<ProductDetailsPageController> {
@@ -41,29 +42,27 @@ class ImagAndFavorite extends GetView<ProductDetailsPageController> {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(
-              vertical: AppPadding.p20, horizontal: AppPadding.p8),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppSize.s20),
-              color: ColorManager.primary1Color),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                  controller.toggleFavorite(context);
-                },
-                child: Obx(
-                  () => Icon(
-                    Icons.favorite,
-                    color: controller.isFavorite.value
-                        ? ColorManager.firstColor
-                        : ColorManager.primary3Color,
-                  ),
-                ),
+        InkWell(
+          onTap: () async {
+            await controller.toggleFavorite(context);
+            final favController = Get.find<FavoritePageController>();
+            favController.productsPagingController.refresh();
+          },
+          borderRadius: BorderRadius.circular(AppSize.s20),
+          child: Container(
+            width: AppSize.s50,
+            height: AppSize.s50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppSize.s20),
+                color: ColorManager.primary1Color),
+            child: Obx(
+              () => Icon(
+                Icons.favorite,
+                color: controller.isFavorite.value
+                    ? ColorManager.firstColor
+                    : ColorManager.primary3Color,
               ),
-            ],
+            ),
           ),
         )
       ],

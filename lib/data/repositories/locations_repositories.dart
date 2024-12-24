@@ -58,7 +58,7 @@ class ImpLocationsRepositories implements LocationsRepositories {
               idLocation.toString(),
           method: Method.delete,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;
@@ -76,7 +76,7 @@ class ImpLocationsRepositories implements LocationsRepositories {
           url:  EndPoints.getLocations,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       // final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
 
       response.data = parseLocations(response.data.toString());

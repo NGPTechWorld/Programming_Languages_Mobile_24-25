@@ -26,7 +26,7 @@ class ImpMarketsRepositories implements MarketsRepositories {
               "?perPage=${prePage}&page=${page}",
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data;
       response.success = true;

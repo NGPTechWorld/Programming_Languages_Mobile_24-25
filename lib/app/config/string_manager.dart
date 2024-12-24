@@ -175,4 +175,8 @@ class StringManager {
   static const String forgotPassowrdEmailVerificationsubTitle =
       "forgotPassowrdEmailVerificationsubTitle";
   static const String forgotPassowrdVerify = "forgotPassowrdVerify";
+  // Cart Page
+  static const String cartPageMyCart = "cartPageMyCart";
+  static const String cartPageNext = "cartPageNext";
+  // TODO : Translate these.
 }

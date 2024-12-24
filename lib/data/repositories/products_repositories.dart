@@ -68,7 +68,7 @@ class ImpProductsRepositories implements ProductsRepositories {
           url: EndPoints.getProduct + id,
           method: Method.get,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data;
       response.success = true;
@@ -135,7 +135,7 @@ class ImpProductsRepositories implements ProductsRepositories {
           url: EndPoints.toggleFavorite + id + "/",
           method: Method.post,
           requiredToken: true,
-          params: {});
+          );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;

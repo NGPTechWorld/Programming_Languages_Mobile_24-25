@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/bottun_custom.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
 
-class BottomCartPage extends StatelessWidget {
+class BottomCartPage extends GetView<CartPageController> {
   const BottomCartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: ColorManager.transparentColor,
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(AppPadding.p8),
       child: Container(
         decoration: BoxDecoration(
             color: ColorManager.primary2Color,
@@ -27,12 +29,15 @@ class BottomCartPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: AppPadding.p14),
               child: ListTile(
                 title: Text(
-                  "total_cost",
+                  StringManager.orderDetailsTotalPrice.tr,
                   style: StyleManager.h4_Regular(),
                 ),
-                trailing: Text(
-                  "data",
-                  style: StyleManager.h4_Medium(),
+                trailing: Obx(
+                  () => Text(
+                    controller.totalCost.value.toString() +
+                        ' ${StringManager.orderDetailsSyrianPounds.tr}',
+                    style: StyleManager.h4_Medium(),
+                  ),
                 ),
               ),
             ),
@@ -41,7 +46,7 @@ class BottomCartPage extends StatelessWidget {
                   Get.to(SelectAddressCartPage(),
                       binding: SelectAddressCartPageBinding());
                 },
-                text: "next",
+                text: StringManager.cartPageNext.tr,
                 width: AppSizeScreen.screenWidth * 0.8,
                 borderRadius: AppSize.s20,
                 background: ColorManager.secoundDarkColor,
