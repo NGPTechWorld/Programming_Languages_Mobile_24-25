@@ -42,7 +42,7 @@ class CartEntitie {
 class Product {
   final String name;
   final String marketName;
-  final String image;
+  final String? image;
   int id;
   int total_cost;
   int price;
