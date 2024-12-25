@@ -7,8 +7,7 @@ import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 
 abstract class MarketsRepositories {
-  Future<AppResponse> getMarkets(
-      {required String prePage, required String page});
+  Future<AppResponse> getMarkets({required int perPage, required int page});
 }
 
 class ImpMarketsRepositories implements MarketsRepositories {
@@ -17,16 +16,14 @@ class ImpMarketsRepositories implements MarketsRepositories {
 
   @override
   Future<AppResponse> getMarkets(
-      {required String prePage, required String page}) async {
+      {required int perPage, required int page}) async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: 
-              EndPoints.getMarkets +
-              "?perPage=${prePage}&page=${page}",
+          url: EndPoints.getMarkets,
           method: Method.get,
           requiredToken: true,
-          );
+          queryParameters: {ApiKey.perPage: perPage, ApiKey.page: page});
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data;
       response.success = true;

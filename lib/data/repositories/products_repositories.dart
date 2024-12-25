@@ -7,6 +7,7 @@ import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
+import 'package:ngpiteapp/data/module/product_model.dart';
 
 abstract class ProductsRepositories {
   Future<AppResponse> toggleFavorite({required String id});
@@ -65,12 +66,12 @@ class ImpProductsRepositories implements ProductsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.getProduct + id,
-          method: Method.get,
-          requiredToken: true,
-          );
+        url: EndPoints.getProduct + id,
+        method: Method.get,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
-      response.data = data;
+      response.data = ProductModel.fromMap(data);
       response.success = true;
     } on ErrorHandler catch (e) {
       response.networkFailure = e.failure;
@@ -88,8 +89,12 @@ class ImpProductsRepositories implements ProductsRepositories {
           method: Method.get,
           requiredToken: true,
           queryParameters: {ApiKey.perPage: perPage, ApiKey.page: page});
+      await Future.delayed(Duration(seconds: 6));
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
-      response.data = data;
+      final jsonList =
+          data[ApiKey.products][ApiKey.currentPageItems] as List<dynamic>;
+      response.data =
+          jsonList.map((json) => ProductsCardEntite.fromMap(json)).toList();
       response.success = true;
     } on ErrorHandler catch (e) {
       response.networkFailure = e.failure;
@@ -132,10 +137,10 @@ class ImpProductsRepositories implements ProductsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.toggleFavorite + id + "/",
-          method: Method.post,
-          requiredToken: true,
-          );
+        url: EndPoints.toggleFavorite + id + "/",
+        method: Method.post,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;

@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class ProductModel {
+import 'package:ngpiteapp/app/services/api/end_points.dart';
+
+class Product {
   final String name;
   final String image;
   final String description;
@@ -11,7 +13,7 @@ class ProductModel {
   final int quantity;
   final int price;
   final int number_of_purchases;
-  ProductModel({
+  Product({
     required this.name,
     required this.image,
     required this.description,
@@ -25,34 +27,47 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
-      'image': image,
-      'description': description,
-      'id': id,
-      'market_id': market,
-      'category_id': category,
-      'quantity': quantity,
-      'price': price,
-      'number_of_purchases': number_of_purchases,
+      ApiKey.name: name,
+      ApiKey.image: image,
+      ApiKey.description: description,
+      ApiKey.id: id,
+      ApiKey.market_name: market,
+      ApiKey.category_id: category,
+      ApiKey.quantity: quantity,
+      ApiKey.price: price,
+      ApiKey.number_of_purchases: number_of_purchases,
     };
   }
 
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
-    return ProductModel(
-      name: map['name'] as String,
-      image: (map['image'] as String?) ?? "",
-      description: map['description'] as String,
-      id: map['id'] as int,
-      market: map['market_name'] as String,
-      category: map['category'] as String,
-      quantity: map['quantity'] as int,
-      price: map['price'] as int,
-      number_of_purchases: map['number_of_purchases'] as int,
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      name: map[ApiKey.name] as String,
+      image: (map[ApiKey.image] as String?) ?? "",
+      description: map[ApiKey.description] as String,
+      id: map[ApiKey.id] as int,
+      market: map[ApiKey.market_name] as String,
+      category: map[ApiKey.category] as String,
+      quantity: map[ApiKey.quantity] as int,
+      price: map[ApiKey.price] as int,
+      number_of_purchases: map[ApiKey.number_of_purchases] as int,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Product.fromJson(String source) =>
+      Product.fromMap(json.decode(source) as Map<String, dynamic>);
+}
+
+class ProductModel {
+  final Product product;
+  final bool isFavorite;
+
+  ProductModel({required this.product, required this.isFavorite});
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
+      isFavorite: map[ApiKey.isFavorite] as bool,
+      product: Product.fromMap(map[ApiKey.product]),
+    );
+  }
 }

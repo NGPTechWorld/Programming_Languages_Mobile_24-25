@@ -51,7 +51,7 @@ class AppBarProductDetails extends GetView<ProductDetailsPageController> {
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "category",
+                  controller.product!.category,
                   style:
                       StyleManager.h3_Regular(color: ColorManager.blackColor),
                 ),

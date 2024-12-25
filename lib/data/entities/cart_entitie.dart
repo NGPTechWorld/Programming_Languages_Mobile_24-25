@@ -72,7 +72,7 @@ class Product {
     return Product(
       name: map[ApiKey.name] as String,
       marketName: map[ApiKey.market_name] as String,
-      image: map[ApiKey.image] as String,
+      image: map[ApiKey.image] as String?,
       id: map[ApiKey.id] as int,
       price: map[ApiKey.price] as int,
       count: map[ApiKey.count] as int,

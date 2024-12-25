@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.10:8000/api";
+  static const String baserUrl = "http://192.168.1.4:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -113,6 +113,13 @@ class ApiKey {
   static String perPage = "perPage";
   static String page = "page";
   static String cart = "cart";
+  static String isFavorite = "isFavorite";
+  static String product = "product";
+
+  static String description = "description";
+  static String category_id = "category_id";
+  static String quantity = "quantity";
+  static String number_of_purchases = "number_of_purchases";
 
 
   //---------------------------------------

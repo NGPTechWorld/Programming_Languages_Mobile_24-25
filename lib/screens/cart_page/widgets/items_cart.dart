@@ -6,6 +6,7 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
+import 'package:ngpiteapp/screens/cart_page/widgets/counter.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
 
 class ItemCart extends GetView<CartPageController> {
@@ -23,7 +24,7 @@ class ItemCart extends GetView<CartPageController> {
         child: Center(
           child: ListTile(
             leading: Image.network(
-              product.image,
+              product.image ?? "",
               errorBuilder: (context, error, stackTrace) => Image.asset(
                 AssetsManager.nullImage,
                 fit: BoxFit.contain,
@@ -57,46 +58,8 @@ class ItemCart extends GetView<CartPageController> {
             minVerticalPadding: AppPadding.p8,
             trailing: Container(
               width: AppSizeScreen.screenWidth * 0.25,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () => controller.subOne(index),
-                    child: CircleAvatar(
-                      radius: AppSize.s16,
-                      backgroundColor:
-                          ColorManager.primary3Color.withAlpha(100),
-                      child: Icon(
-                        Icons.remove,
-                        color: ColorManager.blackColor,
-                        size: AppSize.s16,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: AppSizeScreen.screenWidth * 0.08,
-                    child: Center(
-                      child: Text(
-                        product.count.toString(),
-                        style: StyleManager.body01_Regular(),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => controller.addOne(index),
-                    child: CircleAvatar(
-                      radius: AppSize.s16,
-                      backgroundColor:
-                          ColorManager.primary3Color.withAlpha(100),
-                      child: Icon(
-                        Icons.add,
-                        color: ColorManager.blackColor,
-                        size: AppSize.s16,
-                      ),
-                    ),
-                  ),
-                ],
+              child: Counter(
+                index: index,
               ),
             ),
           ),

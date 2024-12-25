@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class FavoritePageController extends GetxController {
   final indexCategorySelected = 0.obs;
@@ -55,6 +55,6 @@ class FavoritePageController extends GetxController {
   }
 
   goToProductDetails(int id) {
-    Get.to(ProductDetailsPage(id));
+    Get.to(ProductDetailsPage(id), binding: ProductDetailsPageindings());
   }
 }

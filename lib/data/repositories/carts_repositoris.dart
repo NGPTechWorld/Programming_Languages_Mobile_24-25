@@ -8,7 +8,8 @@ import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/data/entities/cart_entitie.dart';
 
 abstract class CartsRepositoris {
-  Future<AppResponse> addProduct({required int id}); //{product}
+  Future<AppResponse> addProduct(
+      {required int id, required int count}); //{product}
   Future<AppResponse> plusProductOne({required int id}); //{product}
   Future<AppResponse> minusProductOne({required int id}); //{product}
   Future<AppResponse> deleteProduct({required int id}); //{product}
@@ -21,16 +22,14 @@ class ImpCartsRepositories implements CartsRepositoris {
   ImpCartsRepositories({required this.api});
 
   @override
-  // TODO : Maybe add {required int count}
-  Future<AppResponse> addProduct({required int id}) async {
+  Future<AppResponse> addProduct({required int id, required int count}) async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
           url: EndPoints.addProductInCart + id.toString(),
           method: Method.post,
           requiredToken: true,
-          // TODO: Check this.
-          params: {ApiKey.count: 1});
+          params: {ApiKey.count: count});
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;

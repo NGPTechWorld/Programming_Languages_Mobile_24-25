@@ -178,5 +178,13 @@ class StringManager {
   // Cart Page
   static const String cartPageMyCart = "cartPageMyCart";
   static const String cartPageNext = "cartPageNext";
+
+  // Product Details Page
+  static const String productDetailsQuantity = "productDetailsQuantity";
+  static const String productDetailsMarket = "productDetailsMarket";
+  static const String productDetailsDescreption = "productDetailsDescreption";
+  static const String productDetailsBuyNow = "productDetailsBuyNow";
+  static const String productDetailsAddToCart = "productDetailsAddToCart";
+
   // TODO : Translate these.
 }

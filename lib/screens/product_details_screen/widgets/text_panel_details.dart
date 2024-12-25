@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
@@ -14,7 +15,7 @@ class TextPanelDetails extends GetView<ProductDetailsPageController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Descreption:",
+          "${StringManager.productDetailsDescreption.tr}:",
           style: StyleManager.h3_Bold(color: ColorManager.primary5Color),
         ),
         Padding(
@@ -27,12 +28,12 @@ class TextPanelDetails extends GetView<ProductDetailsPageController> {
         ExpansionTile(
           tilePadding: EdgeInsets.symmetric(horizontal: 0),
           title: Text(
-            "Market",
+            "${StringManager.productDetailsMarket.tr}:",
             style: StyleManager.h3_Bold(color: ColorManager.primary5Color),
           ),
           children: [
             Text(
-              "Store",
+              controller.product!.market,
               style: StyleManager.h4_Regular(color: ColorManager.primary5Color),
             ),
           ],
@@ -40,7 +41,7 @@ class TextPanelDetails extends GetView<ProductDetailsPageController> {
         ExpansionTile(
           tilePadding: EdgeInsets.symmetric(horizontal: 0),
           title: Text(
-            "Quantity",
+            "${StringManager.productDetailsQuantity.tr}:",
             style: StyleManager.h3_Bold(color: ColorManager.primary5Color),
           ),
           children: [

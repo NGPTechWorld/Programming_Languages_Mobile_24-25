@@ -143,8 +143,20 @@ class TranslationApp implements Translations {
           StringManager.forgotPassowrdEmailVerificationsubTitle:
               "لقد قمنا بإرسال كود من 6 خانات الى البريد الإلكتروني التالي:",
           StringManager.forgotPassowrdVerify: "تحقق",
+          // Category Page
           StringManager.categoryPageShop: "تسوق",
           StringManager.categoryPageByCategory: "حسب الأنواع",
+
+          // Cart Page
+          StringManager.cartPageMyCart: "السلة",
+          StringManager.cartPageNext: "تحديد موقع التوصيل",
+
+          // Product Details Page
+          StringManager.productDetailsQuantity: "الكمية",
+          StringManager.productDetailsMarket: "المتجر",
+          StringManager.productDetailsDescreption: "الوصف",
+          StringManager.productDetailsBuyNow: "شراء",
+          StringManager.productDetailsAddToCart: "إضافة إلى السلة",
         },
         "en": {
           //Sign Up
@@ -281,11 +293,7 @@ class TranslationApp implements Translations {
           StringManager.recommendedText: "",
           StringManager.allProducts: "All Products",
           StringManager.searchProductsText: "Search Products",
-          StringManager.ordersHistoryStatusCancelled: "Cancelled",
-          StringManager.ordersHistoryStatusRejected: "Rejected",
-          StringManager.ordersHistoryStatusCompleted: "Completed",
-          StringManager.ordersHistoryStatusPending: "Pending",
-          StringManager.ordersHistoryStatusDelivering: "Delivering",
+
 
           // TODO: translate in AR
           // Forgot Password page
@@ -296,6 +304,17 @@ class TranslationApp implements Translations {
           //Category page
           StringManager.categoryPageShop: "shop",
           StringManager.categoryPageByCategory: "By Category",
+
+          // Cart Page
+          StringManager.cartPageMyCart: "My Cart",
+          StringManager.cartPageNext: "Choose Address",
+
+          // Product Details Page
+          StringManager.productDetailsQuantity: "Quantity",
+          StringManager.productDetailsMarket: "Market",
+          StringManager.productDetailsDescreption: "Descreption",
+          StringManager.productDetailsBuyNow: "Buy Now!",
+          StringManager.productDetailsAddToCart: "Add To Cart",
         },
       };
 }

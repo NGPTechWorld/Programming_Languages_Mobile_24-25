@@ -20,9 +20,7 @@ class CartPageController extends GetxController {
 
   addOne(int index) async {
     final response = await cartRepo.plusProductOne(id: products[index].id);
-    loadingState.value = LoadingState.loading;
     if (response.success) {
-      loadingState.value = LoadingState.doneWithData;
       products[index].count++;
       products[index].total_cost += products[index].price;
       totalCost.value += products[index].price as int;
@@ -34,9 +32,7 @@ class CartPageController extends GetxController {
 
   subOne(int index) async {
     final response = await cartRepo.minusProductOne(id: products[index].id);
-    loadingState.value = LoadingState.loading;
     if (response.success) {
-      loadingState.value = LoadingState.doneWithData;
       products[index].count--;
       products[index].total_cost -= products[index].price;
       totalCost.value -= products[index].price as int;

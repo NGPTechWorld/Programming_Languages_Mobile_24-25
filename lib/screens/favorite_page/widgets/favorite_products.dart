@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/category_page/widgets/category_product_card.dart';
 import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/error_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/pagination_progress_indicator.dart';
 import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
+import 'package:ngpiteapp/screens/favorite_page/widgets/favorite_product_card.dart';
 
 class FavoriteProducts extends GetView<FavoritePageController> {
   const FavoriteProducts({super.key});
@@ -33,7 +33,7 @@ class FavoriteProducts extends GetView<FavoritePageController> {
                     builderDelegate: PagedChildBuilderDelegate<dynamic>(
                       itemBuilder: (context, product, index) => Container(
                         height: 200,
-                        child: CategoryProductCard(
+                        child: FavoriteProductCard(
                           index: index,
                         ),
                       ),

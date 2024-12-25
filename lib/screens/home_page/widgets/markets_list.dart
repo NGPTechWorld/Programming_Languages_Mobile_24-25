@@ -10,11 +10,12 @@ import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
-class StoreView extends GetView<HomePageController> {
-  const StoreView({super.key});
+class MarketsList extends GetView<HomePageController> {
+  const MarketsList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    controller.initalMarkets();
     controller.getMarkets(context);
     return SliverToBoxAdapter(
       child: Padding(

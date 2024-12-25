@@ -4,71 +4,18 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/entities/products_card._entite.dart';
-import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
+import 'package:ngpiteapp/screens/home_page/widgets/circle_add_item.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
 
-class SomeItem extends GetView<HomePageController> {
-  SomeItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    controller.getProducts(context);
-    return SliverToBoxAdapter(
-        child: Padding(
-      padding: const EdgeInsets.all(AppPadding.p10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            StringManager.allProducts.tr,
-            style: StyleManager.body01_Regular(fontsize: AppSize.s30),
-          ),
-          Obx(
-            () => GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-                mainAxisSpacing: AppPadding.p10,
-                crossAxisSpacing: AppPadding.p10,
-              ),
-              itemCount:
-                  controller.loadingStateProducts == LoadingState.doneWithData
-                      ? controller.products.length
-                      : 10,
-              itemBuilder: (context, index) {
-                return controller.loadingStateProducts ==
-                        LoadingState.doneWithData
-                    ? ProductItem(
-                        product: controller.products[index],
-                      )
-                    : ShimmerPlaceholder(
-                        height: 100,
-                        width: double.infinity,
-                      );
-              },
-            ),
-          ),
-          SizedBox(
-            height: AppSizeScreen.screenHeight / 7,
-          ),
-        ],
-      ),
-    ));
-  }
-}
-
 class ProductItem extends GetView<HomePageController> {
-  ProductsCardEntite product;
-  ProductItem({super.key, required this.product});
+  final int index;
+  ProductItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final product = controller.productsPagingController.itemList![index];
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
       child: InkWell(
@@ -154,36 +101,9 @@ class ProductItem extends GetView<HomePageController> {
               PositionedDirectional(
                 bottom: 10,
                 end: 0,
-                child: CircleAddItem(),
+                child: CircleAddItem(index: index),
               )
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CircleAddItem extends StatelessWidget {
-  const CircleAddItem({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: AppSize.s24,
-      child: Center(
-        child: InkWell(
-          onTap: () {},
-          child: CircleAvatar(
-            radius: AppSize.s30,
-            backgroundColor: ColorManager.secoundColor,
-            child: Icon(
-              Icons.add,
-              color: ColorManager.whiteColor,
-              size: AppSize.s16,
-            ),
           ),
         ),
       ),

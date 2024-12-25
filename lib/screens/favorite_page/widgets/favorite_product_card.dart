@@ -5,11 +5,11 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
-import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
+import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
 
-class CategoryProductCard extends GetView<CategoryPageController> {
-  const CategoryProductCard({
+
+class FavoriteProductCard extends GetView<FavoritePageController> {
+  const FavoriteProductCard({
     super.key,
     required this.index,
   });

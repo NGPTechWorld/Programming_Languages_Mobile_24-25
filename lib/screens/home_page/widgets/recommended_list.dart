@@ -5,7 +5,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/home_page/widgets/some_item.dart';
+
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
 
 class RecommendedList extends StatelessWidget {
@@ -144,8 +144,12 @@ class ItemRecommended extends StatelessWidget {
                         ),
                       ),
                     ),
-                    PositionedDirectional(
-                        top: 0, end: -15, child: CircleAddItem())
+                    // PositionedDirectional(
+                    //     top: 0,
+                    //     end: -15,
+                    //     child: CircleAddItem(
+                    //       index: index,
+                    //     ))
                   ],
                 ),
               )
