@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/home_page/home_page.dart';
-import 'package:ngpiteapp/screens/home_page/widgets/shimmer_card.dart';
+import 'package:ngpiteapp/screens/home_page/widgets/shimmer_product_card_home.dart';
 
 class ProductsShimmerGrid extends StatelessWidget {
+  final int count;
+
+  const ProductsShimmerGrid({super.key, required this.count});
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,8 +18,8 @@ class ProductsShimmerGrid extends StatelessWidget {
             mainAxisSpacing: AppPadding.p10,
             crossAxisSpacing: AppPadding.p10,
           ),
-          itemCount: 6,
-          itemBuilder: (context, index) => ShimmerCard()),
+          itemCount: count,
+          itemBuilder: (context, index) => ShimmerProductCardHome()),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 
-class ShimmerCard extends StatelessWidget {
+class ShimmerProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -22,8 +22,9 @@ class HomePageBindings extends Bindings {
 
 class HomePageController extends GetxController {
   final productRepo = Get.find<ImpProductsRepositories>();
-  final marketRepo = Get.find<ImpMarketsRepositories>();
-  final categoryRepo = Get.find<ImpCategoryRepositories>();
+  final marketRepo  = Get.find<ImpMarketsRepositories>();
+  final cartRepo    = Get.find<ImpCartsRepositories>();
+
   final productsPagingController = PagingController<int, ProductsCardEntite>(
     firstPageKey: 1,
     invisibleItemsThreshold: 2,
@@ -32,16 +33,12 @@ class HomePageController extends GetxController {
     firstPageKey: 1,
     invisibleItemsThreshold: 1,
   );
-  var h200 = 200.0.obs;
-
-  final markets = [].obs;
   var loadingStateProducts = LoadingState.idle.obs;
   var loadingStateMarkets = LoadingState.idle.obs;
   int currentPage = 1;
 
-  var perPage = 3;
-
-  final cartRepo = Get.find<ImpCartsRepositories>();
+  var productsPerPage = 4;
+  var marketsPerPage = 4;
 
   var isLoadingFirstProducts = true.obs;
   var isLoadingFirstMarkets = true.obs;
@@ -54,8 +51,8 @@ class HomePageController extends GetxController {
   }
 
   initalMarkets() async {
-    productsPagingController.addPageRequestListener((pageKey) {
-      // getMarkets(pageKey);
+    marketsPagingController.addPageRequestListener((pageKey) {
+      getMarkets(pageKey);
     });
     isLoadingFirstMarkets.value = false;
   }
@@ -64,10 +61,11 @@ class HomePageController extends GetxController {
     loadingStateProducts.value = LoadingState.loading;
 
     try {
-      final newPage =
-          await productRepo.getProducts(page: pageKey, perPage: perPage);
+      final newPage = await productRepo.getProducts(
+          page: pageKey, perPage: productsPerPage);
       print('Fetching page: $pageKey');
-      final isLastPage = newPage.data.isEmpty || newPage.data.length < perPage;
+      final isLastPage =
+          newPage.data.isEmpty || newPage.data.length < productsPerPage;
       if (isLastPage) {
         productsPagingController.appendLastPage(newPage.data);
       } else {
@@ -80,30 +78,29 @@ class HomePageController extends GetxController {
     loadingStateProducts.value = LoadingState.doneWithData;
   }
 
-  String getCategoryforProducts(int id) {
-    return "";
-  }
-
-  getMarkets(BuildContext context) async {
+  getMarkets(int pageKey) async {
     loadingStateMarkets.value = LoadingState.loading;
-    final response = await marketRepo.getMarkets(page: 1, perPage: 10);
-    if (response.success) {
-      if (response.data[ApiKey.message] == "successfully get markets") {
-        final jsonList =
-            response.data["markets"]["currentPageItems"] as List<dynamic>;
-        markets
-            .addAll(jsonList.map((json) => MarketsCard.fromMap(json)).toList());
-        loadingStateMarkets.value = LoadingState.doneWithData;
-        print(response.data);
-      } else {}
-    } else {
-      SnackBarCustom.show(context, response.networkFailure!.message);
-      loadingStateMarkets.value = LoadingState.hasError;
+
+    try {
+      print('Fetching page: $pageKey');
+      final newPage =
+          await marketRepo.getMarkets(page: pageKey, perPage: marketsPerPage);
+      final isLastPage =
+          newPage.data.isEmpty || newPage.data.length < productsPerPage;
+      if (isLastPage) {
+        marketsPagingController.appendLastPage(newPage.data);
+      } else {
+        final nextPageKey = pageKey + 1;
+        marketsPagingController.appendPage(newPage.data, nextPageKey);
+      }
+    } catch (error) {
+      marketsPagingController.error = error;
     }
+    loadingStateMarkets.value = LoadingState.doneWithData;
   }
 
   goToCart() {
-    Get.to(CartPage(), binding: CartPageBindings());
+    Get.to(() => CartPage(), binding: CartPageBindings());
   }
 
   addToCart(BuildContext context, int index) async {
