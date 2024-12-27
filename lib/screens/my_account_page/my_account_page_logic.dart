@@ -113,7 +113,7 @@ class MyAccountController extends GetxController {
   }
 
   void pictureUpdate() {
-    Get.to(ProfilePictureUpload(), binding: UploadPicturePageBinding());
+    Get.to(()=>ProfilePictureUpload(), binding: UploadPicturePageBinding());
   }
 
   void showPicture() {

@@ -24,9 +24,9 @@ class StartPageController extends GetxController {
 
   startApp() async {
     if (await cache.getUserToken() == null) {
-      Get.off(LoginPage(), binding: LoginPageBinding());
+      Get.off(()=>LoginPage(), binding: LoginPageBinding());
     } else {
-      Get.off(CurvedNavigationBarCustom(),
+      Get.off(()=>CurvedNavigationBarCustom(),
           binding: CurvedNavigationBarBinding());
     }
   }

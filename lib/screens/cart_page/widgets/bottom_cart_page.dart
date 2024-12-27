@@ -43,7 +43,7 @@ class BottomCartPage extends GetView<CartPageController> {
             ),
             BottouCustom(
                 function: () {
-                  Get.to(SelectAddressCartPage(),
+                  Get.to(()=>SelectAddressCartPage(),
                       binding: SelectAddressCartPageBinding());
                 },
                 text: StringManager.cartPageNext.tr,

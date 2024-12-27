@@ -8,6 +8,7 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/cart_page/widgets/counter.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class ItemCart extends GetView<CartPageController> {
   const ItemCart({super.key, required this.index});
@@ -33,9 +34,9 @@ class ItemCart extends GetView<CartPageController> {
             ),
             onTap: () {
               // TODO: add Bindings in all pages , and complete link of the page.
-              Get.to(ProductDetailsPage(
+              Get.to(() =>ProductDetailsPage(
                 product.id,
-              ));
+              ) , binding: ProductDetailsPageBindings());
             },
             title: Text(
               product.name,

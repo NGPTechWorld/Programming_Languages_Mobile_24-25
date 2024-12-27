@@ -8,6 +8,7 @@ import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/circle_add_item.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class ProductItem extends GetView<HomePageController> {
   final int index;
@@ -20,7 +21,11 @@ class ProductItem extends GetView<HomePageController> {
       padding: const EdgeInsets.all(AppPadding.p10),
       child: InkWell(
         onTap: () {
-          Get.to(ProductDetailsPage(product.id));
+          Get.to(
+              () => ProductDetailsPage(
+                    product.id,
+                  ),
+              binding: ProductDetailsPageBindings());
         },
         child: Container(
           decoration: BoxDecoration(

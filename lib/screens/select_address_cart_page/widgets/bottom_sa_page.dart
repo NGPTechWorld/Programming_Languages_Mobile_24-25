@@ -38,7 +38,7 @@ class BottomSaPage extends StatelessWidget {
             ),
             BottouCustom(
                 function: () {
-                  Get.to(SelectAddressCartPage(),
+                  Get.to(()=>SelectAddressCartPage(),
                       binding: SelectAddressCartPageBinding());
                 },
                 text: "next",

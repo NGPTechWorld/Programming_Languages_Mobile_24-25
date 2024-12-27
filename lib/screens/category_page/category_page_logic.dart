@@ -89,6 +89,6 @@ class CategoryPageController extends GetxController {
   }
 
   goToProductDetails(int id) {
-    Get.to(ProductDetailsPage(id), binding: ProductDetailsPageBindings());
+    Get.to(()=>ProductDetailsPage(id));
   }
 }

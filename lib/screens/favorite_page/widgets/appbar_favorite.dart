@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
+import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
 
 class AppbarFavorite extends StatelessWidget {
   const AppbarFavorite({super.key});
@@ -25,6 +31,7 @@ class AppbarFavorite extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
+            // TODO : Fix this "My Favorites".
             children: [
               Text(
                 "My",
@@ -44,7 +51,7 @@ class AppbarFavorite extends StatelessWidget {
   }
 }
 
-class ProductCategoryCard extends StatelessWidget {
+class ProductCategoryCard extends GetView<FavoritePageController> {
   const ProductCategoryCard({
     super.key,
   });
@@ -57,9 +64,13 @@ class ProductCategoryCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(),
-          Icon(
-            Icons.shopping_cart_outlined,
-            color: ColorManager.whiteColor,
+          InkWell(
+            onTap: () => controller.goToCart(),
+            child: SvgPicture.asset(
+              AssetsManager.shoppingCardSvg,
+              // ignore: deprecated_member_use
+              color: ColorManager.whiteColor,
+            ),
           )
         ],
       ),

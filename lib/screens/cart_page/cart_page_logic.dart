@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:ngpiteapp/data/entities/cart_entitie.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';

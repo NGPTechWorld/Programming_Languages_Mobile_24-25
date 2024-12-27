@@ -44,7 +44,7 @@ class UploadPicturePageController extends GetxController {
     if (response.success) {
       SnackBarCustom.show(context, response.data);
       loadingState.value = LoadingState.doneWithData;
-      Get.off(CurvedNavigationBarCustom(),
+      Get.off(() => CurvedNavigationBarCustom(),
           binding: CurvedNavigationBarBinding());
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
@@ -53,7 +53,8 @@ class UploadPicturePageController extends GetxController {
   }
 
   skipImage() {
-    Get.off(CurvedNavigationBarCustom(), binding: CurvedNavigationBarBinding());
+    Get.off(() => CurvedNavigationBarCustom(),
+        binding: CurvedNavigationBarBinding());
   }
 
   choosePicture() async {

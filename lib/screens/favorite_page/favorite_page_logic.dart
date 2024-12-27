@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
@@ -47,6 +49,10 @@ class FavoritePageController extends GetxController {
   }
 
   goToProductDetails(int id) {
-    Get.to(ProductDetailsPage(id), binding: ProductDetailsPageBindings());
+    Get.to(() => ProductDetailsPage(id));
+  }
+
+  goToCart() {
+    Get.to(() => CartPage(), binding: CartPageBindings());
   }
 }
