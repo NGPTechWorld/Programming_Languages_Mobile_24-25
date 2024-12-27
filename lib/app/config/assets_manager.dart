@@ -15,6 +15,7 @@ class AssetsManager {
   static const mapImage = '$imagesPath/map.jpg';
   static const nullImage = '$imagesPath/imageIcon.png';
   static const profileDefaultImage = '$imagesPath/profileDefault.png';
+  static const emptyBox = '$imagesPath/empty-box.png';
   //SVGS
   static const upgradeSvg = '$svgsPath/upgrade.svg';
   static const notFoundSvg = '$svgsPath/not_found.svg';

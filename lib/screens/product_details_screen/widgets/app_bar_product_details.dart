@@ -36,7 +36,8 @@ class AppBarProductDetails extends GetView<ProductDetailsPageController> {
       ),
       flexibleSpace: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 80, left: 20, right: 20),
+          padding: const EdgeInsets.only(
+              top: AppPadding.p80, left: AppPadding.p20, right: AppPadding.p20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

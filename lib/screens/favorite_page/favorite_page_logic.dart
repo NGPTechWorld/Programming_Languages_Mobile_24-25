@@ -15,27 +15,20 @@ class FavoritePageController extends GetxController {
     firstPageKey: 1,
     invisibleItemsThreshold: 1,
   );
-
-  var h200 = 200.0.obs;
-
-  var isLoadingProducts = false;
-
-  inital(BuildContext context) async {
-    productsPagingController.itemList = null;
+  @override
+  onInit() {
     productsPagingController.addPageRequestListener((pageKey) {
       fetchPage(pageKey);
     });
-    isLoadingFirst.value = false;
+    super.onInit();
   }
 
   Future<void> fetchPage(int pageKey) async {
-    isLoadingProducts = true;
     try {
       final newPage = await productRepo.getFavoriteProducts(
         page: pageKey,
         perPage: perPage,
       );
-      print('Fetching page: $pageKey');
       final isLastPage = newPage.data.isEmpty || newPage.data.length < perPage;
       if (isLastPage) {
         productsPagingController.appendLastPage(newPage.data);
@@ -46,7 +39,6 @@ class FavoritePageController extends GetxController {
     } catch (error) {
       productsPagingController.error = error;
     }
-    isLoadingProducts = false;
   }
 
   void refresh() {
@@ -55,6 +47,6 @@ class FavoritePageController extends GetxController {
   }
 
   goToProductDetails(int id) {
-    Get.to(ProductDetailsPage(id), binding: ProductDetailsPageindings());
+    Get.to(ProductDetailsPage(id), binding: ProductDetailsPageBindings());
   }
 }

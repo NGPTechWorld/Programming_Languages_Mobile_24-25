@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/data/entities/markets_card.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
-import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
@@ -22,8 +20,8 @@ class HomePageBindings extends Bindings {
 
 class HomePageController extends GetxController {
   final productRepo = Get.find<ImpProductsRepositories>();
-  final marketRepo  = Get.find<ImpMarketsRepositories>();
-  final cartRepo    = Get.find<ImpCartsRepositories>();
+  final marketRepo = Get.find<ImpMarketsRepositories>();
+  final cartRepo = Get.find<ImpCartsRepositories>();
 
   final productsPagingController = PagingController<int, ProductsCardEntite>(
     firstPageKey: 1,
@@ -40,26 +38,29 @@ class HomePageController extends GetxController {
   var productsPerPage = 4;
   var marketsPerPage = 4;
 
-  var isLoadingFirstProducts = true.obs;
+  // var isLoadingFirstProducts = true.obs;
   var isLoadingFirstMarkets = true.obs;
-
-  initalProducts() async {
+  onInit() async {
+    productsPagingController.itemList = null;
     productsPagingController.addPageRequestListener((pageKey) {
       getProducts(pageKey);
     });
-    isLoadingFirstProducts.value = false;
-  }
 
-  initalMarkets() async {
+    marketsPagingController.itemList = null;
     marketsPagingController.addPageRequestListener((pageKey) {
       getMarkets(pageKey);
     });
     isLoadingFirstMarkets.value = false;
+    productsPagingController.refresh();
+    super.onInit();
   }
 
   getProducts(int pageKey) async {
     loadingStateProducts.value = LoadingState.loading;
-
+    if (pageKey < productsPagingController.nextPageKey!) {
+      productsPagingController.refresh();
+      return;
+    }
     try {
       final newPage = await productRepo.getProducts(
           page: pageKey, perPage: productsPerPage);

@@ -31,7 +31,7 @@ class ImpMarketsRepositories implements MarketsRepositories {
       response.data =
           (jsonList.map((json) => MarketsCard.fromMap(json)).toList());
       response.success = true;
-      await Future.delayed(Duration(seconds: 4));
+      // await Future.delayed(Duration(seconds: 4));
     } on ErrorHandler catch (e) {
       response.networkFailure = e.failure;
     }

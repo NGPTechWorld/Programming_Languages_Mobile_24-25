@@ -186,5 +186,8 @@ class StringManager {
   static const String productDetailsBuyNow = "productDetailsBuyNow";
   static const String productDetailsAddToCart = "productDetailsAddToCart";
 
+  static const String paginationtryAgain = "paginationtryAgain";
+  static const String paginationOops = "paginationOops";
+  static const String paginationNoProducts = "paginationNoProducts";
   // TODO : Translate these.
 }

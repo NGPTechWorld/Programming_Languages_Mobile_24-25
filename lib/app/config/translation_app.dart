@@ -157,6 +157,10 @@ class TranslationApp implements Translations {
           StringManager.productDetailsDescreption: "الوصف",
           StringManager.productDetailsBuyNow: "شراء",
           StringManager.productDetailsAddToCart: "إضافة إلى السلة",
+          // Pagination
+          StringManager.paginationtryAgain: "حاول مجدداً",
+          StringManager.paginationOops: "عذرا",
+          StringManager.paginationNoProducts: "لا يوجد منتجات.",
         },
         "en": {
           //Sign Up
@@ -294,7 +298,6 @@ class TranslationApp implements Translations {
           StringManager.allProducts: "All Products",
           StringManager.searchProductsText: "Search Products",
 
-
           // TODO: translate in AR
           // Forgot Password page
           StringManager.forgotPassowrdEmailVerificationTitle: "Forgot Password",
@@ -315,6 +318,10 @@ class TranslationApp implements Translations {
           StringManager.productDetailsDescreption: "Descreption",
           StringManager.productDetailsBuyNow: "Buy Now!",
           StringManager.productDetailsAddToCart: "Add To Cart",
+          // Pagination
+          StringManager.paginationtryAgain: "Try Again",
+          StringManager.paginationOops: "Oops!",
+          StringManager.paginationNoProducts: "We couldn\'t find any products.",
         },
       };
 }

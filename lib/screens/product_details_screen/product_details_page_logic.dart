@@ -7,7 +7,7 @@ import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
-class ProductDetailsPageindings extends Bindings {
+class ProductDetailsPageBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(ProductDetailsPageController());

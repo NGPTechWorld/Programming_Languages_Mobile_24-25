@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';

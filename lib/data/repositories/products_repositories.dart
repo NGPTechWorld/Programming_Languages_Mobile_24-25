@@ -30,7 +30,7 @@ class ImpProductsRepositories implements ProductsRepositories {
   Future<AppResponse> getFavoriteProducts(
       {required int perPage, required int page}) async {
     AppResponse response = AppResponse(success: false);
-    // await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 3));
     try {
       response.data = await api.request(
           url: EndPoints.getFavoriteProducts,
@@ -89,7 +89,7 @@ class ImpProductsRepositories implements ProductsRepositories {
           method: Method.get,
           requiredToken: true,
           queryParameters: {ApiKey.perPage: perPage, ApiKey.page: page});
-      await Future.delayed(Duration(seconds: 6));
+      // await Future.delayed(Duration(seconds: 6));
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       final jsonList =
           data[ApiKey.products][ApiKey.currentPageItems] as List<dynamic>;
@@ -108,7 +108,7 @@ class ImpProductsRepositories implements ProductsRepositories {
       required int page,
       required int categoryID}) async {
     AppResponse response = AppResponse(success: false);
-    // await Future.delayed(const Duration(seconds: 6));
+    // await Future.delayed(const Duration(seconds: 3));
     try {
       response.data = await api.request(
           url: EndPoints.getProductsByCategory + categoryID.toString(),

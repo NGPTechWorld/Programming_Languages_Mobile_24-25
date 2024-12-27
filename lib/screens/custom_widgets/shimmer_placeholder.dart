@@ -3,17 +3,16 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerPlaceholder extends StatelessWidget {
-  final double height, width;
+  final double height, width, padding;
   const ShimmerPlaceholder(
-      {super.key, required this.height, required this.width});
-
+      {super.key, required this.height, required this.width, this.padding = 10.0});
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
       child: Container(
-        margin: const EdgeInsets.all(AppPadding.p10),
+        margin: EdgeInsets.all(padding),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppSize.s18),
           color: Colors.grey[300],

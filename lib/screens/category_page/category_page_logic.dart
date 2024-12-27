@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/category_page/widgets/category_product_card.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
+import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class CategoryPageBinding extends Bindings {
   @override
@@ -24,7 +26,7 @@ class CategoryPageController extends GetxController {
   bool categoryChanged = false;
   final int perPage = 3;
   var isLoadingCategories = false.obs;
-  var isLoadingFirst = true.obs;
+  var isLoadingFirst = LoadingState.loading;
   final productsPagingController = PagingController<int, ProductsCardEntite>(
     firstPageKey: 1,
     invisibleItemsThreshold: 1,
@@ -33,14 +35,13 @@ class CategoryPageController extends GetxController {
   var h200 = 200.0.obs;
 
   var isLoadingProducts = false;
-
-  inital(BuildContext context) async {
+  onInit() async {
+    await getCategories();
     productsPagingController.itemList = null;
     productsPagingController.addPageRequestListener((pageKey) {
       fetchPage(pageKey);
     });
-    await getCategories(context);
-    isLoadingFirst.value = false;
+    super.onInit();
   }
 
   Future<void> fetchPage(int pageKey) async {
@@ -75,19 +76,19 @@ class CategoryPageController extends GetxController {
     categoryChanged = true;
   }
 
-  getCategories(BuildContext context) async {
+  getCategories() async {
     isLoadingCategories.value = true;
     final response = await categoriesRepo.getAllCategories();
     if (response.success) {
       categories.clear();
       categories.addAll(response.data);
     } else {
-      SnackBarCustom.show(context, response.networkFailure!.message);
+      // SnackBarCustom.show(context, response.networkFailure!.message);
     }
     isLoadingCategories.value = false;
   }
 
   goToProductDetails(int id) {
-    Get.to(ProductDetailsPage(id));
+    Get.to(ProductDetailsPage(id), binding: ProductDetailsPageBindings());
   }
 }

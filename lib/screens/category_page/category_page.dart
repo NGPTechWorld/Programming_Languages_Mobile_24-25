@@ -12,7 +12,6 @@ class CategoryPage extends GetView<CategoryPageController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.inital(context);
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
       body: CustomScrollView(
