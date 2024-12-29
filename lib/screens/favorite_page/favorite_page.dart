@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/favorite_page/widgets/appbar_favorite.dart';
-import 'package:ngpiteapp/screens/favorite_page/widgets/favorite_products.dart';
+import 'package:ngpiteapp/screens/favorite_page/widgets/favorite_products_list.dart';
 import '/app/config/color_manager.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -11,16 +10,11 @@ class FavoritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
-      body: CustomScrollView(
-        slivers: [
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
           AppbarFavorite(),
-          FavoriteProducts(),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: AppSizeScreen.screenHeight * 0.2,
-            ),
-          )
         ],
+        body: FavoriteProductsList(),
       ),
     );
   }

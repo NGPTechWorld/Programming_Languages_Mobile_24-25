@@ -15,47 +15,46 @@ class CategorysProducts extends GetView<CategoryPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-        child: Obx(() => controller.isLoadingCategories.value
-            ? WideProductShimmerList()
-            : SizedBox(
-                height: AppSizeScreen.screenHeight * 0.72,
-                child: RefreshIndicator(
-                  onRefresh: () => Future.sync(
-                    () => controller.productsPagingController.refresh(),
-                  ),
-                  color: ColorManager.firstColor,
-                  child: PagedListView(
-                    pagingController: controller.productsPagingController,
-                    builderDelegate: PagedChildBuilderDelegate<dynamic>(
-                      itemBuilder: (context, product, index) => Container(
-                        height: AppSize.s200,
-                        child: CategoryProductCard(
-                          index: index,
-                        ),
-                      ),
-                      firstPageProgressIndicatorBuilder: (context) =>
-                          WideProductShimmerList(),
-                      newPageProgressIndicatorBuilder: (context) =>
-                          WideProductShimmerCard(),
-                      newPageErrorIndicatorBuilder: (context) => TryAgainButton(
-                        onPressed: () {
-                          controller.productsPagingController
-                              .retryLastFailedRequest();
-                        },
-                      ),
-                      firstPageErrorIndicatorBuilder: (context) =>
-                          TryAgainButton(
-                        onPressed: () {
-                          controller.productsPagingController.refresh();
-                        },
-                      ),
-                      noItemsFoundIndicatorBuilder: (context) =>
-                          EmptyListIndicator(),
+    return Obx(() => controller.isLoadingCategories.value
+        ? WideProductShimmerList()
+        : SizedBox(
+            height: AppSizeScreen.screenHeight * 0.72,
+            child: RefreshIndicator(
+              onRefresh: () => Future.sync(
+                () => controller.productsPagingController.refresh(),
+              ),
+              color: ColorManager.firstColor,
+              child: PagedListView(
+                pagingController: controller.productsPagingController,
+                builderDelegate: PagedChildBuilderDelegate<dynamic>(
+                  itemBuilder: (context, product, index) => Container(
+                    height: AppSize.s200,
+                    child: CategoryProductCard(
+                      index: index,
                     ),
                   ),
+                  firstPageProgressIndicatorBuilder: (context) =>
+                      WideProductShimmerList(),
+                  newPageProgressIndicatorBuilder: (context) =>
+                      WideProductShimmerCard(),
+                  newPageErrorIndicatorBuilder: (context) => TryAgainButton(
+                    onPressed: () {
+                      controller.productsPagingController
+                          .retryLastFailedRequest();
+                    },
+                  ),
+                  firstPageErrorIndicatorBuilder: (context) =>
+                      TryAgainButton(
+                    onPressed: () {
+                      controller.productsPagingController.refresh();
+                    },
+                  ),
+                  noItemsFoundIndicatorBuilder: (context) =>
+                      EmptyListIndicator(),
                 ),
-              )));
+              ),
+            ),
+          ));
   }
 }
 
