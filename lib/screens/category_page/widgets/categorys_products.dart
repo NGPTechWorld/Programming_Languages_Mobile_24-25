@@ -17,14 +17,18 @@ class CategorysProducts extends GetView<CategoryPageController> {
   Widget build(BuildContext context) {
     return Obx(() => controller.isLoadingCategories.value
         ? WideProductShimmerList()
-        : SizedBox(
-            height: AppSizeScreen.screenHeight * 0.72,
+        : Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).padding.bottom + AppPadding.p80,
+    
+            ),
             child: RefreshIndicator(
               onRefresh: () => Future.sync(
                 () => controller.productsPagingController.refresh(),
               ),
               color: ColorManager.firstColor,
               child: PagedListView(
+                clipBehavior: Clip.none,
                 pagingController: controller.productsPagingController,
                 builderDelegate: PagedChildBuilderDelegate<dynamic>(
                   itemBuilder: (context, product, index) => Container(
@@ -43,8 +47,7 @@ class CategorysProducts extends GetView<CategoryPageController> {
                           .retryLastFailedRequest();
                     },
                   ),
-                  firstPageErrorIndicatorBuilder: (context) =>
-                      TryAgainButton(
+                  firstPageErrorIndicatorBuilder: (context) => TryAgainButton(
                     onPressed: () {
                       controller.productsPagingController.refresh();
                     },

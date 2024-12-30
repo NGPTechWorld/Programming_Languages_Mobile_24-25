@@ -41,16 +41,18 @@ class BottomCartPage extends GetView<CartPageController> {
                 ),
               ),
             ),
-            BottouCustom(
-                function: () {
-                  Get.to(()=>SelectAddressCartPage(),
-                      binding: SelectAddressCartPageBinding());
-                },
-                text: StringManager.cartPageNext.tr,
-                width: AppSizeScreen.screenWidth * 0.8,
-                borderRadius: AppSize.s20,
-                background: ColorManager.secoundDarkColor,
-                textColor: ColorManager.whiteColor),
+            Obx(
+              () => BottouCustom(
+                  enabled: controller.products.length > 0,
+                  function: () {
+                    controller.goToChooseAddress();
+                  },
+                  text: StringManager.cartPageNext.tr,
+                  width: AppSizeScreen.screenWidth * 0.8,
+                  borderRadius: AppSize.s20,
+                  background: ColorManager.secoundDarkColor,
+                  textColor: ColorManager.whiteColor),
+            ),
           ],
         ),
       ),

@@ -95,7 +95,7 @@ class OrderDetailsEntite {
 
   factory OrderDetailsEntite.fromMap(Map<String, dynamic> map) {
     return OrderDetailsEntite(
-      price: map[ApiKey.price] as int,
+      price: map[ApiKey.total_cost] as int,
       date: map[ApiKey.date] as String,
       address: map[ApiKey.location_name] as String,
       markets: (map[ApiKey.markets] as Map<String, dynamic>)

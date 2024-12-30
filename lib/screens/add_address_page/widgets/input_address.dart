@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/text_field_custom.dart';
 
-class InputAddress extends GetView<AddressPageController> {
+class InputAddress extends GetView<AddAddressPageController> {
   const InputAddress({super.key});
 
   @override

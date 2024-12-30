@@ -15,6 +15,7 @@ abstract class LocationsRepositories {
       required String notes});
   Future<AppResponse> getLocations();
   Future<AppResponse> deleteLocation({required int idLocation});
+  Future<AppResponse> cost({required int id});
 }
 
 class ImpLocationsRepositories implements LocationsRepositories {
@@ -30,7 +31,7 @@ class ImpLocationsRepositories implements LocationsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.addLocation,
+          url: EndPoints.addLocation,
           method: Method.post,
           requiredToken: true,
           params: {
@@ -53,12 +54,10 @@ class ImpLocationsRepositories implements LocationsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: 
-              EndPoints.deleteLocation +
-              idLocation.toString(),
-          method: Method.delete,
-          requiredToken: true,
-          );
+        url: EndPoints.deleteLocation + idLocation.toString(),
+        method: Method.delete,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;
@@ -73,10 +72,10 @@ class ImpLocationsRepositories implements LocationsRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.getLocations,
-          method: Method.get,
-          requiredToken: true,
-          );
+        url: EndPoints.getLocations,
+        method: Method.get,
+        requiredToken: true,
+      );
       // final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
 
       response.data = parseLocations(response.data.toString());
@@ -96,5 +95,23 @@ class ImpLocationsRepositories implements LocationsRepositories {
         .map((locationMap) =>
             LocationEntite.fromMap(locationMap as Map<String, dynamic>))
         .toList();
+  }
+
+  @override
+  Future<AppResponse> cost({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+        url: EndPoints.cost + id.toString(),
+        method: Method.get,
+        requiredToken: true,
+      );
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.cost];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 }

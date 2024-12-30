@@ -96,6 +96,8 @@ class StringManager {
   static const String dontHaveAccount = "dontHaveAccount";
   static const String startYear = "startYear";
   static const String logout = "logout";
+  
+  static const String noAddressesFound = "noAddressesFound";
   // Orders History Page
   static const String ordersHistoryHeader = "ordersHistoryHeader";
   static const String ordersHistorySucceedButton = "ordersHistorySucceedButton";
@@ -119,6 +121,7 @@ class StringManager {
       "trackOrdersMenuEditValue"; // no need to translate it i guess.
   static const String trackOrdersMenuCancelValue = "trackOrdersMenuCancelValue";
   static const String trackOrdersMenuCancelText = "trackOrdersMenuCancelText";
+  static const String noOrdersFound = "noOrdersFound";
 
   // error handler
   static const String strBadRequestError = "BadRequest Error";
@@ -178,7 +181,11 @@ class StringManager {
   // Cart Page
   static const String cartPageMyCart = "cartPageMyCart";
   static const String cartPageNext = "cartPageNext";
-
+  static const String cartDelete = "cartDelete";
+  static const String cartCancel = "cartCancel";
+  static const String cartDialogContent = "cartDialogContent";
+  static const String cartDialogTitle = "cartDialogTitle";
+  // TODO : Translate these. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   // Product Details Page
   static const String productDetailsQuantity = "productDetailsQuantity";
   static const String productDetailsMarket = "productDetailsMarket";
@@ -186,8 +193,12 @@ class StringManager {
   static const String productDetailsBuyNow = "productDetailsBuyNow";
   static const String productDetailsAddToCart = "productDetailsAddToCart";
 
+// Pagination
   static const String paginationtryAgain = "paginationtryAgain";
   static const String paginationOops = "paginationOops";
   static const String paginationNoProducts = "paginationNoProducts";
+
+
+  
   // TODO : Translate these.
 }

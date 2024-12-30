@@ -1,3 +1,5 @@
+import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
+
 import '../../app/config/color_manager.dart';
 import '../../app/config/style_manager.dart';
 import '../../app/config/values_manager.dart';
@@ -10,6 +12,7 @@ class BottouCustom extends StatelessWidget {
   final String text;
   final width;
   final borderRadius;
+  final enabled;
   const BottouCustom(
       {super.key,
       required this.function,
@@ -17,12 +20,18 @@ class BottouCustom extends StatelessWidget {
       this.background = ColorManager.secoundColor,
       this.textColor = ColorManager.blackColor,
       this.width,
-      this.borderRadius});
+      this.borderRadius,
+      this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () => function(),
+        onTap: () {
+          if (enabled)
+            function();
+          else
+            SnackBarCustom.show(context, "There is no products in cart.");
+        },
         child: Container(
           height: AppSizeScreen.screenHeight * 0.07,
           width: width == null ? AppSizeScreen.screenWidth / 2 : width,

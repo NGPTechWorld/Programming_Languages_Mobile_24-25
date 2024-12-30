@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
+import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/show_addresses_page/show_addresses_page_logic.dart';
 import 'package:ngpiteapp/screens/show_addresses_page/widgets/add_address_floating_button.dart';
 import 'package:ngpiteapp/screens/show_addresses_page/widgets/addresses_list.dart';
@@ -14,7 +15,7 @@ class ShowAddressesPage extends GetView<ShowAddressesController> {
     return SafeArea(
       child: Scaffold(
         appBar: appBar(),
-        body: AddressesList(),
+        body:  AddressesList(),
         floatingActionButton: AddAddressFloatingButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),

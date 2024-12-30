@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:ngpiteapp/data/entities/markets_card.dart';
+import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';

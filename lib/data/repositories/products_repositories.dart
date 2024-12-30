@@ -7,6 +7,8 @@ import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
+import 'package:ngpiteapp/data/entities/products_card_for_market_entite.dart';
+import 'package:ngpiteapp/data/entities/products_card_search_entite.dart';
 import 'package:ngpiteapp/data/module/product_model.dart';
 
 abstract class ProductsRepositories {
@@ -18,8 +20,14 @@ abstract class ProductsRepositories {
       {required int perPage, required int page, required int categoryID});
   Future<AppResponse> getProduct({required String id});
   Future<AppResponse> getProductsByName(
-      {required int perPage, required int page, required int productName});
-  Future<AppResponse> getImageProduct({required String id});
+      {required int perPage, required int page, required String productName});
+  Future<AppResponse> getImageProduct({required int id});
+  Future<AppResponse> getTopProducts({
+    required int perPage,
+    required int page,
+  });
+  Future<AppResponse> getTopProductsForMarket(
+      {required int perPage, required int page, required int id});
 }
 
 class ImpProductsRepositories implements ProductsRepositories {
@@ -55,7 +63,7 @@ class ImpProductsRepositories implements ProductsRepositories {
   }
 
   @override
-  Future<AppResponse> getImageProduct({required String id}) {
+  Future<AppResponse> getImageProduct({required int id}) {
     // TODO: implement getImageProduct
     // No need to implement it , because in product i have the link of the image.
     throw UnimplementedError();
@@ -152,8 +160,77 @@ class ImpProductsRepositories implements ProductsRepositories {
 
   @override
   Future<AppResponse> getProductsByName(
-      {required int perPage, required int page, required int productName}) {
-    // TODO: implement getProductsByName
-    throw UnimplementedError();
+      {required int perPage,
+      required int page,
+      required String productName}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.getProductsByName + productName,
+          method: Method.get,
+          requiredToken: true,
+          queryParameters: {ApiKey.page: page, ApiKey.perPage: perPage});
+      final decodedJson =
+          jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final data = decodedJson[ApiKey.products][ApiKey.currentPageItems]
+          as List<dynamic>;
+
+      response.data =
+          data.map((json) => ProductsCardSearchEntite.fromMap(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
+  }
+
+  @override
+  Future<AppResponse> getTopProducts({
+    required int perPage,
+    required int page,
+  }) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.getTopProducts,
+          method: Method.get,
+          requiredToken: true,
+          queryParameters: {ApiKey.page: page, ApiKey.perPage: perPage});
+      final decodedJson =
+          jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final data = decodedJson[ApiKey.products][ApiKey.currentPageItems]
+          as List<dynamic>;
+
+      response.data =
+          data.map((json) => ProductsCardEntite.fromMap(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
+  }
+
+  @override
+  Future<AppResponse> getTopProductsForMarket(
+      {required int perPage, required int page, required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.getTopProducts,
+          method: Method.get,
+          requiredToken: true,
+          queryParameters: {ApiKey.page: page, ApiKey.perPage: perPage});
+      final decodedJson =
+          jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final data = decodedJson[ApiKey.products][ApiKey.currentPageItems]
+          as List<dynamic>;
+
+      response.data =
+          data.map((json) => ProductForMarketEntitie.fromMap(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 }

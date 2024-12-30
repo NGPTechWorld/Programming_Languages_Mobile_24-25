@@ -4,10 +4,10 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/default_button.dart';
 
-class SubmitAddress extends GetView<AddressPageController> {
+class SubmitAddress extends GetView<AddAddressPageController> {
   const SubmitAddress({super.key});
 
   @override

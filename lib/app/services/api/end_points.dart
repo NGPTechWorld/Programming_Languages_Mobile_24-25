@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.3:8000/api";
+  static const String baserUrl = "http://192.168.1.12:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -22,6 +22,8 @@ class EndPoints {
   static const String getLocation = "/locations/getLocation/"; //{location}
   static const String deleteLocation =
       "/locations/deleteLocation/"; //{location_id}
+  static const String cost = "/locations/cost/"; //{location}
+
   // Orders
   static const String createOrder = "/orders/createOrder";
   static const String editOrder = "/orders/editOrder/"; // {order}
@@ -51,6 +53,8 @@ class EndPoints {
   static const String getProductsByName =
       "/products/getProductsByName/"; //{product_name}
   static const String getImageProduct = "/products/getImage/"; //{product}
+  static const String getTopProducts = "/products/getTopProducts"; 
+  static const String getTopProductsForMarket = "/products/getTopProducts/"; //{market}
   // Category
   static const String getAllCategories = "/categories/getAll";
   static const String getCategory = "/categories/get/{category}";
@@ -120,7 +124,8 @@ class ApiKey {
   static String category_id = "category_id";
   static String quantity = "quantity";
   static String number_of_purchases = "number_of_purchases";
+  static String cost = "cost";
 
-
+  static String location_id = "location_id";
   //---------------------------------------
 }

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
-import 'package:ngpiteapp/screens/address_page/widgets/input_address.dart';
-import 'package:ngpiteapp/screens/address_page/widgets/submit_address.dart';
-import 'package:ngpiteapp/screens/address_page/widgets/title_address.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
+import 'package:ngpiteapp/screens/add_address_page/widgets/input_address.dart';
+import 'package:ngpiteapp/screens/add_address_page/widgets/submit_address.dart';
+import 'package:ngpiteapp/screens/add_address_page/widgets/title_address.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/custom_widgets/app_bar_default.dart';
 
-class AddressPage extends GetView<AddressPageController> {
-  const AddressPage({super.key});
+class AddAddressPage extends GetView<AddAddressPageController> {
+  const AddAddressPage({super.key});
 
   @override
   Widget build(BuildContext context) {

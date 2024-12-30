@@ -55,7 +55,7 @@ class ProfilePicture extends GetView<MyAccountController> {
                   bottom: 0,
                   right: 0,
                   child: MaterialButton(
-                    onPressed: controller.pictureUpdate,
+                    onPressed: () => controller.pictureUpdate(context),
                     minWidth: AppSize.s32,
                     height: AppSize.s32,
                     padding: EdgeInsets.all(0),

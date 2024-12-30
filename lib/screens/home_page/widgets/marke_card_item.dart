@@ -4,7 +4,7 @@ import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/entities/markets_card.dart';
+import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
 class MarkeCardItem extends GetView<HomePageController> {

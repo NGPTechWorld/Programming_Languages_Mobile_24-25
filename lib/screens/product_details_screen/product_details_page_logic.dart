@@ -17,7 +17,7 @@ class ProductDetailsPageBindings extends Bindings {
 class ProductDetailsPageController extends GetxController {
   final productRepo = Get.find<ImpProductsRepositories>();
   final cartRepo = Get.find<ImpCartsRepositories>();
-  Product? product;
+  ProductEntitie? product;
   var loadingState = LoadingState.idle.obs;
   int currentPage = 1;
   final isFavorite = false.obs;

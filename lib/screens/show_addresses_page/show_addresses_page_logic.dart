@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/services/connection/network_info.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
-import 'package:ngpiteapp/screens/address_page/address_page.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
 class ShowAddressesBinding extends Bindings {
@@ -16,8 +16,7 @@ class ShowAddressesBinding extends Bindings {
 
 class ShowAddressesController extends GetxController {
   final locationsRepo = Get.find<ImpLocationsRepositories>();
-  final netCheck = Get.find<NetworkInfoImpl>();
-
+ 
   var loadingState = LoadingState.idle.obs;
   RxList addresses = [].obs;
   void getAddresses(BuildContext context) async {
@@ -34,7 +33,7 @@ class ShowAddressesController extends GetxController {
   }
 
   void addAddress(BuildContext context) async {
-    await Get.to(() => AddressPage(), binding: AddressPageBinding());
+    await Get.to(() => AddAddressPage(), binding: AddAddressPageBinding());
     getAddresses(context);
   }
 

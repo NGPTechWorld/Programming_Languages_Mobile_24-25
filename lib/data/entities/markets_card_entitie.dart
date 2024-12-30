@@ -1,6 +1,6 @@
 
 import 'dart:convert';
-
+// TODO : Check if image is needed or not , if not , delete this and use marketEntite
 class MarketsCard {
   final int id;
   final String name;

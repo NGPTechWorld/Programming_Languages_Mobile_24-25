@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
 
-class TitleAddress extends GetView<AddressPageController> {
+class TitleAddress extends GetView<AddAddressPageController> {
   const TitleAddress({super.key});
 
   @override

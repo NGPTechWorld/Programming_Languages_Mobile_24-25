@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:ngpiteapp/app/services/api/end_points.dart';
 
-class Product {
+class ProductEntitie {
   final String name;
   final String image;
   final String description;
@@ -13,7 +13,7 @@ class Product {
   final int quantity;
   final int price;
   final int number_of_purchases;
-  Product({
+  ProductEntitie({
     required this.name,
     required this.image,
     required this.description,
@@ -39,8 +39,8 @@ class Product {
     };
   }
 
-  factory Product.fromMap(Map<String, dynamic> map) {
-    return Product(
+  factory ProductEntitie.fromMap(Map<String, dynamic> map) {
+    return ProductEntitie(
       name: map[ApiKey.name] as String,
       image: (map[ApiKey.image] as String?) ?? "",
       description: map[ApiKey.description] as String,
@@ -55,19 +55,19 @@ class Product {
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromJson(String source) =>
-      Product.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductEntitie.fromJson(String source) =>
+      ProductEntitie.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
 class ProductModel {
-  final Product product;
+  final ProductEntitie product;
   final bool isFavorite;
 
   ProductModel({required this.product, required this.isFavorite});
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       isFavorite: map[ApiKey.isFavorite] as bool,
-      product: Product.fromMap(map[ApiKey.product]),
+      product: ProductEntitie.fromMap(map[ApiKey.product]),
     );
   }
 }

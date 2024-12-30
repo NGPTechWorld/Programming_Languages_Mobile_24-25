@@ -8,7 +8,6 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/cart_page/widgets/counter.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
-import 'package:ngpiteapp/screens/product_details_screen/product_details_page_logic.dart';
 
 class ItemCart extends GetView<CartPageController> {
   const ItemCart({super.key, required this.index});
@@ -24,6 +23,7 @@ class ItemCart extends GetView<CartPageController> {
             borderRadius: BorderRadius.all(Radius.circular(AppSize.s20))),
         child: Center(
           child: ListTile(
+            onLongPress: () => controller.deleteDialog(index),
             leading: Image.network(
               product.image ?? "",
               errorBuilder: (context, error, stackTrace) => Image.asset(
@@ -33,10 +33,7 @@ class ItemCart extends GetView<CartPageController> {
               fit: BoxFit.cover,
             ),
             onTap: () {
-              // TODO: add Bindings in all pages , and complete link of the page.
-              Get.to(() =>ProductDetailsPage(
-                product.id,
-              ) , binding: ProductDetailsPageBindings());
+              Get.to(() => ProductDetailsPage(product.id));
             },
             title: Text(
               product.name,
@@ -57,11 +54,24 @@ class ItemCart extends GetView<CartPageController> {
               ],
             ),
             minVerticalPadding: AppPadding.p8,
-            trailing: Container(
-              width: AppSizeScreen.screenWidth * 0.25,
-              child: Counter(
-                index: index,
-              ),
+            contentPadding: EdgeInsets.all(AppPadding.p8),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: AppSizeScreen.screenWidth * 0.25,
+                  child: Counter(
+                    index: index,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    size: AppSize.s20,
+                  ),
+                  onPressed: () => controller.deleteDialog(index),
+                )
+              ],
             ),
           ),
         ),

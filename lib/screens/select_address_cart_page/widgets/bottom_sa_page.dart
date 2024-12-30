@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/bottun_custom.dart';
+import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
+import 'package:ngpiteapp/screens/show_addresses_page/widgets/address_card.dart';
 
-class BottomSaPage extends StatelessWidget {
+class BottomSaPage extends GetView<SelectAddressCartPageController> {
   const BottomSaPage({super.key});
 
   @override
@@ -27,19 +31,26 @@ class BottomSaPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: AppPadding.p14),
               child: ListTile(
                 title: Text(
-                  "total_cost",
+                  StringManager.orderDetailsTotalPrice.tr,
                   style: StyleManager.h4_Regular(),
                 ),
-                trailing: Text(
-                  "data",
-                  style: StyleManager.h4_Medium(),
+                trailing: Obx(
+                  () =>
+                      controller.loadingCostState.value == LoadingState.loading
+                          ? ShimmerPlaceholder(
+                              height: AppSize.s20, width: AppSize.s100)
+                          : Text(
+                              "${controller.totalCost + controller.deleviryPrice.value} ${StringManager.orderDetailsSyrianPounds.tr}",
+                              style: StyleManager.h4_Medium(),
+                            ),
                 ),
               ),
             ),
             BottouCustom(
                 function: () {
-                  Get.to(()=>SelectAddressCartPage(),
-                      binding: SelectAddressCartPageBinding());
+                  // Get.to(()=>SelectAddressCartPage(),
+                  //     binding: SelectAddressCartPageBinding(totalCost: contro));
+                  controller.createOrder();
                 },
                 text: "next",
                 width: AppSizeScreen.screenWidth * 0.8,

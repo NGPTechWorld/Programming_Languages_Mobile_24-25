@@ -13,35 +13,41 @@ import 'package:ngpiteapp/screens/favorite_page/widgets/favorite_product_card.da
 class FavoriteProductsList extends GetView<FavoritePageController> {
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: () => Future.sync(
-        () => controller.productsPagingController.refresh(),
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).padding.bottom + AppPadding.p80,
       ),
-      color: ColorManager.firstColor,
-      child: PagedListView(
-        pagingController: controller.productsPagingController,
-        builderDelegate: PagedChildBuilderDelegate<dynamic>(
-          itemBuilder: (context, product, index) => Container(
-            height: AppSize.s200,
-            child: FavoriteProductCard(
-              index: index,
+      child: RefreshIndicator(
+        onRefresh: () => Future.sync(
+          () => controller.productsPagingController.refresh(),
+        ),
+        color: ColorManager.firstColor,
+        child: PagedListView(
+          clipBehavior: Clip.none,
+          pagingController: controller.productsPagingController,
+          builderDelegate: PagedChildBuilderDelegate<dynamic>(
+            itemBuilder: (context, product, index) => Container(
+              height: AppSize.s200,
+              child: FavoriteProductCard(
+                index: index,
+              ),
             ),
+            firstPageProgressIndicatorBuilder: (context) =>
+                WideProductShimmerList(),
+            newPageProgressIndicatorBuilder: (context) =>
+                WideProductShimmerCard(),
+            newPageErrorIndicatorBuilder: (context) => TryAgainButton(
+              onPressed: () {
+                controller.productsPagingController.retryLastFailedRequest();
+              },
+            ),
+            firstPageErrorIndicatorBuilder: (context) => TryAgainButton(
+              onPressed: () {
+                controller.productsPagingController.refresh();
+              },
+            ),
+            noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
           ),
-          firstPageProgressIndicatorBuilder: (context) =>
-              WideProductShimmerList(),
-          newPageProgressIndicatorBuilder: (context) =>
-              WideProductShimmerCard(),
-          newPageErrorIndicatorBuilder: (context) => TryAgainButton(
-            onPressed: () {
-              controller.productsPagingController.retryLastFailedRequest();
-            },
-          ),
-          firstPageErrorIndicatorBuilder: (context) => TryAgainButton(
-            onPressed: () {
-              controller.productsPagingController.refresh();
-            },
-          ),
-          noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
         ),
       ),
     );

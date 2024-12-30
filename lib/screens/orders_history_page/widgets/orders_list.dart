@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/orders_history_page/orders_history_page_logic.dart';
 import 'package:ngpiteapp/screens/orders_history_page/widgets/order_card.dart';
 import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';
@@ -15,20 +17,24 @@ class OrdersList extends GetView<OrdersHistoryPageController> {
     return Obx(() {
       switch (controller.loadingState.value) {
         case LoadingState.loading:
-         return PageCircularIndicator(hasHeader: true,);
+          return PageCircularIndicator(
+            hasHeader: true,
+          );
         case LoadingState.doneWithData:
-          return Column(
-              children: List.generate(
-            controller.orders.length,
-            (index) => OrderCard(index: index),
-          ));
+          return controller.orders.length == 0
+              ? EmptyListIndicator(text: StringManager.noOrdersFound)
+              : Column(
+                  children: List.generate(
+                  controller.orders.length,
+                  (index) => OrderCard(index: index),
+                ));
         case LoadingState.idle:
-        return Text("No Internet");
+          return Text("No Internet");
         case LoadingState.doneWithNoData:
-        return Text("There is no Orders"); 
+          return Text("There is no Orders");
         case LoadingState.hasError:
-        return Text("Error");
+          return Text("Error");
       }
-     });
+    });
   }
 }

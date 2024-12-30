@@ -112,12 +112,14 @@ class MyAccountController extends GetxController {
     return changed.value;
   }
 
-  void pictureUpdate() {
-    Get.to(()=>ProfilePictureUpload(), binding: UploadPicturePageBinding());
+  void pictureUpdate(BuildContext context) async {
+    final updated = await Get.to(() => ProfilePictureUpload(),
+        binding: UploadPicturePageBinding());
+    if (updated.result) getPicture(context);
   }
 
   void showPicture() {
-    // TODO :Show the Picture
+    // Get.dialog();
   }
   getPicture(BuildContext context) async {
     loadingImageState.value = LoadingState.loading;
@@ -126,6 +128,7 @@ class MyAccountController extends GetxController {
     if (response.success) {
       loadingImageState.value = LoadingState.doneWithData;
       imagePath.value = response.data ?? "";
+      
     } else {
       user.value = null;
       loadingImageState.value = LoadingState.hasError;

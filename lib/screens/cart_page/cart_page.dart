@@ -8,6 +8,7 @@ import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/cart_page/widgets/bottom_cart_page.dart';
 import 'package:ngpiteapp/screens/cart_page/widgets/items_cart.dart';
+import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';
 
 class CartPage extends GetView<CartPageController> {
@@ -28,20 +29,23 @@ class CartPage extends GetView<CartPageController> {
         backgroundColor: ColorManager.whiteColor,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppSizeScreen.screenWidth * 0.05),
+            padding: EdgeInsets.symmetric(horizontal: AppPadding.p10),
             child: Obx(
               () => controller.loadingState.value == LoadingState.doneWithData
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: List.generate(
-                        controller.products.length,
-                        (index) => ItemCart(
-                          index: index,
-                        ),
-                      ),
-                    )
+                  ? (controller.products.length == 0
+                          ? EmptyListIndicator()
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: List.generate(
+                                controller.products.length,
+                                (index) => ItemCart(
+                                  index: index,
+                                ),
+                              ),
+                            )
+                      // TODO : Change this to Shimmer list.
+                      )
                   : PageCircularIndicator(),
             ),
           ),

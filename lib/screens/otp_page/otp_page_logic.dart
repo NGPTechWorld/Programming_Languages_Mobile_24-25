@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
-import 'package:ngpiteapp/screens/address_page/address_page.dart';
-import 'package:ngpiteapp/screens/address_page/address_page_logic.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page.dart';
+import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/show_loading_dialog.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 import 'package:ngpiteapp/screens/login_page/login_page_logic.dart';
@@ -40,7 +40,7 @@ class OtpPageController extends GetxController {
       showLoadingDialog(context);
       await loginController.loginWithSignUp(context);
 
-      Get.offAll(() => AddressPage(), binding: AddressPageBinding());
+      Get.offAll(() => AddAddressPage(), binding: AddAddressPageBinding(isSignup: true));
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;

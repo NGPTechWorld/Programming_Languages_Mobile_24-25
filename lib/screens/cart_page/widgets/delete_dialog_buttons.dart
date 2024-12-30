@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
-import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
+import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 
-class DialogButtons extends GetView<MyAccountController> {
-  const DialogButtons({
+class DeleteDialogButtons extends GetView<CartPageController> {
+  const DeleteDialogButtons({
     super.key,
     required this.cancelText,
     required this.okText,
@@ -38,7 +38,7 @@ class DialogButtons extends GetView<MyAccountController> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s20)),
             color: ColorManager.firstColor,
-            child: controller.editingState.value == LoadingState.loading
+            child: controller.deleteState.value == LoadingState.loading
                 ? SizedBox(
                     width: AppSize.s20,
                     height: AppSize.s20,

@@ -10,9 +10,11 @@ import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_lo
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
 
 class UploadPicturePageBinding extends Bindings {
+  final isSignup;
+  UploadPicturePageBinding({this.isSignup = false});
   @override
   void dependencies() {
-    Get.put(UploadPicturePageController());
+    Get.put(UploadPicturePageController(isSignUp: isSignup));
   }
 }
 
@@ -21,10 +23,14 @@ class UploadPicturePageController extends GetxController {
   final picker = ImagePicker();
   var loadingState = LoadingState.idle.obs;
   final AuthRepositories = Get.find<ImpUsersRepositories>();
-
-  upload() {
-    Get.offAll(CurvedNavigationBarCustom(),
-        binding: CurvedNavigationBarBinding());
+  final isSignUp;
+  UploadPicturePageController({this.isSignUp});
+  upload(bool result) {
+    if (isSignUp)
+      Get.offAll(CurvedNavigationBarCustom(),
+          binding: CurvedNavigationBarBinding());
+    else
+      Get.back(result: result);
   }
 
   uploadPicture(BuildContext context) async {
@@ -44,17 +50,20 @@ class UploadPicturePageController extends GetxController {
     if (response.success) {
       SnackBarCustom.show(context, response.data);
       loadingState.value = LoadingState.doneWithData;
-      Get.off(() => CurvedNavigationBarCustom(),
-          binding: CurvedNavigationBarBinding());
+      upload(true);
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;
+      upload(false);
     }
   }
 
   skipImage() {
-    Get.off(() => CurvedNavigationBarCustom(),
-        binding: CurvedNavigationBarBinding());
+    if (isSignUp)
+      Get.off(() => CurvedNavigationBarCustom(),
+          binding: CurvedNavigationBarBinding());
+    else
+      Get.back();
   }
 
   choosePicture() async {
