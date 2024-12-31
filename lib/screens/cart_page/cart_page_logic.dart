@@ -78,6 +78,10 @@ class CartPageController extends GetxController {
   }
 
   subOne(int index) async {
+    if(products[index].count==1){
+      deleteDialog(index);
+      return;
+    }
     final response = await cartRepo.minusProductOne(id: products[index].id);
     if (response.success) {
       products[index].count--;

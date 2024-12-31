@@ -39,9 +39,9 @@ class OrdersHistoryPageController extends GetxController {
         responseCanceled.success &&
         responseRejected.success) {
       // TODO : Check whether to reverse them or not
-      completedOrders.addAll(responseCompleted.data);
-      incompletedOrders.addAll(responseRejected.data);
-      incompletedOrders.addAll(responseCanceled.data);
+      completedOrders.addAll(responseCompleted.data.reversed);
+      incompletedOrders.addAll(responseRejected.data.reversed);
+      incompletedOrders.addAll(responseCanceled.data.reversed);
       loadingState.value = LoadingState.doneWithData;
     } else {
       _handleErrorMessage(

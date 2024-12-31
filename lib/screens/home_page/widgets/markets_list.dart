@@ -5,7 +5,6 @@ import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/screens/category_page/widgets/categorys_products.dart';
-import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/marke_card_item.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/market_shimmer_list.dart';

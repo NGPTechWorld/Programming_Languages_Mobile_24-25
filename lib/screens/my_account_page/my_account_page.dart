@@ -5,8 +5,6 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
-import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
-import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/page_circular_indicator.dart';
 import 'package:ngpiteapp/screens/my_account_page/my_account_page_logic.dart';
 import 'package:ngpiteapp/screens/my_account_page/widgets/dialog_buttons.dart';

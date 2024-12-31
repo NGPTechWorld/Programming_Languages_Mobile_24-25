@@ -6,8 +6,6 @@ import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/bottun_custom.dart';
-import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page.dart';
-import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
 
 class BottomCartPage extends GetView<CartPageController> {
   const BottomCartPage({super.key});

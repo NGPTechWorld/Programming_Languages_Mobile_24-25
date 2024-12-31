@@ -1,12 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
 import 'package:ngpiteapp/data/repositories/orders_repositories.dart';
 import 'package:ngpiteapp/screens/add_address_page/add_address_page.dart';
 import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
+import 'package:ngpiteapp/screens/track_orders_page/track_orders_page.dart';
+import 'package:ngpiteapp/screens/track_orders_page/track_orders_page_logic.dart';
 
 class SelectAddressCartPageBinding extends Bindings {
   final int totalCost;
@@ -67,13 +70,16 @@ class SelectAddressCartPageController extends GetxController {
     final response =
         await ordersRepo.createOrder(id: addresses[currentIndex.value].id);
     if (response.success) {
-      Get.back(result: true);
-    } else {}
+      Get.back();
+      Get.off(TrackOrdersPage(), binding: TrackOrdersBinding());
+    } else {
+      // Get.snackbar(StringManager.strDefaultError, message)
+    }
   }
 
   goToAddAddressPage() async {
-   await Get.to(AddAddressPage(), binding: AddAddressPageBinding());
-   await getAddresses();
-   getCost();
+    await Get.to(AddAddressPage(), binding: AddAddressPageBinding());
+    await getAddresses();
+    getCost();
   }
 }

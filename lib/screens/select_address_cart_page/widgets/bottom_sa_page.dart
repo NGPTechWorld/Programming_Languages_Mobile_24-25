@@ -7,9 +7,7 @@ import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/screens/custom_widgets/bottun_custom.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
-import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
-import 'package:ngpiteapp/screens/show_addresses_page/widgets/address_card.dart';
 
 class BottomSaPage extends GetView<SelectAddressCartPageController> {
   const BottomSaPage({super.key});

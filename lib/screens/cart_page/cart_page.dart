@@ -30,24 +30,23 @@ class CartPage extends GetView<CartPageController> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: AppPadding.p10),
-            child: Obx(
-              () => controller.loadingState.value == LoadingState.doneWithData
-                  ? (controller.products.length == 0
-                          ? EmptyListIndicator()
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: List.generate(
-                                controller.products.length,
-                                (index) => ItemCart(
-                                  index: index,
-                                ),
+            child:
+                Obx(() => controller.loadingState.value == LoadingState.loading
+                    ? PageCircularIndicator()
+                    : (controller.products.length == 0
+                        ? EmptyListIndicator()
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: List.generate(
+                              controller.products.length,
+                              (index) => ItemCart(
+                                index: index,
                               ),
-                            )
-                      // TODO : Change this to Shimmer list.
-                      )
-                  : PageCircularIndicator(),
-            ),
+                            ),
+                          )
+                    // TODO : Change this to Shimmer list.
+                    )),
           ),
         ),
         bottomNavigationBar: BottomCartPage(),

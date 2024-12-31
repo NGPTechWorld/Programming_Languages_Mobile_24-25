@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ngpiteapp/app/config/color_manager.dart';
-import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/custom_widgets/wide_product_shimmer_card.dart';
 
 class WideProductShimmerList extends StatelessWidget {
@@ -11,7 +8,9 @@ class WideProductShimmerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
+      clipBehavior: Clip.none,
+      physics: NeverScrollableScrollPhysics(),
       children: List.generate(
           6,
           (index) => WideProductShimmerCard(

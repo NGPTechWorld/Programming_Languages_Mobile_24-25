@@ -39,7 +39,7 @@ class ButtonProduct extends GetView<ProductDetailsPageController> {
                   minWidth: 100,
                   height: 50,
                   color: ColorManager.firstColor,
-                  press: () {},
+                  press: () => controller.goToCart(context),
                   style: StyleManager.button1(color: ColorManager.whiteColor),
                 ),
               ),

@@ -6,7 +6,6 @@ import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
-import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 
 class CategoryProductCard extends GetView<CategoryPageController> {
   const CategoryProductCard({
