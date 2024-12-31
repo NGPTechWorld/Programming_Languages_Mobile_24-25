@@ -11,6 +11,7 @@ import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_cu
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/helper_widget.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
+import 'package:ngpiteapp/screens/login_page/login_page.dart';
 import 'package:ngpiteapp/screens/otp_page/otp_page.dart';
 import 'package:ngpiteapp/screens/otp_page/otp_page_logic.dart';
 import 'package:ngpiteapp/screens/sign_up_page/sign_up_page.dart';
@@ -84,7 +85,12 @@ class LoginPageController extends GetxController {
               binding: CurvedNavigationBarBinding());
         }
       } else {
+        if (response.networkFailure!.code == 401) {
+          cache.clearData();
+          Get.off(LoginPage(), binding: LoginPageBinding());
+        }
         SnackBarCustom.show(context, response.networkFailure!.message);
+
         // if (response.networkFailure!.message == "user has not been verified")
         //   //Get.off(() => OtpPage(), binding: OtpPageBinding());
         loadingState.value = LoadingState.hasError;
@@ -100,6 +106,6 @@ class LoginPageController extends GetxController {
   }
 
   languageOnTap() {
-    HelperWidget.languageDialgo();
+    HelperWidget.languageDialgo("auth");
   }
 }

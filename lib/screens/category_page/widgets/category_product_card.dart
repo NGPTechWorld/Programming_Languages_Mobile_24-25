@@ -41,7 +41,7 @@ class CategoryProductCard extends GetView<CategoryPageController> {
                     fit: BoxFit.contain,
                   ),
                   width: AppSizeScreen.screenHeight / 8,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),

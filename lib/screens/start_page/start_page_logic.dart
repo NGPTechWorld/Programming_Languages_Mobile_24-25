@@ -24,10 +24,25 @@ class StartPageController extends GetxController {
 
   startApp() async {
     if (await cache.getUserToken() == null) {
-      Get.off(()=>LoginPage(), binding: LoginPageBinding());
+      Get.off(() => LoginPage(), binding: LoginPageBinding());
     } else {
-      Get.off(()=>CurvedNavigationBarCustom(),
-          binding: CurvedNavigationBarBinding());
+      await checkToken();
+    }
+  }
+
+  checkToken() async {
+    loadingState.value = LoadingState.loading;
+    final response = await AuthRepositories.checkToken();
+    if (response.success) {
+      if (response.data == "authenticated") {
+        Get.off(() => CurvedNavigationBarCustom(),
+            binding: CurvedNavigationBarBinding());
+      } else {
+        Get.off(() => LoginPage(), binding: LoginPageBinding());
+      }
+    } else {
+      Get.off(() => LoginPage(), binding: LoginPageBinding());
+      loadingState.value = LoadingState.hasError;
     }
   }
 }

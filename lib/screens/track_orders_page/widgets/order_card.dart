@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/assets_manager.dart';
+import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
@@ -18,6 +19,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
   Widget build(BuildContext context) {
     final order = controller.orders[index];
     return Card(
+      color: ColorManager.primary1Color,
       margin: const EdgeInsets.symmetric(vertical: AppMargin.m8),
       child: ListTile(
         shape: RoundedRectangleBorder(
@@ -47,7 +49,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
             StatusLabel(statusId: order.statusId),
             PopupMenuButton<String>(
               onSelected: (value) =>
-                  controller.handleMenuSelection(value, index , context),
+                  controller.handleMenuSelection(value, index, context),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                 PopupMenuItem<String>(
                   value: StringManager.trackOrdersMenuEditValue,
@@ -63,7 +65,7 @@ class OrderCard extends GetView<TrackOrdersPageController> {
             ),
           ],
         ),
-        onTap: () => controller.onTap(order.id , order.statusId),
+        onTap: () => controller.onTap(order.id, order.statusId),
       ),
     );
   }

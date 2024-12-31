@@ -42,7 +42,7 @@ class FavoriteProductCard extends GetView<FavoritePageController> {
                     fit: BoxFit.contain,
                   ),
                   width: AppSizeScreen.screenHeight / 8,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),

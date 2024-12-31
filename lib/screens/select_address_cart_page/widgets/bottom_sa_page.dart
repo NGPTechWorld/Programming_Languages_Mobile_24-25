@@ -21,12 +21,31 @@ class BottomSaPage extends GetView<SelectAddressCartPageController> {
         decoration: BoxDecoration(
             color: ColorManager.primary2Color,
             borderRadius: BorderRadius.all(Radius.circular(AppSize.s30))),
-        height: AppSizeScreen.screenHeight * 0.14,
+        height: AppSizeScreen.screenHeight * 0.24,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p14),
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
+              child: ListTile(
+                title: Text(
+                  StringManager.deliveryprice.tr,
+                  style: StyleManager.h4_Regular(),
+                ),
+                trailing: Obx(
+                  () =>
+                      controller.loadingCostState.value == LoadingState.loading
+                          ? ShimmerPlaceholder(
+                              height: AppSize.s20, width: AppSize.s100)
+                          : Text(
+                              "${controller.deleviryPrice.value} ${StringManager.orderDetailsSyrianPounds.tr}",
+                              style: StyleManager.h4_Medium(),
+                            ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
               child: ListTile(
                 title: Text(
                   StringManager.orderDetailsTotalPrice.tr,

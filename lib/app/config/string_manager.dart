@@ -96,7 +96,7 @@ class StringManager {
   static const String dontHaveAccount = "dontHaveAccount";
   static const String startYear = "startYear";
   static const String logout = "logout";
-  
+
   static const String noAddressesFound = "noAddressesFound";
   // Orders History Page
   static const String ordersHistoryHeader = "ordersHistoryHeader";
@@ -198,7 +198,8 @@ class StringManager {
   static const String paginationOops = "paginationOops";
   static const String paginationNoProducts = "paginationNoProducts";
 
-
-  
   // TODO : Translate these.
+  static const String deliveryprice = "deliveryprice";
+  static const String SelectYourLocation = "SelectYourLocation";
+  static const String addNewAddressText = "addNewAddressText";
 }
