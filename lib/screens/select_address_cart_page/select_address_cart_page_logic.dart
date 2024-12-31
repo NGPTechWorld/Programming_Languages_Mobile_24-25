@@ -7,6 +7,8 @@ import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
 import 'package:ngpiteapp/data/repositories/orders_repositories.dart';
 import 'package:ngpiteapp/screens/add_address_page/add_address_page.dart';
 import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
+import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
+import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 
 class SelectAddressCartPageBinding extends Bindings {
   final int totalCost;
@@ -67,13 +69,14 @@ class SelectAddressCartPageController extends GetxController {
     final response =
         await ordersRepo.createOrder(id: addresses[currentIndex.value].id);
     if (response.success) {
-      Get.back(result: true);
+      Get.offAll(CurvedNavigationBarCustom(),
+          binding: CurvedNavigationBarBinding());
     } else {}
   }
 
   goToAddAddressPage() async {
-   await Get.to(AddAddressPage(), binding: AddAddressPageBinding());
-   await getAddresses();
-   getCost();
+    await Get.to(AddAddressPage(), binding: AddAddressPageBinding());
+    await getAddresses();
+    getCost();
   }
 }

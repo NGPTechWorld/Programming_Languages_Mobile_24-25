@@ -46,6 +46,7 @@ abstract class UsersRepositories {
   Future<AppResponse> currentUser();
   Future<AppResponse> getImage();
   Future<AppResponse> deleteImage();
+  Future<AppResponse> checkToken();
   Future<AppResponse> generateVerificationCode({required String mumber});
 }
 
@@ -64,7 +65,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.registerUrl,
+          url: EndPoints.registerUrl,
           method: Method.post,
           requiredToken: false,
           params: {
@@ -90,7 +91,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.loginUrl,
+          url: EndPoints.loginUrl,
           method: Method.post,
           requiredToken: false,
           params: {
@@ -112,10 +113,10 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.logoutUrl,
-          method: Method.post,
-          requiredToken: true,
-          );
+        url: EndPoints.logoutUrl,
+        method: Method.post,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];
       response.success = true;
@@ -131,7 +132,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.verifyNumberUrl,
+          url: EndPoints.verifyNumberUrl,
           method: Method.post,
           requiredToken: false,
           params: {ApiKey.verify_code: verify_code, ApiKey.id: id});
@@ -149,10 +150,10 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.currentUser,
-          method: Method.get,
-          requiredToken: true,
-          );
+        url: EndPoints.currentUser,
+        method: Method.get,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = GetUserEntitie.fromMap(data[ApiKey.user]);
       response.success = true;
@@ -166,10 +167,10 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.currentUser,
-          method: Method.get,
-          requiredToken: true,
-          );
+        url: EndPoints.currentUser,
+        method: Method.get,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = GetUserEntitie.fromMap(data[ApiKey.user]);
       response.data = response.data.firstName + " " + response.data.lastName;
@@ -194,7 +195,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.editUser,
+          url: EndPoints.editUser,
           method: Method.put,
           requiredToken: true,
           params: {
@@ -216,10 +217,10 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.getImage,
-          method: Method.get,
-          requiredToken: true,
-          );
+        url: EndPoints.getImage,
+        method: Method.get,
+        requiredToken: true,
+      );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.image_path];
       response.success = true;
@@ -243,7 +244,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.resetPassword,
+          url: EndPoints.resetPassword,
           method: Method.put,
           requiredToken: true,
           params: {
@@ -290,7 +291,7 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url:  EndPoints.uploadImage,
+          url: EndPoints.uploadImage,
           method: Method.post,
           requiredToken: true,
           uploadImage: true,
@@ -350,9 +351,27 @@ class ImpUsersRepositories implements UsersRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-        url:  EndPoints.generateVerificationCode,
+        url: EndPoints.generateVerificationCode,
         method: Method.post,
         requiredToken: false,
+      );
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
+  }
+
+  @override
+  Future<AppResponse> checkToken() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+        url: EndPoints.baserUrl + EndPoints.checkToken,
+        method: Method.get,
+        requiredToken: true,
       );
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
       response.data = data[ApiKey.message];

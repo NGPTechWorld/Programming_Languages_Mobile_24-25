@@ -7,7 +7,7 @@ import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_cu
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 
 class HelperWidget {
-  static void languageDialgo() {
+  static void languageDialgo(String page) {
     Get.defaultDialog(
       backgroundColor: ColorManager.whiteColor,
       title: StringManager.languageDialogTitle.tr,
@@ -17,15 +17,17 @@ class HelperWidget {
         child: Column(
           children: [
             ListTile(
-              title: Text(
-                StringManager.languageDialogEnglish.tr,
-                style: StyleManager.h4_Medium(),
-              ),
-              onTap: () {
-                Get.updateLocale(Locale('en'));
-                Get.offAll(CurvedNavigationBarCustom() , binding: CurvedNavigationBarBinding());
-              },
-            ),
+                title: Text(
+                  StringManager.languageDialogEnglish.tr,
+                  style: StyleManager.h4_Medium(),
+                ),
+                onTap: () {
+                  Get.updateLocale(Locale('en'));
+                  if (page == "home") {
+                    Get.offAll(CurvedNavigationBarCustom(),
+                        binding: CurvedNavigationBarBinding());
+                  }
+                }),
             ListTile(
               title: Text(
                 StringManager.languageDialogArabic.tr,
@@ -33,7 +35,10 @@ class HelperWidget {
               ),
               onTap: () {
                 Get.updateLocale(Locale('ar'));
-                Get.offAll(CurvedNavigationBarCustom() , binding: CurvedNavigationBarBinding());
+                if (page == "home") {
+                    Get.offAll(CurvedNavigationBarCustom(),
+                        binding: CurvedNavigationBarBinding());
+                  }
               },
             ),
           ],

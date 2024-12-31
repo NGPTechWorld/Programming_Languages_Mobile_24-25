@@ -150,7 +150,9 @@ class TranslationApp implements Translations {
           // Cart Page
           StringManager.cartPageMyCart: "السلة",
           StringManager.cartPageNext: "تحديد موقع التوصيل",
-
+          StringManager.deliveryprice: "سعر التوصيل",
+          StringManager.SelectYourLocation: "تحديد عنوان التوصيل: ",
+          StringManager.addNewAddressText: "إضافة عنوان جديد",
           // Product Details Page
           StringManager.productDetailsQuantity: "الكمية",
           StringManager.productDetailsMarket: "المتجر",
@@ -311,6 +313,9 @@ class TranslationApp implements Translations {
           // Cart Page
           StringManager.cartPageMyCart: "My Cart",
           StringManager.cartPageNext: "Choose Address",
+          StringManager.deliveryprice: "Delivery Price",
+          StringManager.SelectYourLocation: "Select Your Location",
+          StringManager.addNewAddressText: "Add New Address",
 
           // Product Details Page
           StringManager.productDetailsQuantity: "Quantity",

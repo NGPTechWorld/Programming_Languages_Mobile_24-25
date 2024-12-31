@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
@@ -20,7 +21,7 @@ class BodySelectAddrees extends GetView<SelectAddressCartPageController> {
           Padding(
             padding: const EdgeInsets.all(AppPadding.p24),
             child: Text(
-              "Select Your Location",
+              StringManager.SelectYourLocation.tr,
               style:
                   StyleManager.body01_Regular(color: ColorManager.blackColor),
             ),

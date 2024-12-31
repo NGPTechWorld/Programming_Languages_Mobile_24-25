@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/add_address_page/add_address_page_logic.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
 import 'package:ngpiteapp/screens/show_addresses_page/widgets/address_card.dart';
-
+import 'package:get/get.dart';
 class AddNewAddressText extends GetView<SelectAddressCartPageController> {
   const AddNewAddressText({
     super.key,
@@ -44,7 +45,7 @@ class AddNewAddressText extends GetView<SelectAddressCartPageController> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
                 child: Text(
-                  "addNewAddressText",
+                  StringManager.addNewAddressText.tr,
                   style: StyleManager.body02_Regular(),
                 ),
               ),

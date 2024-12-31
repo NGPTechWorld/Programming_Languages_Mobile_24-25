@@ -62,6 +62,6 @@ class SignUpPageController extends GetxController {
   }
 
   languageOnTap() {
-    HelperWidget.languageDialgo();
+    HelperWidget.languageDialgo("auth");
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/assets_manager.dart';
+import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
@@ -18,6 +19,7 @@ class OrderCard extends GetView<OrdersHistoryPageController> {
   Widget build(BuildContext context) {
     final order = controller.orders[index];
     return Card(
+      color: ColorManager.primary1Color,
       margin: const EdgeInsets.symmetric(vertical: AppMargin.m8),
       child: ListTile(
         shape: RoundedRectangleBorder(
