@@ -36,8 +36,6 @@ class StartPageController extends GetxController {
     final response = await AuthRepositories.checkToken();
     if (response.success) {
       if (response.data == "authenticated") {
-        Get.put(CategoryPageController()).onInit();
-
         Get.off(() => CurvedNavigationBarCustom(),
             binding: CurvedNavigationBarBinding());
       } else {
