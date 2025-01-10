@@ -4,6 +4,7 @@ import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/entities/market_entitie.dart';
 import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
@@ -16,6 +17,7 @@ class MarkeCardItem extends GetView<HomePageController> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO : edit this to MarketEntitie when kareem gives an image back.
     MarketsCard market = controller.marketsPagingController.itemList![index];
     return InkWell(
       onTap: () {},
@@ -30,7 +32,10 @@ class MarkeCardItem extends GetView<HomePageController> {
           ),
           child: Row(
             children: [
-              Image.asset(AssetsManager.nullImage),
+              // market.image != ""
+                  // ? Image.network(market.image)
+                  // : 
+                  Image.asset(AssetsManager.nullImage),
               Container(
                 constraints:
                     BoxConstraints(maxWidth: AppSizeScreen.screenWidth * 0.5),
