@@ -54,8 +54,7 @@ class _StartPageState extends State<StartPage> {
               ],
             ),
           ),
-          bottomSheet: Obx(() => Padding(
-                padding: EdgeInsets.all(1),
+          bottomSheet: Obx(() => Container(
                 child: controller.loadingState == LoadingState.hasError
                     ? ErrorNointernet(
                         controller: controller,

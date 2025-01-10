@@ -25,7 +25,7 @@ class ErrorNointernet extends StatelessWidget {
           ),
           IconButton(
               onPressed: () {
-                controller.restApp(context);
+                controller.startApp();
               },
               icon: Icon(
                 Icons.replay_outlined,

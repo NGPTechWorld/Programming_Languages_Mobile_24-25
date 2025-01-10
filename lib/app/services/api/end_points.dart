@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.50:8000/api";
+  static const String baserUrl = "http://192.168.1.111:8000/api";
   static const String registerUrl = "/users/register";
   static const String loginUrl = "/users/login";
   static const String logoutUrl = "/users/logout";
@@ -53,8 +53,9 @@ class EndPoints {
   static const String getProductsByName =
       "/products/getProductsByName/"; //{product_name}
   static const String getImageProduct = "/products/getImage/"; //{product}
-  static const String getTopProducts = "/products/getTopProducts"; 
-  static const String getTopProductsForMarket = "/products/getTopProducts/"; //{market}
+  static const String getTopProducts = "/products/getTopProducts";
+  static const String getTopProductsForMarket =
+      "/products/getTopProducts/"; //{market}
   // Category
   static const String getAllCategories = "/categories/getAll";
   static const String getCategory = "/categories/get/{category}";

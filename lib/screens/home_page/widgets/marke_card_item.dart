@@ -5,6 +5,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
+import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
 class MarkeCardItem extends GetView<HomePageController> {
@@ -30,7 +31,25 @@ class MarkeCardItem extends GetView<HomePageController> {
           ),
           child: Row(
             children: [
-              Image.asset(AssetsManager.nullImage),
+              Container(
+                height: 120,
+                width: 120,
+                child: Image.network(
+                  market.image,
+                  height: 150,
+                  width: 150,
+                  errorBuilder: (context, error, stackTrace) {
+                    return ShimmerPlaceholder(height: 150, width: 150);
+                  },
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+                    return ShimmerPlaceholder(height: 150, width: 150);
+                  },
+                ),
+              ),
               Container(
                 constraints:
                     BoxConstraints(maxWidth: AppSizeScreen.screenWidth * 0.5),

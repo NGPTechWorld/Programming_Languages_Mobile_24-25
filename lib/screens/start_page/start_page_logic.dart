@@ -3,6 +3,7 @@ import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedp
 import 'package:ngpiteapp/data/enums/app_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/users_repositories.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/screens/category_page/category_page_logic.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_custom.dart';
 import 'package:ngpiteapp/screens/curved_navigation_bar/curved_navigation_bar_logic.dart';
 import 'package:ngpiteapp/screens/login_page/login_page.dart';
@@ -35,13 +36,17 @@ class StartPageController extends GetxController {
     final response = await AuthRepositories.checkToken();
     if (response.success) {
       if (response.data == "authenticated") {
+        Get.put(CategoryPageController()).onInit();
+
         Get.off(() => CurvedNavigationBarCustom(),
             binding: CurvedNavigationBarBinding());
       } else {
         Get.off(() => LoginPage(), binding: LoginPageBinding());
       }
     } else {
-      Get.off(() => LoginPage(), binding: LoginPageBinding());
+      if (response.networkFailure!.code == 401)
+        Get.off(() => LoginPage(), binding: LoginPageBinding());
+
       loadingState.value = LoadingState.hasError;
     }
   }
