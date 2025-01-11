@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as Get;
+import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/app/services/api/api_response_model.dart';
 import 'package:ngpiteapp/app/services/api/api_services.dart';
@@ -51,6 +53,7 @@ abstract class UsersRepositories {
 }
 
 class ImpUsersRepositories implements UsersRepositories {
+  static final cache = Get.Get.find<CacheServicesSharedPreferences>();
   final ApiServices api;
   ImpUsersRepositories({required this.api});
 
@@ -90,6 +93,8 @@ class ImpUsersRepositories implements UsersRepositories {
       {required String number, required String password}) async {
     AppResponse response = AppResponse(success: false);
     try {
+      final fcm = cache.getFcmToken();
+      print(fcm);
       response.data = await api.request(
           url: EndPoints.loginUrl,
           method: Method.post,
@@ -97,6 +102,7 @@ class ImpUsersRepositories implements UsersRepositories {
           params: {
             ApiKey.number: number,
             ApiKey.password: password,
+            "fcm_token": fcm
           });
       debugPrint(response.data.toString());
       final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;

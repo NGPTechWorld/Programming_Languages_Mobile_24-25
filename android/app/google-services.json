@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "813039166401",
+    "project_id": "programminglaguages25",
+    "storage_bucket": "programminglaguages25.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813039166401:android:a20a2e51c84c185f690540",
+        "android_client_info": {
+          "package_name": "com.ngpteckworld.deliveryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh6LypjG_8qkUHPFmbstoRgO4EEjEsWzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

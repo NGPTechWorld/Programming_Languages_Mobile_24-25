@@ -37,29 +37,29 @@ class MarketCard extends GetView<OrderDetailsPageController> {
             ),
           ],
         ),
-        if(market!=null)
-        ...market.products.map((product) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FlexLabel(
-                  text: product.name,
-                  flex: 2,
-                  isFirst: true,
-                ),
-                FlexLabel(text: "${product.count}"),
-                FlexLabel(text: "${product.price}"),
-                FlexLabel(text: "${product.total}"),
-              ],
-            ),
-          );
-        }).toList(),
-        if(market!=null)
-        if(marketIndex!=controller.order.value!.markets.length-1)
-        const Divider(),
+        if (market != null)
+          ...market.products.map((product) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FlexLabel(
+                    text: product.name,
+                    flex: 2,
+                    isFirst: true,
+                  ),
+                  FlexLabel(text: "${product.count}"),
+                  FlexLabel(text: "${product.price}"),
+                  FlexLabel(text: "${product.total}"),
+                ],
+              ),
+            );
+          }).toList(),
+        if (market != null)
+          if (marketIndex != controller.order.value!.markets.length - 1)
+            const Divider(),
       ],
     );
   }

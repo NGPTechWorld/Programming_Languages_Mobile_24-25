@@ -1,16 +1,22 @@
-
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheServicesSharedPreferences implements CacheServices {
   static late SharedPreferences sharedPreferences;
-
+  static const fcmTokenKey = "fcmTokenKey";
 //! Here The Initialize of cache .
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
+  Future<bool> saveFCMtoken(String fcmToken) async {
+    return await sharedPreferences.setString(fcmTokenKey, fcmToken);
+  }
+
+  dynamic getFcmToken() {
+    return getDataString(key: fcmTokenKey);
+  }
 //! this method to put data in local database using key
 
   String? getDataString({
