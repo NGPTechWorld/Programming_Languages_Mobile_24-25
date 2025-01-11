@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/screens/category_page/widgets/categorys_products.dart';
 import 'package:ngpiteapp/screens/custom_widgets/exception_indicators/empty_list_indicator.dart';
 import 'package:ngpiteapp/screens/custom_widgets/wide_product_shimmer_card.dart';
@@ -22,11 +23,17 @@ class FavoriteProductsList extends GetView<FavoritePageController> {
           () => controller.productsPagingController.refresh(),
         ),
         color: ColorManager.firstColor,
-        child: PagedListView(
+        child: PagedGridView(
           clipBehavior: Clip.none,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            childAspectRatio: 2,
+            mainAxisSpacing: AppPadding.p10,
+            crossAxisSpacing: AppPadding.p10,
+          ),
           pagingController: controller.productsPagingController,
-          builderDelegate: PagedChildBuilderDelegate<dynamic>(
-            itemBuilder: (context, product, index) => Container(
+          builderDelegate: PagedChildBuilderDelegate<ProductsCardEntite>(
+            itemBuilder: (context, product, index) =>Container(
               height: AppSize.s200,
               child: FavoriteProductCard(
                 index: index,
@@ -50,6 +57,7 @@ class FavoriteProductsList extends GetView<FavoritePageController> {
           ),
         ),
       ),
+    // )
     );
   }
 }

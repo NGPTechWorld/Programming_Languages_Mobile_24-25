@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ngpiteapp/app/services/api/end_points.dart';
+
 // TODO : Check if image is needed or not , if not , delete this and use marketEntite
 class MarketsCard {
   final int id;
@@ -12,14 +14,14 @@ class MarketsCard {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name, 'image': image};
+    return <String, dynamic>{ApiKey.id: id, ApiKey.name: name, ApiKey.image: image};
   }
 
   factory MarketsCard.fromMap(Map<String, dynamic> map) {
     return MarketsCard(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      image: map['image'] as String,
+      id: map[ApiKey.id] as int,
+      name: map[ApiKey.name] as String,
+      image: map[ApiKey.image] as String,
     );
   }
 

@@ -35,7 +35,7 @@ class ImpMarketsRepositories implements MarketsRepositories {
       final jsonList =
           data[ApiKey.markets][ApiKey.currentPageItems] as List<dynamic>;
       response.data =
-          (jsonList.map((json) => MarketsCard.fromMap(json)).toList());
+          (jsonList.map((json) => MarketEntitie.fromMap(json)).toList());
       response.success = true;
     } on ErrorHandler catch (e) {
       response.networkFailure = e.failure;

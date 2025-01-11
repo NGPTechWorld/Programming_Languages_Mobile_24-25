@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:ngpiteapp/data/entities/market_entitie.dart';
 import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
-import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
@@ -27,19 +27,15 @@ class HomePageController extends GetxController {
     firstPageKey: 1,
     invisibleItemsThreshold: 2,
   );
-  final marketsPagingController = PagingController<int, MarketsCard>(
+  final marketsPagingController = PagingController<int, MarketEntitie>(
     firstPageKey: 1,
     invisibleItemsThreshold: 1,
   );
-  var loadingStateProducts = LoadingState.idle.obs;
-  var loadingStateMarkets = LoadingState.idle.obs;
   int currentPage = 1;
 
   var productsPerPage = 4;
   var marketsPerPage = 4;
 
-  // var isLoadingFirstProducts = true.obs;
-  var isLoadingFirstMarkets = true.obs;
   onInit() async {
     productsPagingController.itemList = null;
     productsPagingController.addPageRequestListener((pageKey) {
@@ -50,17 +46,11 @@ class HomePageController extends GetxController {
     marketsPagingController.addPageRequestListener((pageKey) {
       getMarkets(pageKey);
     });
-    isLoadingFirstMarkets.value = false;
     productsPagingController.refresh();
     super.onInit();
   }
 
   getProducts(int pageKey) async {
-    loadingStateProducts.value = LoadingState.loading;
-    if (pageKey < productsPagingController.nextPageKey!) {
-      productsPagingController.refresh();
-      return;
-    }
     try {
       final newPage = await productRepo.getProducts(
           page: pageKey, perPage: productsPerPage);
@@ -76,12 +66,9 @@ class HomePageController extends GetxController {
     } catch (error) {
       productsPagingController.error = error;
     }
-    loadingStateProducts.value = LoadingState.doneWithData;
   }
 
-  getMarkets(int pageKey) async {
-    loadingStateMarkets.value = LoadingState.loading;
-
+  getMarkets(int pageKey) async { 
     try {
       print('Fetching page: $pageKey');
       final newPage =
@@ -97,7 +84,6 @@ class HomePageController extends GetxController {
     } catch (error) {
       marketsPagingController.error = error;
     }
-    loadingStateMarkets.value = LoadingState.doneWithData;
   }
 
   goToCart() {
