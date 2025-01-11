@@ -1,41 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
-import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
-class MarkeCardItem extends GetView<HomePageController> {
-  final int index;
-  const MarkeCardItem({
+class MarketHeaderPage extends StatelessWidget {
+  const MarketHeaderPage({
     super.key,
-    required this.index,
+    required this.market,
   });
+
+  final MarketsCard market;
 
   @override
   Widget build(BuildContext context) {
-    MarketsCard market = controller.marketsPagingController.itemList![index];
-    return GestureDetector(
-      onTap: () {
-        controller.goToMarkect(index);
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(AppPadding.p4),
-        child: Container(
-          height: AppSizeWidget.cardSize,
-          //width: AppSizeScreen.screenWidth * 0.7,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppSize.s16),
-            color: ColorManager.primary2Color,
-          ),
-          child: Row(
-            children: [
-              Container(
-                height: 120,
-                width: 120,
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        height: 200,
+        decoration: BoxDecoration(
+            color: ColorManager.secoundLightColor,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30))),
+        child: Row(
+          children: [
+            Container(
+              height: 120,
+              width: 120,
+              child: Center(
                 child: Image.network(
                   market.image,
                   height: 150,
@@ -52,10 +46,12 @@ class MarkeCardItem extends GetView<HomePageController> {
                   },
                 ),
               ),
-              Container(
+            ),
+            Expanded(
+              child: Container(
                 constraints:
                     BoxConstraints(maxWidth: AppSizeScreen.screenWidth * 0.5),
-                padding: const EdgeInsets.all(AppPadding.p10),
+                padding: const EdgeInsets.all(AppPadding.p24),
                 child: FittedBox(
                   fit: BoxFit.contain,
                   child: Text(market.name,
@@ -63,8 +59,8 @@ class MarkeCardItem extends GetView<HomePageController> {
                           color: ColorManager.primary6Color)),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

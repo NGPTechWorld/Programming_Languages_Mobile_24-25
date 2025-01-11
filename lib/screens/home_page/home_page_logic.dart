@@ -4,12 +4,15 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
+import 'package:ngpiteapp/data/module/product_model.dart';
 import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
 import 'package:ngpiteapp/screens/custom_widgets/snack_bar_error.dart';
+import 'package:ngpiteapp/screens/products_market_page/products_market_page.dart';
+import 'package:ngpiteapp/screens/products_market_page/products_market_page_logic.dart';
 
 class HomePageBindings extends Bindings {
   @override
@@ -113,4 +116,11 @@ class HomePageController extends GetxController {
       SnackBarCustom.show(context, response.networkFailure!.message);
     }
   }
+
+  goToMarkect(int index) {
+    Get.to(ProductsMarketPage(marketsPagingController.itemList![index]),
+        binding: ProductsMarketPageBindings());
+  }
+
+    
 }

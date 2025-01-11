@@ -59,7 +59,7 @@ class ImagAndFavorite extends GetView<ProductDetailsPageController> {
               () => Icon(
                 Icons.favorite,
                 color: controller.isFavorite.value
-                    ? ColorManager.firstColor
+                    ? ColorManager.redColor
                     : ColorManager.primary3Color,
               ),
             ),
