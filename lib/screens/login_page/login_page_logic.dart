@@ -37,34 +37,29 @@ class LoginPageController extends GetxController {
 
   login(BuildContext context) async {
     loadingState.value = LoadingState.loading;
-    if (await netCheck.isConnected) {
-      final response = await AuthRepositories.login(
-          number: numberPhoneController.text,
-          password: passwordController.text);
-      if (response.success) {
-        final data = response.data as LoginEntitie;
-        if (data.message == "user not verified , verification code sent") {
-          SnackBarCustom.show(context, data.message);
-          loadingState.value = LoadingState.doneWithData;
-          Get.off(() => OtpPage(), binding: OtpPageBinding(idVerf: data.id!));
-        } else {
-          final saveState =
-              await cache.saveData(kUserTokenKey, response.data.bearerToken);
-          if (saveState) {
-            SnackBarCustom.show(context, StringManager.loginSuccess.tr);
-            loadingState.value = LoadingState.doneWithData;
-            Get.offAll(() => CurvedNavigationBarCustom(),
-                binding: CurvedNavigationBarBinding());
-          }
-        }
+    final response = await AuthRepositories.login(
+        number: numberPhoneController.text, password: passwordController.text);
+    if (response.success) {
+      final data = response.data as LoginEntitie;
+      numberPhoneController.text = passwordController.text = "";
+      if (data.message == "user not verified , verification code sent") {
+        SnackBarCustom.show(context, data.message);
+        loadingState.value = LoadingState.doneWithData;
+        Get.off(() => OtpPage(), binding: OtpPageBinding(idVerf: data.id!));
       } else {
-        SnackBarCustom.show(context, response.networkFailure!.message);
-        // if (response.networkFailure!.message == "user has not been verified")
-        //   //Get.off(() => OtpPage(), binding: OtpPageBinding());
-        loadingState.value = LoadingState.hasError;
+        final saveState =
+            await cache.saveData(kUserTokenKey, response.data.bearerToken);
+        if (saveState) {
+          SnackBarCustom.show(context, StringManager.loginSuccess.tr);
+          loadingState.value = LoadingState.doneWithData;
+          Get.offAll(() => CurvedNavigationBarCustom(),
+              binding: CurvedNavigationBarBinding());
+        }
       }
     } else {
-      SnackBarCustom.show(context, StringManager.nointernet.tr);
+      SnackBarCustom.show(context, response.networkFailure!.message);
+      // if (response.networkFailure!.message == "user has not been verified")
+      //   //Get.off(() => OtpPage(), binding: OtpPageBinding());
       loadingState.value = LoadingState.hasError;
     }
   }
