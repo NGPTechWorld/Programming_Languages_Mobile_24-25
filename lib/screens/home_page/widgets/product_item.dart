@@ -4,6 +4,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/circle_add_item.dart';
@@ -16,7 +17,7 @@ class ProductItem extends GetView<HomePageController> {
 
   @override
   Widget build(BuildContext context) {
-    final product = controller.productsPagingController.itemList![index];
+    final ProductsCardEntite product = controller.productsPagingController.itemList == null ? ProductsCardEntite(id: 0 , categoryId: '0' , image: 'Image' , marketName: 'MarketName',name: "Name" , price: 100) : controller.productsPagingController.itemList![index];
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
       child: InkWell(

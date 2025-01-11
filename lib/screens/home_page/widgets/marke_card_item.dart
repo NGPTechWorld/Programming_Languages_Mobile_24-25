@@ -19,7 +19,7 @@ class MarkeCardItem extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     // TODO : edit this to MarketEntitie when kareem gives an image back.
-    MarketsCard market = controller.marketsPagingController.itemList![index];
+    MarketEntitie market = controller.marketsPagingController.itemList![index];
     return GestureDetector(
       onTap: () {
         controller.goToMarkect(index);
@@ -35,11 +35,13 @@ class MarkeCardItem extends GetView<HomePageController> {
           ),
           child: Row(
             children: [
-              Container(
+               Container(
                 height: 120,
                 width: 120,
-                child: Image.network(
-                  market.image,
+                child: market.image == null?
+                  Image.asset(AssetsManager.nullImage):
+                 Image.network(
+                  market.image! ,
                   height: 150,
                   width: 150,
                   errorBuilder: (context, error, stackTrace) {

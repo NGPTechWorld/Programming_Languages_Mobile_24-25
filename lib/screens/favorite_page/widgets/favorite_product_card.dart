@@ -5,6 +5,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
+import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/screens/favorite_page/favorite_page_logic.dart';
 
 
@@ -16,7 +17,7 @@ class FavoriteProductCard extends GetView<FavoritePageController> {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final product = controller.productsPagingController.itemList![index];
+    final ProductsCardEntite product = controller.productsPagingController.itemList== null ? ProductsCardEntite(name: "name", image: "image", marketName: "marketName", id: 0, categoryId: "categoryId", price: 0) : controller.productsPagingController.itemList![index];
     return InkWell(
       splashColor: ColorManager.transparentColor,
       onTap: () => controller.goToProductDetails(product.id),

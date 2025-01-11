@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
@@ -11,7 +12,7 @@ class FavoritePageController extends GetxController {
 
   final int perPage = 3;
   var isLoadingFirst = true.obs;
-  final productsPagingController = PagingController<int, dynamic>(
+  final productsPagingController = PagingController<int, ProductsCardEntite>(
     firstPageKey: 1,
     invisibleItemsThreshold: 1,
   );

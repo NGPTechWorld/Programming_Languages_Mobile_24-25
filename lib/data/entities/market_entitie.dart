@@ -7,7 +7,7 @@ import 'package:ngpiteapp/app/services/api/end_points.dart';
 class MarketEntitie {
   final int id;
   final String name;
-  final String image;
+  final String? image;
 
   MarketEntitie({required this.id, required this.name, required this.image});
 
@@ -23,7 +23,7 @@ class MarketEntitie {
     return MarketEntitie(
       id: map[ApiKey.id] as int,
       name: map[ApiKey.name] as String,
-      image: map[ApiKey.image] as String,
+      image: map[ApiKey.image] as String?,
     );
   }
 
