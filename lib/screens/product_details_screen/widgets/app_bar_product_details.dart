@@ -23,8 +23,8 @@ class AppBarProductDetails extends GetView<ProductDetailsPageController> {
         child: Container(
           child: Center(
             child: CircleAvatar(
-              radius: AppSize.s30,
-              backgroundColor: ColorManager.whiteColor,
+              radius: AppSize.s18,
+              backgroundColor: ColorManager.primary1Color,
               child: Icon(
                 Icons.arrow_back_ios_new,
                 color: ColorManager.blackColor,
@@ -35,9 +35,17 @@ class AppBarProductDetails extends GetView<ProductDetailsPageController> {
         ),
       ),
       flexibleSpace: SingleChildScrollView(
-        child: Padding(
+        child: Container(
+          decoration: BoxDecoration(
+              color: ColorManager.firstLightColor.withAlpha(100),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30))),
           padding: const EdgeInsets.only(
-              top: AppPadding.p80, left: AppPadding.p20, right: AppPadding.p20),
+              top: AppPadding.p70,
+              left: AppPadding.p20,
+              right: AppPadding.p20,
+              bottom: AppPadding.p10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
