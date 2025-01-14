@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ngpiteapp/app/config/assets_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
+import 'package:ngpiteapp/data/entities/market_entitie.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 
 class MarketHeaderPage extends StatelessWidget {
@@ -11,7 +12,7 @@ class MarketHeaderPage extends StatelessWidget {
     required this.market,
   });
 
-  final MarketsCard market;
+  final MarketEntitie market;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,8 @@ class MarketHeaderPage extends StatelessWidget {
               height: 120,
               width: 120,
               child: Center(
-                child: Image.network(
-                  market.image,
+                child: market.image == null? Image.asset(AssetsManager.nullImage)  :  Image.network(
+                  market.image!,
                   height: 150,
                   width: 150,
                   errorBuilder: (context, error, stackTrace) {

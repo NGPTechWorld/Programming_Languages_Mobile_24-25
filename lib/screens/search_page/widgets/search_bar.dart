@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:get/get.dart';
-import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
+import 'package:ngpiteapp/screens/search_page/search_page_logic.dart';
 
-class SearchTextBar extends GetView<HomePageController> {
+class SearchTextBar extends GetView<SearchPageController> {
   SearchTextBar({super.key});
 
   // Add a GlobalKey to track the search bar's position
@@ -30,7 +29,7 @@ class SearchTextBar extends GetView<HomePageController> {
                 color: ColorManager.whiteColor,
               ),
             ),
-            hintText: StringManager.searchProductsText.tr,
+            hintText: controller.searchKeyword,
             hintStyle:
                 StyleManager.body02_Medium(color: ColorManager.primary1Color),
             filled: true,
@@ -56,16 +55,16 @@ class SearchTextBar extends GetView<HomePageController> {
             // Navigate to the search page when the user presses the search key
             if (value.isNotEmpty) {
                FocusScope.of(context).unfocus();
-              controller.goToSearchPage(value);
+              // controller.goToSearchPage(value);
             }
           },
           onChanged: (value) {
-            controller.searchQuery.value = value;
-            controller.fetchRecommendations(value);
+            // controller.searchQuery.value = value;
+            // controller.fetchRecommendations(value);
           },
           onTap: () {
             // Show the popout menu when the user taps the search bar
-            controller.showRecommendations.value = true;
+            // controller.showRecommendations.value = true;
             _showOverlay(context, controller);
           },
         ),
@@ -73,7 +72,7 @@ class SearchTextBar extends GetView<HomePageController> {
     );
   }
 
-  void _showOverlay(BuildContext context, HomePageController controller) {
+  void _showOverlay(BuildContext context, SearchPageController controller) {
     // Get the search bar's position and size
     final RenderBox searchBarRenderBox =
         searchBarKey.currentContext!.findRenderObject() as RenderBox;
@@ -87,7 +86,7 @@ class SearchTextBar extends GetView<HomePageController> {
     overlayEntry = OverlayEntry(
       builder: (context) => GestureDetector(
         onTap: () {
-          controller.showRecommendations.value = false;
+          // controller.showRecommendations.value = false;
           overlayEntry.remove(); // Remove the overlay
         },
         child: Material(
@@ -116,30 +115,32 @@ class SearchTextBar extends GetView<HomePageController> {
                         borderRadius: BorderRadius.circular(AppSize.s8),
                       ),
                       child: Obx(() {
-                        if (controller.showRecommendations.value &&
-                            controller.recommendations.isNotEmpty) {
-                          return ListView(
-                            shrinkWrap:
-                                true, // Ensure the ListView takes only the required space
-                            children: controller.recommendations
-                                .map((recommendation) {
-                              return ListTile(
-                                title: Text(
-                                  recommendation,
-                                  style: StyleManager.body02_Medium(),
-                                ),
-                                onTap: () {
-                                  controller.goToSearchPage(recommendation);
-                                  controller.showRecommendations.value = false;
-                                  overlayEntry.remove(); // Remove the overlay
-                                },
-                              );
-                            }).toList(),
-                          );
+                        if(controller.searchKeyword == ""){
+                        // if (controller.showRecommendations.value &&
+                            // controller.recommendations.isNotEmpty) {
+                        //   return ListView(
+                        //     shrinkWrap:
+                        //         true, // Ensure the ListView takes only the required space
+                        //     children: controller.recommendations
+                        //         .map((recommendation) {
+                        //       return ListTile(
+                        //         title: Text(
+                        //           recommendation,
+                        //           style: StyleManager.body02_Medium(),
+                        //         ),
+                        //         onTap: () {
+                        //           controller.goToSearchPage(recommendation);
+                        //           controller.showRecommendations.value = false;
+                        //           overlayEntry.remove(); // Remove the overlay
+                        //         },
+                        //       );
+                        //     }).toList(),
+                        //   );
                         } else {
                           return const SizedBox
                               .shrink(); // Hide if no recommendations
                         }
+                        return Container();
                       }),
                     ),
                   ),
@@ -155,10 +156,10 @@ class SearchTextBar extends GetView<HomePageController> {
     Overlay.of(context).insert(overlayEntry);
 
     // Listen for changes to hide the overlay
-    controller.showRecommendations.listen((show) {
-      if (!show) {
-        overlayEntry.remove();
-      }
-    });
+    // controller.showRecommendations.listen((show) {
+    //   if (!show) {
+    //     overlayEntry.remove();
+    //   }
+    // });
   }
 }

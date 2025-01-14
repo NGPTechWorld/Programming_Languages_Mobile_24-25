@@ -6,7 +6,6 @@ import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
 import 'package:ngpiteapp/app/services/api/end_points.dart';
 import 'package:ngpiteapp/core/errors/error_handler.dart';
 import 'package:ngpiteapp/data/entities/market_entitie.dart';
-import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
 import 'package:ngpiteapp/data/module/product_model.dart';
 
 abstract class MarketsRepositories {
@@ -59,7 +58,7 @@ class ImpMarketsRepositories implements MarketsRepositories {
       final jsonList =
           data[ApiKey.markets][ApiKey.currentPageItems] as List<dynamic>;
       response.data =
-          (jsonList.map((json) => MarketEntitie.fromMap(json)).toList());
+          jsonList.map((json) => MarketEntitie.fromMap(json)).toList();
       response.success = true;
     } on ErrorHandler catch (e) {
       response.networkFailure = e.failure;

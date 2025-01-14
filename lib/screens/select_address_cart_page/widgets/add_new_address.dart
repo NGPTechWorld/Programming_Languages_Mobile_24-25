@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/select_address_cart_page/select_address_cart_page_logic.dart';
-import 'package:ngpiteapp/screens/show_addresses_page/widgets/address_card.dart';
 import 'package:get/get.dart';
 class AddNewAddressText extends GetView<SelectAddressCartPageController> {
   const AddNewAddressText({

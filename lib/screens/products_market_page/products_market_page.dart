@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/entities/markets_card_entitie.dart';
+import 'package:ngpiteapp/data/entities/market_entitie.dart';
 import 'package:ngpiteapp/screens/products_market_page/products_market_page_logic.dart';
 import 'package:ngpiteapp/screens/products_market_page/widgets/market_header_page.dart';
+import 'package:ngpiteapp/screens/products_market_page/widgets/products_grid.dart';
 
 class ProductsMarketPage extends GetView<ProductsMarketPageController> {
-  final MarketsCard market;
+  final MarketEntitie market;
   const ProductsMarketPage(this.market, {super.key});
 
   @override
@@ -28,8 +29,7 @@ class ProductsMarketPage extends GetView<ProductsMarketPageController> {
               ),
             ),
           ],
-          body: Container(),
-          //ProductsGrid(),
+          body: ProductsGrid(),
         ),
       ),
     );

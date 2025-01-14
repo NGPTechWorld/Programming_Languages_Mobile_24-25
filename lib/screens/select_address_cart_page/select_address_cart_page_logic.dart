@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:get/get.dart';
-import 'package:ngpiteapp/app/config/string_manager.dart';
 
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/locations_repositories.dart';
