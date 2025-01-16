@@ -202,4 +202,8 @@ class StringManager {
   static const String deliveryprice = "deliveryprice";
   static const String SelectYourLocation = "SelectYourLocation";
   static const String addNewAddressText = "addNewAddressText";
+
+  static const String searchMarkets = "searchMarkets";
+  static const String searchProducts= "searchProducts";
+
 }

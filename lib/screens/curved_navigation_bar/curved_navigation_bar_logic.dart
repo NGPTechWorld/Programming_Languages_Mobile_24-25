@@ -26,8 +26,8 @@ class CurvedNavigationBarController extends GetxController {
   final indexPage = 0.obs;
   List<Widget> pages = [
     HomePage(),
-    // CategoryPage(),
-    // const FavoritePage(),
+    CategoryPage(),
+    const FavoritePage(),
     ProfilePage(),
   ];
 }
