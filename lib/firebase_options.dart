@@ -8,6 +8,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, debugPrint, defaultTargetPlatform, kIsWeb;
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/services/local_storage/cache_services.dart';
 import 'package:ngpiteapp/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
@@ -124,12 +125,12 @@ class PushNotification {
   static Future initialise() async {
     await messaging.requestPermission();
 
-    if (await cache.containsKey(CacheServicesSharedPreferences.fcmTokenKey)) {
+    if (await cache.containsKey(kfcmTokenKey)) {
       print("FCM token is found");
     } else {
       String? fcmToken = await messaging.getToken();
-      await cache.saveFCMtoken(fcmToken!);
-      debugPrint(fcmToken ?? "null");
+      if (fcmToken != null) await cache.saveData(kfcmTokenKey, fcmToken);
+      debugPrint(await cache.getFcmToken() ?? "null");
     }
 
     // Initialize local notifications

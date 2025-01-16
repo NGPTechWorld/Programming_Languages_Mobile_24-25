@@ -33,7 +33,7 @@ class TextPanelDetails extends GetView<ProductDetailsPageController> {
           ),
           children: [
             Text(
-              controller.product!.market,
+              controller.product!.market!,
               style: StyleManager.h4_Regular(color: ColorManager.primary5Color),
             ),
           ],

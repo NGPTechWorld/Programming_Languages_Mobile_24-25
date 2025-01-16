@@ -30,7 +30,7 @@ class ProductsGrid extends GetView<HomePageController> {
           clipBehavior: Clip.none,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.75,
+            childAspectRatio: 0.7,
             mainAxisSpacing: AppPadding.p10,
             crossAxisSpacing: AppPadding.p10,
           ),

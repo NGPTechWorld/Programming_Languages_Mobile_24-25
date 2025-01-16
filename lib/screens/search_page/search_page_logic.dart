@@ -2,7 +2,6 @@
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/data/entities/market_entitie.dart';
-import 'package:ngpiteapp/data/entities/products_card._entite.dart';
 import 'package:ngpiteapp/data/entities/products_card_search_entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';

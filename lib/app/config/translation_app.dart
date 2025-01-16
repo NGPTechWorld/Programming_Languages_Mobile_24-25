@@ -163,6 +163,9 @@ class TranslationApp implements Translations {
           StringManager.paginationtryAgain: "حاول مجدداً",
           StringManager.paginationOops: "عذرا",
           StringManager.paginationNoProducts: "لا يوجد منتجات.",
+
+          StringManager.searchMarkets: "البحث عن المتاجر",
+          StringManager.searchProducts: "البحث عن المنتجات",
         },
         "en": {
           //Sign Up
@@ -327,6 +330,9 @@ class TranslationApp implements Translations {
           StringManager.paginationtryAgain: "Try Again",
           StringManager.paginationOops: "Oops!",
           StringManager.paginationNoProducts: "We couldn\'t find any products.",
+
+          StringManager.searchMarkets: "Search Markets",
+          StringManager.searchProducts: "Search Products",
         },
       };
 }

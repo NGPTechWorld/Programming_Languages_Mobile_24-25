@@ -1,7 +1,6 @@
 const kUserLoginModelKey = "kUserLoginModelKey";
 const kUserTokenKey = "kUserTokenKey";
 const kversionKey = "kversionKey";
-const kFCMTokenKey = "kFCMTokenKey";
 
 const kPushNotification = "kPushNotificationKey";
 
@@ -10,7 +9,7 @@ const kSecoundYearKey = "kSecoundYearKey";
 const kThirdYearKey = "kThirdYearKey";
 const kFourthYearKey = "kFourthYearKey";
 const kFiftYearKey = "kFiftYearKey";
-
+const kfcmTokenKey = "kfcmTokenKey";
 const kGBAYeas = "kGBAYeas";
 
 abstract class CacheServices {

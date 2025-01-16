@@ -9,6 +9,7 @@ import 'package:ngpiteapp/screens/home_page/widgets/products_shimmer_grid.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/shimmer_product_card_home.dart';
 import 'package:ngpiteapp/screens/search_page/search_page_logic.dart';
 import 'package:ngpiteapp/screens/search_page/widgets/product_item.dart';
+
 // TODO : Edit this , and market grid , and do the translatoin , fix obvoius things.
 class ProductsGrid extends GetView<SearchPageController> {
   const ProductsGrid({super.key});
@@ -30,7 +31,7 @@ class ProductsGrid extends GetView<SearchPageController> {
           clipBehavior: Clip.none,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.75,
+            childAspectRatio: 0.7,
             mainAxisSpacing: AppPadding.p10,
             crossAxisSpacing: AppPadding.p10,
           ),

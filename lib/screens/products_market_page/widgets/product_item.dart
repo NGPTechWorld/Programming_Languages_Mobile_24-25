@@ -4,7 +4,7 @@ import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
-import 'package:ngpiteapp/data/entities/products_card._entite.dart';
+import 'package:ngpiteapp/data/module/product_model.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/widgets/circle_add_item.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
@@ -17,7 +17,8 @@ class ProductItem extends GetView<ProductsMarketPageController> {
 
   @override
   Widget build(BuildContext context) {
-    final ProductsCardEntite product = controller.productsPagingController.itemList == null ? ProductsCardEntite(id: 0 , categoryId: '0' , image: 'Image' , marketName: 'MarketName',name: "Name" , price: 100) : controller.productsPagingController.itemList![index];
+    final ProductEntitie product =
+        controller.productsPagingController.itemList![index];
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
       child: InkWell(
@@ -75,13 +76,13 @@ class ProductItem extends GetView<ProductsMarketPageController> {
                             ),
                           ),
                           TextSpan(
-                            text: product.marketName,
+                            text: product.market,
                             style: StyleManager.body02_Medium(
                               color: ColorManager.primary6Color,
                             ),
                           ),
                           TextSpan(
-                            text: "\n" + product.categoryId,
+                            text: "\n" + product.category,
                             style: StyleManager.body02_Medium(
                               color: ColorManager.primary6Color,
                             ),

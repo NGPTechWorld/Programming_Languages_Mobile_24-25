@@ -11,17 +11,18 @@ class HeaderButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ChooseButton(
-            onSelectValue: true,
-            text: StringManager.searchProducts.tr),
-        const SizedBox(width: AppSize.s10),
-        ChooseButton(
-            onSelectValue: false,
-            text: StringManager.searchMarkets.tr)
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ChooseButton(
+              onSelectValue: true, text: StringManager.searchProducts.tr),
+          const SizedBox(width: AppSize.s10),
+          ChooseButton(
+              onSelectValue: false, text: StringManager.searchMarkets.tr)
+        ],
+      ),
     );
   }
 }

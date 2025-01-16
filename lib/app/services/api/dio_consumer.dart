@@ -28,6 +28,7 @@ class DioConsumer implements ApiServices {
     required String url,
     required Method method,
     required bool requiredToken,
+    bool requiredFCMToken = false,
     Map<String, dynamic>? queryParameters,
     bool uploadImage = false,
     //Map<String, dynamic>? params,
@@ -51,7 +52,7 @@ class DioConsumer implements ApiServices {
         "Authorization": "Bearer $token",
       });
     }
-
+    
     if (uploadImage) {
       headers['Accept'] = 'text/plain';
       headers['Content-Type'] = 'multipart/form-data';

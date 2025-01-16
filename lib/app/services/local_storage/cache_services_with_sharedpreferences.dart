@@ -4,18 +4,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheServicesSharedPreferences implements CacheServices {
   static late SharedPreferences sharedPreferences;
-  static const fcmTokenKey = "fcmTokenKey";
+
 //! Here The Initialize of cache .
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
   Future<bool> saveFCMtoken(String fcmToken) async {
-    return await sharedPreferences.setString(fcmTokenKey, fcmToken);
+    return await sharedPreferences.setString(kfcmTokenKey, fcmToken);
   }
 
-  dynamic getFcmToken() {
-    return getDataString(key: fcmTokenKey);
+  Future<String?> getFcmToken() async {
+    if (await containsKey(kfcmTokenKey))
+      return sharedPreferences.getString(kfcmTokenKey);
+    else
+      return null;
   }
 //! this method to put data in local database using key
 

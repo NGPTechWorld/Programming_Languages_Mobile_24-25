@@ -22,7 +22,8 @@ abstract class UsersRepositories {
       required String email,
       required String password,
       required String passwordConfirm});
-  Future<AppResponse> login({required String number, required String password});
+  Future<AppResponse> login(
+      {required String number, required String password, String fcm});
   Future<AppResponse> logout();
   Future<AppResponse> forgatePassword({required String number});
   Future<AppResponse> verifyNumber(
@@ -53,7 +54,7 @@ abstract class UsersRepositories {
 }
 
 class ImpUsersRepositories implements UsersRepositories {
-  static final cache = Get.Get.find<CacheServicesSharedPreferences>();
+  final cache = Get.Get.find<CacheServicesSharedPreferences>();
   final ApiServices api;
   ImpUsersRepositories({required this.api});
 
@@ -90,11 +91,9 @@ class ImpUsersRepositories implements UsersRepositories {
 
   @override
   Future<AppResponse> login(
-      {required String number, required String password}) async {
+      {required String number, required String password, String? fcm}) async {
     AppResponse response = AppResponse(success: false);
     try {
-      final fcm = cache.getFcmToken();
-      print(fcm);
       response.data = await api.request(
           url: EndPoints.loginUrl,
           method: Method.post,

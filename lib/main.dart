@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ngpiteapp/app/app.dart';
@@ -13,9 +12,10 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await AppBinding().initializes();
-  await PushNotification.initialise();
   AppBinding().dependencies();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await PushNotification.initialise();
   runApp(const App());
 }

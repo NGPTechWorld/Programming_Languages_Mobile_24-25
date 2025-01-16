@@ -5,6 +5,7 @@ abstract class ApiServices {
     required String url,
     required Method method,
     required bool requiredToken,
+     bool requiredFCMToken=false,
     Map<String, dynamic>? queryParameters,
     bool uploadImage = false,
     //Map<String, dynamic>? params,

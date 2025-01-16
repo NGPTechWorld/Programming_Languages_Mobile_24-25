@@ -37,8 +37,11 @@ class LoginPageController extends GetxController {
 
   login(BuildContext context) async {
     loadingState.value = LoadingState.loading;
+    String? fcm = await cache.getFcmToken();
     final response = await AuthRepositories.login(
-        number: numberPhoneController.text, password: passwordController.text);
+        number: numberPhoneController.text,
+        password: passwordController.text,
+        fcm: fcm);
     if (response.success) {
       final data = response.data as LoginEntitie;
       numberPhoneController.text = passwordController.text = "";

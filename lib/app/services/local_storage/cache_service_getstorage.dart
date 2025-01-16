@@ -69,25 +69,6 @@ class CacheServiceGetStorage implements CacheServices {
     return token ?? "";
   }
 
-  bool storeFCMToken(String fCMToken) {
-    String? storedFCMToken = _getStorage.read(kFCMTokenKey);
-    if (storedFCMToken == null) {
-      _getStorage.write(kFCMTokenKey, fCMToken);
-      return true;
-    } else {
-      if (storedFCMToken == fCMToken) {
-        return false;
-      } else {
-        _getStorage.write(kFCMTokenKey, fCMToken);
-        return true;
-      }
-    }
-  }
-
-  String? getFcmToken() {
-    return _getStorage.read(kFCMTokenKey);
-  }
-
   void storePushNotificationReceivingState(bool pushNotification) {
     _getStorage.write(kPushNotification, pushNotification);
   }

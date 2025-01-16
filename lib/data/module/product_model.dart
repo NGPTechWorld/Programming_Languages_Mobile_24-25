@@ -8,7 +8,7 @@ class ProductEntitie {
   final String image;
   final String description;
   final int id;
-  final String market;
+  final String? market;
   final String category;
   final int quantity;
   final int price;
@@ -45,7 +45,7 @@ class ProductEntitie {
       image: (map[ApiKey.image] as String?) ?? "",
       description: map[ApiKey.description] as String,
       id: map[ApiKey.id] as int,
-      market: map[ApiKey.market_name] as String,
+      market: map[ApiKey.market_name] as String?,
       category: map[ApiKey.category] as String,
       quantity: map[ApiKey.quantity] as int,
       price: map[ApiKey.price] as int,

@@ -23,21 +23,18 @@ class FavoriteProductsList extends GetView<FavoritePageController> {
           () => controller.productsPagingController.refresh(),
         ),
         color: ColorManager.firstColor,
-        child: PagedGridView(
-          clipBehavior: Clip.none,
+        child: PagedGridView<int, ProductsCardEntite>(
+          // تم إزالة Expanded
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
-            childAspectRatio: 2,
+            crossAxisCount: 2, // تغيير عدد الأعمدة
+            childAspectRatio: 2, // التحكم بنسبة العرض إلى الارتفاع
             mainAxisSpacing: AppPadding.p10,
             crossAxisSpacing: AppPadding.p10,
           ),
           pagingController: controller.productsPagingController,
           builderDelegate: PagedChildBuilderDelegate<ProductsCardEntite>(
-            itemBuilder: (context, product, index) =>Container(
-              height: AppSize.s200,
-              child: FavoriteProductCard(
-                index: index,
-              ),
+            itemBuilder: (context, product, index) => FavoriteProductCard(
+              index: index,
             ),
             firstPageProgressIndicatorBuilder: (context) =>
                 WideProductShimmerList(),
@@ -57,7 +54,6 @@ class FavoriteProductsList extends GetView<FavoritePageController> {
           ),
         ),
       ),
-    // )
     );
   }
 }

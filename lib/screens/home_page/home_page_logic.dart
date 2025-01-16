@@ -25,29 +25,30 @@ class HomePageController extends GetxController {
   final productRepo = Get.find<ImpProductsRepositories>();
   final marketRepo = Get.find<ImpMarketsRepositories>();
   final cartRepo = Get.find<ImpCartsRepositories>();
- 
+  late OverlayEntry overlayEntry;
+
   final RxList<String> recommendations = <String>[].obs;
   final RxString searchQuery = ''.obs;
   final RxBool showRecommendations = false.obs;
 
   Future<void> fetchRecommendations(String query) async {
-    final response = await productRepo.getProductsByName(perPage: 5, page: 1, productName: query);
-    final response2 = await marketRepo.getMarketsByName(perPage: 5, page: 1, market_name: query);
-    if(response.success||response2.success){
-
-    recommendations.clear();
-    final data = response.data;
-    recommendations.value = List.generate(response.data.length, (index) => data[index].name );
-    final data2 = response2.data;
-    recommendations.addAll(List.generate(response2.data.length ,(index) => data2[index].name));
-    showRecommendations.value = true;
-    }
-    else{
-    recommendations.clear();
+    final response = await productRepo.getProductsByName(
+        perPage: 5, page: 1, productName: query);
+    final response2 = await marketRepo.getMarketsByName(
+        perPage: 5, page: 1, market_name: query);
+    if (response.success || response2.success) {
+      recommendations.clear();
+      final data = response.data;
+      recommendations.value =
+          List.generate(response.data.length, (index) => data[index].name);
+      final data2 = response2.data;
+      recommendations.addAll(
+          List.generate(response2.data.length, (index) => data2[index].name));
+      showRecommendations.value = true;
+    } else {
+      recommendations.clear();
     }
   }
-
-
 
   final productsPagingController = PagingController<int, ProductsCardEntite>(
     firstPageKey: 1,
@@ -60,7 +61,6 @@ class HomePageController extends GetxController {
 
   var productsPerPage = 4;
   var marketsPerPage = 4;
-
 
   onInit() async {
     productsPagingController.itemList = null;
@@ -94,7 +94,7 @@ class HomePageController extends GetxController {
     }
   }
 
-  getMarkets(int pageKey) async { 
+  getMarkets(int pageKey) async {
     try {
       print('Fetching page: $pageKey');
       final newPage =
@@ -128,13 +128,14 @@ class HomePageController extends GetxController {
 
   goToMarkect(int index) {
     Get.to(ProductsMarketPage(marketsPagingController.itemList![index]),
-        binding: ProductsMarketPageBindings());
+        binding: ProductsMarketPageBindings(
+            id: marketsPagingController.itemList![index].id));
   }
 
   void goToSearchPage(String searchKeyword) {
     print("$searchKeyword");
-    Get.to(()=>SearchPage() , binding: SearchPageBindings(searchKeyword: searchKeyword));
-  }
 
-    
+    Get.to(() => SearchPage(),
+        binding: SearchPageBindings(searchKeyword: searchKeyword));
+  }
 }
