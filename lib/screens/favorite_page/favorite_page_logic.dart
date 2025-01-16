@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/data/entities/products_card._entite.dart';
+import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page.dart';
 import 'package:ngpiteapp/screens/cart_page/cart_page_logic.dart';
@@ -9,7 +10,7 @@ import 'package:ngpiteapp/screens/product_details_screen/product_details_page.da
 class FavoritePageController extends GetxController {
   final indexCategorySelected = 0.obs;
   final productRepo = Get.find<ImpProductsRepositories>();
-
+  var loadingState = LoadingState.idle.obs;
   final int perPage = 3;
   var isLoadingFirst = true.obs;
   final productsPagingController = PagingController<int, ProductsCardEntite>(
@@ -21,6 +22,8 @@ class FavoritePageController extends GetxController {
     productsPagingController.addPageRequestListener((pageKey) {
       fetchPage(pageKey);
     });
+    loadingState.value == LoadingState.doneWithData;
+
     super.onInit();
   }
 

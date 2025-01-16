@@ -6,9 +6,9 @@ import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/data/entities/market_entitie.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
-import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
+import 'package:ngpiteapp/screens/search_page/search_page_logic.dart';
 
-class MarkeCardItemModle extends StatelessWidget {
+class MarkeCardItemModle extends GetView<SearchPageController> {
   final MarketEntitie market;
   const MarkeCardItemModle({
     super.key,
@@ -18,7 +18,9 @@ class MarkeCardItemModle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        controller.goToMarkect(market);
+      },
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p4),
         child: Container(

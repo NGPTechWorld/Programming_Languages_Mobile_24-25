@@ -31,8 +31,8 @@ class TrackOrdersPageController extends GetxController {
 
     if (responsePending.success && responseDelivering.success) {
       loadingState.value = LoadingState.doneWithData;
-      orders.addAll(responsePending.data.reversed);
       orders.addAll(responseDelivering.data.reversed);
+      orders.addAll(responsePending.data.reversed);
     } else {
       String msg = "Error! \n";
       if (responsePending.networkFailure != null)

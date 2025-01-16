@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngpiteapp/app/config/color_manager.dart';
 import 'package:ngpiteapp/app/config/string_manager.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/carts_repositoris.dart';
@@ -23,10 +24,12 @@ class CartPageController extends GetxController {
 
   var deleteState = LoadingState.idle.obs;
   goToChooseAddress() async {
-   final res =await Get.to(() => SelectAddressCartPage(),
-        binding: SelectAddressCartPageBinding(totalCost: totalCost.value)) ?? false;
-   print(res);
-    if(res){
+    final res = await Get.to(() => SelectAddressCartPage(),
+            binding:
+                SelectAddressCartPageBinding(totalCost: totalCost.value)) ??
+        false;
+    print(res);
+    if (res) {
       products.clear();
     }
   }
@@ -34,6 +37,7 @@ class CartPageController extends GetxController {
   deleteDialog(int index) async {
     await Get.dialog(
       AlertDialog(
+        backgroundColor: ColorManager.whiteColor,
         title: Text(StringManager.cartDialogTitle.tr),
         content: Text(StringManager.cartDialogContent.tr),
         actions: [
@@ -78,7 +82,7 @@ class CartPageController extends GetxController {
   }
 
   subOne(int index) async {
-    if(products[index].count==1){
+    if (products[index].count == 1) {
       deleteDialog(index);
       return;
     }

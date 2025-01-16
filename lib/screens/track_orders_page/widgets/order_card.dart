@@ -47,22 +47,25 @@ class OrderCard extends GetView<TrackOrdersPageController> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             StatusLabel(statusId: order.statusId),
-            PopupMenuButton<String>(
-              onSelected: (value) =>
-                  controller.handleMenuSelection(value, index, context),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                PopupMenuItem<String>(
-                  value: StringManager.trackOrdersMenuEditValue,
-                  child: Text(StringManager.trackOrdersMenuEditText.tr),
-                ),
-                PopupMenuItem<String>(
-                  value: StringManager.trackOrdersMenuCancelValue,
-                  child: Text(StringManager.trackOrdersMenuCancelText.tr),
-                ),
-              ],
-              //TODO : Check this icon
-              icon: const Icon(Icons.more_vert),
-            ),
+            order.statusId == 1
+                ? PopupMenuButton<String>(
+                    onSelected: (value) =>
+                        controller.handleMenuSelection(value, index, context),
+                    itemBuilder: (BuildContext context) =>
+                        <PopupMenuEntry<String>>[
+                      PopupMenuItem<String>(
+                        value: StringManager.trackOrdersMenuEditValue,
+                        child: Text(StringManager.trackOrdersMenuEditText.tr),
+                      ),
+                      PopupMenuItem<String>(
+                        value: StringManager.trackOrdersMenuCancelValue,
+                        child: Text(StringManager.trackOrdersMenuCancelText.tr),
+                      ),
+                    ],
+                    //TODO : Check this icon
+                    icon: const Icon(Icons.more_vert),
+                  )
+                : Container(),
           ],
         ),
         onTap: () => controller.onTap(order.id, order.statusId),

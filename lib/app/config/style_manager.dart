@@ -320,7 +320,7 @@ class StyleManager {
   // Button 01
   static TextStyle button1(
       {Color color = Colors.black,
-      double fontsize = AppSize.s24,
+      double fontsize = AppSize.s20,
       FontWeight fontweight = FontWeight.w600,
       TextDecoration styletext = TextDecoration.none}) {
     return TextStyle(

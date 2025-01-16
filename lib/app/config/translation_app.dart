@@ -149,6 +149,11 @@ class TranslationApp implements Translations {
 
           // Cart Page
           StringManager.cartPageMyCart: "السلة",
+          StringManager.cartDelete: "حذف",
+          StringManager.cartCancel: "الغاء",
+          StringManager.cartDialogContent: "هل تريد حذف المنتج",
+          StringManager.cartDialogTitle: "حذف النتج",
+
           StringManager.cartPageNext: "تحديد موقع التوصيل",
           StringManager.deliveryprice: "سعر التوصيل",
           StringManager.SelectYourLocation: "تحديد عنوان التوصيل: ",
@@ -319,7 +324,10 @@ class TranslationApp implements Translations {
           StringManager.deliveryprice: "Delivery Price",
           StringManager.SelectYourLocation: "Select Your Location",
           StringManager.addNewAddressText: "Add New Address",
-
+          StringManager.cartDelete: "Delete",
+          StringManager.cartCancel: "Cancel",
+          StringManager.cartDialogContent: "Do you want to delete the product?",
+          StringManager.cartDialogTitle: "Delete Product",
           // Product Details Page
           StringManager.productDetailsQuantity: "Quantity",
           StringManager.productDetailsMarket: "Market",

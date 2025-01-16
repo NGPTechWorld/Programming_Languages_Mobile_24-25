@@ -11,12 +11,11 @@ class FavoritePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
       body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                AppbarFavorite(),
-              ],
-          body: Container()
-          // FavoriteProductsList(),
-          ),
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          AppbarFavorite(),
+        ],
+        body: FavoriteProductsList(),
+      ),
     );
   }
 }

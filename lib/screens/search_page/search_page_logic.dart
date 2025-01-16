@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ngpiteapp/data/entities/market_entitie.dart';
@@ -6,7 +5,8 @@ import 'package:ngpiteapp/data/entities/products_card_search_entite.dart';
 import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/markets_repositories.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
-
+import 'package:ngpiteapp/screens/products_market_page/products_market_page.dart';
+import 'package:ngpiteapp/screens/products_market_page/products_market_page_logic.dart';
 
 class SearchPageBindings extends Bindings {
   final String searchKeyword;
@@ -15,25 +15,24 @@ class SearchPageBindings extends Bindings {
 
   @override
   void dependencies() {
-    Get.put(SearchPageController(searchKeyword : searchKeyword));
+    Get.put(SearchPageController(searchKeyword: searchKeyword));
   }
 }
-
-
 
 class SearchPageController extends GetxController {
   final productRepo = Get.find<ImpProductsRepositories>();
   final marketRepo = Get.find<ImpMarketsRepositories>();
   SearchPageController({required this.searchKeyword});
-  
+
   final searchKeyword;
   var isProductsSelected = true.obs;
   var loadingState = LoadingState.idle.obs;
 
   final completedOrders = [].obs;
   final incompletedOrders = [].obs;
-  
-  final productsPagingController = PagingController<int, ProductsCardSearchEntite>(
+
+  final productsPagingController =
+      PagingController<int, ProductsCardSearchEntite>(
     firstPageKey: 1,
     invisibleItemsThreshold: 2,
   );
@@ -44,7 +43,6 @@ class SearchPageController extends GetxController {
 
   var productsPerPage = 4;
   var marketsPerPage = 4;
-
 
   onInit() async {
     productsPagingController.itemList = null;
@@ -79,11 +77,11 @@ class SearchPageController extends GetxController {
     }
   }
 
-  getMarkets(int pageKey) async { 
+  getMarkets(int pageKey) async {
     try {
       print('Fetching page: $pageKey');
-      final newPage =
-          await marketRepo.getMarketsByName(page: pageKey, perPage: marketsPerPage , market_name: searchKeyword);
+      final newPage = await marketRepo.getMarketsByName(
+          page: pageKey, perPage: marketsPerPage, market_name: searchKeyword);
       final isLastPage =
           newPage.data.isEmpty || newPage.data.length < productsPerPage;
       if (isLastPage) {
@@ -97,6 +95,10 @@ class SearchPageController extends GetxController {
     }
   }
 
+  goToMarkect(MarketEntitie market) {
+    Get.to(ProductsMarketPage(market),
+        binding: ProductsMarketPageBindings(id: market.id));
+  }
 
 /*   getOrders(BuildContext context) async {
     loadingState.value = LoadingState.loading;
