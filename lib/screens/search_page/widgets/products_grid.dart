@@ -22,40 +22,34 @@ class ProductsGrid extends GetView<SearchPageController> {
         left: AppPadding.p10,
         right: AppPadding.p10,
       ),
-      child: RefreshIndicator(
-        onRefresh: () => Future.sync(() {
-          controller.productsPagingController.refresh();
-        }),
-        color: ColorManager.firstColor,
-        child: PagedGridView(
-          clipBehavior: Clip.none,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.7,
-            mainAxisSpacing: AppPadding.p10,
-            crossAxisSpacing: AppPadding.p10,
+      child: PagedGridView(
+        clipBehavior: Clip.none,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.6,
+          mainAxisSpacing: AppPadding.p10,
+          crossAxisSpacing: AppPadding.p10,
+        ),
+        pagingController: controller.productsPagingController,
+        builderDelegate: PagedChildBuilderDelegate<dynamic>(
+          itemBuilder: (context, product, index) => ProductItem(
+            index: index,
           ),
-          pagingController: controller.productsPagingController,
-          builderDelegate: PagedChildBuilderDelegate<dynamic>(
-            itemBuilder: (context, product, index) => ProductItem(
-              index: index,
-            ),
-            firstPageProgressIndicatorBuilder: (context) =>
-                ProductsShimmerGrid(count: 6),
-            newPageProgressIndicatorBuilder: (context) =>
-                ShimmerProductCardHome(),
-            newPageErrorIndicatorBuilder: (context) => TryAgainButton(
-              onPressed: () {
-                controller.productsPagingController.retryLastFailedRequest();
-              },
-            ),
-            firstPageErrorIndicatorBuilder: (context) => TryAgainButton(
-              onPressed: () {
-                controller.productsPagingController.refresh();
-              },
-            ),
-            noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
+          firstPageProgressIndicatorBuilder: (context) =>
+              ProductsShimmerGrid(count: 6),
+          newPageProgressIndicatorBuilder: (context) =>
+              ShimmerProductCardHome(),
+          newPageErrorIndicatorBuilder: (context) => TryAgainButton(
+            onPressed: () {
+              controller.productsPagingController.retryLastFailedRequest();
+            },
           ),
+          firstPageErrorIndicatorBuilder: (context) => TryAgainButton(
+            onPressed: () {
+              controller.productsPagingController.refresh();
+            },
+          ),
+          noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
         ),
       ),
       // );

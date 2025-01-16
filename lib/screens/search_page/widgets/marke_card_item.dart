@@ -8,25 +8,21 @@ import 'package:ngpiteapp/data/entities/market_entitie.dart';
 import 'package:ngpiteapp/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:ngpiteapp/screens/home_page/home_page_logic.dart';
 
-class MarkeCardItem extends GetView<HomePageController> {
-  final int index;
-  const MarkeCardItem({
+class MarkeCardItemModle extends StatelessWidget {
+  final MarketEntitie market;
+  const MarkeCardItemModle({
     super.key,
-    required this.index,
+    required this.market,
   });
 
   @override
   Widget build(BuildContext context) {
-    MarketEntitie market = controller.marketsPagingController.itemList![index];
     return GestureDetector(
-      onTap: () {
-        controller.goToMarkect(index);
-      },
+      onTap: () {},
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p4),
         child: Container(
           height: AppSizeWidget.cardSize,
-          //width: AppSizeScreen.screenWidth * 0.7,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s16),
             color: ColorManager.primary2Color,

@@ -24,10 +24,10 @@ class FavoriteProductsList extends GetView<FavoritePageController> {
         ),
         color: ColorManager.firstColor,
         child: PagedGridView<int, ProductsCardEntite>(
-          // تم إزالة Expanded
+          clipBehavior: Clip.none,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // تغيير عدد الأعمدة
-            childAspectRatio: 2, // التحكم بنسبة العرض إلى الارتفاع
+            crossAxisCount: 1,
+            childAspectRatio: 2,
             mainAxisSpacing: AppPadding.p10,
             crossAxisSpacing: AppPadding.p10,
           ),

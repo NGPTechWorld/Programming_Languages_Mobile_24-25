@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngpiteapp/app/config/color_manager.dart';
+import 'package:ngpiteapp/app/config/style_manager.dart';
 import 'package:ngpiteapp/app/config/values_manager.dart';
 import 'package:ngpiteapp/screens/search_page/search_page_logic.dart';
 import 'package:ngpiteapp/screens/search_page/widgets/header_buttons.dart';
@@ -23,13 +24,16 @@ class SearchPage extends GetView<SearchPageController> {
 
   AppBar appBar() {
     return AppBar(
-      title: Text(controller.searchKeyword),
-      backgroundColor: ColorManager.firstColor,
+      title: Text(
+        controller.searchKeyword,
+        style: StyleManager.h4_Semibold(color: ColorManager.primary6Color),
+      ),
+      backgroundColor: ColorManager.primary1Color,
       leading: BackButton(
         style: ButtonStyle(
             fixedSize:
                 WidgetStatePropertyAll(Size(AppMargin.m10, AppMargin.m10))),
-        color: ColorManager.whiteColor,
+        color: ColorManager.primary6Color,
       ),
       centerTitle: false,
     );
