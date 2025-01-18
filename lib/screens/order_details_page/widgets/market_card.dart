@@ -19,22 +19,30 @@ class MarketCard extends GetView<OrderDetailsPageController> {
           // mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FlexLabel(
-              text: StringManager.orderDetailsProductName.tr,
-              flex: 2,
-              isTitle: true,
-              isFirst: true,
-            ),
-            FlexLabel(
-              text: StringManager.orderDetailsUnitCount.tr,
-              isTitle: true,
-            ),
-            FlexLabel(
-                text: StringManager.orderDetailsUnitPrice.tr, isTitle: true),
-            FlexLabel(
-              text: StringManager.orderDetailsTotalPrice.tr,
-              isTitle: true,
-            ),
+            Expanded(
+                flex: 4,
+                child: Text(
+                  StringManager.orderDetailsProductName.tr,
+                  style: StyleManager.body02_Medium(),
+                )),
+            Expanded(
+                flex: 1,
+                child: Text(
+                  StringManager.orderDetailsUnitCount.tr,
+                  style: StyleManager.body02_Medium(),
+                )),
+            Expanded(
+                flex: 1,
+                child: Text(
+                  StringManager.orderDetailsUnitPrice.tr,
+                  style: StyleManager.body02_Medium(),
+                )),
+            Expanded(
+                flex: 1,
+                child: Text(
+                  StringManager.orderDetailsTotalPrice.tr,
+                  style: StyleManager.body02_Medium(),
+                )),
           ],
         ),
         if (market != null)
@@ -43,16 +51,38 @@ class MarketCard extends GetView<OrderDetailsPageController> {
               padding: const EdgeInsets.symmetric(vertical: 4.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  FlexLabel(
-                    text: product.name,
-                    flex: 2,
-                    isFirst: true,
+                  Image.network(
+                    product.image,
+                    fit: BoxFit.contain,
+                    width: 50,
+                    height: 50,
                   ),
-                  FlexLabel(text: "${product.count}"),
-                  FlexLabel(text: "${product.price}"),
-                  FlexLabel(text: "${product.total}"),
+                  Expanded(
+                      flex: 3,
+                      child: Text(
+                        product.name,
+                        style: StyleManager.h4_Medium(),
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: Text(
+                        "${product.count}",
+                        style: StyleManager.body02_Medium(),
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: Text(
+                        "${product.price}",
+                        style: StyleManager.body02_Medium(),
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: Text(
+                        "${product.total}",
+                        style: StyleManager.body02_Medium(),
+                      )),
                 ],
               ),
             );

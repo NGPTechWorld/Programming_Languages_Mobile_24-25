@@ -13,6 +13,7 @@ class ProductEntitie {
   final int quantity;
   final int price;
   final int number_of_purchases;
+  final DateTime created_at;
   ProductEntitie({
     required this.name,
     required this.image,
@@ -23,6 +24,7 @@ class ProductEntitie {
     required this.quantity,
     required this.price,
     required this.number_of_purchases,
+    required this.created_at,
   });
 
   Map<String, dynamic> toMap() {
@@ -50,6 +52,7 @@ class ProductEntitie {
       quantity: map[ApiKey.quantity] as int,
       price: map[ApiKey.price] as int,
       number_of_purchases: map[ApiKey.number_of_purchases] as int,
+      created_at: DateTime.parse(map['created_at']),
     );
   }
 

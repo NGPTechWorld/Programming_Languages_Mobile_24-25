@@ -40,12 +40,14 @@ class Product {
   final int price;
   final int count;
   final int total;
+  final String image;
 
   Product({
     required this.name,
     required this.price,
     required this.count,
     required this.total,
+    required this.image,
   });
 
   Map<String, dynamic> toMap() {
@@ -61,6 +63,7 @@ class Product {
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
       name: map[ApiKey.name] as String,
+      image: (map[ApiKey.image] as String?) ?? "",
       price: map[ApiKey.price] as int,
       count: map[ApiKey.count] as int,
       total: map[ApiKey.total] as int,
