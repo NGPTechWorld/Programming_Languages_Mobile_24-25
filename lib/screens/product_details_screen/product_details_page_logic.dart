@@ -30,30 +30,18 @@ class ProductDetailsPageController extends GetxController {
       product = response.data.product;
       isFavorite.value = response.data.isFavorite;
       loadingState.value = LoadingState.doneWithData;
-      
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
       loadingState.value = LoadingState.hasError;
     }
-
   }
 
   addOne() async {
-    final response = await cartRepo.plusProductOne(id: product!.id);
-    if (response.success) {
-      count++;
-    } else {
-      loadingState.value = LoadingState.hasError;
-    }
+    count++;
   }
 
   subOne() async {
-    final response = await cartRepo.minusProductOne(id: product!.id);
-    if (response.success) {
-      count--;
-    } else {
-      loadingState.value = LoadingState.hasError;
-    }
+    count--;
   }
 
   toggleFavorite(BuildContext context) async {
@@ -71,10 +59,8 @@ class ProductDetailsPageController extends GetxController {
     final response =
         await cartRepo.addProduct(id: product!.id, count: count.value);
     if (response.success) {
-      
-    await Future.sync( ()=> 
-    SnackBarCustom.show(context, response.data));
-    Get.back();
+      await Future.sync(() => SnackBarCustom.show(context, response.data));
+      Get.back();
     } else {
       SnackBarCustom.show(context, response.networkFailure!.message);
     }
@@ -82,6 +68,6 @@ class ProductDetailsPageController extends GetxController {
 
   goToCart(BuildContext context) async {
     await addToCart(context);
-    Get.to(CartPage() , binding: CartPageBindings());
+    Get.to(CartPage(), binding: CartPageBindings());
   }
 }
