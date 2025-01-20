@@ -15,7 +15,7 @@ class Counter extends GetView<ProductDetailsPageController> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InkWell(
-          onTap: controller.addOne,
+          onTap: controller.subOne,
           child: CircleAvatar(
             radius: AppSize.s16,
             backgroundColor: ColorManager.primary3Color.withAlpha(100),

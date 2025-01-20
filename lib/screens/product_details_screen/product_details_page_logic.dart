@@ -41,7 +41,7 @@ class ProductDetailsPageController extends GetxController {
   }
 
   subOne() async {
-    count--;
+    if (count > 1) count--;
   }
 
   toggleFavorite(BuildContext context) async {
