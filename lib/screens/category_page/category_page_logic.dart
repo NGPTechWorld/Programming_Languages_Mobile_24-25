@@ -5,7 +5,7 @@ import 'package:ngpiteapp/data/enums/loading_state_enum.dart';
 import 'package:ngpiteapp/data/repositories/category_repositoris.dart';
 import 'package:ngpiteapp/data/repositories/products_repositories.dart';
 import 'package:ngpiteapp/screens/product_details_screen/product_details_page.dart';
-
+// some changes to have contribution
 class CategoryPageBinding extends Bindings {
   @override
   void dependencies() {
